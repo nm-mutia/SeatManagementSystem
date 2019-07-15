@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 		// }else{
 		// 	echo "Username dan password salah !";
 		// }
-		redirect('adminDashboard', 'refresh');
+		redirect('admin', 'refresh');
 	}
 
 }
