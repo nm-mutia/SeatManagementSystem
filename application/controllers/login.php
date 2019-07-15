@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,7 +22,7 @@ class Login extends CI_Controller {
 		$this->load->view('page-login.html');
 	}
 
-	function aksi_login(){
+	public function aksi_login(){
 			// $username = $this->input->post('username');
 			// $password = $this->input->post('password');
 			// $where = array(
