@@ -23,4 +23,20 @@ class AdminDashboard extends CI_Controller {
 		$data['content'] = $this->db->get('karyawan');
 		$this->load->view('index', $data);
 	}
+
+	public function update($id = null)
+	{
+		// $this->db->where('NIK', $id);
+		// $this->db->delete('karyawan');
+		
+		// redirect('adminDashboard', 'refresh');
+	}
+	
+	public function delete($id = null)
+	{
+		$this->db->where('NIK', $id);
+		$this->db->delete('karyawan');
+		
+		redirect('adminDashboard', 'refresh');
+	}
 }

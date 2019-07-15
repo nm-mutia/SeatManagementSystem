@@ -79,7 +79,7 @@
                 <!-- Orders -->
                 <div class="orders">
                     <div class="row">
-                        <div class="col-xl-8">
+                        <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="box-title">Peminjaman Lebih dari Tenggat</h4>
@@ -95,13 +95,14 @@
                                                     <th>Name</th>
                                                     <th>Product</th>
                                                     <th>Quantity</th>
-                                                    <th>Status</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <?php $x = 1; ?>
                                                 <?php foreach ($content->result_array() as $key): ?>
                                                 <tr>
-                                                    <td class="serial">1.</td>
+                                                    <td class="serial"><?php echo $x++; ?>.</td>
                                                     <td class="avatar">
                                                         <div class="round-img">
                                                             <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
@@ -112,7 +113,8 @@
                                                     <td><span class="product"><?php echo $key['JOB_LEVEL'] ?></span> </td>
                                                     <td><span class="count">231</span></td>
                                                     <td>
-                                                        <span class="badge badge-complete">Complete</span>
+                                                        <a href="<?php echo base_url()?>adminDashboard/delete/<?php echo $key['NIK']?>"><span class="badge badge-danger">Delete</span></a>
+                                                        <a href="<?php echo base_url()?>adminDashboard/update/<?php echo $key['NIK']?>"><span class="badge badge-complete">Update</span></a>
                                                     </td>
                                                 </tr>
                                                 <?php endforeach ?>
