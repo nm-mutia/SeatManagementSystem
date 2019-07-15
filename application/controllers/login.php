@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Barang extends CI_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +20,6 @@ class Barang extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index.html');
+		$this->load->view('page-login.html');
 	}
 }
