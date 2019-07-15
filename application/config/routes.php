@@ -51,12 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //menu utama
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//admin
 //menu fitur
-$route['Lihat_PO'] = 'barang';
-$route['History_Peminjaman'] = 'HP';
-$route['Lihat_aset'] = 'barang';
+$route['Admin_Dashboard'] = 'adminDashboard';
+$route['Lihat_PO'] = 'lihatPo';
+$route['History_Peminjaman'] = 'HisPem';
+$route['Lihat_aset'] = 'aset';
 $route['Lihat_vendor'] = 'vendor';
