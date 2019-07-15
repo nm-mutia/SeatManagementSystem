@@ -14,7 +14,7 @@
 
                         <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
                         <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
-                        <li><i class="fa fa-spinner"></i><a href=ui-progressbar.html">Progress Bars</a></li>
+                        <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
                         <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
                         <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
                         <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
