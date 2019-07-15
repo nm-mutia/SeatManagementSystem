@@ -57,7 +57,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //admin
 //menu fitur
-$route['admin_dashboard'] = 'adminDashboard';
+$route['admin'] = 'adminDashboard';
 $route['lihat_po'] = 'lihatPo';
 $route['history_peminjaman'] = 'hisPem';
 $route['lihat_aset'] = 'aset';

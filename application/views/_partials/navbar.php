@@ -1,9 +1,8 @@
-<!-- <div id="right-panel" class="right-panel"> -->
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            <a class="navbar-brand" href="#"><img src="images/LogoSI.png" alt="Logo" width="75"></a>
+            <!-- <a class="navbar-brand hidden" href="#"><img src="images/logo2.png" alt="Logo"></a> -->
             <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
         </div>
     </div>
@@ -18,7 +17,7 @@
                     </form>
                 </div>
 
-                <div class="dropdown for-notification">
+                <!-- <div class="dropdown for-notification">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell"></i>
                         <span class="count bg-danger">3</span>
@@ -38,9 +37,9 @@
                             <p>Server #3 overloaded.</p>
                         </a>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="dropdown for-message">
+                <!-- <div class="dropdown for-message">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope"></i>
                         <span class="count bg-primary">4</span>
@@ -80,10 +79,10 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
 
-            <div class="user-area dropdown float-right">
+            <!-- <div class="user-area dropdown float-right">
                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                 </a>
@@ -97,9 +96,8 @@
 
                     <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
 </header>
-<!-- </div> -->
