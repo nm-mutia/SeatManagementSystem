@@ -7,13 +7,13 @@ class AdminDashboard extends CI_Controller {
      parent::__construct();
 
      // Load model
-     $this->load->model('tenggattable');
+     $this->load->model('historyModel');
   }
 
 	public function index()
 	{
 		// $data['content'] = $this->db->get('karyawan');
-	  $data['content'] = $this->tenggattable->getTenggattable();
+	  	$data['content'] = $this->historyModel->getTenggattable();
 		$this->load->view('index', $data);
 	}
 

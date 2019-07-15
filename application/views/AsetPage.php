@@ -1,26 +1,17 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!DOCTYPE html>
+<html>
 <head>
-      <?php $this->load->view("_partials/head.php") ?>
+    <?php $this->load->view("_partials/head.php") ?>
 </head>
 <body>
     <!-- Left Panel -->
-
     <?php $this->load->view("_partials/sidebar.php") ?>
     <!-- Left Panel -->
-
     <!-- Right Panel -->
-
     <div id="right-panel" class="right-panel">
-
         <!-- Header-->
         <?php $this->load->view("_partials/navbar.php") ?>
-
         <!-- Header-->
-
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
@@ -423,12 +414,15 @@
         <div class="clearfix"></div>
          <?php $this->load->view("_partials/footer.php") ?>
     </div><!-- /#right-panel -->
-
     <!-- Right Panel -->
 
     <!-- Scripts -->
-      <?php $this->load->view("_partials/js.php") ?>
-
+    <?php $this->load->view("_partials/js.php") ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        } );
+    </script>
 
 </body>
 </html>
