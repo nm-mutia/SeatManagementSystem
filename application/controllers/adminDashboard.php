@@ -20,6 +20,7 @@ class AdminDashboard extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('index');
+		$data['content'] = $this->db->get('karyawan');
+		$this->load->view('index', $data);
 	}
 }
