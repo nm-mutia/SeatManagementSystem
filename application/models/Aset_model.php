@@ -18,7 +18,6 @@ class Aset_model extends CI_Model {
     // $this->db->select('*');
     // $q = $this->db->get('aset',10);
     // $response = $q->result_array();
-
     return $q;
   }
 
