@@ -39,11 +39,12 @@ class Login extends CI_Controller {
 			//
 			// 	$this->session->set_userdata($data_session);
 
-				// redirect(base_url("Admin_Dashboard"));
+			// redirect(base_url("Admin_Dashboard"));
 
-			// }else{
-			// 	echo "Username dan password salah !";
-			// }
-		}
+		// }else{
+		// 	echo "Username dan password salah !";
+		// }
+		redirect('lihatPo', 'refresh');
+	}
 
 }
