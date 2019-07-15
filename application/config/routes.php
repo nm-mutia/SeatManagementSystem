@@ -56,6 +56,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //admin
+$route['register'] = 'register';
+
 //menu fitur
 $route['admin_dashboard'] = 'adminDashboard';
 $route['lihat_po'] = 'lihatPo';
