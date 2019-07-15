@@ -56,44 +56,22 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Salary</th>
+                                            <th>Kategori</th>
+                                            <th>Subkategori</th>
+                                            <th>QTY</th>
+                                            <!-- <th>Image</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>$162,700</td>
-                                        </tr>
+                                            <td> <?php echo $key['KATEGORI'] ?></td>
+                                            <td> <?php echo $key['SUB_KATEGORI'] ?></td>
+                                            <td> <?php echo $key['QTY'] ?></td>
 
+                                            <!-- <td>$320,800</td> -->
+                                        </tr>
+                                    <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>
