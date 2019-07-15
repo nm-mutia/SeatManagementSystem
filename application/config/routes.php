@@ -56,11 +56,19 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //admin
-$route['register'] = 'register';
 
 //menu fitur
 $route['admin'] = 'adminDashboard';
-$route['lihat_po'] = 'lihatPo';
-$route['history_peminjaman'] = 'hisPem';
-$route['lihat_aset'] = 'aset';
-$route['lihat_vendor'] = 'vendor';
+
+// menu aset
+$route['Purchase_Order'] = 'lihatPo';
+$route['Aset_tersedia'] = 'aset';
+$route['Vendor_Ordering'] = 'vendorOrdering';
+
+//menu Histori
+$route['Search_Karyawan'] = 'searchKaryawan';
+$route['Search_aset'] = 'searchAset';
+
+//menu vendor
+$route['vendor_list'] = 'vendorList';
+$route['PIC_list'] = 'picList';
