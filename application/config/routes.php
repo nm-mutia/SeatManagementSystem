@@ -61,14 +61,14 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'adminDashboard';
 
 // menu aset
-$route['Purchase_Order'] = 'lihatPo';
+$route['Purchase_Order'] = 'porder';
 $route['Aset_tersedia'] = 'aset';
-$route['Vendor_Ordering'] = 'vendorOrdering';
+$route['Vendor_Ordering'] = 'vendor';
 
 //menu Histori
-$route['Search_Karyawan'] = 'searchKaryawan';
-$route['Search_aset'] = 'searchAset';
+$route['Search_Karyawan'] = 'history';
+$route['Search_aset'] = 'history';
 
 //menu vendor
-$route['vendor_list'] = 'vendorList';
-$route['PIC_list'] = 'picList';
+$route['vendor_list'] = 'vendor';
+$route['PIC_list'] = 'vendor';
