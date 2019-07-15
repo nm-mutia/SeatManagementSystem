@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-text"><span class="count">23569</span></div>
                                             <div class="stat-heading">Software</div>
                                         </div>
                                     </div>
