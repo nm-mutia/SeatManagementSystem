@@ -8,9 +8,9 @@
                 <li class="menu-title">SEAT MANAGEMENTS</li><!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Aset</a>
-                    <ul class="sub-menu children dropdown-menu">                            
+                    <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Purchase Order</a></li>
-                        <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Aset Tersedia</a></li>
+                        <li><i class="fa fa-id-badge"></i><a href=<?php echo site_url('Aset/index');?>>Aset Tersedia</a></li>
                         <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Vendor</a></li>
                         <!-- <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
                         <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
