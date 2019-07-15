@@ -1,8 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
     <?php $this->load->view("_partials/head.php") ?>
 
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 </head>
 <body>
     <!-- Left Panel -->
@@ -11,17 +15,16 @@
     <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
         <!-- Header-->
-
-        <?php $this->load->view("_partials/navbar.php") ?>
-
+              <?php $this->load->view("_partials/navbar.php") ?>
         <!-- Header-->
+
         <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Aset Tersedia</h1>
+                                <h1>Purchase Order</h1>
                             </div>
                         </div>
                     </div>
@@ -31,7 +34,7 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#">Aset</a></li>
-                                    <li class="active">Aset Tersedia</li>
+                                    <li class="active">Purchase Order</li>
                                 </ol>
                             </div>
                         </div>
@@ -47,25 +50,25 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Data Table</strong>
+                                <strong class="card-title">Purchase Order</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Kategori</th>
-                                            <th>Subkategori</th>
-                                            <th>QTY</th>
+                                            <th>NO SPK</th>
+                                            <th>NAMA VENDOR</th>
+                                            <th>TAHUN PENGADAAN</th>
+                                            <!-- <th>BUKTI</th> -->
                                             <!-- <th>Image</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                            <td> <?php echo $key['KATEGORI'] ?></td>
-                                            <td> <?php echo $key['SUB_KATEGORI'] ?></td>
-                                            <td> <?php echo $key['QTY'] ?></td>
-
+                                            <td> <?php echo $key['NO_SPK'] ?></td>
+                                            <td> <?php echo $key['NAMA_VENDOR'] ?></td>
+                                            <td> <?php echo $key['TAHUN_PENGADAAN'] ?></td>
                                             <!-- <td>$320,800</td> -->
                                         </tr>
                                     <?php endforeach ?>
@@ -86,10 +89,10 @@
              <?php $this->load->view("_partials/footer.php") ?>
 
     </div><!-- /#right-panel -->
+
     <!-- Right Panel -->
 
     <!-- Scripts -->
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
