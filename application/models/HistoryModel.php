@@ -21,7 +21,8 @@ class HistoryModel extends CI_Model {
             JOIN history_aset AS ha ON dh.id_history = ha.id_history
             JOIN karyawan AS k ON ha.nik = k.nik
             JOIN aset AS a ON a.sn = dh.sn
-            WHERE dh.tgl_tenggat <= CURDATE()");
+            WHERE dh.tgl_tenggat <= CURDATE()
+            ORDER BY dh.tgl_tenggat ASC ");
     return $data;
     // return $q;
   }

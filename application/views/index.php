@@ -11,6 +11,7 @@
     <div id="right-panel" class="right-panel">
         <!-- Header-->
         <?php $this->load->view("_partials/navbar.php") ?>
+        
         <!-- /#header -->
         <!-- Content -->
         <div class="content">

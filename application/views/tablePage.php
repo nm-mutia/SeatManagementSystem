@@ -65,8 +65,9 @@
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                            <td> <?php echo var_dump($key) ?></td>
-                                            <!-- <td>$320,800</td> -->
+                                            <?php foreach ($key as $key1): ?>
+                                            <td> <?php echo $key1 ; ?></td>
+                                            <?php endforeach ?>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
