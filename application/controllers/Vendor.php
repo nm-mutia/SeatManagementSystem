@@ -1,10 +1,28 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class VendorList extends CI_Controller {
-
-	public function index()
-	{
-		$this->load->view('index');
+class Vendor extends CI_Controller {
+	public function __construct(){
+		 parent::__construct();
+		 // Load model
+		 $this->load->model('vendor_model');
 	}
+
+	public function setTitle(){
+		$title = "Vendor";
+		return $title;
+	}
+
+	public function setKategori(){
+		$kategori = "Vendor";
+		return $kategori;
+	}
+
+	public function index(){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
+		$data['content'] = $this->vendor_model->getVendor();
+		$this->load->view('tablePage', $data);
+	}
+
 }

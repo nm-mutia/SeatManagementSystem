@@ -24,7 +24,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Purchase Order</h1>
+                                <h1><?php echo $page_title ?></h1>
                             </div>
                         </div>
                     </div>
@@ -33,8 +33,8 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Aset</a></li>
-                                    <li class="active">Purchase Order</li>
+                                    <li><a href="#"><?php echo $kategori ?></a></li>
+                                    <li class="active"><?php echo $page_title ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -50,25 +50,21 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Purchase Order</strong>
+                                <strong class="card-title"><?php echo $page_title ?></strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>NO SPK</th>
-                                            <th>NAMA VENDOR</th>
-                                            <th>TAHUN PENGADAAN</th>
-                                            <!-- <th>BUKTI</th> -->
-                                            <!-- <th>Image</th> -->
+                                    <?php foreach ($content->field_data() as $field): ?>
+                                            <th><?php echo $field->name ?> </th>
+                                    <?php endforeach ?>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                            <td> <?php echo $key['NO_SPK'] ?></td>
-                                            <td> <?php echo $key['NAMA_VENDOR'] ?></td>
-                                            <td> <?php echo $key['TAHUN_PENGADAAN'] ?></td>
+                                            <td> <?php echo $key ?></td>
                                             <!-- <td>$320,800</td> -->
                                         </tr>
                                     <?php endforeach ?>
