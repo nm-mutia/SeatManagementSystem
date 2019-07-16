@@ -116,7 +116,7 @@
                                                     <td><span ><?php echo $key['sn'] ?></span></td>
                                                     <td><span ><?php echo $key['tgl'] ?></span></td>
                                                     <td>
-                                                        <a href="<?php echo base_url()?>adminDashboard/detail/<?php echo $key['id']?>/<?php echo $key['sn']?>"><span class="badge badge-complete">Detail</span></a>
+                                                        <a href="<?php echo base_url()?>details/<?php echo $key['id']?>/<?php echo $key['sn']?>"><span class="badge badge-complete">Detail</span></a>
                                                     </td>
                                                 </tr>
                                                 <?php endforeach ?>

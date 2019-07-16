@@ -1,4 +1,5 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class HistoryModel extends CI_Model {
   function __construct()
@@ -9,13 +10,6 @@ class HistoryModel extends CI_Model {
 
   function getTenggattable(){
 
-    // $response = array();
-
-    // Select record
-    // $this->db->select('*');
-    // $q = $this->db->get('karyawan',10);
-    // $response = $q->result_array();
-
     $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl  
             FROM detail_history AS dh
             JOIN history_aset AS ha ON dh.id_history = ha.id_history
@@ -24,23 +18,20 @@ class HistoryModel extends CI_Model {
             WHERE dh.tgl_tenggat <= CURDATE()
             ORDER BY dh.tgl_tenggat ASC ");
     return $data;
-    // return $q;
   }
 
-  function getTenggatdetail($id = null, $sn = null){
+  function getTenggatdetail($id , $sn){
     // $det['data'] = $this->getTenggattable();
-    $query = "SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl  
-            FROM detail_history AS dh
-            JOIN history_aset AS ha ON dh.id_history = ha.id_history
-            JOIN karyawan AS k ON ha.nik = k.nik
-            JOIN aset AS a ON a.sn = dh.sn
-            WHERE dh.tgl_tenggat <= CURDATE()
-            AND dh.id_history = ?
-            AND dh.sn = ? ";
+    $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT 
+      FROM detail_history AS dh
+      JOIN history_aset AS ha ON dh.id_history = ha.id_history
+      JOIN karyawan AS k ON ha.nik = k.nik
+      JOIN aset AS a ON a.sn = dh.sn
+      WHERE dh.tgl_tenggat <= CURDATE()
+      AND dh.id_history = ?
+      AND dh.sn = ? ";
     $data = $this->db->query($query, array($id, $sn));
-    var_dump($data);
     return $data;
-    // return $q;
   }
 
 }

@@ -17,27 +17,14 @@ class AdminDashboard extends CI_Controller {
 		$this->load->view('index', $data);
 	}
 
-	public function detail($id = null, $sn = null)
+	public function detail($id, $sn)
 	{
 		$data['page_title'] = "Detail";
 		$data['kategori'] = null;
 	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
-		$this->load->view('tablePage', $data);
+
+		$this->load->view('detailPage', $data);
+		// redirect('admin','refresh');
 	}
 
-	public function update($id = null)
-	{
-		// $this->db->where('NIK', $id);
-		// $this->db->delete('karyawan');
-		
-		// redirect('adminDashboard', 'refresh');
-	}
-	
-	public function delete($id = null)
-	{
-		// $this->db->where('NIK', $id);
-		// $this->db->delete('karyawan');
-		
-		// redirect('adminDashboard', 'refresh');
-	}
 }
