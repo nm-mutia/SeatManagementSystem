@@ -60,6 +60,7 @@
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
+                                            <th> KETERANGAN </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,6 +69,9 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
+                                            <td>
+                                                <a href="#"><button type="button" class="btn btn-success">Detail</button></a>
+                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
@@ -109,10 +113,7 @@
     <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="assets/js/init/datatables-init.js"></script>
 
-
     <script type="text/javascript">
-
-
 
 
 
@@ -120,7 +121,6 @@
           $('#bootstrap-data-table-export').DataTable();
       } );
   </script>
-
 
 </body>
 </html>
