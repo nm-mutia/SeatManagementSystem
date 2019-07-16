@@ -27,9 +27,9 @@ class AdminDashboard extends CI_Controller {
 	
 	public function delete($id = null)
 	{
-		$this->db->where('NIK', $id);
-		$this->db->delete('karyawan');
+		// $this->db->where('NIK', $id);
+		// $this->db->delete('karyawan');
 		
-		redirect('adminDashboard', 'refresh');
+		// redirect('adminDashboard', 'refresh');
 	}
 }

@@ -92,10 +92,10 @@
                                                     <th class="serial">#</th>
                                                     <th class="avatar">Avatar</th>
                                                     <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Product</th>
-                                                    <th>Quantity</th>
-                                                    <th>Action</th>
+                                                    <th>NIK</th>
+                                                    <th>Nama</th>
+                                                    <th>SN</th>
+                                                    <th>tgl</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -108,14 +108,15 @@
                                                             <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
                                                         </div>
                                                     </td>
-                                                    <td> <?php echo $key['NIK'] ?> </td>
-                                                    <td><span class="name"><?php echo $key['NAMA'] ?></span> </td>
-                                                    <td><span class="product"><?php echo $key['JOB_LEVEL'] ?></span> </td>
-                                                    <td><span class="count">231</span></td>
-                                                    <td>
-                                                        <a href="<?php echo base_url()?>adminDashboard/delete/<?php echo $key['NIK']?>"><span class="badge badge-danger">Delete</span></a>
-                                                        <a href="<?php echo base_url()?>adminDashboard/update/<?php echo $key['NIK']?>"><span class="badge badge-complete">Update</span></a>
-                                                    </td>
+                                                    <td> <?php echo $key['id'] ?> </td>
+                                                    <td><span class="name"><?php echo $key['nik'] ?></span> </td>
+                                                    <td><span class="product"><?php echo $key['nama'] ?></span> </td>
+                                                    <td><span ><?php echo $key['sn'] ?></span></td>
+                                                    <td><span ><?php echo $key['tgl'] ?></span></td>
+                                                    <!-- <td>
+                                                        <a href="<?php echo base_url()?>adminDashboard/delete/<?php echo $key['nik']?>"><span class="badge badge-danger">Delete</span></a>
+                                                        <a href="<?php echo base_url()?>adminDashboard/update/<?php echo $key['nik']?>"><span class="badge badge-complete">Update</span></a>
+                                                    </td> -->
                                                 </tr>
                                                 <?php endforeach ?>
                                             </tbody>
