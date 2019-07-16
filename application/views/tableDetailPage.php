@@ -69,9 +69,6 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
-                                            <td>
-                                                <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo $key1?>"><button type="button" class="btn btn-success">Detail</button></a>
-                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>

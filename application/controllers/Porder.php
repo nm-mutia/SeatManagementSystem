@@ -7,6 +7,7 @@ class Porder extends CI_Controller {
 	public function __construct(){
 		 parent::__construct();
 		 // Load model
+		 // $this->load->helper('common');
 		 $this->load->model('Po_model');
 	}
 
@@ -25,6 +26,14 @@ class Porder extends CI_Controller {
 		$data['kategori'] = $this->setKategori();
 		$data['content'] = $this->Po_model->getPo();
 		$this->load->view('tablePage', $data);
+	}
+
+	public function details($url_slug){
+				// $data = array();
+        // //get the post data
+        // $data['post'] = $this->post->getRows(array('url_slug'=>$url_slug));
+        // //load the view
+        // $this->load->view('', $data);
 	}
 
 }

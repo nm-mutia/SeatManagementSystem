@@ -11,7 +11,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href=<?php echo site_url('Purchase_Order');?>>Purchase Order</a></li>
                         <li><i class="fa fa-id-badge"></i><a href=<?php echo site_url('Aset');?>>Aset Tersedia</a></li>
-                        <li><i class="fa fa-bars"></i><a href=<?php echo site_url('vendor');?>>Vendor</a></li>
+                        <li><i class="fa fa-bars"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
