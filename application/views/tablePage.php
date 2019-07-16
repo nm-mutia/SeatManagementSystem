@@ -58,7 +58,7 @@
                                         <tr>
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
-                                            <th> Keterangan </th>
+                                            <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
                                         </tr>
                                     </thead>
@@ -66,7 +66,6 @@
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
                                             <td> <?php echo $key ?></td>
-                                            <a href="<?php echo site_url('Login/aksi_login');?>"><span class="badge badge-danger">Detail</span></a>
                                             <!-- <td>$320,800</td> -->
                                         </tr>
                                     <?php endforeach ?>
