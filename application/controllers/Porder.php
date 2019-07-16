@@ -28,12 +28,12 @@ class Porder extends CI_Controller {
 		$this->load->view('tablePage', $data);
 	}
 
-	public function details($url_slug){
-				// $data = array();
-        // //get the post data
-        // $data['post'] = $this->post->getRows(array('url_slug'=>$url_slug));
-        // //load the view
-        // $this->load->view('', $data);
+	public function detail($id){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
+		$data['subkategori'] = "detail";
+		$data['content'] = $this->Po_model->getPoDetail($id);
+    $this->load->view('tableDetailPage', $data);
 	}
 
 }

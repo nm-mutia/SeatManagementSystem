@@ -63,7 +63,7 @@ $route['admin'] = 'adminDashboard';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
-$route['Purchase_Order/(:id)'] = 'porder/$1';
+$route['Purchase_Order/(:any)'] = 'porder/detail/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:id)'] = 'aset/$1';
@@ -83,4 +83,3 @@ $route['vendor_list'] = 'vendor';
 $route['vendor_list/(:id)'] = 'vendor/$1';
 
 // $route['PIC_list'] = 'vendor';
-

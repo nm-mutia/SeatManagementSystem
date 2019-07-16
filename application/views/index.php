@@ -11,7 +11,7 @@
     <div id="right-panel" class="right-panel">
         <!-- Header-->
         <?php $this->load->view("_partials/navbar.php") ?>
-        
+
         <!-- /#header -->
         <!-- Content -->
         <div class="content">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <!-- /Widgets -->
-                
+
                 <div class="clearfix"></div>
                 <!-- Orders -->
                 <div class="orders">

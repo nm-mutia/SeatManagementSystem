@@ -34,7 +34,8 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $page_title ?></li>
+                                    <li><a href="<?php echo site_url($this->uri->segment(1))?>"><?php echo $page_title ?></a></li>
+                                    <li class="active"><?php echo $subkategori ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -60,7 +61,6 @@
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> KETERANGAN </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -92,32 +92,13 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
-    <script src="assets/js/main.js"></script>
-
-
-    <script src="assets/js/lib/data-table/datatables.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/jszip.min.js"></script>
-    <script src="assets/js/lib/data-table/vfs_fonts.js"></script>
-    <script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
-    <script src="assets/js/init/datatables-init.js"></script>
 
     <script type="text/javascript">
-
-
-
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
       } );
   </script>
+      <?php $this->load->view("_partials/js.php") ?>
 
 </body>
 </html>
