@@ -17,6 +17,13 @@ class AdminDashboard extends CI_Controller {
 		$this->load->view('index', $data);
 	}
 
+	public function detail($id = null, $sn = null)
+	{
+		// $where = '(id = "$id" and sn = "$sn")';
+	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
+		$this->load->view('index', $data);
+	}
+
 	public function update($id = null)
 	{
 		// $this->db->where('NIK', $id);

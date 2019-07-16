@@ -95,7 +95,8 @@
                                                     <th>NIK</th>
                                                     <th>Nama</th>
                                                     <th>SN</th>
-                                                    <th>tgl</th>
+                                                    <th>Tanggal Tenggat</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -113,10 +114,9 @@
                                                     <td><span class="product"><?php echo $key['nama'] ?></span> </td>
                                                     <td><span ><?php echo $key['sn'] ?></span></td>
                                                     <td><span ><?php echo $key['tgl'] ?></span></td>
-                                                    <!-- <td>
-                                                        <a href="<?php echo base_url()?>adminDashboard/delete/<?php echo $key['nik']?>"><span class="badge badge-danger">Delete</span></a>
-                                                        <a href="<?php echo base_url()?>adminDashboard/update/<?php echo $key['nik']?>"><span class="badge badge-complete">Update</span></a>
-                                                    </td> -->
+                                                    <td>
+                                                        <a href="<?php echo base_url()?>adminDashboard/detail/<?php echo $key['id']?>/<?php echo $key['sn']?>"><span class="badge badge-complete">Detail</span></a>
+                                                    </td>
                                                 </tr>
                                                 <?php endforeach ?>
                                             </tbody>
