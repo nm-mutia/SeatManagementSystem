@@ -70,7 +70,7 @@
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
                                             <td>
-                                                <a href="<?php echo site_url($this->uri->segment(1))?>/123abc"><button type="button" class="btn btn-success">Detail</button></a>
+                                                <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo current($key) ?>"><button type="button" class="btn btn-success">Detail</button></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -95,7 +95,7 @@
     <!-- Right Panel -->
 
     <!-- Scripts -->
-  
+
     <script type="text/javascript">
 
         $(document).ready(function() {
