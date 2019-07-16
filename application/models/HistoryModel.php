@@ -28,14 +28,16 @@ class HistoryModel extends CI_Model {
 
   function getTenggatdetail($id = null, $sn = null){
     // $det['data'] = $this->getTenggattable();
-    $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl  
+    $query = "SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl  
             FROM detail_history AS dh
             JOIN history_aset AS ha ON dh.id_history = ha.id_history
             JOIN karyawan AS k ON ha.nik = k.nik
             JOIN aset AS a ON a.sn = dh.sn
             WHERE dh.tgl_tenggat <= CURDATE()
-            AND dh.id_history = $id
-            AND dh.sn = $sn");
+            AND dh.id_history = ?
+            AND dh.sn = ? ";
+    $data = $this->db->query($query, array($id, $sn));
+    var_dump($data);
     return $data;
     // return $q;
   }
