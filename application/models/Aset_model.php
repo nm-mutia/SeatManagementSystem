@@ -10,7 +10,7 @@ class Aset_model extends CI_Model {
   function getAsetTersedia(){
     // $response = array();
     // Select record
-    $q = $this->db->query('SELECT KATEGORI, SUB_KATEGORI, QTY
+    $q = $this->db->query('SELECT KATEGORI, SUB_KATEGORI AS "SUB KATEGORI", QTY AS "JUMLAH"
       FROM aset
       JOIN detail_po ON ASET.ID_DA = detail_po.ID_DA
       JOIN detail_history ON detail_history.SN = ASET.SN

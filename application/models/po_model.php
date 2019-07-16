@@ -8,7 +8,7 @@ class Po_model extends CI_Model {
   }
 
   function getPo(){
-    $fields = $this->db->query('SELECT NO_SPK, NAMA_VENDOR, NAMA_PIC,TAHUN_PENGADAAN,FILE_SPK
+    $fields = $this->db->query('SELECT NO_SPK AS "NO SPK", NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC",TAHUN_PENGADAAN AS "TAHUN PENGADAN",FILE_SPK AS "FILE SPK"
       FROM po
           join vendor on po.ID_VENDOR = vendor.ID_VENDOR');
       // $fields = $query->field_data();
