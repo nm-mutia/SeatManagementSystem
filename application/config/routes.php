@@ -87,5 +87,5 @@ $route['historyAset'] = 'history/aset';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';
-$route['vendor_list/(:id)'] = 'vendor/$1';
+$route['vendor_list/(:any)'] = 'vendor/list/$1';
 
