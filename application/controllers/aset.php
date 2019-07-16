@@ -19,16 +19,19 @@ class Aset extends CI_Controller {
 		return $kategori;
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
 		$data['content'] = $this->Aset_model->getAsetTersedia();
 		$this->load->view('tablePage', $data);
 	}
 
-	public function add()
-	{
-		// $this->load->view('');
+	public function detail($id){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
+		$data['subkategori'] = "detail";
+		$data['content'] = $this->Aset_model->getAsetTersediaDetail($id);
+		$this->load->view('tableDetailPage', $data);
 	}
+
 }

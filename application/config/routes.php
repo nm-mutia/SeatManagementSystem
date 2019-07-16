@@ -66,20 +66,20 @@ $route['Purchase_Order'] = 'porder';
 $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
 
 $route['Aset_tersedia'] = 'aset';
-$route['Aset_tersedia/(:id)'] = 'aset/$1';
+$route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 
 $route['Vendor_Ordering'] = 'vendor';
-$route['Vendor_Ordering/(:id)'] = 'vendor/$1';
+$route['Vendor_Ordering/(:any)'] = 'vendor/detail/$1';
 
 //menu Histori
 $route['Search_Karyawan'] = 'history';
-$route['Search_Karyawan/(:id)'] = 'history';
+$route['Search_Karyawan/(:any)'] = 'history/detail/$1';
 
 $route['Search_aset'] = 'history';
-$route['Search_aset/(:id)'] = 'history/$1';
+$route['Search_aset/(:any)'] = 'history/detail/$1';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';
-$route['vendor_list/(:id)'] = 'vendor/$1';
+$route['vendor_list/(:any)'] = 'vendor/detail/$1';
 
 // $route['PIC_list'] = 'vendor';

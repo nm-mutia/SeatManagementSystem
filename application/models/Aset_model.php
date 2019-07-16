@@ -8,16 +8,16 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetTersedia(){
-    // $response = array();
-    // Select record
-    $q = $this->db->query('SELECT KATEGORI, SUB_KATEGORI AS "SUB KATEGORI", QTY AS "JUMLAH"
-      FROM aset
-      JOIN detail_po ON ASET.ID_DA = detail_po.ID_DA
-      JOIN detail_history ON detail_history.SN = ASET.SN
-      JOIN history_aset ON detail_history.ID_HISTORY = history_aset.ID_HISTORY');
-    // $this->db->select('*');
-    // $q = $this->db->get('aset',10);
-    // $response = $q->result_array();
+    $q = $this->db->query('SELECT KATEGORI FROM detail_po ');
+
+    return $q;
+  }
+
+  function getAsetTersediaDetail($id){
+    $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
+      aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
+        FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
+        WHERE detail_po.KATEGORI = ?' , array($id));
     return $q;
   }
 
