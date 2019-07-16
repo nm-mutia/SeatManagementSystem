@@ -27,7 +27,7 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="<?php echo base_url()?>admin">Dashboard</a></li>
                                     <li><a href="#"><?php echo $kategori ?></a></li>
                                     <li class="active"><?php echo $page_title ?></li>
                                 </ol>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">

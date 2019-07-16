@@ -20,7 +20,7 @@ class AdminDashboard extends CI_Controller {
 	public function detail($id, $sn)
 	{
 		$data['page_title'] = "Detail";
-		$data['kategori'] = null;
+		$data['kategori'] = "Tenggat";
 	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
 
 		$this->load->view('detailPage', $data);
