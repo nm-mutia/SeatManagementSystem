@@ -34,7 +34,8 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $page_title ?></li>
+                                    <li><a href="<?php echo site_url($this->uri->segment(1))?>"><?php echo $page_title ?></a></li>
+                                    <li class="active"><?php echo $subkategori ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -60,7 +61,6 @@
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> KETERANGAN </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,9 +69,6 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
-                                            <td>
-                                                <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo current($key) ?>"><button type="button" class="btn btn-success">Detail</button></a>
-                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
@@ -97,7 +94,6 @@
     <!-- Scripts -->
 
     <script type="text/javascript">
-
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
       } );
