@@ -19,9 +19,10 @@ class AdminDashboard extends CI_Controller {
 
 	public function detail($id = null, $sn = null)
 	{
-		// $where = '(id = "$id" and sn = "$sn")';
+		$data['page_title'] = "Detail";
+		$data['kategori'] = null;
 	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
-		$this->load->view('index', $data);
+		$this->load->view('tablePage', $data);
 	}
 
 	public function update($id = null)
