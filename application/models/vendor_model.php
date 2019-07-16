@@ -8,8 +8,9 @@ class vendor_model extends CI_Model {
   }
 
   function getVendor(){
-    $fields = $this->db->query('SELECT ID_VENDOR, NAMA_VENDOR FROM vendor');
+    $fields = $this->db->query('SELECT * FROM vendor');
     return $fields;
   }
+
 
 }

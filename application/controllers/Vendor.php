@@ -5,23 +5,23 @@ class Vendor extends CI_Controller {
 	public function __construct(){
 		 parent::__construct();
 		 // Load model
-		 $this->load->model('Po_model');
+		 $this->load->model('vendor_model');
 	}
 
 	public function setTitle(){
-		$title = "Purchase Order";
+		$title = "Vendor";
 		return $title;
 	}
 
 	public function setKategori(){
-		$kategori = "Aset";
+		$kategori = "Vendor";
 		return $kategori;
 	}
 
 	public function index(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
-		$data['content'] = $this->Po_model->getPo();
+		$data['content'] = $this->vendor_model->getVendor();
 		$this->load->view('tablePage', $data);
 	}
 

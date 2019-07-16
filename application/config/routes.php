@@ -71,4 +71,4 @@ $route['Search_aset'] = 'history';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';
-$route['PIC_list'] = 'vendor';
+// $route['PIC_list'] = 'vendor';
