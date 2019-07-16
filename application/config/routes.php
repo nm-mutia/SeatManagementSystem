@@ -58,6 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 //admin
 
 //menu fitur
+$route['tabeldet/(:any)'] = '$1/';
 $route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 $route['admin'] = 'adminDashboard';
 
@@ -72,14 +73,18 @@ $route['Vendor_Ordering'] = 'vendor';
 $route['Vendor_Ordering/(:any)'] = 'vendor/detail/$1';
 
 //menu Histori
-$route['Search_Karyawan'] = 'history';
-$route['Search_Karyawan/(:any)'] = 'history/detail/$1';
+$route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';
+$route['historyKaryawan'] = 'history/karyawan';
 
-$route['Search_aset'] = 'history';
-$route['Search_aset/(:any)'] = 'history/detail/$1';
+$route['historyAset/(:any)'] = 'history/detAset/$1';
+$route['historyAset'] = 'history/aset';
+
+// $route['Search_Karyawan'] = 'history';
+// $route['Search_Karyawan/(:id)'] = 'history';
+
+// $route['Search_aset'] = 'history';
+// $route['Search_aset/(:id)'] = 'history/$1';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';
-$route['vendor_list/(:any)'] = 'vendor/detail/$1';
-
-// $route['PIC_list'] = 'vendor';
+$route['vendor_list/(:any)'] = 'vendor/list/$1';

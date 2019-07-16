@@ -16,17 +16,17 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>History</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>History</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href=<?php echo site_url('Search_Karyawan');?>>Karyawan</a></li>
-                        <li><i class="fa fa-table"></i><a href=<?php echo site_url('Search_aset');?>>Aset</a></li>
+                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('historyKaryawan');?>>Karyawan</a></li>
+                        <li><i class="fa fa-tasks"></i><a href=<?php echo site_url('historyAset');?>>Aset</a></li>
                     </ul>
                 </li>
 
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Vendor</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-upload"></i>Vendor</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
+                        <li><i class="menu-icon fa fa-upload"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
                     </ul>
                 </li>
 

@@ -27,6 +27,12 @@ class KaryawanModel extends CI_Model{
     //         'rules' => 'required']
     //     ];
     // }
+    function getKaryawan(){
+        $query = "SELECT k.nik AS NIK, k.nama AS NAMA, k.job_level as JOB_LEVEL
+          FROM karyawan AS k";
+        $data = $this->db->query($query);
+        return $data;
+      }
 
     public function getAll(){
         $data = $this->db->query("SELECT * FROM karyawan");
@@ -44,7 +50,6 @@ class KaryawanModel extends CI_Model{
         $this->JOB_LEVEL = $post["joblevel"];
         $this->PASSWORD = md5($post["password"]);
         $this->db->insert($this->_table, $this);
-        // return $data->result_array();
     }
 
     public function delete($nik){
@@ -58,6 +63,5 @@ class KaryawanModel extends CI_Model{
         $this->JOB_LEVEL = $post["joblevel"];
         $this->PASSWORD = md5($post["password"]);
         $this->db->update($this->_table, $this, array('NIK' => $post['nik']));
-        // return $data->result_array();
     }
 }

@@ -25,4 +25,12 @@ class Vendor extends CI_Controller {
 		$this->load->view('tablePage', $data);
 	}
 
+	public function list($nama){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
+		$data['subkategori'] = $nama;
+		$data['content'] = $this->vendor_model->getList($nama);
+		$this->load->view('tableDetailPage', $data);
+	}
+
 }
