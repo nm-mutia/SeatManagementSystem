@@ -58,6 +58,7 @@ $route['translate_uri_dashes'] = FALSE;
 //admin
 
 //menu fitur
+$route['tabeldet/(:any)'] = '$1/';
 $route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 $route['admin'] = 'adminDashboard';
 
@@ -67,8 +68,8 @@ $route['Aset_tersedia'] = 'aset';
 $route['Vendor_Ordering'] = 'vendor';
 
 //menu Histori
-$route['Search_Karyawan'] = 'history';
-$route['Search_aset'] = 'history';
+$route['historyKaryawan'] = 'history/karyawan';
+$route['historyAset'] = 'history/aset';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';

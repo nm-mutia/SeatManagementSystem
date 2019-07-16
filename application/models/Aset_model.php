@@ -21,4 +21,11 @@ class Aset_model extends CI_Model {
     return $q;
   }
 
+  function getAset(){
+    $query = "SELECT a.sn AS sn, a.tipe, a.merk, a.series
+      FROM aset AS a";
+    $data = $this->db->query($query);
+    return $data;
+  }
+
 }
