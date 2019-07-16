@@ -73,14 +73,17 @@ $route['Vendor_Ordering'] = 'vendor';
 $route['Vendor_Ordering/(:id)'] = 'vendor/$1';
 
 //menu Histori
+$route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';
 $route['historyKaryawan'] = 'history/karyawan';
+
+$route['historyAset/(:any)'] = 'history/detAset/$1';
 $route['historyAset'] = 'history/aset';
 
-$route['Search_Karyawan'] = 'history';
-$route['Search_Karyawan/(:id)'] = 'history';
+// $route['Search_Karyawan'] = 'history';
+// $route['Search_Karyawan/(:id)'] = 'history';
 
-$route['Search_aset'] = 'history';
-$route['Search_aset/(:id)'] = 'history/$1';
+// $route['Search_aset'] = 'history';
+// $route['Search_aset/(:id)'] = 'history/$1';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';

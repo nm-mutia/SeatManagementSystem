@@ -29,4 +29,20 @@ class History extends CI_Controller {
 		$data['content'] = $this->Aset_model->getAset();
 		$this->load->view('tablePage', $data);
 	}
+
+	public function detAset($sn){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = "Aset";
+		$data['subkategori'] = "detail";
+		$data['content'] = $this->historyModel->getHistoryAset($sn);
+    	$this->load->view('tableDetailPage', $data);
+	}
+
+	public function detKaryawan($nik){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = "Karyawan";
+		$data['subkategori'] = "detail";
+		$data['content'] = $this->historyModel->getHistoryKaryawan($nik);
+    	$this->load->view('tableDetailPage', $data);
+	}
 }
