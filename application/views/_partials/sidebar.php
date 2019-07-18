@@ -29,7 +29,11 @@
                         <li><i class="menu-icon fa fa-upload"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
                     </ul>
                 </li>
-
+                 <style type="text/css">
+                    li .subtitle{
+                        display: none;
+                    }
+                </style>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
