@@ -80,7 +80,7 @@
                                 <?php 
                                     if ($page_title == "Purchase Order" || $page_title == "Aset" || $page_title == "Vendor" || $page_title == "History"){
                                 ?>      <div>
-                                            <a href=""><button type="button" class="btn btn-success">Tambah</button></a>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($page_title)?>"><button type="button" class="btn btn-success">Tambah</button></a>
                                         </div>        
                                 <?php      
                                     }

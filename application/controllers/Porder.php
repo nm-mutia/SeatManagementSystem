@@ -33,7 +33,14 @@ class Porder extends CI_Controller {
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
 		$data['content'] = $this->Po_model->getPoDetail($sid);
-    $this->load->view('tableDetailPage', $data);
+    	$this->load->view('tableDetailPage', $data);
 	}
+
+	public function setAll(){
+		$data['page_title'] = $this->setTitle(); 
+		$data['kategori'] = $this->setTitle();
+		$this->load->view('addFormPage', $data);
+	}
+
 
 }

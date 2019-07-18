@@ -43,4 +43,9 @@ class Aset extends CI_Controller {
 		$this->load->view('tableDetailPage', $data);
 	}
 
+	public function setAll(){
+		$data['page_title'] = "Aset";
+		$data['kategori'] = $this->setKategori();
+		$this->load->view('addFormPage', $data);
+	}
 }

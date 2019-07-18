@@ -56,4 +56,11 @@ class History extends CI_Controller {
 		$data['content'] = $this->historyModel->getAll();
 		$this->load->view('tablePage', $data);
 	}
+
+	public function setAll(){
+		$data['page_title'] = "History";
+		$data['kategori'] = $this->setTitle();
+		$this->load->view('addFormPage', $data);
+	}
+
 }

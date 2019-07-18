@@ -36,4 +36,10 @@ class Vendor extends CI_Controller {
 		$this->load->view('tableDetailPage', $data);
 	}
 
+	public function setAll(){
+		$data['page_title'] = $this->setTitle(); 
+		$data['kategori'] = $this->setTitle();
+		$this->load->view('addFormPage', $data);
+	}
+
 }
