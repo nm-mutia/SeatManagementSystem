@@ -70,7 +70,7 @@
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
                                             <td>
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
                                             </td>
 
                                         </tr>

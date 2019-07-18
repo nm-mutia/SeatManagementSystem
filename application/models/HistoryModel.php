@@ -15,6 +15,23 @@ class HistoryModel extends CI_Model {
     return $data;
   }  
 
+  function getAllForm(){
+    $data = $this->db->query("SELECT *
+            from history_aset ");
+    return $data;
+  }
+
+  function getAllFormDetail(){
+    $data = $this->db->query("SELECT *
+            from detail_history ");
+    return $data;
+  }  
+
+  function setDetail(){
+    $data = $this->db->query("SELECT * from detail_history");
+    return $data;
+  }
+
   function getTenggattable(){
     $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl
             FROM detail_history AS dh

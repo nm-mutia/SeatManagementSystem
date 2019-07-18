@@ -28,4 +28,11 @@ class Aset_model extends CI_Model {
     return $data;
   }
 
+  function getAsetAll(){
+    $query = "SELECT *
+      FROM aset AS a";
+    $data = $this->db->query($query);
+    return $data;
+  }
+
 }

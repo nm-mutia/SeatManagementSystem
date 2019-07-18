@@ -36,7 +36,7 @@ class Aset extends CI_Controller {
 	public function detail($id){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
-		$data['subkategori'] = "detail";
+		$data['subkategori'] = "detail masih ngarang";//masih ngarang
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
 		$data['content'] = $this->Aset_model->getAsetTersediaDetail($sid);
@@ -46,6 +46,9 @@ class Aset extends CI_Controller {
 	public function setAll(){
 		$data['page_title'] = "Aset";
 		$data['kategori'] = $this->setKategori();
+		$data['controller'] = $this;
+		$data['content'] = $this->Aset_model->getAsetAll();
 		$this->load->view('addFormPage', $data);
 	}
+
 }

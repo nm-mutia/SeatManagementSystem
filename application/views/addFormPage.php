@@ -32,7 +32,7 @@
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $page_title ?></li>
+                                    <li class="active">Tambah Data</li>
                                 </ol>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <div id="pay-invoice">
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h3 class="text-center">Pay Invoice</h3>
+                                            <h3 class="text-center">Tambah Data <?php echo $page_title ?></h3>
                                         </div>
                                         <hr>
                                         <form action="#" method="post" novalidate="novalidate">
@@ -66,7 +66,15 @@
                                                     <li class="list-inline-item"><i class="fa fa-cc-discover fa-2x"></i></li>
                                                 </ul>
                                             </div>
-                                            <div class="form-group">
+
+                                            <?php foreach ($content->field_data() as $field): ?>
+                                                <div class="form-group">
+                                                    <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
+                                                    <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                </div>
+                                            <?php endforeach ?>
+
+                                            <!-- <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Payment amount</label>
                                                 <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false" value="100.00">
                                             </div>
@@ -99,7 +107,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div>
                                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                                     <i class="fa fa-lock fa-lg"></i>&nbsp;
@@ -107,8 +115,18 @@
                                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                 </button>
                                             </div>
-                                        </form>
+                                        </form> <!-- endform -->
+
+                                        
                                     </div>
+                                    <?php 
+                                        if($page_title == "Purchase Order" || $page_title == "History"){
+                                    ?>  <div>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo $this->uri->segment(2)?>/<?php if ($this->uri->segment(3)!=null){ echo $this->uri->segment(3)?>/<?php } ?><?php echo 'addDetail'?>"><button type="button" class="btn btn-success">Tambah Detail <?php echo $page_title?></button></a>
+                                        </div>        
+                                    <?php      
+                                        }
+                                     ?>
                                 </div>
                                 
                             </div>

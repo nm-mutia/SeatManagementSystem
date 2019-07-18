@@ -28,4 +28,14 @@ class Po_model extends CI_Model {
     return $fields;
   }
 
+  function getAllForm(){
+    $data = $this->db->query("SELECT * from po");
+    return $data;
+  }  
+
+  function setDetail(){
+    $data = $this->db->query("SELECT * from detail_po");
+    return $data;
+  }
+
 }

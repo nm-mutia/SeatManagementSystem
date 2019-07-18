@@ -30,6 +30,16 @@ class History extends CI_Controller {
 		$this->load->view('tablePage', $data);
 	}
 
+	public function detail($sn){ //masih ngarang
+		$data['page_title'] = "History Aset ni masih ngarang";
+		$data['kategori'] = $this->setTitle();
+		$data['subkategori'] = "detail";
+		$sn = base64_decode($sn);
+		$sn = $this->encryption->decrypt($sn);
+		$data['content'] = $this->historyModel->getHistoryAset($sn);
+    	$this->load->view('tableDetailPage', $data);
+	}
+
 	public function detAset($sn){
 		$data['page_title'] = "History Aset";
 		$data['kategori'] = $this->setTitle();
@@ -60,6 +70,21 @@ class History extends CI_Controller {
 	public function setAll(){
 		$data['page_title'] = "History";
 		$data['kategori'] = $this->setTitle();
+		$data['content'] = $this->historyModel->getAllForm();
+		$this->load->view('addFormPage', $data);
+	}
+
+	public function setDetail(){
+		$data['page_title'] = "History";
+		$data['kategori'] = $this->setTitle();
+		$data['content'] = $this->historyModel->getAllForm();
+		$this->load->view('addFormPage', $data);
+	}
+
+	public function setDetailHistory(){
+		$data['page_title'] = "History Detail";
+		$data['kategori'] = $this->setTitle();
+		$data['content'] = $this->historyModel->getAllFormDetail();
 		$this->load->view('addFormPage', $data);
 	}
 
