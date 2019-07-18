@@ -77,6 +77,15 @@
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
+                                <?php 
+                                    if ($page_title == "Purchase Order" || $page_title == "Aset" || $page_title == "Vendor" || $page_title == "History"){
+                                ?>      <div>
+                                            <a href=""><button type="button" class="btn btn-success">Tambah</button></a>
+                                        </div>        
+                                <?php      
+                                    }
+                                 ?>
+                                
                             </div>
                         </div>
                     </div>

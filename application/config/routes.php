@@ -66,6 +66,7 @@ $route['admin'] = 'adminDashboard';
 $route['Purchase_Order'] = 'porder';
 $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
 
+$route['aset'] = 'aset/getAll';
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 
@@ -73,6 +74,8 @@ $route['Vendor_Ordering'] = 'vendor';
 $route['Vendor_Ordering/(:any)'] = 'vendor/detail/$1';
 
 //menu Histori
+$route['history'] = 'history/getAll';
+
 $route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';
 $route['historyKaryawan'] = 'history/karyawan';
 

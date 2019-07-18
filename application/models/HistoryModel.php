@@ -8,8 +8,14 @@ class HistoryModel extends CI_Model {
       parent::__construct();
   }
 
-  function getTenggattable(){
+  function getAll(){
+    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM, dh.sn AS SN, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.keterangan AS KETERANGAN
+            from history_aset as ha
+            join detail_history as dh on ha.id_history = dh.id_history");
+    return $data;
+  }  
 
+  function getTenggattable(){
     $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl
             FROM detail_history AS dh
             JOIN history_aset AS ha ON dh.id_history = ha.id_history

@@ -10,14 +10,16 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Aset</a>
                     <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('aset');?>>Aset</a></li>
                         <li><i class="fa fa-puzzle-piece"></i><a href=<?php echo site_url('Purchase_Order');?>>Purchase Order</a></li>
                         <li><i class="fa fa-id-badge"></i><a href=<?php echo site_url('Aset_tersedia');?>>Aset Tersedia</a></li>
-                        <li><i class="fa fa-bars"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
+                        <!-- <li><i class="fa fa-bars"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li> -->
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-archive"></i>History</a>
                     <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('history');?>>History</a></li>
                         <li><i class="fa fa-users"></i><a href=<?php echo site_url('historyKaryawan');?>>Karyawan</a></li>
                         <li><i class="fa fa-tasks"></i><a href=<?php echo site_url('historyAset');?>>Aset</a></li>
                     </ul>
@@ -29,12 +31,12 @@
                         <li><i class="menu-icon fa fa-upload"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
                     </ul>
                 </li>
-                 <style type="text/css">
-                    li .subtitle{
-                        display: none;
-                    }
-                </style>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
 </aside>
+<style type="text/css">
+                    li .subtitle{
+                        display: none;
+                    }
+                </style>

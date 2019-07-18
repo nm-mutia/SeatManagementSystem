@@ -49,4 +49,11 @@ class History extends CI_Controller {
 		$data['content'] = $this->historyModel->getHistoryKaryawan($nik);
     	$this->load->view('tableDetailPage', $data);
 	}
+
+	public function getAll(){
+		$data['page_title'] = "History";
+		$data['kategori'] = $this->setTitle();
+		$data['content'] = $this->historyModel->getAll();
+		$this->load->view('tablePage', $data);
+	}
 }
