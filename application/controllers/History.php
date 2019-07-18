@@ -34,6 +34,8 @@ class History extends CI_Controller {
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = "Aset";
 		$data['subkategori'] = "detail";
+		$sn = base64_decode($sn);
+		$sn = $this->encryption->decrypt($sn);
 		$data['content'] = $this->historyModel->getHistoryAset($sn);
     	$this->load->view('tableDetailPage', $data);
 	}
@@ -42,6 +44,8 @@ class History extends CI_Controller {
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = "Karyawan";
 		$data['subkategori'] = "detail";
+		$nik = base64_decode($nik);
+		$nik = $this->encryption->decrypt($nik);		
 		$data['content'] = $this->historyModel->getHistoryKaryawan($nik);
     	$this->load->view('tableDetailPage', $data);
 	}

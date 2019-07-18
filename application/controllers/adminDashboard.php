@@ -24,6 +24,7 @@ class AdminDashboard extends CI_Controller {
 	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
 
 		$this->load->view('detailPage', $data);
+
 		// redirect('admin','refresh');
 	}
 

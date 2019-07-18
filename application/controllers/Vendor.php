@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Vendor extends CI_Controller {
+
 	public function __construct(){
 		 parent::__construct();
 		 // Load model
@@ -28,7 +29,9 @@ class Vendor extends CI_Controller {
 	public function list($nama){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
-		$data['subkategori'] = $nama;
+		$data['subkategori'] = "detail";
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->vendor_model->getList($nama);
 		$this->load->view('tableDetailPage', $data);
 	}

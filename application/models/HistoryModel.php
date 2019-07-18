@@ -10,7 +10,7 @@ class HistoryModel extends CI_Model {
 
   function getTenggattable(){
 
-    $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl  
+    $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl
             FROM detail_history AS dh
             JOIN history_aset AS ha ON dh.id_history = ha.id_history
             JOIN karyawan AS k ON ha.nik = k.nik
@@ -22,7 +22,7 @@ class HistoryModel extends CI_Model {
 
   function getTenggatdetail($id , $sn){
     // $det['data'] = $this->getTenggattable();
-    $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT 
+    $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT
       FROM detail_history AS dh
       JOIN history_aset AS ha ON dh.id_history = ha.id_history
       JOIN karyawan AS k ON ha.nik = k.nik
@@ -35,7 +35,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getHistoryKaryawan($nik){
-    $query = "SELECT dh.id_history AS ID, ha.nik AS NIK, k.nama AS NAMA, dh.sn AS SN, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dh.tgl_tenggat AS TANGGAL_TENGGAT 
+    $query = "SELECT dh.id_history AS ID, ha.nik AS NIK, k.nama AS NAMA, dh.sn AS SN, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dh.tgl_tenggat AS TANGGAL_TENGGAT
       FROM detail_history AS dh
       JOIN history_aset AS ha ON dh.id_history = ha.id_history
       JOIN karyawan AS k ON ha.nik = k.nik
@@ -46,7 +46,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getHistoryAset($sn){
-    $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT 
+    $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT
       FROM detail_history AS dh
       JOIN history_aset AS ha ON dh.id_history = ha.id_history
       JOIN karyawan AS k ON ha.nik = k.nik

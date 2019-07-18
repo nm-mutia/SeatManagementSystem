@@ -30,7 +30,9 @@ class Aset extends CI_Controller {
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
 		$data['subkategori'] = "detail";
-		$data['content'] = $this->Aset_model->getAsetTersediaDetail($id);
+		$sid = base64_decode($id);
+		$sid = $this->encryption->decrypt($sid);
+		$data['content'] = $this->Aset_model->getAsetTersediaDetail($sid);
 		$this->load->view('tableDetailPage', $data);
 	}
 

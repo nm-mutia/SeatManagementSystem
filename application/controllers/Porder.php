@@ -6,8 +6,6 @@ class Porder extends CI_Controller {
 	// private $title;
 	public function __construct(){
 		 parent::__construct();
-		 // Load model
-		 // $this->load->helper('common');
 		 $this->load->model('Po_model');
 	}
 
@@ -32,7 +30,9 @@ class Porder extends CI_Controller {
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
 		$data['subkategori'] = "detail";
-		$data['content'] = $this->Po_model->getPoDetail($id);
+		$sid = base64_decode($id);
+		$sid = $this->encryption->decrypt($sid);
+		$data['content'] = $this->Po_model->getPoDetail($sid);
     $this->load->view('tableDetailPage', $data);
 	}
 

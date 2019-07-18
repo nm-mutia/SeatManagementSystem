@@ -1,13 +1,13 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class KaryawanModel extends CI_Model{
     private $_table = "karyawan"; //nama tabel
 
-    public $NIK;
-    public $NAMA;
-    public $JOB_LEVEL;
-    public $PASSWORD;
+    private $NIK;
+    private $NAMA;
+    private $JOB_LEVEL;
+    private $PASSWORD;
     // public $image = "default.jpg";
 
 
@@ -21,13 +21,13 @@ class KaryawanModel extends CI_Model{
     //         ['field' => 'price',
     //         'label' => 'Price',
     //         'rules' => 'numeric'],
-            
+
     //         ['field' => 'description',
     //         'label' => 'Description',
     //         'rules' => 'required']
     //     ];
     // }
-    function getKaryawan(){
+    public function getKaryawan(){
         $query = "SELECT k.nik AS NIK, k.nama AS NAMA, k.job_level as JOB_LEVEL
           FROM karyawan AS k";
         $data = $this->db->query($query);
