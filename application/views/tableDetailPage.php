@@ -93,11 +93,11 @@
 
     <!-- Scripts -->
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         $(document).ready(function() {
           $('#bootstrap-data-table-export').DataTable();
       } );
-  </script>
+  </script> -->
       <?php $this->load->view("_partials/js.php") ?>
 
 </body>
