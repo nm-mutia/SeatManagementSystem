@@ -8,7 +8,7 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetTersedia(){
-    $q = $this->db->query('SELECT KATEGORI FROM detail_po ');
+    $q = $this->db->query('SELECT DISTINCT KATEGORI FROM detail_po ');
 
     return $q;
   }

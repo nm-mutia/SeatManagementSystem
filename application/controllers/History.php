@@ -17,30 +17,30 @@ class History extends CI_Controller {
 	}
 
 	public function karyawan(){
-		$data['page_title'] = $this->setTitle();;
-		$data['kategori'] = "Karyawan";
+		$data['page_title'] = "History Karyawan";
+		$data['kategori'] = $this->setTitle();
 		$data['content'] = $this->karyawanModel->getKaryawan();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function aset(){
-		$data['page_title'] = $this->setTitle();;
-		$data['kategori'] = "Aset";
+		$data['page_title'] = "History Aset";
+		$data['kategori'] = $this->setTitle();
 		$data['content'] = $this->Aset_model->getAset();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function detAset($sn){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = "Aset";
+		$data['page_title'] = "History Aset";
+		$data['kategori'] = $this->setTitle();
 		$data['subkategori'] = "detail";
 		$data['content'] = $this->historyModel->getHistoryAset($sn);
     	$this->load->view('tableDetailPage', $data);
 	}
 
 	public function detKaryawan($nik){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = "Karyawan";
+		$data['page_title'] = "History Karyawan";
+		$data['kategori'] = $this->setTitle();
 		$data['subkategori'] = "detail";
 		$data['content'] = $this->historyModel->getHistoryKaryawan($nik);
     	$this->load->view('tableDetailPage', $data);
