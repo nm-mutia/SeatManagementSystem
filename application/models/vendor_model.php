@@ -13,17 +13,17 @@ class vendor_model extends CI_Model {
   }
 
   public function getVendor(){
-    $fields = $this->db->query('SELECT NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor');
+    $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor');
     return $fields;
   }
 
   public function getList($nama){
-  	$query = "SELECT DISTINCT po.no_spk AS NO_SPK, po.tahun_pengadaan AS PENGADAAN, a.sn AS SN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dp.kategori AS KATEGORI, dp.masa AS MASA_ASET
+  	$query = "SELECT po.no_spk AS 'NO SPK', po.tahun_pengadaan AS PENGADAAN, a.sn AS SN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dp.kategori AS KATEGORI, dp.masa AS MASA_ASET
 		FROM vendor AS v
 		JOIN po ON v.id_vendor = po.id_vendor
 		JOIN detail_po AS dp ON dp.no_spk = po.no_spk
 		JOIN aset AS a ON a.id_da = dp.id_da
-		WHERE v.nama_vendor = ?";
+		WHERE v.id_vendor = ?";
     $data = $this->db->query($query, array($nama));
     return $data;
   }
@@ -36,6 +36,6 @@ class vendor_model extends CI_Model {
   function setVendor($data, $table){
     $this->db->insert($table, $data);
   }
-  
+
 
 }
