@@ -70,7 +70,7 @@
                                             <?php foreach ($content->field_data() as $field): ?>
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                    <input id="cc-payment" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <input id="<?php var_dump($field) ?>" name="<?php var_dump($field) ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
                                                 </div>
                                             <?php endforeach ?>
 
