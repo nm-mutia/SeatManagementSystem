@@ -8,8 +8,24 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetTersedia(){
-    $q = $this->db->query('SELECT DISTINCT KATEGORI FROM detail_po ');
+    $q = $this->db->query('SELECT KATEGORI
+            FROM detail_po
+            GROUP BY KATEGORI; ');
+    return $q;
+  }
 
+  function getAsetKeseluruhanDet($id){
+    $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
+      aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
+        FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
+        WHERE detail_po.KATEGORI = ?' , array($id));
+    return $q;
+  }
+
+  function getAsetKeseluruhan(){
+    $q = $this->db->query('SELECT KATEGORI,SUM(QTY) AS "JUMLAH"
+            FROM detail_po
+            GROUP BY KATEGORI; ');
     return $q;
   }
 
