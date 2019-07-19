@@ -62,9 +62,22 @@ class Aset extends CI_Controller {
 		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
-		$data['subkategori'] =  $sid; 
+		$data['subkategori'] =  $sid;
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDet($sid);
 		$this->load->view('tableDetailPage', $data);
+	}
+
+	public function kesAsetDetails($id , $skat){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori(1);
+		$sid = base64_decode($id);
+		$sid = $this->encryption->decrypt($sid);
+		$skat = base64_decode($skat);
+		$skat = $this->encryption->decrypt($skat);
+		$data['subkategori'] =  $sid;
+		$data['subsubkategori'] =  $skat;
+		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
+		$this->load->view('tableDetailPage2', $data);
 	}
 
 
