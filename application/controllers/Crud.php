@@ -19,19 +19,6 @@ class Crud extends CI_Controller {
 		$idv = $this->input->post('ID_VENDOR');
 		$nik = $this->input->post('NIK');
 		$tgl = $this->input->post('TGL_PINJAM');
-
-		$data = array(
-			'ID_HISTORY' => $idh,
-			'ID_VENDOR' => $idv,
-			'NIK' => $nik,
-			'TGL_PINJAM' => $tgl
-		);
-
-		$this->historyModel->setHistory($data, 'history_aset');
-		redirect('history');
-	}
-	public function historyDetail(){
-		$idh = $this->input->post('ID_HISTORY');
 		$sn = $this->input->post('SN');
 		$tgl = $this->input->post('TGL_TENGGAT');
 		$tkem = $this->input->post('TGL_KEMBALI');
@@ -39,20 +26,43 @@ class Crud extends CI_Controller {
 
 		$data = array(
 			'ID_HISTORY' => $idh,
+			'ID_VENDOR' => $idv,
+			'NIK' => $nik,
+			'TGL_PINJAM' => $tgl
+		);
+		$datadet = array(
+			'ID_HISTORY' => $idh,
 			'SN' => $sn,
 			'TGL_TENGGAT' => $tgl,
 			'TGL_KEMBALI' => $tkem,
 			'KETERANGAN' => $ket
 		);
 
-		$this->historyModel->setHistory($data, 'detail_history');
+		if($idv != null && $nik != null){
+			$this->historyModel->setHistory($data, 'history_aset');
+		}
+		if($idh != null && $sn != null){
+			$this->historyModel->setHistory($datadet, 'detail_history');
+		}
 		redirect('history');
 	}
+	
 	public function Purchase_Order(){
 		$spk = $this->input->post('NO_SPK');
 		$idv = $this->input->post('ID_VENDOR');
 		$thada = $this->input->post('TAHUN_PENGADAAN');
+		$qty = $this->input->post('QTY');
+		$masa = $this->input->post('MASA');
+		$ktg = $this->input->post('KATEGORI');
+		$sub = $this->input->post('SUB_KATEGORI');
 		// $file = $this->input->post('FILE_SPK');
+		$sn = $this->input->post('SN');
+		$idda = $this->input->post('ID_DA');
+		$checksum = $this->input->post('CHECKSUM');
+		$tipe = $this->input->post('TIPE');
+		$merk = $this->input->post('MERK');
+		$series = $this->input->post('SERIES');
+		// $img = $this->input->post('IMAGE');
 
 		$data = array(
 			'NO_SPK' => $spk,
@@ -61,29 +71,36 @@ class Crud extends CI_Controller {
 			// 'NAMA_PIC' => $namap
 		);
 
-		$this->po_model->setPO($data, 'po');
-		redirect('Purchase_Order');
-	}
-	public function Purchase_OrderDetail(){
-		// $idda = $this->input->post('ID_DA');
-		$spk = $this->input->post('NO_SPK');
-		$qty = $this->input->post('QTY');
-		$masa = $this->input->post('MASA');
-		$ktg = $this->input->post('KATEGORI');
-		$sub = $this->input->post('SUB_KATEGORI');
-
-		$data = array(
-			// 'ID_DA' => $idda,
+		$datadet = array(
 			'NO_SPK' => $spk,
-			'QTY' => $idv,
+			'QTY' => $qty,
 			'MASA' => $masa,
 			'KATEGORI' => $ktg,
 			'SUB_KATEGORI' => $sub
 		);
 
-		$this->po_model->setPO($data, 'detail_po');
+		$dataaset = array(
+			'SN' => $sn,
+			'ID_DA' => $idda,
+			'CHECKSUM' => $checksum,
+			'TIPE' => $tipe,
+			'MERK' => $merk,
+			'SERIES' => $series
+			// 'IMAGE' => $img
+		);
+
+		if($spk != null && $idv != null){
+			$this->po_model->setPO($data, 'po');
+		}
+		if($spk != null){
+			$this->po_model->setPO($datadet, 'detail_po');
+		}
+		if($idda != null && $sn != null){
+			$this->Aset_model->setAset($dataaset, 'aset');
+		}
 		redirect('Purchase_Order');
 	}
+	
 
 	public function aset(){
 		$sn = $this->input->post('SN');
