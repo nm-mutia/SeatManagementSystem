@@ -35,4 +35,8 @@ class Aset_model extends CI_Model {
     return $data;
   }
 
+  function setAset($data, $table){
+    $this->db->insert($table, $data);
+  }
+
 }

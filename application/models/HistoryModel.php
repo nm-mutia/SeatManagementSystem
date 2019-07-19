@@ -79,4 +79,8 @@ class HistoryModel extends CI_Model {
     return $data;
   }
 
+  function setHistory($data, $table){
+    $this->db->insert($table, $data);
+  }
+
 }

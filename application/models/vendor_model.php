@@ -29,8 +29,13 @@ class vendor_model extends CI_Model {
   }
 
   function getAllForm(){
-    $data = $this->db->query("SELECT * from vendor");
+    $data = $this->db->query("SELECT NAMA_VENDOR, ID_PIC, NAMA_PIC from vendor");
     return $data;
-  }  
+  }
+
+  function setVendor($data, $table){
+    $this->db->insert($table, $data);
+  }
+  
 
 }
