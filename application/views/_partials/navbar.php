@@ -6,7 +6,7 @@
             <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
         </div>
     </div>
-    <div class="top-right">
+    <!-- <div class="top-right">
         <div class="header-menu">
             <div class="header-left">
                 <button class="search-trigger"><i class="fa fa-search"></i></button>
@@ -18,5 +18,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </header>
