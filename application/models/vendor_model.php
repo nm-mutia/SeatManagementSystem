@@ -28,5 +28,9 @@ class vendor_model extends CI_Model {
     return $data;
   }
 
+  function getAllForm(){
+    $data = $this->db->query("SELECT * from vendor");
+    return $data;
+  }  
 
 }

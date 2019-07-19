@@ -71,13 +71,22 @@
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
                                             <td>
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
                                             </td>
 
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
+                                <?php 
+                                    if ($page_title == "Purchase Order" || $page_title == "Aset" || $page_title == "Vendor" || $page_title == "History"){
+                                ?>      <div>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($page_title)?>"><button type="button" class="btn btn-success">Tambah</button></a>
+                                        </div>        
+                                <?php      
+                                    }
+                                 ?>
+                                
                             </div>
                         </div>
                     </div>

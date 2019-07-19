@@ -64,7 +64,13 @@ $route['admin'] = 'adminDashboard';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
+$route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
+$route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
+
+$route['aset'] = 'aset/getAll';
+$route['aset/(:any)'] = 'aset/setAll';
+$route['aset/det/(:any)'] = 'aset/detail/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
@@ -73,18 +79,19 @@ $route['Vendor_Ordering'] = 'vendor';
 $route['Vendor_Ordering/(:any)'] = 'vendor/detail/$1';
 
 //menu Histori
+$route['history'] = 'history/getAll';
+$route['history/det/(:any)'] = 'history/detail/$1';
+$route['history/History/addDetail'] = 'history/setDetailHistory';
+$route['history/(:any)'] = 'history/setDetail';
+
 $route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';
 $route['historyKaryawan'] = 'history/karyawan';
 
 $route['historyAset/(:any)'] = 'history/detAset/$1';
 $route['historyAset'] = 'history/aset';
 
-// $route['Search_Karyawan'] = 'history';
-// $route['Search_Karyawan/(:id)'] = 'history';
-
-// $route['Search_aset'] = 'history';
-// $route['Search_aset/(:id)'] = 'history/$1';
 
 //menu vendor
 $route['vendor_list'] = 'vendor';
+$route['vendor_list/add/(:any)'] = 'vendor/setAll';
 $route['vendor_list/(:any)'] = 'vendor/list/$1';
