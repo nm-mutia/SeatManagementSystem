@@ -34,8 +34,12 @@ class Po_model extends CI_Model {
   }  
 
   function setDetail(){
-    $data = $this->db->query("SELECT * from detail_po");
+    $data = $this->db->query("SELECT NO_SPK, qty AS QTY, MASA, KATEGORI, SUB_KATEGORI from detail_po");
     return $data;
+  }
+
+  function setPO($data, $table){
+    $this->db->insert($table, $data);
   }
 
 }

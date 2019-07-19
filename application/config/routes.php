@@ -75,8 +75,6 @@ $route['aset/det/(:any)'] = 'aset/detail/$1';
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 
-$route['Vendor_Ordering'] = 'vendor';
-$route['Vendor_Ordering/(:any)'] = 'vendor/detail/$1';
 
 //menu Histori
 $route['history'] = 'history/getAll';
