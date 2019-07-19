@@ -70,7 +70,7 @@
                                             <?php foreach ($content->field_data() as $field): ?>
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required = "true">
                                                 </div>
                                             <?php endforeach ?>
 
@@ -83,18 +83,18 @@
                                             </div>
                                         </form> <!-- endform -->
 
-                                        
+
                                     </div>
-                                    <?php 
+                                    <?php
                                         if($page_title == "Purchase Order" || $page_title == "History"){
                                     ?>  <div>
                                             <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo $this->uri->segment(2)?>/<?php if ($this->uri->segment(3)!=null){ echo $this->uri->segment(3)?>/<?php } ?><?php echo 'addDetail'?>"><button type="button" class="btn btn-success">Tambah Detail <?php echo $page_title?></button></a>
-                                        </div>        
-                                    <?php      
+                                        </div>
+                                    <?php
                                         }
                                      ?>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>

@@ -71,6 +71,7 @@ $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
+$route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetail/$1/$2';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
