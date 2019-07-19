@@ -228,7 +228,7 @@
     // });
 
     $("#main-menu ul li a").on("click", function(e){
-      // alert( "Handler for .click() called." );
+      // alert( "kok manggil teris" );
         $("#main-menu li.active").removeClass("active");
         var $parent = $(this).parent();
         $parent.addClass('active');
