@@ -34,8 +34,8 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $page_title ?></li>
+                                    <li><a href="#"><?php echo $page_title ?></a></li>
+                                    <li class="active"> <?php echo $kategori ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -78,15 +78,15 @@
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
-                                <?php 
+                                <?php
                                     if ($page_title == "Purchase Order" || $page_title == "Aset" || $page_title == "Vendor" || $page_title == "History"){
                                 ?>      <div>
                                             <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($page_title)?>"><button type="button" class="btn btn-success">Tambah</button></a>
-                                        </div>        
-                                <?php      
+                                        </div>
+                                <?php
                                     }
                                  ?>
-                                
+
                             </div>
                         </div>
                     </div>
