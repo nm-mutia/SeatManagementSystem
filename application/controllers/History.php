@@ -91,25 +91,20 @@ class History extends CI_Controller {
 
 
 //form
-	// public function setAll(){
-	// 	$data['page_title'] = $this->setTitle();
-	// 	$data['kategori'] = "History";
-	// 	$data['content'] = $this->historyModel->getAllForm();
-	// 	$this->load->view('addFormPage', $data);
-	// }
 
 	public function setDetail(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori(3);
 		$data['content'] = $this->historyModel->getAllForm();
+		$data['contentdet'] = $this->historyModel->getAllFormDetail();
 		$this->load->view('addFormPage', $data);
 	}
 
-	public function setDetailHistory(){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = $this->setKategori(3);
-		$data['content'] = $this->historyModel->getAllFormDetail();
-		$this->load->view('addFormPage', $data);
-	}
+	// public function setDetailHistory(){
+	// 	$data['page_title'] = $this->setTitle();
+	// 	$data['kategori'] = $this->setKategori(3);
+	// 	$data['content'] = $this->historyModel->getAllFormDetail();
+	// 	$this->load->view('addFormPage', $data);
+	// }
 
 }
