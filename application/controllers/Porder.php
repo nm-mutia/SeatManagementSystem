@@ -10,12 +10,12 @@ class Porder extends CI_Controller {
 	}
 
 	public function setTitle(){
-		$title = "Purchase Order";
+		$title = "Aset";
 		return $title;
 	}
 
 	public function setKategori(){
-		$kategori = "Aset";
+		$kategori = "Purchase Order";
 		return $kategori;
 	}
 
@@ -36,16 +36,18 @@ class Porder extends CI_Controller {
     	$this->load->view('tableDetailPage', $data);
 	}
 
+
+//form
 	public function setAll(){
-		$data['page_title'] = $this->setTitle(); 
+		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setTitle();
 		$data['content'] = $this->Po_model->getAllForm();
 		$this->load->view('addFormPage', $data);
 	}
 
 	public function setDetail(){
-		$data['page_title'] = "PO Detail"; 
-		$data['kategori'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
 		$data['content'] = $this->Po_model->setDetail();
 		$this->load->view('addFormPage', $data);
 	}
