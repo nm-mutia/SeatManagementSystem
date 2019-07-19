@@ -33,8 +33,8 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li><a href="<?php echo site_url($this->uri->segment(1))?>"><?php echo $page_title ?></a></li>
+                                    <li><a href="#"><?php echo $page_title ?></a></li>
+                                    <li><a href="<?php echo site_url($this->uri->segment(1))?>"><?php echo $kategori ?></a></li>
                                     <li class="active"><?php echo $subkategori ?></li>
                                 </ol>
                             </div>
@@ -59,8 +59,14 @@
                                         <tr>
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
-                                            <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
+                                    <?php
+                                        if ($kategori == 'Aset Keseluruhan'){
+                                    ?>
+                                        <th> Keterangan </th>
+                                    <?php
+                                        }
+                                     ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,6 +75,17 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
+
+                                            <?php
+                                                if ($kategori == 'Aset Keseluruhan'){
+                                            ?>
+                                            <td>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+                                            </td>
+
+                                            <?php
+                                                }
+                                             ?>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
@@ -87,7 +104,8 @@
 
              <?php $this->load->view("_partials/footer.php") ?>
 
-    </div><!-- /#right-panel -->
+    </div>
+    <!-- /#right-panel -->
 
     <!-- Right Panel -->
 

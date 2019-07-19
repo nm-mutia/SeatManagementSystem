@@ -62,14 +62,14 @@
                                             <?php foreach ($content->field_data() as $field): ?>
                                                 <div class="form-group">
                                                     <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required = "true">
                                                 </div>
                                             <?php endforeach ?>
 
-                                            
-                                            <?php 
+
+                                            <?php
                                                 if($kategori == "Purchase Order" || $kategori == "History"){
-                                            ?>  
+                                            ?>
                                                     <div id="readroot" style="display: none;">
                                                         <input type="button" class="btn btn-danger" value="Remove detail" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
@@ -92,20 +92,20 @@
                                                                 </div>
                                                             <?php endforeach ?>
                                                         </div>
-                                                    <?php      
+                                                    <?php
                                                         }
                                                     ?>
-                                                        
+
                                                     <span id="writeroot"></span>
-                                                      
+
                                                     <!-- <a href="<?php echo site_url($this->uri->segment(1))?>/<?php echo $this->uri->segment(2)?>/<?php if ($this->uri->segment(3)!=null){ echo $this->uri->segment(3)?>/<?php } ?><?php echo 'addDetail'?>"><button type="button" class="btn btn-success">Tambah Detail <?php echo $page_title?></button></a> -->
-                                                    
+
                                                     <button type="button" class="btn btn-success" onclick="moreFields()">Tambah Detail</button>
                                                     <?php
                                                         if($kategori == "Purchase Order"){
                                                     ?>
                                                         <button type="button" class="btn btn-success" onclick="moreFields2()">Tambah Aset</button>
-                                                    <?php      
+                                                    <?php
                                                         }
                                                     ?>
 
@@ -117,7 +117,7 @@
                                                             <span id="payment-button-sending" style="display:none;">Sending…</span>
                                                         </button>
                                                     </div>
-                                            <?php      
+                                            <?php
                                                 }
                                                 else{
                                             ?>
@@ -131,12 +131,12 @@
                                             <?php
                                                 }
                                              ?>
-                                            
+
                                         </form> <!-- endform -->
                                     </div>
 
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
         }
         // window.onload = moreFields;
     </script>
-    
+
     <?php $this->load->view("_partials/js.php") ?>
 
 </body>
