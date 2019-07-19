@@ -22,7 +22,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getAllFormDetail(){
-    $data = $this->db->query("SELECT *
+    $data = $this->db->query("SELECT SN, TGL_TENGGAT, TGL_KEMBALI, KETERANGAN
             from detail_history ");
     return $data;
   }  
@@ -77,6 +77,10 @@ class HistoryModel extends CI_Model {
       where a.sn = ? ";
     $data = $this->db->query($query, array($sn));
     return $data;
+  }
+
+  function setHistory($data, $table){
+    $this->db->insert($table, $data);
   }
 
 }

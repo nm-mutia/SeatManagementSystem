@@ -25,7 +25,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1><?php echo $page_title ?></h1>
+                                <h1><?php echo $kategori ?></h1>
                             </div>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $page_title ?></li>
+                                    <li><a href="#"><?php echo $page_title ?></a></li>
+                                    <li class="active"> <?php echo $kategori ?></li>
                                 </ol>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><?php echo $page_title ?></strong>
+                                <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -78,15 +78,15 @@
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
-                                <?php 
-                                    if ($page_title == "Purchase Order" || $page_title == "Aset" || $page_title == "Vendor" || $page_title == "History"){
+                                <?php
+                                    if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
                                 ?>      <div>
-                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($page_title)?>"><button type="button" class="btn btn-success">Tambah</button></a>
-                                        </div>        
-                                <?php      
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>"><button type="button" class="btn btn-success">Tambah</button></a>
+                                        </div>
+                                <?php
                                     }
                                  ?>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -113,6 +113,7 @@
           $('#bootstrap-data-table-export').DataTable();
       } );
   </script> -->
+    
 
       <?php $this->load->view("_partials/js.php") ?>
 
