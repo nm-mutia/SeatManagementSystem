@@ -88,7 +88,7 @@
                                                             <?php foreach ($contentaset->field_data() as $field): ?>
                                                                 <div class="form-group" >
                                                                     <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 </div>
                                                             <?php endforeach ?>
                                                         </div>

@@ -121,7 +121,9 @@ class Crud extends CI_Controller {
 			// 'IMAGE' => $img
 		);
 		
-		$this->Aset_model->setAset($data, 'aset');
+		if($idda != null && $sn != null){
+			$this->Aset_model->setAset($data, 'aset');
+		}
 		redirect('aset');
 	}
 	public function vendor_list(){
@@ -136,7 +138,7 @@ class Crud extends CI_Controller {
 			'ID_PIC' => $idp,
 			'NAMA_PIC' => $namap
 		);
-
+		
 		$this->vendor_model->setVendor($data, 'vendor');
 		redirect('vendor_list');
 	}
