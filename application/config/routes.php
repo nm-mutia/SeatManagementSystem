@@ -94,3 +94,4 @@ $route['historyAset'] = 'history/aset';
 $route['vendor_list'] = 'vendor';
 $route['vendor_list/add/(:any)'] = 'vendor/setAll';
 $route['vendor_list/(:any)'] = 'vendor/list/$1';
+$route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';

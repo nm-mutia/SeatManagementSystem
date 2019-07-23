@@ -47,7 +47,6 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -72,6 +71,9 @@
                                             <?php endforeach ?>
                                             <td>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Delete</button></a>
+                                                <!-- <button id = 'btn_delete'>delete</button> -->
+
                                             </td>
 
                                         </tr>
@@ -107,13 +109,16 @@
 
     <!-- Scripts -->
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
 
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-      } );
-  </script> -->
-    
+      //   $(document).ready(function() {
+      //     // $('#bootstrap-data-table-export').DataTable();
+      //
+      // } );
+
+
+  </script>
+
 
       <?php $this->load->view("_partials/js.php") ?>
 
