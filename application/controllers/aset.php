@@ -21,6 +21,9 @@ class Aset extends CI_Controller {
 		}else if ($nomer == 2){
 				$kategori = "Aset yang tersedia";
 		}
+		else if ($nomer == 3){
+				$kategori = "Aset PO";
+		}
 		return $kategori;
 	}
 
@@ -86,6 +89,21 @@ class Aset extends CI_Controller {
 		$data['kategori'] = $this->setKategori(1);
 		$data['controller'] = $this;
 		$data['content'] = $this->Aset_model->getAsetAll();
+		$this->load->view('addFormPage', $data);
+	}
+
+	//nambah aset dari detail po
+	public function setAset($idspk, $idd){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori(3);
+		$sid = base64_decode($idspk);
+		$sid = $this->encryption->decrypt($sid);
+		$idda = base64_decode($idd);
+		$idda = $this->encryption->decrypt($idda);
+		$data['subkategori'] =  $sid; 
+		$data['content'] = $this->Aset_model->getAsetAll();
+		$data['spk'] = $sid;
+		$data['da'] = $idda;
 		$this->load->view('addFormPage', $data);
 	}
 }

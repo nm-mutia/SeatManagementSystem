@@ -7,19 +7,19 @@ class Po_model extends CI_Model {
 
   public function __construct()
   {
-      // Call the Model constructor
       parent::__construct();
   }
 
   public function getPo(){
-    $fields = $this->db->query('SELECT NO_SPK AS "NO SPK", NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC",TAHUN_PENGADAAN AS "TAHUN PENGADAN",FILE_SPK AS "FILE SPK"
+    $fields = $this->db->query("SELECT po.NO_SPK AS 'NO SPK', vendor.NAMA_VENDOR AS 'NAMA VENDOR', vendor.NAMA_PIC AS 'NAMA PIC',po.TAHUN_PENGADAAN AS 'TAHUN PENGADAAN', po.FILE_SPK AS 'FILE SPK'
       FROM po
-          join vendor on po.ID_VENDOR = vendor.ID_VENDOR');
+      join vendor on po.ID_VENDOR = vendor.ID_VENDOR
+      ORDER BY po.tahun_pengadaan ASC");
     return $fields;
   }
 
   public function getPoDetail($id){
-    $query = 'SELECT detail_po.KATEGORI as "KATEGORI",detail_po.SUB_KATEGORI as "SUB KATEGORI", detail_po.MASA, detail_po.QTY
+    $query = 'SELECT detail_po.ID_DA, detail_po.KATEGORI as "KATEGORI",detail_po.SUB_KATEGORI as "SUB KATEGORI", detail_po.MASA, detail_po.QTY
     FROM po
     right join detail_po on detail_po.NO_SPK = po.NO_SPK
     where po.NO_SPK = ?';

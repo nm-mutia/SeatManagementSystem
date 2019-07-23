@@ -25,7 +25,7 @@ class Crud extends CI_Controller {
 		$ket = $this->input->post('KETERANGAN');
 
 		$data = array(
-			'ID_HISTORY' => $idh,
+			// 'ID_HISTORY' => $idh,
 			'ID_VENDOR' => $idv,
 			'NIK' => $nik,
 			'TGL_PINJAM' => $tgl
@@ -102,38 +102,40 @@ class Crud extends CI_Controller {
 	}
 	
 
-	public function aset(){
-		$sn = $this->input->post('SN');
-		$idda = $this->input->post('ID_DA');
-		$checksum = $this->input->post('CHECKSUM');
-		$tipe = $this->input->post('TIPE');
-		$merk = $this->input->post('MERK');
-		$series = $this->input->post('SERIES');
-		// $img = $this->input->post('IMAGE');
+	public function aset($count){
+		for ($i=1; $i <= $count; $i++) { 
 
-		$data = array(
-			'SN' => $sn,
-			'ID_DA' => $idda,
-			'CHECKSUM' => $checksum,
-			'TIPE' => $tipe,
-			'MERK' => $merk,
-			'SERIES' => $series
-			// 'IMAGE' => $img
-		);
-		
-		if($idda != null && $sn != null){
-			$this->Aset_model->setAset($data, 'aset');
+			$sn2 = $this->input->post('SN'.$i);
+			$idda2 = $this->input->post('ID_DA'.$i);
+			$checksum2 = $this->input->post('CHECKSUM'.$i);
+			$tipe2 = $this->input->post('TIPE'.$i);
+			$merk2 = $this->input->post('MERK'.$i);
+			$series2 = $this->input->post('SERIES'.$i);
+			// $img = $this->input->post('IMAGE');
+			echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
+			$datax = array(
+				'SN' => $sn2,
+				'ID_DA' => $idda2,
+				'CHECKSUM' => $checksum2,
+				'TIPE' => $tipe2,
+				'MERK' => $merk2,
+				'SERIES' => $series2
+				// 'IMAGE' => $img
+			);
+			
+			if($idda2 != null && $sn2 != null){
+				$this->Aset_model->setAset($datax, 'aset');
+			}
 		}
 		redirect('aset');
 	}
+
 	public function vendor_list(){
-		// $idv = $this->input->post('ID_VENDOR');
 		$namav = $this->input->post('NAMA_VENDOR');
 		$idp = $this->input->post('ID_PIC');
 		$namap = $this->input->post('NAMA_PIC');
 
 		$data = array(
-			// 'ID_VENDOR' => $idv,
 			'NAMA_VENDOR' => $namav,
 			'ID_PIC' => $idp,
 			'NAMA_PIC' => $namap

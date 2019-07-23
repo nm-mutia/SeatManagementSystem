@@ -146,28 +146,28 @@
             }];
 
         var $this = this;
-        $this.$calendarObj = $this.$calendar.fullCalendar({
-            slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-            minTime: '08:00:00',
-            maxTime: '19:00:00',  
-            defaultView: 'month',  
-            handleWindowResize: true,   
-            height: $(window).height() - 200,   
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            events: defaultEvents,
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            eventLimit: true, // allow "more" link when too many events
-            selectable: true,
-            drop: function(date) { $this.onDrop($(this), date); },
-            select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
-            eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
+        // $this.$calendarObj = $this.$calendar.fullCalendar({
+        //     slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
+        //     minTime: '08:00:00',
+        //     maxTime: '19:00:00',  
+        //     defaultView: 'month',  
+        //     handleWindowResize: true,   
+        //     height: $(window).height() - 200,   
+        //     header: {
+        //         left: 'prev,next today',
+        //         center: 'title',
+        //         right: 'month,agendaWeek,agendaDay'
+        //     },
+        //     events: defaultEvents,
+        //     editable: true,
+        //     droppable: true, // this allows things to be dropped onto the calendar !!!
+        //     eventLimit: true, // allow "more" link when too many events
+        //     selectable: true,
+        //     drop: function(date) { $this.onDrop($(this), date); },
+        //     select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
+        //     eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
 
-        });
+        // });
 
         //on new event
         this.$saveCategoryBtn.on('click', function(){

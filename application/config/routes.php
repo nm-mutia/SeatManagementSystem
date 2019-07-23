@@ -64,14 +64,19 @@ $route['admin'] = 'adminDashboard';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
+$route['Purchase_Order/det/(:any)'] = 'porder/detAsetSPK/$1';
 $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
 
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
+$route['aset/addAset/(:any)/(:any)'] = 'aset/setAset/$1/$2'; //nambah aset dari PO (form)
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
+
+//nyimpen tambahan aset (action)
+$route['crud/aset/(:any)'] = 'crud/aset/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
