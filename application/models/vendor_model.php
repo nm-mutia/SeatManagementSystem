@@ -33,6 +33,12 @@ class vendor_model extends CI_Model {
     return $data;
   }
 
+  function getAll(){
+    $data = $this->db->query("SELECT * from vendor");
+    return $data;
+  }
+
+
   function setVendor($data, $table){
     $this->db->insert($table, $data);
   }

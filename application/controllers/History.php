@@ -9,6 +9,7 @@ class History extends CI_Controller {
 		 $this->load->model('historyModel');
 		 $this->load->model('karyawanModel');
 		 $this->load->model('Aset_model');
+		 $this->load->model('vendor_model');
 	}
 
 	public function setTitle(){
@@ -98,6 +99,7 @@ class History extends CI_Controller {
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
 		$data['idhist'] = $this->historyModel->getLastId()->row()->id_history;
+		$data['idven'] =  $this->vendor_model->getAll();
 		$this->load->view('addFormPage', $data);
 	}
 
