@@ -5,6 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
 
+<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></script>
+<!-- <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script> -->
+
+
+
 <!--  Chart js -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script> -->
 
@@ -21,7 +28,8 @@
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script> -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script> -->
-<script src="<?php echo base_url(); ?>assets/js/init/fullcalendar-init.js"></script>
+
+<!-- <script src="<?php echo base_url(); ?>assets/js/init/fullcalendar-init.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/datatables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.buttons.min.js"></script>
@@ -32,6 +40,10 @@
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.print.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.colVis.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/init/datatables-init.js"></script>
+
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.editor.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.select.min.js"></script>
+
 
 
 
