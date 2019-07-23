@@ -16,7 +16,13 @@ class HistoryModel extends CI_Model {
   }  
 
   function getAllForm(){
-    $data = $this->db->query("SELECT ha.id_vendor as ID_VENDOR, ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM from history_aset as ha");
+    // $data = $this->db->query("SELECT ha.id_vendor as ID_VENDOR, ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM from history_aset as ha");
+    $data = $this->db->query("SELECT * from history_aset");
+    return $data;
+  }
+
+  function getLastId(){
+    $data = $this->db->query("SELECT * from detail_history");
     return $data;
   }
 

@@ -18,9 +18,9 @@ class Crud extends CI_Controller {
 		$idh = $this->input->post('ID_HISTORY');
 		$idv = $this->input->post('ID_VENDOR');
 		$nik = $this->input->post('NIK');
-		$tgl = $this->input->post('TGL_PINJAM');
+		$tpin = $this->input->post('TGL_PINJAM');
 		$sn = $this->input->post('SN');
-		$tgl = $this->input->post('TGL_TENGGAT');
+		$tteng = $this->input->post('TGL_TENGGAT');
 		$tkem = $this->input->post('TGL_KEMBALI');
 		$ket = $this->input->post('KETERANGAN');
 
