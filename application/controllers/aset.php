@@ -100,7 +100,7 @@ class Aset extends CI_Controller {
 		$sid = $this->encryption->decrypt($sid);
 		$idda = base64_decode($idd);
 		$idda = $this->encryption->decrypt($idda);
-		$data['subkategori'] =  $sid; 
+		$data['subkategori'] =  $sid;
 		$data['content'] = $this->Aset_model->getAsetAll();
 		$data['spk'] = $sid;
 		$data['da'] = $idda;
