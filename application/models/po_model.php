@@ -19,7 +19,7 @@ class Po_model extends CI_Model {
   }
 
   public function getPoDetail($id){
-    $query = 'SELECT detail_po.ID_DA, detail_po.KATEGORI as "KATEGORI",detail_po.SUB_KATEGORI as "SUB KATEGORI", detail_po.MASA, detail_po.QTY
+    $query = 'SELECT detail_po.ID_DA, detail_po.KATEGORI as "KATEGORI",detail_po.SUB_KATEGORI as "SUB KATEGORI", detail_po.MASA
     FROM po
     right join detail_po on detail_po.NO_SPK = po.NO_SPK
     where po.NO_SPK = ?';
@@ -34,7 +34,14 @@ class Po_model extends CI_Model {
   }  
 
   function setDetail(){
-    $data = $this->db->query("SELECT QTY, MASA, KATEGORI, SUB_KATEGORI from detail_po");
+    $data = $this->db->query("SELECT ID_DA, NO_SPK, QTY, MASA, KATEGORI, SUB_KATEGORI from detail_po");
+    return $data;
+  }
+
+  function getLastId(){
+    $data = $this->db->query("SELECT po.id_da as id_da
+          FROM detail_po AS po
+          ORDER BY id_da DESC LIMIT 1");
     return $data;
   }
 

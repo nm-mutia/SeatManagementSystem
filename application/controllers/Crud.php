@@ -14,63 +14,64 @@ class Crud extends CI_Controller {
 
 	//create
 	//tambah data tabel
-	public function history(){
-		$idh = $this->input->post('ID_HISTORY');
+	public function history($count){
 		$idv = $this->input->post('ID_VENDOR');
 		$nik = $this->input->post('NIK');
 		$tpin = $this->input->post('TGL_PINJAM');
-		$sn = $this->input->post('SN');
-		$tteng = $this->input->post('TGL_TENGGAT');
-		$tkem = $this->input->post('TGL_KEMBALI');
-		$ket = $this->input->post('KETERANGAN');
-
 		$data = array(
-			// 'ID_HISTORY' => $idh,
 			'ID_VENDOR' => $idv,
 			'NIK' => $nik,
-			'TGL_PINJAM' => $tgl
+			'TGL_PINJAM' => $tpin
 		);
-		$datadet = array(
-			'ID_HISTORY' => $idh,
-			'SN' => $sn,
-			'TGL_TENGGAT' => $tgl,
-			'TGL_KEMBALI' => $tkem,
-			'KETERANGAN' => $ket
-		);
-
 		if($idv != null && $nik != null){
 			$this->historyModel->setHistory($data, 'history_aset');
 		}
-		if($idh != null && $sn != null){
-			$this->historyModel->setHistory($datadet, 'detail_history');
+
+		for ($i=1; $i <= $count; $i++) {
+			$idh = $this->input->post('ID_HISTORY');
+			$sn = $this->input->post('SN'.$i);
+			$tteng = $this->input->post('TGL_TENGGAT'.$i);
+			$tkem = $this->input->post('TGL_KEMBALI'.$i);
+			$ket = $this->input->post('KETERANGAN'.$i);
+			$datadet = array(
+				'ID_HISTORY' => $idh,
+				'SN' => $sn,
+				'TGL_TENGGAT' => $tteng,
+				'TGL_KEMBALI' => $tkem,
+				'KETERANGAN' => $ket
+			);
+			if($idh != null && $sn != null){
+				$this->historyModel->setHistory($datadet, 'detail_history');
+			}
 		}
+		
 		redirect('history');
 	}
 	
-	public function Purchase_Order(){
+	public function po(){
 		$spk = $this->input->post('NO_SPK');
 		$idv = $this->input->post('ID_VENDOR');
 		$thada = $this->input->post('TAHUN_PENGADAAN');
-		$qty = $this->input->post('QTY');
-		$masa = $this->input->post('MASA');
-		$ktg = $this->input->post('KATEGORI');
-		$sub = $this->input->post('SUB_KATEGORI');
-		// $file = $this->input->post('FILE_SPK');
-		$sn = $this->input->post('SN');
-		$idda = $this->input->post('ID_DA');
-		$checksum = $this->input->post('CHECKSUM');
-		$tipe = $this->input->post('TIPE');
-		$merk = $this->input->post('MERK');
-		$series = $this->input->post('SERIES');
-		// $img = $this->input->post('IMAGE');
-
 		$data = array(
 			'NO_SPK' => $spk,
 			'ID_VENDOR' => $idv,
 			'TAHUN_PENGADAAN' => $thada
 			// 'NAMA_PIC' => $namap
 		);
+		if($spk != null && $idv != null){
+			$this->po_model->setPO($data, 'po');
+		}
+		$u = $this->encryption->encrypt($spk); 
+		$s = base64_encode($u); 
+		redirect('Purchase_Order/'.$s);
+	}
 
+	public function insDetPO($count){
+		$spk = $this->input->post('NO_SPK');
+		$qty = $this->input->post('QTY');
+		$masa = $this->input->post('MASA');
+		$ktg = $this->input->post('KATEGORI');
+		$sub = $this->input->post('SUB_KATEGORI');
 		$datadet = array(
 			'NO_SPK' => $spk,
 			'QTY' => $qty,
@@ -78,52 +79,60 @@ class Crud extends CI_Controller {
 			'KATEGORI' => $ktg,
 			'SUB_KATEGORI' => $sub
 		);
-
-		$dataaset = array(
-			'SN' => $sn,
-			'ID_DA' => $idda,
-			'CHECKSUM' => $checksum,
-			'TIPE' => $tipe,
-			'MERK' => $merk,
-			'SERIES' => $series
-			// 'IMAGE' => $img
-		);
-
-		if($spk != null && $idv != null){
-			$this->po_model->setPO($data, 'po');
-		}
 		if($spk != null){
 			$this->po_model->setPO($datadet, 'detail_po');
 		}
-		if($idda != null && $sn != null){
-			$this->Aset_model->setAset($dataaset, 'aset');
+
+		$idda = $this->input->post('ID_DA');
+		for ($i=1; $i <= $count; $i++) {
+			$sn = $this->input->post('SN'.$i);
+			$checksum = $this->input->post('CHECKSUM'.$i);
+			$tipe = $this->input->post('TIPE'.$i);
+			$merk = $this->input->post('MERK'.$i);
+			$series = $this->input->post('SERIES'.$i);
+			$img = $this->input->post('IMAGE'.$i);
+			$dataaset = array(
+				'SN' => $sn,
+				'ID_DA' => $idda,
+				'CHECKSUM' => $checksum,
+				'TIPE' => $tipe,
+				'MERK' => $merk,
+				'SERIES' => $series
+				// 'IMAGE' => $img
+			);
+			echo $idda. " ".$sn." yoy  ";
+			if($idda != null && $sn != null){
+				$this->Aset_model->setAset($dataaset, 'aset');
+			}
 		}
-		redirect('Purchase_Order');
+		$u = $this->encryption->encrypt($idda); 
+		$s = base64_encode($u);
+		redirect('Purchase_Order/det/'.$s);
 	}
 	
 
 	public function aset($count){
 		for ($i=1; $i <= $count; $i++) { 
 
-			$sn2 = $this->input->post('SN'.$i);
-			$idda2 = $this->input->post('ID_DA'.$i);
-			$checksum2 = $this->input->post('CHECKSUM'.$i);
-			$tipe2 = $this->input->post('TIPE'.$i);
-			$merk2 = $this->input->post('MERK'.$i);
-			$series2 = $this->input->post('SERIES'.$i);
-			// $img = $this->input->post('IMAGE');
-			echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
+			$sn = $this->input->post('SN'.$i);
+			$idda = $this->input->post('ID_DA'.$i);
+			$checksum = $this->input->post('CHECKSUM'.$i);
+			$tipe = $this->input->post('TIPE'.$i);
+			$merk = $this->input->post('MERK'.$i);
+			$series = $this->input->post('SERIES'.$i);
+			$img = $this->input->post('IMAGE');
+			// echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
 			$datax = array(
-				'SN' => $sn2,
-				'ID_DA' => $idda2,
-				'CHECKSUM' => $checksum2,
-				'TIPE' => $tipe2,
-				'MERK' => $merk2,
-				'SERIES' => $series2
+				'SN' => $sn,
+				'ID_DA' => $idda,
+				'CHECKSUM' => $checksum,
+				'TIPE' => $tipe,
+				'MERK' => $merk,
+				'SERIES' => $series
 				// 'IMAGE' => $img
 			);
 			
-			if($idda2 != null && $sn2 != null){
+			if($idda != null && $sn != null){
 				$this->Aset_model->setAset($datax, 'aset');
 			}
 		}
