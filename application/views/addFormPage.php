@@ -75,18 +75,11 @@
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <?php
-                                                                if($field->name == "ID_HISTORY"){
-                                                            ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
-                                                            <?php
-                                                                }
-                                                                else{
-                                                            ?>
+                                                            <?php if($field->name == "ID_HISTORY"){ ?>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist + 1; ?>" readonly>
+                                                            <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
-                                                            <?php
-                                                                }
-                                                            ?>
+                                                            <?php  } ?>
                                                         </div>
                                                     <?php endforeach ?>
                                                 </div>
@@ -105,11 +98,27 @@
                                                         <?php } ?>
                                                     <?php endforeach ?>
                                                 </div>
+
+                                            <?php } else if($kategori == "Detail PO"){?>
+                                                <div>
+                                                    <?php foreach ($content->field_data() as $field): ?>
+                                                        <div class="form-group" >
+                                                            <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
+                                                            <?php if($field->name == "ID_DA"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda + 1;?>" readonly>
+                                                            <?php } else if($field->name == "NO_SPK"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
+                                                            <?php } else{ ?>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
+                                                            <?php } ?>
+                                                        </div>
+                                                    <?php endforeach ?>
+                                                </div>
                                             <?php } ?>
 
                                             <!-- form detail tambahan -->
                                             <?php
-                                                if($kategori == "Purchase Order" || $kategori == "History" || $kategori == "Aset PO"){
+                                                if($kategori == "Detail PO" || $kategori == "History" || $kategori == "Aset PO"){
                                             ?>
                                                 <?php if($kategori != "Aset PO"){ ?>
                                                     <div id="readroot1" style="display: none;" class="form-group">
@@ -117,39 +126,27 @@
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <br>
                                                         <?php endforeach ?>
                                                     </div>
-
-                                                    <!-- jika PO, ada tambahan form untuk nambahin aset  -->
-                                                    <?php if($kategori == "Purchase Order"){ ?>
-                                                        <div id="readroot2" style="display: none;" class="form-group">
-                                                            <input type="button" class="btn btn-danger" value="Remove aset" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
-                                                            <?php foreach ($contentaset->field_data() as $field): ?>
-                                                                <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
-                                                            <?php endforeach ?>
-                                                        </div>
-                                                <?php  } } ?>
+                                                <?php  } ?>
 
                                                 <!-- tempat untuk clone -->
                                                 <span id="writeroot"></span>
 
                                                 <?php if($kategori == "Aset PO"){ ?>
-                                                        <div class="icon-container" onclick="moreFields0()">
-                                                            <span class="ti-plus"  ></span><span class="icon-name"> Aset</span>
-                                                        </div>
-
+                                                    <div class="icon-container" onclick="moreFields0()">
+                                                        <span class="ti-plus"  ></span><span class="icon-name"> Aset</span>
+                                                    </div>
+                                                <?php } else if($kategori == "Detail PO"){ ?>
+                                                    <div class="icon-container" onclick="moreFields()">
+                                                        <span class="ti-plus"  ></span><span class="icon-name"> Aset</span>
+                                                    </div>
                                                 <?php } else{ ?>
-                                                        <!-- <button type="button" class="btn btn-success" onclick="moreFields()">Tambah Detail</button> -->
-                                                        <div class="icon-container" onclick="moreFields()">
-                                                            <span class="ti-plus"  ></span><span class="icon-name"> Detail</span>
-                                                        </div>
-                                                    <?php if($kategori == "Purchase Order"){ ?>
-                                                            <!-- <button type="button" class="btn btn-success" onclick="moreFields2()">Tambah Aset</button> -->
-                                                            <div class="icon-container" onclick="moreFields2()">
-                                                                <span class="ti-plus"  ></span><span class="icon-name"> Aset</span>
-                                                            </div>
-                                                <?php } } ?>
+                                                    <div class="icon-container" onclick="moreFields()">
+                                                        <span class="ti-plus"  ></span><span class="icon-name"> Detail</span>
+                                                    </div>
+                                                <?php }?>
 
                                                 <br> <br>
                                                 <!-- tombol submit -->
@@ -201,7 +198,6 @@
             for (var i=0;i<newField.length;i++) {
                 var theName = newField[i].name
                 if (theName){
-                    // document.writeln(theName);
                     newField[i].name = theName + count;
                 }
                 console.log(newField[i].name);
@@ -220,31 +216,17 @@
             var newField = newFields.childNodes;
             for (var i=0;i<newField.length;i++) {
                 var theName = newField[i].name
-                if (theName)
+                if (theName){
                     newField[i].name = theName + counter;
-            }
-            var insertHere = document.getElementById('writeroot');
-            insertHere.parentNode.insertBefore(newFields,insertHere);
-        }
-
-        //clone utk detail aset di form PO
-        function moreFields2() {
-            flag++;
-            var newFields = document.getElementById('readroot2').cloneNode(true);
-            newFields.id = '';
-            newFields.style.display = 'block';
-            var newField = newFields.childNodes;
-            for (var i=0;i<newField.length;i++) {
-                var theName = newField[i].name
-                if (theName)
-                    newField[i].name = theName + flag;
+                }
+                console.log(newField[i].name);
             }
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);
         }
 
         function test(){
-            document.getElementById('act').action = '<?php echo base_url()?>crud/<?php if($page_title == "PO Detail" || $page_title == "History Detail"){echo $this->uri->segment(1)."Detail";}else{echo $this->uri->segment(1);}?><?php if($this->uri->segment(1) == "aset"){?>/' + count + '<?php };?>';
+            document.getElementById('act').action = '<?php echo base_url()?>crud/<?php echo $this->uri->segment(1);?><?php if($this->uri->segment(1) == "aset"){?>/' + count + '<?php } else if($this->uri->segment(1) == "history" || $this->uri->segment(1) == "po"){?>/' + counter + '<?php } ?>';
         }
         
         <?php

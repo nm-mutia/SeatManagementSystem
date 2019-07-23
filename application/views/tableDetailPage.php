@@ -104,6 +104,13 @@
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
+                                <?php
+                                   if ($kategori == 'Purchase Order'){
+                                ?>
+                                    <a href="<?php echo base_url()?>po/detailpo/<?php $u = $this->encryption->encrypt($idspk); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Tambah Detail PO</button></a>
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
