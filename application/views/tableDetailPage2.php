@@ -35,7 +35,9 @@
                                     <li><a href="#">Dashboard</a></li>
                                     <li><a href="#"><?php echo $page_title ?></a></li>
                                     <li><a href="<?php echo site_url($this->uri->segment(1))?>"><?php echo $kategori ?></a></li>
-                                    <li class="active"><?php echo $subkategori ?></li>
+                                    <li><a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>"><?php echo $subkategori ?></a></li>
+                                    <li class="active"><?php echo $subsubkategori ?></li>
+
                                 </ol>
                             </div>
                         </div>
@@ -60,13 +62,7 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-                                    <?php
-                                        if ($kategori == 'Aset Keseluruhan' || $kategori == 'Purchase Order'){
-                                    ?>
-                                        <th> Action </th>
-                                    <?php
-                                        }
-                                     ?>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,30 +71,6 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
-
-                                            <?php
-                                                if ($kategori == 'Aset Keseluruhan'){
-                                            ?>
-                                            <td>
-
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php echo "det/";?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
-                                            </td>
-
-                                            <?php
-                                                }
-                                             ?>
-                                             <?php
-                                               if ($kategori == 'Purchase Order'){
-                                            ?>
-                                            <td>
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php echo "det/";?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
-                                                <a href="<?php echo base_url()?>aset/<?php echo "addAset/";?><?php $u = $this->encryption->encrypt($idspk); echo base64_encode($u); ?>/<?php $us = $this->encryption->encrypt(current($key)); echo base64_encode($us); ?>"><button type="button" class="btn btn-success">Tambah Aset</button></a>
-
-                                            </td>
-
-                                            <?php
-                                                }
-                                             ?>
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>

@@ -73,7 +73,7 @@ $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
 $route['aset/addAset/(:any)/(:any)'] = 'aset/setAset/$1/$2'; //nambah aset dari PO (form)
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
-$route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetail/$1/$2';
+$route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 
 //nyimpen tambahan aset (action)
 $route['crud/aset/(:any)'] = 'crud/aset/$1';
