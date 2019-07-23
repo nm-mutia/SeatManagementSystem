@@ -240,7 +240,7 @@
         }
 
         function test(){
-            document.getElementById('act').action = '<?php echo base_url()?>crud/<?php if($page_title == "PO Detail" || $page_title == "History Detail"){echo $this->uri->segment(1)."Detail";}else{echo $this->uri->segment(1);}?><?php if($this->uri->segment(1) == "aset"){?>/' + count + '<?php };?>';
+            document.getElementById('act').action = '<?php echo base_url()?>crud/<?php if($page_title == "PO Detail" || $page_title == "History Detail"){echo $this->uri->segment(1)."Detail";}else{echo $this->uri->segment(1);}?><?php if($this->uri->segment(1) == "aset" || $this->uri->segment(1) == "history"){?>/' + count + '<?php };?>';
         }
         
         <?php

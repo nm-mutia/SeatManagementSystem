@@ -77,6 +77,7 @@ $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 
 //nyimpen tambahan aset (action)
 $route['crud/aset/(:any)'] = 'crud/aset/$1';
+$route['crud/history/(:any)'] = 'crud/history/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
