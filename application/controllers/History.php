@@ -97,6 +97,7 @@ class History extends CI_Controller {
 		$data['kategori'] = $this->setKategori(3);
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
+		$data['idh'] = $this->historyModel->getLastId();
 		$this->load->view('addFormPage', $data);
 	}
 
