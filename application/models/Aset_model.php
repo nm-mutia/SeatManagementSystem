@@ -82,6 +82,15 @@ class Aset_model extends CI_Model {
     return $data;
   }
 
+  function detAsetSPK($id){
+    $query = "SELECT a.sn as 'SN', a.checksum as 'CHECKSUM', a.tipe AS 'TIPE', a.merk AS 'MERK', a.series AS 'SERIES'
+            FROM detail_po AS dpo 
+            JOIN aset AS a ON a.id_da = dpo.id_da
+            WHERE dpo.id_da = ?";
+    $data = $this->db->query($query, array($id));
+    return $data;
+  }
+
   function setAset($data, $table){
     $this->db->insert($table, $data);
   }

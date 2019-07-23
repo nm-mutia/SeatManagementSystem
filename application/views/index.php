@@ -110,13 +110,13 @@
                                                             <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
                                                         </div>
                                                     </td>
-                                                    <td> <?php echo $key['id'] ?> </td>
-                                                    <td><span class="name"><?php echo $key['nik'] ?></span> </td>
-                                                    <td><span class="product"><?php echo $key['nama'] ?></span> </td>
-                                                    <td><span ><?php echo $key['sn'] ?></span></td>
-                                                    <td><span ><?php echo $key['tgl'] ?></span></td>
+                                                    <td> <?php echo $key['ID'] ?> </td>
+                                                    <td><span class="name"><?php echo $key['NIK'] ?></span> </td>
+                                                    <td><span class="product"><?php echo $key['NAMA'] ?></span> </td>
+                                                    <td><span ><?php echo $key['SN'] ?></span></td>
+                                                    <td><span ><?php echo $key['TANGGAL TENGGAT'] ?></span></td>
                                                     <td>
-                                                        <a href="<?php echo base_url()?>details/<?php echo $key['id']?>/<?php echo $key['sn']?>"><span class="badge badge-complete">Detail</span></a>
+                                                        <a href="<?php echo base_url()?>details/<?php echo $key['ID']?>/<?php echo $key['SN']?>"><span class="badge badge-complete">Detail</span></a>
                                                     </td>
                                                 </tr>
                                                 <?php endforeach ?>
