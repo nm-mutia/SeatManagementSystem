@@ -22,7 +22,9 @@ class HistoryModel extends CI_Model {
   }
 
   function getLastId(){
-    $data = $this->db->query("SELECT * from detail_history");
+    $data = $this->db->query("SELECT ha.id_history as id_history
+          FROM history_aset AS ha
+          ORDER BY id_history DESC LIMIT 1");
     return $data;
   }
 

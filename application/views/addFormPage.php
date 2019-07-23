@@ -75,18 +75,11 @@
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <?php
-                                                                if($field->name == "ID_HISTORY"){
-                                                            ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
-                                                            <?php
-                                                                }
-                                                                else{
-                                                            ?>
+                                                            <?php if($field->name == "ID_HISTORY"){ ?>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist ?>" readonly>
+                                                            <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
-                                                            <?php
-                                                                }
-                                                            ?>
+                                                            <?php  } ?>
                                                         </div>
                                                     <?php endforeach ?>
                                                 </div>
@@ -201,7 +194,6 @@
             for (var i=0;i<newField.length;i++) {
                 var theName = newField[i].name
                 if (theName){
-                    // document.writeln(theName);
                     newField[i].name = theName + count;
                 }
                 console.log(newField[i].name);
@@ -220,8 +212,10 @@
             var newField = newFields.childNodes;
             for (var i=0;i<newField.length;i++) {
                 var theName = newField[i].name
-                if (theName)
+                if (theName){
                     newField[i].name = theName + counter;
+                }
+                console.log(newField[i].name);
             }
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);
@@ -236,8 +230,10 @@
             var newField = newFields.childNodes;
             for (var i=0;i<newField.length;i++) {
                 var theName = newField[i].name
-                if (theName)
+                if (theName){
                     newField[i].name = theName + flag;
+                }
+                console.log(newField[i].name);
             }
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);

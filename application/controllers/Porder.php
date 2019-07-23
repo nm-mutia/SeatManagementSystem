@@ -36,7 +36,7 @@ class Porder extends CI_Controller {
 		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
-		$data['subkategori'] = "detail".$sid;
+		$data['subkategori'] = "detail";
 		$data['content'] = $this->Po_model->getPoDetail($sid);
 		$data['idspk'] = $sid;
     	$this->load->view('tableDetailPage', $data);
@@ -48,7 +48,7 @@ class Porder extends CI_Controller {
 		$data['kategori'] = $this->setKategori(2);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
-		$data['subkategori'] = "detail".$sid;
+		$data['subkategori'] = "detail";
 		$data['content'] = $this->Aset_model->detAsetSPK($sid);
     	$this->load->view('tableDetailPage', $data);
 	}

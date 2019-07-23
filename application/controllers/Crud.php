@@ -14,36 +14,37 @@ class Crud extends CI_Controller {
 
 	//create
 	//tambah data tabel
-	public function history(){
-		$idh = $this->input->post('ID_HISTORY');
+	public function history($count){
 		$idv = $this->input->post('ID_VENDOR');
 		$nik = $this->input->post('NIK');
 		$tpin = $this->input->post('TGL_PINJAM');
-		$sn = $this->input->post('SN');
-		$tteng = $this->input->post('TGL_TENGGAT');
-		$tkem = $this->input->post('TGL_KEMBALI');
-		$ket = $this->input->post('KETERANGAN');
-
 		$data = array(
-			// 'ID_HISTORY' => $idh,
 			'ID_VENDOR' => $idv,
 			'NIK' => $nik,
-			'TGL_PINJAM' => $tgl
+			'TGL_PINJAM' => $tpin
 		);
-		$datadet = array(
-			'ID_HISTORY' => $idh,
-			'SN' => $sn,
-			'TGL_TENGGAT' => $tgl,
-			'TGL_KEMBALI' => $tkem,
-			'KETERANGAN' => $ket
-		);
-
 		if($idv != null && $nik != null){
 			$this->historyModel->setHistory($data, 'history_aset');
 		}
-		if($idh != null && $sn != null){
-			$this->historyModel->setHistory($datadet, 'detail_history');
+
+		for ($i=1; $i <= $count; $i++) {
+			$idh = $this->input->post('ID_HISTORY');
+			$sn = $this->input->post('SN'.$i);
+			$tteng = $this->input->post('TGL_TENGGAT'.$i);
+			$tkem = $this->input->post('TGL_KEMBALI'.$i);
+			$ket = $this->input->post('KETERANGAN'.$i);
+			$datadet = array(
+				'ID_HISTORY' => $idh,
+				'SN' => $sn,
+				'TGL_TENGGAT' => $tteng,
+				'TGL_KEMBALI' => $tkem,
+				'KETERANGAN' => $ket
+			);
+			if($idh != null && $sn != null){
+				$this->historyModel->setHistory($datadet, 'detail_history');
+			}
 		}
+		
 		redirect('history');
 	}
 	
@@ -105,14 +106,14 @@ class Crud extends CI_Controller {
 	public function aset($count){
 		for ($i=1; $i <= $count; $i++) { 
 
-			$sn2 = $this->input->post('SN'.$i);
-			$idda2 = $this->input->post('ID_DA'.$i);
-			$checksum2 = $this->input->post('CHECKSUM'.$i);
-			$tipe2 = $this->input->post('TIPE'.$i);
-			$merk2 = $this->input->post('MERK'.$i);
-			$series2 = $this->input->post('SERIES'.$i);
+			$sn = $this->input->post('SN'.$i);
+			$idda = $this->input->post('ID_DA'.$i);
+			$checksum = $this->input->post('CHECKSUM'.$i);
+			$tipe = $this->input->post('TIPE'.$i);
+			$merk = $this->input->post('MERK'.$i);
+			$series = $this->input->post('SERIES'.$i);
 			// $img = $this->input->post('IMAGE');
-			echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
+			// echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
 			$datax = array(
 				'SN' => $sn2,
 				'ID_DA' => $idda2,
@@ -123,7 +124,7 @@ class Crud extends CI_Controller {
 				// 'IMAGE' => $img
 			);
 			
-			if($idda2 != null && $sn2 != null){
+			if($idda != null && $sn != null){
 				$this->Aset_model->setAset($datax, 'aset');
 			}
 		}
