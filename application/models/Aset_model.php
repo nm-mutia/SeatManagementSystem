@@ -75,7 +75,7 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
   }
 
   function getAsetAll(){
-    $query = "SELECT *
+    $query = "SELECT a.sn as SN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
       FROM aset AS a";
     $data = $this->db->query($query);
     return $data;

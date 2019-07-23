@@ -65,9 +65,11 @@ $route['admin'] = 'adminDashboard';
 // menu aset
 $route['Purchase_Order'] = 'porder';
 $route['Purchase_Order/det/(:any)'] = 'porder/detAsetSPK/$1';
-$route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
+// $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/(:any)'] = 'porder/detail/$1';
+$route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
+
 
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
@@ -75,9 +77,11 @@ $route['aset/addAset/(:any)/(:any)'] = 'aset/setAset/$1/$2'; //nambah aset dari 
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 
-//nyimpen tambahan aset (action)
+//insert to database (action)
 $route['crud/aset/(:any)'] = 'crud/aset/$1';
 $route['crud/history/(:any)'] = 'crud/history/$1';
+$route['crud/Purchase_Order'] = 'crud/po';
+$route['crud/po/(:any)'] = 'crud/insDetPO/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
@@ -86,7 +90,7 @@ $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 //menu Histori
 $route['history'] = 'history/getAll';
 $route['history/det/(:any)'] = 'history/detail/$1';
-$route['history/History/addDetail'] = 'history/setDetailHistory';
+// $route['history/History/addDetail'] = 'history/setDetailHistory';
 $route['history/(:any)'] = 'history/setDetail';
 
 $route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';

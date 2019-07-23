@@ -17,9 +17,12 @@ class Porder extends CI_Controller {
 
 	public function setKategori(int $nomer){
 		if ($nomer == 1){
-				$kategori = "Purchase Order";
+			$kategori = "Purchase Order";
 		}else if ($nomer == 2){
-				$kategori = "Aset PO";
+			$kategori = "Aset PO";
+		}
+		else if ($nomer == 3){
+			$kategori = "Detail PO";
 		}
 		return $kategori;
 	}
@@ -36,7 +39,7 @@ class Porder extends CI_Controller {
 		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
-		$data['subkategori'] = "detail";
+		$data['subkategori'] = "detail ".$sid;
 		$data['content'] = $this->Po_model->getPoDetail($sid);
 		$data['idspk'] = $sid;
     	$this->load->view('tableDetailPage', $data);
@@ -53,14 +56,28 @@ class Porder extends CI_Controller {
     	$this->load->view('tableDetailPage', $data);
 	}
 
+	public function formdetailpo($spk){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori(3);
+		$sid = base64_decode($spk);
+		$sid = $this->encryption->decrypt($sid);
+		$data['subkategori'] = "detail";
+		$data['spk'] = $sid;
+		$data['content'] = $this->Po_model->setDetail();
+		$data['contentdet'] = $this->Aset_model->getAsetAll();
+		$data['idda'] = $this->Po_model->getLastId()->row()->id_da;
+    	$this->load->view('addFormPage', $data);
+	}
+
 
 //form
 	public function setAll(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori(1);
 		$data['content'] = $this->Po_model->getAllForm();
-		$data['contentdet'] = $this->Po_model->setDetail();
-		$data['contentaset'] = $this->Aset_model->getAsetAll();
+		// $data['contentdet'] = $this->Po_model->setDetail();
+		// $data['contentaset'] = $this->Aset_model->getAsetAll();
+		// $data['idda'] = $this->Po_model->getLastId()->row()->id_da;
 		$this->load->view('addFormPage', $data);
 	}
 
