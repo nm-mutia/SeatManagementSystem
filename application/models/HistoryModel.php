@@ -67,12 +67,12 @@ class HistoryModel extends CI_Model {
   }
 
   function getHistoryKaryawan($nik){
-    // $query = "SELECT dh.id_history AS ID, ha.nik AS NIK, k.nama AS NAMA, dh.sn AS SN, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dh.tgl_tenggat AS TANGGAL_TENGGAT
-    //   FROM detail_history AS dh
-    //   JOIN history_aset AS ha ON dh.id_history = ha.id_history
-    //   JOIN karyawan AS k ON ha.nik = k.nik
-    //   JOIN aset AS a ON a.sn = dh.sn
-    //   WHERE k.nik = ? ";
+    $query = "SELECT dh.id_history AS ID, ha.nik AS NIK, k.nama AS NAMA, dh.sn AS SN, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dh.tgl_tenggat AS TANGGAL_TENGGAT
+      FROM detail_history AS dh
+      JOIN history_aset AS ha ON dh.id_history = ha.id_history
+      JOIN karyawan AS k ON ha.nik = k.nik
+      JOIN aset AS a ON a.sn = dh.sn
+      WHERE k.nik = ? ";
     
     //query pakai view
     $query = "SELECT *
