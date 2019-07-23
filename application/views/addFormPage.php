@@ -3,6 +3,14 @@
 
 <head>
     <?php $this->load->view("_partials/head.php") ?>
+    <style>
+        label{
+            font-weight: bold;
+        }
+        /*#subktg1, #subktg2{
+            display: none;
+        }*/
+    </style>
 </head>
 <body>
     <!-- Left Panel -->
@@ -105,9 +113,23 @@
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_DA"){ ?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda + 1;?>" readonly>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda + 1;?>" readonly>
                                                             <?php } else if($field->name == "NO_SPK"){ ?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
+                                                            <?php } else if($field->name == "KATEGORI"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control ktg" aria-required="true" aria-invalid="false" >
+                                                                    <option>Pilih...</option>
+                                                                    <option value="Hardware" class="hard">Hardware</option>
+                                                                    <option value="Software" class="soft">Software</option>
+                                                                </select>
+                                                            <?php } else if($field->name == "SUB_KATEGORI"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                                                    <option>Pilih...</option>
+                                                                    <option value="Notebook" class="sub1">Notebook</option>
+                                                                    <option value="Printer" class="sub2">Printer</option>
+                                                                    <option value="Aplikasi" class="sub3">Aplikasi</option>
+                                                                    <option value="Antivirus" class="sub4">Antivirus</option>
+                                                                </select>
                                                             <?php } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
@@ -183,6 +205,26 @@
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
 
+    <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script>
+    <script>
+        $(function(){
+            $("select.ktg").change(function(){
+                var sub = $('select.ktg').val();
+                if(sub == "Hardware"){
+                    $('.sub1').show();
+                    $('.sub2').show();
+                    $('.sub3').hide();
+                    $('.sub4').hide();
+                }else if(sub == "Software"){
+                    $('.sub1').hide();
+                    $('.sub2').hide();
+                    $('.sub3').show();
+                    $('.sub4').show();
+                }
+            });
+        });    
+    </script>
+
     <script type='text/javascript'>
         var counter = 0;
         var flag = 0;
@@ -229,18 +271,14 @@
             document.getElementById('act').action = '<?php echo base_url()?>crud/<?php echo $this->uri->segment(1);?><?php if($this->uri->segment(1) == "aset"){?>/' + count + '<?php } else if($this->uri->segment(1) == "history" || $this->uri->segment(1) == "po"){?>/' + counter + '<?php } ?>';
         }
         
-        <?php
-            if($kategori == "Aset PO"){
-        ?> 
-                window.onload = moreFields0;
-        <?php
-            }
-            else if($kategori != "Vendor"){
-        ?>
-                window.onload = moreFields;
-        <?php
-            }
-        ?>
+        <?php if($kategori == "Aset PO"){ ?> 
+            window.onload = moreFields0;
+        <?php } else if($kategori != "Vendor"){ ?>
+            window.onload = moreFields;
+        <?php } ?>
+
+        
+
     </script>
 
     <?php $this->load->view("_partials/js.php") ?>
