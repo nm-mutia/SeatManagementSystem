@@ -36,6 +36,51 @@ class Vendor extends CI_Controller {
 		$this->load->view('tableDetailPage', $data);
 	}
 
+	public function deleteVendor($nama){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
+		$data['subkategori'] = "detail";
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$data['content'] = $this->vendor_model->deleteVendor($nama);
+// $data['content'] = 1;
+		if($data['content'])
+        {
+					$response = array(
+						// keys
+						"success" => "true"
+					);
+
+          echo json_encode($response);
+					// redirect(refresh);
+					// redirect('vendor_list');
+
+        }
+     else
+        {
+					$response = array(
+						// keys
+						"success" => "false"
+					);
+
+          echo json_encode($response);
+        }
+		 // echo json_encode(array("status" => TRUE));
+		// if($data['content'] == 0){
+		// 	$message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
+		// 	$lokasi = base_url().$this->uri->segment(1);
+		// 	echo "<script type='text/javascript'>alert('$message');
+		// 	window.location = '$lokasi'; </script>";
+			// redirect('vendor_list');
+						// echo json_encode($data);
+		// }else {
+					// redirect('vendor_list');
+					// echo json_encode($data);
+		// }
+		// $this->load->view('tablePage', $data);
+
+	}
+
 	public function setAll(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setTitle();

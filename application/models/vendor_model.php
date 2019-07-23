@@ -37,5 +37,23 @@ class vendor_model extends CI_Model {
     $this->db->insert($table, $data);
   }
 
+  public function deleteVendor($data){
+      // $this->db->insert($table, $data);
+      // $tables = array('table1', 'table2', 'table3');
+      $cekrows = $this->db->query('SELECT * FROM vendor, po where vendor.ID_VENDOR = po.ID_VENDOR and vendor.ID_VENDOR = ?' , $data);
+
+      if ($cekrows->num_rows() != 0){
+        // $message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
+        // echo "<script type='text/javascript'>alert('$message');</script>";
+        return 0;
+      }else{
+        $this->db->where('ID_VENDOR', $data);
+        $this->db->delete('vendor');
+        return 1;
+      }
+
+      // return;
+  }
+
 
 }
