@@ -4,10 +4,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/main.js"></script>
-
+<!--
 <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
 <script src="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"></script> -->
 <!-- <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script> -->
 
 
@@ -42,6 +42,8 @@
 <script src="<?php echo base_url(); ?>assets/js/init/datatables-init.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.editor.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/jquery-3.3.1.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.select.min.js"></script>
 
 

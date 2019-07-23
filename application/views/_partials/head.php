@@ -12,8 +12,15 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/cs-skin-elastic.css"> -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/cs-skin-elastic.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/jquery.dataTables.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/jquery.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/select.dataTables.min.css">
+
+
 <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/dataTables.bootstrap.min.css"> -->
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 <!-- <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet"> -->

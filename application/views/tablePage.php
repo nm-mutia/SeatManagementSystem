@@ -56,6 +56,7 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
+                                          <!-- <th></th> -->
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
@@ -66,6 +67,7 @@
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
+                                          <!-- <td></td> -->
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>

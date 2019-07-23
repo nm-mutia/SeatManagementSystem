@@ -16,39 +16,34 @@
         // "processing": true,
         // select: true,
         // lengthChange: false,
+        // columnDefs: [ {
+        //      orderable: false,
+        //      className: 'select-checkbox',
+        //      targets:   0
+        //  } ],
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        // dom: 'B<"clear">lfrtip',
+        dom: 'lfrt<"clear">Bip',
         buttons : true,
         destroy: true,
         select: {
-              style:    'os',
-              selector: 'td:first-child'
-          },
-        //   columns: [
-        //     {
-        //         data: null,
-        //         defaultContent: '',
-        //         className: 'select-checkbox',
-        //         orderable: false
-        //     }
-        // ],
-
+                style:    'os',
+                selector: 'td:first-child'
+        },
+        // select: {
+        //       style:    'os',
+        //       selector: 'td:first-child'
+        //   },
         buttons: [
-          {
-                    extend: 'collection',
-                    text: 'Export',
-                    buttons: [
                         'copy',
                         'excel',
                         'csv',
                         'print'
-                    ]
-                }
-                // ,
+
+           //      ,
            //      {
            //     text: 'Select alls',
            //     action: function () {
-           //         table.rows().select();
+           //         table.rows$('#bootstrap-data-table').parents('tr')).select();
            //     }
            // }
         ]
@@ -56,40 +51,16 @@
     });
 
     $('#bootstrap-data-table').on( 'click', 'tbody td:not(:first-child)', function (e) {
-    // editor.inline( this );
+    // $('#bootstrap-data-table').inline( this );
+      // select: true;
           // alert( "Kok masih jalan." );
+           // $('#bootstrap-data-table').parents('td').addClass("active");
+           // table.row(  $('#bootstrap-data-table').parents('tr')).addClass("selected");
+           // table.inline();
 
     } )
     ;
-    // $('#bootstrap-data-table #btn_delete').on('click', function(event) {
-    // alert("Hapus?");
-    // // var href = $(this).attr("href");
-    // alert(href);
-    // var btn = this;
-    // alert(btn);
-    // event.preventDefault();
-    // $.ajax({
-    //       type: "POST",
-    //       url: href,
-    //       success : function(response){
-    //          //delete the row
-    //          alert("berhasil");
-    //          // table.row('.selected').remove().draw( false );
-    //          if (response == "Success")
-    //             {
-    //               redirect('vendor_list');
-    //               alert("waks");
-    //               // $(btn).closest('tr').fadeOut("slow");
-    //             }
-    //             else
-    //             {
-    //               redirect('vendor_list');
-    //               alert("Error");
-    //             }
-    //        },
-    //        }});
-    //
-    // });
+
 
     //delete record to database
       $('#bootstrap-data-table #btn_delete').on('click',function(){
@@ -133,10 +104,10 @@
 
      });
 
-    table
-       .buttons()
-       .container()
-       .appendTo( '.card-header' );
+    // table
+    //    .buttons()
+    //    .container()
+    //    .appendTo( '.card-header' );
 
     // $('#bootstrap-data-table').container()
     //     .appendTo( $('.col-sm-6:eq(0)', $('#bootstrap-data-table').table().container() ) );
