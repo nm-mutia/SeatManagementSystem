@@ -97,8 +97,8 @@ class Crud extends CI_Controller {
 				'CHECKSUM' => $checksum,
 				'TIPE' => $tipe,
 				'MERK' => $merk,
-				'SERIES' => $series
-				// 'IMAGE' => $img
+				'SERIES' => $series,
+				'IMAGE' => $img
 			);
 			echo $idda. " ".$sn." yoy  ";
 			if($idda != null && $sn != null){
@@ -120,21 +120,30 @@ class Crud extends CI_Controller {
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
-			$img = $this->input->post('IMAGE');
-			// echo "aigo ".$sn2 . " " .$idda2 . " " . $checksum2 . " oy ";
+			// $img = $this->input->post('IMAGE');
+
+			$config['upload_path'] = './images/uploads/';
+	       	$config['allowed_types'] = 'gif|jpg|png';
+	       	$config['max_size']  = '100';
+	       	$config['max_width'] = '1024';
+	       	$config['max_height'] = '768';
+
+	       	$this->load->library('upload', $config)
+	       	
 			$datax = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
 				'CHECKSUM' => $checksum,
 				'TIPE' => $tipe,
 				'MERK' => $merk,
-				'SERIES' => $series
-				// 'IMAGE' => $img
+				'SERIES' => $series,
+				'IMAGE' => $img
 			);
 
 			if($idda != null && $sn != null){
 				$this->Aset_model->setAset($datax, 'aset');
 			}
+			// echo $idda.$sn.$checksum.$series;
 		}
 		redirect('aset');
 	}

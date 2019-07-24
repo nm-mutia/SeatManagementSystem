@@ -70,6 +70,7 @@ class Porder extends CI_Controller {
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
 		$data['idda'] = $this->Po_model->getLastId()->row()->id_da;
+		$data['subktg'] = $this->Po_model->getSubktg();
     	$this->load->view('addFormPage', $data);
 	}
 

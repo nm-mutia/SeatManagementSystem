@@ -62,7 +62,7 @@
                                         <hr>
                                         <!-- <form action="<?php echo base_url()?>crud/<?php if($page_title == 'PO Detail' || $page_title == 'History Detail'){echo $this->uri->segment(1).'Detail';}else{echo $this->uri->segment(1);}?><?php if($this->uri->segment(1) == 'aset'){?>/javascript:count<?php }?>" method="post"> -->
 
-                                        <form action="" method="post" id="act" onsubmit="test();">
+                                        <form action="" method="post" id="act" onsubmit="test();" enctype="multipart/form-data">
                                             <!-- form awal untuk vendor  -->
                                             <?php if($kategori == "Vendor" || $kategori == "Purchase Order"){?>
                                                 <div>
@@ -74,7 +74,7 @@
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['NAMA_VENDOR'] ?></option>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR']." ".$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  }else{ ?>
@@ -113,13 +113,14 @@
                                                 <div id="readroot0" style="display: none;" class="form-group">
                                                     <input type="button" class="btn btn-danger" value="Remove data" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
                                                     <?php foreach ($content->field_data() as $field): ?>
+                                                        <label class="control-label mb-1"><?php echo $field->name ?> </label>
                                                         <?php if($field->name == "ID_DA"){ ?>
-                                                            <label class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
+                                                        <?php } else if($field->name == "IMAGE"){?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else{ ?>
-                                                            <label class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
-                                                        <?php } ?>
+                                                        <?php } ?><br>
                                                     <?php endforeach ?>
                                                 </div>
 
@@ -141,10 +142,10 @@
                                                             <?php } else if($field->name == "SUB_KATEGORI"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                                     <option>Pilih...</option>
-                                                                    <option value="Notebook" class="sub1">Notebook</option>
-                                                                    <option value="Printer" class="sub2">Printer</option>
-                                                                    <option value="Aplikasi" class="sub3">Aplikasi</option>
-                                                                    <option value="Antivirus" class="sub4">Antivirus</option>
+                                                                    <?php $v = 1; ?>
+                                                                    <?php foreach ($subktg->result_array() as $sel){ ?>
+                                                                        <option value="<?php echo $sel['SUB_KATEGORI'] ?>" class="<?php echo 'sub'.$v; $v++;?>"><?php echo $sel['SUB_KATEGORI'] ?></option>
+                                                                    <?php } ?>
                                                                 </select>
                                                             <?php } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
@@ -163,7 +164,11 @@
                                                         <input type="button" class="btn btn-danger" value="Remove detail" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php if($field->name == "IMAGE"){?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php }else{?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php } ?>
                                                             <br>
                                                         <?php endforeach ?>
                                                     </div>
@@ -227,15 +232,19 @@
             $("select.ktg").change(function(){
                 var sub = $('select.ktg').val();
                 if(sub == "Hardware"){
-                    $('.sub1').show();
-                    $('.sub2').show();
-                    $('.sub3').hide();
-                    $('.sub4').hide();
+                    for (var i = 1; i <= 6; i++) {  //$v = 4 hardware, $v 5-6 soft            
+                        if(i < 5)
+                            $('.sub'+i).show();
+                        else
+                            $('.sub'+i).hide();
+                    }
                 }else if(sub == "Software"){
-                    $('.sub1').hide();
-                    $('.sub2').hide();
-                    $('.sub3').show();
-                    $('.sub4').show();
+                    for (var i = 1; i <= 6; i++) {
+                        if(i < 5)
+                            $('.sub'+i).hide();
+                        else
+                            $('.sub'+i).show();
+                    }
                 }
             });
         });    
