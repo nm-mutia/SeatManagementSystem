@@ -68,8 +68,10 @@
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
                                           <!-- <td></td> -->
+                                            <?php $var = 1; ?>
                                             <?php foreach ($key as $key1): ?>
-                                            <td> <?php echo $key1 ; ?></td>
+                                            <td> <?php $var++; echo $key1 ; ?></td>
+                                            <?php if($kategori == "History" && $var == 5){$save = $key1;} ?>
                                             <?php endforeach ?>
                                             <td>
 
@@ -81,7 +83,7 @@
                                                 </div>
                                                 <!-- <br> -->
 
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
                                                   <div class="icon-container">
                                                     <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
                                                   </div>
@@ -124,7 +126,7 @@
 
 <!-- EDIT FORM -->
 
-        <form id="Medit" action="<?php echo base_url()?>crud/update/<?php if($kategori == 'Vendor'){ echo 'vendor';} else if($kategori == 'History'){}?>" method="POST">
+        <form id="Medit" action="<?php echo base_url()?>crud/update/<?php echo $this->uri->segment(1);?>" method="POST">
             <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -140,15 +142,39 @@
                         <?php foreach ($content->field_data() as $field): ?>
                           <div class="form-group row">
                             <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
-                            <?php if($field->name == "ID"){?>
-                                <div class="col-md-10">
-                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
-                                </div>
+                            <?php if($kategori == "Purchase Order"){ ?>
+                                
+                                <?php if($field->name == "NO SPK" || $field->name == "NAMA PIC" || $field->name == "NAMA VENDOR"){?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                    </div>
+                                <?php }else { ?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                    </div>
+                                <?php } ?>
 
-                            <?php }else { ?>
-                                <div class="col-md-10">
-                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
-                                </div>
+                            <?php } else if($kategori == "Vendor"){?>
+                                <?php if($field->name == "ID"){?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                    </div>
+                                <?php }else { ?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                    </div>
+                                <?php } ?>
+
+                            <?php } else if($kategori == "History"){?>
+                                <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK"){?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                    </div>
+                                <?php }else { ?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                    </div>
+                                <?php } ?>
                             <?php } ?>
 
                             </div>

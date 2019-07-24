@@ -15,7 +15,7 @@
     var table = $('#bootstrap-data-table').DataTable({
         "processing": true,
         select: true,
-        lengthChange: false,
+        // lengthChange: false,
         // columnDefs: [ {
         //      orderable: false,
         //      className: 'select-checkbox',
@@ -122,29 +122,34 @@ $('#Medit ').submit(function(){
    // var id = $('#bootstrap-data-table').data('ID');
    // var href = $("#bootstrap-data-table #btn_update").attr("name");
     // var base_urls = window.location + $(this).attr("action");
-   // alert('hay');
    
+    // var url= window.location;
+    // var segments = url.split('/');
+
+   // alert(segments[0]);
    $.ajax({
        type : $(this).attr('method'),
        url  : $(this).attr('action'),
-       // data   : $(this).serialize(),
-       // data: JSON.stringify(data),
-       // data : {data:data},
-       // dataType : "JSON",
+
 
        success: function(data){
          // $('#Modal_Edit').modal('show');
          // $.each(data, function(key, value){
          //     document.getElementById(key).value = value;
          // });
-        
+        // alert(url);
          alert('Update Success');
+         // alert(data.success);
+
          // $('#bootstrap-data-table').DataTable().ajax.reload();
          // document.getElementById("form_barang").reset();
 
        },
        error: function(data) {
-           alert(url);
+          alert('fail');
+          // alert(data.success);
+
+           // alert('Update Fail');
         }
    });
    // return false;
@@ -153,10 +158,12 @@ $('#Medit ').submit(function(){
 //get data update
   $('#bootstrap-data-table #btn_updateedit').on('click',function(){
     var href = $(this).attr("name");
+
     // var id = $(".col-md-10 input").attr("id");
      // var id = $('#bootstrap-data-table').data('ID');
      // var href = $("#bootstrap-data-table #btn_update").attr("name");
       var base_url = window.location +"/getData/" + href;
+      console.log(base_url);
      // alert();
      $.ajax({
          type : "GET",

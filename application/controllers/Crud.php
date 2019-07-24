@@ -170,4 +170,41 @@ class Crud extends CI_Controller {
 		$this->vendor_model->upVendor($data, 'vendor', $idv);
 		redirect('vendor_list');
 	}
+
+	public function upPO(){
+		$spk = $this->input->post('NO_SPK');
+		$th = $this->input->post('TAHUN_PENGADAAN');
+		$file = $this->input->post('FILE_SPK');
+
+		$data = array(
+			'NO_SPK' => $spk,
+			'TAHUN_PENGADAAN' => $th
+			// 'FILE_SPK' => $file
+		);
+		$this->po_model->upPO($data, 'po', $spk);
+		redirect('Purchase_Order');
+	}
+
+	public function upHistory(){
+		$id = $this->input->post('ID_HISTORY');
+		$sn = $this->input->post('SN');
+		$tpin = $this->input->post('TGL_PINJAM');
+		$tteng = $this->input->post('TGL_TENGGAT');
+		$tkem = $this->input->post('TGL_KEMBALI');
+		$ket = $this->input->post('KETERANGAN');
+
+		$data = array(
+			'TGL_PINJAM' => $tpin
+		);
+		$datax = array(
+			'TGL_TENGGAT' => $tteng,
+			'TGL_KEMBALI' => $tkem,
+			'KETERANGAN' => $ket,
+		);
+
+		$this->historyModel->upHistory($data,'history_aset',$id);
+		$this->historyModel->upHistoryDet($datax,'detail_history',$id,$sn);
+		redirect('history');
+	}
+
 }
