@@ -81,7 +81,7 @@
                                                 </div>
                                                 <!-- <br> -->
 
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_update' href="">
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
                                                   <div class="icon-container">
                                                     <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
                                                   </div>
@@ -123,7 +123,7 @@
         </div><!-- .content -->
 
 <!-- EDIT FORM -->
-S
+
         <form id="Medit" action="<?php echo base_url()?>crud/update/<?php if($kategori == 'Vendor'){ echo 'vendor';} else if($kategori == 'History'){}?>" method="POST">
             <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
