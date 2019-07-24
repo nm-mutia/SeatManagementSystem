@@ -53,7 +53,7 @@
                                 <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <table id="bootstrap-data-table" class="table table-condensed table-bordered hover">
                                     <thead>
                                         <tr>
                                           <!-- <th></th> -->
@@ -72,9 +72,19 @@
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
                                             <td>
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
-                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Delete</button></a>
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_update' href=""><button type="button" class="btn btn-success">Edit</button></a>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+
+                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                <div class="icon-container">
+                                                  <span class="ti-close"></span><span class="icon-name">Hapus</span></a>
+                                                </div>
+                                                <!-- <br> -->
+
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_update' href="">
+                                                  <div class="icon-container">
+                                                    <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
+                                                  </div>
+                                                </a>
                                                 <!-- <button id = 'btn_delete'>delete</button> -->
 
                                             </td>
@@ -84,7 +94,9 @@
                                     </tbody>
                                       <tfoot>
                                             <tr>
+                                              <!-- <th>  </th> -->
                                               <?php foreach ($content->field_data() as $field): ?>
+
                                                       <th><?php echo $field->name ?> </th>
                                                       <!-- <th> Keterangan </th> -->
                                               <?php endforeach ?>
