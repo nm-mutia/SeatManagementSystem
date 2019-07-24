@@ -1680,7 +1680,7 @@ header .form-inline {
   overflow: hidden; }
 
 .icon-container {
-  width: 240px;
+  width: 100px;
   padding: .7em 0;
   float: left;
   position: relative;

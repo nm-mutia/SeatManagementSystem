@@ -64,10 +64,10 @@ $route['admin'] = 'adminDashboard';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
-$route['Purchase_Order/det/(:any)'] = 'porder/detAsetSPK/$1';
 // $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
-$route['Purchase_Order/(:any)'] = 'porder/detail/$1';
+$route['Purchase_Order/det/(:any)'] = 'porder/detail/$1';
+$route['Purchase_Order/det/(:any)/(:any)'] = 'porder/detAsetSPK/$1/$2';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 
 
