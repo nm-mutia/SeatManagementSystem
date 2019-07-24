@@ -82,6 +82,7 @@ $route['crud/aset/(:any)'] = 'crud/aset/$1';
 $route['crud/history/(:any)'] = 'crud/history/$1';
 $route['crud/Purchase_Order'] = 'crud/po';
 $route['crud/po/(:any)'] = 'crud/insDetPO/$1';
+$route['crud/vendor_list/(:any)'] = 'crud/vendor_list/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
@@ -104,4 +105,5 @@ $route['historyAset'] = 'history/aset';
 $route['vendor_list'] = 'vendor';
 $route['vendor_list/add/(:any)'] = 'vendor/setAll';
 $route['vendor_list/(:any)'] = 'vendor/list/$1';
+$route['vendor_list/getData/(:any)'] = 'vendor/oneList/$1';
 $route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';

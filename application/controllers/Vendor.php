@@ -36,6 +36,37 @@ class Vendor extends CI_Controller {
 		$this->load->view('tableDetailPage', $data);
 	}
 
+	public function oneList($nama){
+		// $data['page_title'] = $this->setTitle();
+		// $data['kategori'] = $this->setKategori();
+		// $data['subkategori'] = "detail";
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$get  = $this->vendor_model->getOneList($nama)->result_array();
+
+		// $get = $this->Model->Getbarang(array('id_barang'=>$id_barang))->result_array();
+
+					foreach($get as $row){
+					$result['ID'] = $row['ID'];
+					$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
+					$result['NAMA PIC'] = $row['NAMA PIC'];
+
+					}
+					echo json_encode($result);
+		// while ($row = $content->fetch_assoc()) {
+		// 						# code...
+		// 						$jsonArrayObject = (array('ID' => $row["ID"], 'NAMA VENDOR' => $row["NAMA VENDOR"], 'NAMA PIC' => $row["NAMA PIC"]));
+		// 						$arr[$inc] = $jsonArrayObject;
+		// 						$inc++;
+		// 				}
+		//
+		// $json_array = json_encode($arr);
+
+		// echo json_encode($data);
+		// echo json_encode(	$data);
+
+	}
+
 	public function deleteVendor($nama){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori();
@@ -54,7 +85,6 @@ class Vendor extends CI_Controller {
           echo json_encode($response);
 					// redirect(refresh);
 					// redirect('vendor_list');
-
         }
      else
         {
@@ -65,20 +95,6 @@ class Vendor extends CI_Controller {
 
           echo json_encode($response);
         }
-		 // echo json_encode(array("status" => TRUE));
-		// if($data['content'] == 0){
-		// 	$message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
-		// 	$lokasi = base_url().$this->uri->segment(1);
-		// 	echo "<script type='text/javascript'>alert('$message');
-		// 	window.location = '$lokasi'; </script>";
-			// redirect('vendor_list');
-						// echo json_encode($data);
-		// }else {
-					// redirect('vendor_list');
-					// echo json_encode($data);
-		// }
-		// $this->load->view('tablePage', $data);
-
 	}
 
 	public function setAll(){

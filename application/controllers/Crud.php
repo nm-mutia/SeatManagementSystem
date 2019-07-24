@@ -44,10 +44,10 @@ class Crud extends CI_Controller {
 				$this->historyModel->setHistory($datadet, 'detail_history');
 			}
 		}
-		
+
 		redirect('history');
 	}
-	
+
 	public function po(){
 		$spk = $this->input->post('NO_SPK');
 		$idv = $this->input->post('ID_VENDOR');
@@ -61,8 +61,8 @@ class Crud extends CI_Controller {
 		if($spk != null && $idv != null){
 			$this->po_model->setPO($data, 'po');
 		}
-		$u = $this->encryption->encrypt($spk); 
-		$s = base64_encode($u); 
+		$u = $this->encryption->encrypt($spk);
+		$s = base64_encode($u);
 		redirect('Purchase_Order/'.$s);
 	}
 
@@ -105,14 +105,14 @@ class Crud extends CI_Controller {
 				$this->Aset_model->setAset($dataaset, 'aset');
 			}
 		}
-		$u = $this->encryption->encrypt($idda); 
+		$u = $this->encryption->encrypt($idda);
 		$s = base64_encode($u);
 		redirect('Purchase_Order/det/'.$s);
 	}
-	
+
 
 	public function aset($count){
-		for ($i=1; $i <= $count; $i++) { 
+		for ($i=1; $i <= $count; $i++) {
 
 			$sn = $this->input->post('SN'.$i);
 			$idda = $this->input->post('ID_DA'.$i);
@@ -131,7 +131,7 @@ class Crud extends CI_Controller {
 				'SERIES' => $series
 				// 'IMAGE' => $img
 			);
-			
+
 			if($idda != null && $sn != null){
 				$this->Aset_model->setAset($datax, 'aset');
 			}
@@ -149,7 +149,7 @@ class Crud extends CI_Controller {
 			'ID_PIC' => $idp,
 			'NAMA_PIC' => $namap
 		);
-		
+
 		$this->vendor_model->setVendor($data, 'vendor');
 		redirect('vendor_list');
 	}
