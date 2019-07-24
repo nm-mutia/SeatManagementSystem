@@ -50,6 +50,11 @@ class vendor_model extends CI_Model {
     $this->db->insert($table, $data);
   }
 
+  function upVendor($data, $table, $id){
+    $this->db->where('ID_VENDOR', $id);
+    $this->db->update($table, $data);
+  }
+
   public function deleteVendor($data){
       // $this->db->insert($table, $data);
       // $tables = array('table1', 'table2', 'table3');

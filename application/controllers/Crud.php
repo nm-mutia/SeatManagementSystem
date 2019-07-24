@@ -155,5 +155,19 @@ class Crud extends CI_Controller {
 	}
 
 
-	//u
+	//update
+	public function upVendor(){
+		$idv = $this->input->post('ID');
+		$namav = $this->input->post('NAMA_VENDOR');
+		// $idp = $this->input->post('ID_PIC');
+		$namap = $this->input->post('NAMA_PIC');
+
+		$data = array(
+			'NAMA_VENDOR' => $namav,
+			// 'ID_PIC' => $idp,
+			'NAMA_PIC' => $namap
+		);
+		$this->vendor_model->upVendor($data, 'vendor', $idv);
+		redirect('vendor_list');
+	}
 }

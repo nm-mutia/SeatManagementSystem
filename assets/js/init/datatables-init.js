@@ -66,36 +66,42 @@
 //  });
 
 //get Update
-$('#Medit #btn_update').on('click',function(){
+$('#Medit ').submit(function(){
   // var href = $(this).attr("name");
   // var id = $(".col-md-10 input").attr("id");
    // var id = $('#bootstrap-data-table').data('ID');
    // var href = $("#bootstrap-data-table #btn_update").attr("name");
-    // var base_url = window.location +"/getData/" + href;
-   alert();
+    // var base_urls = window.location + $(this).attr("action");
+   // alert('hay');
+   
    $.ajax({
-       type : "GET",
-       url  : base_url,
-       dataType : "JSON",
+       type : $(this).attr('method'),
+       url  : $(this).attr('action'),
+       // data   : $(this).serialize(),
+       // data: JSON.stringify(data),
+       // data : {data:data},
+       // dataType : "JSON",
+
        success: function(data){
          // $('#Modal_Edit').modal('show');
          // $.each(data, function(key, value){
          //     document.getElementById(key).value = value;
          // });
-
-         $('#bootstrap-data-table').DataTable().ajax.reload();
+        
+         alert('Update Success');
+         // $('#bootstrap-data-table').DataTable().ajax.reload();
          // document.getElementById("form_barang").reset();
 
        },
        error: function(data) {
-           alert('kenapa fail');
+           alert(url);
         }
    });
    // return false;
 
 });
 //get data update
-  $('#bootstrap-data-table #btn_update').on('click',function(){
+  $('#bootstrap-data-table #btn_updateedit').on('click',function(){
     var href = $(this).attr("name");
     // var id = $(".col-md-10 input").attr("id");
      // var id = $('#bootstrap-data-table').data('ID');
@@ -112,6 +118,7 @@ $('#Medit #btn_update').on('click',function(){
              // var huruf = "#"+key;
                // $('#'+key).val(value);
                document.getElementById(key).value = value;
+               // document.getElementById(key).name = name;
                // alert(value);
            });
                   // document.getElementById("harga").value = data.harga;

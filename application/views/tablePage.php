@@ -74,7 +74,7 @@
                                             <td>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
                                                 <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Delete</button></a>
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_update' href=""><button type="button" class="btn btn-success">Edit</button></a>
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" data-toggle="modal" data-target="#Modal_Edit"  id ="btn_updateedit" href=""><button type="button" class="btn btn-success">Edit</button></a>
                                                 <!-- <button id = 'btn_delete'>delete</button> -->
 
                                             </td>
@@ -102,52 +102,52 @@
         </div><!-- .content -->
 
 <!-- EDIT FORM -->
-        <form id="Medit">
-                    <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
+        <form id="Medit" action="<?php echo base_url()?>crud/update/<?php if($kategori == 'Vendor'){ echo 'vendor';} else if($kategori == 'History'){}?>" method="POST">
+            <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit <?php echo $kategori ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
 
-                            <div>
-                                <?php foreach ($content->field_data() as $field): ?>
-                                  <div class="form-group row">
-                                        <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
-                                        <?php if($field->name == "ID"){?>
-                                        <div class="col-md-10">
-                                            <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" placeholder="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
-                                          </div>
+                    <div>
+                        <?php foreach ($content->field_data() as $field): ?>
+                          <div class="form-group row">
+                            <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
+                            <?php if($field->name == "ID"){?>
+                                <div class="col-md-10">
+                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                </div>
 
-                                          <?php }else { ?>
-                                              <div class="col-md-10">
-                                            <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" placeholder="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
-                                            </div>
-                                          <?php } ?>
-                                    </div>
-                                <?php endforeach ?>
+                            <?php }else { ?>
+                                <div class="col-md-10">
+                                    <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                </div>
+                            <?php } ?>
                             </div>
-<!--
-                                <div class="form-group row">
-                                    <label class="col-md-2 col-form-label">Product Code</label>
-                                    <div class="col-md-10">
-                                      <input type="text" name="product_code_edit" id="product_code_edit" class="form-control" placeholder="Product Code" readonly>
-                                    </div>
-                                </div> -->
-
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" type="submit" id="btn_update" class="btn btn-primary">Update</button>
-                          </div>
-                        </div>
-                      </div>
+                        <?php endforeach ?>
                     </div>
-                    </form>
+<!--
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label">Product Code</label>
+                            <div class="col-md-10">
+                              <input type="text" name="product_code_edit" id="product_code_edit" class="form-control" placeholder="Product Code" readonly>
+                            </div>
+                        </div> -->
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button name="submit" type="submit" id="btn_update2" class="btn btn-primary">Update</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
                 <!--END MODAL EDIT-->
 
         <div class="clearfix"></div>
