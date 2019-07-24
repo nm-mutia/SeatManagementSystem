@@ -11,11 +11,11 @@
     //          'csv', 'print'
     //     ]
     // });
-
+    //
     var table = $('#bootstrap-data-table').DataTable({
-        // "processing": true,
-        // select: true,
-        // lengthChange: false,
+        "processing": true,
+        select: true,
+        lengthChange: false,
         // columnDefs: [ {
         //      orderable: false,
         //      className: 'select-checkbox',
@@ -38,17 +38,67 @@
                         'excel',
                         'csv',
                         'print'
-        ]
+        ],
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
     });
 
-    $('#bootstrap-data-table').on( 'click', 'tbody td:not(:first-child)', function (e) {
+    // $('#bootstrap-data-table').DataTable( {
+    //     initComplete: function () {
+    //         this.api().columns().every( function () {
+    //             var column = this;
+    //             var select = $('<select><option value=""></option></select>')
+    //                 .appendTo( $(column.footer()).empty() )
+    //                 .on( 'change', function () {
+    //                     var val = $.fn.dataTable.util.escapeRegex(
+    //                         $(this).val()
+    //                     );
+    //
+    //                     column
+    //                         .search( val ? '^'+val+'$' : '', true, false )
+    //                         .draw();
+    //                 } );
+    //
+    //             column.data().unique().sort().each( function ( d, j ) {
+    //                 select.append( '<option value="'+d+'">'+d+'</option>' )
+    //             } );
+    //         } );
+    //     }
+    // } );
+
+
+    $('#bootstrap-data-table').on( 'click', 'tbody tr', function (e) {
     // $('#bootstrap-data-table').inline( this );
-      // select: true;
+      // select: true; :not(:first-child)
           // alert( "Kok masih jalan." );
            // $('#bootstrap-data-table').parents('td').addClass("active");
            // table.row(  $('#bootstrap-data-table').parents('tr')).addClass("selected");
            // table.inline();
+           if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
 
     } )
     ;
@@ -152,7 +202,7 @@ $('#Medit #btn_update').on('click',function(){
                // alert(data.success);
                if(data.success == "true"){
                  // alert(data);
-                 alert('terhapus')
+                 alert('Terhapus')
 
                   // alert($(this));
                   // table
@@ -164,7 +214,7 @@ $('#Medit #btn_update').on('click',function(){
                           // table.ajax.reload();
                   table.row(  $('#bootstrap-data-table #btn_delete').parents('tr')).remove().draw(false);
                }else{
-                 alert(data.success);
+                 // alert(data.success);
                  alert('Maaf, Data tidak bisa dihapus karena data masih digunakan')
                }
                // alert(href);
@@ -227,7 +277,16 @@ $('#Medit #btn_update').on('click',function(){
   //   });
 
 
+  // table.rows().every( function () {
+  //     // var d = this.data();
+  //     // d.counter++; // update data source for the row
+  //     // alert(d);
+  //
+  //     this.invalidate(); // invalidate the data DataTables has cached for this row
+  // } );
 
+  // Draw once all updates are done
+  // table.draw();
 
 
 

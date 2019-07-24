@@ -46,14 +46,17 @@ class Porder extends CI_Controller {
 	}
 
 	//detail aset dari detail po
-	public function detAsetSPK($id){
+	public function detAsetSPK($id, $skat){
 		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = $this->setKategori(2);
+		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
-		$data['subkategori'] = "detail";
-		$data['content'] = $this->Aset_model->detAsetSPK($sid);
-    	$this->load->view('tableDetailPage', $data);
+		$skat = base64_decode($skat);
+		$skat = $this->encryption->decrypt($skat);
+		$data['subkategori'] = "detail ". $sid ;
+		$data['subsubkategori'] ="detail ". $skat;
+		$data['content'] = $this->Aset_model->detAsetSPK($skat);
+    	$this->load->view('tableDetailPage2', $data);
 	}
 
 	public function formdetailpo($spk){
