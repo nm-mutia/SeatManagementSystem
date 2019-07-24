@@ -28,6 +28,13 @@ class vendor_model extends CI_Model {
     return $data;
   }
 
+  public function getOneList($nama){
+    $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor where ID_VENDOR = ?', array($nama));
+
+    return $fields;
+
+  }
+
   function getAllForm(){
     $data = $this->db->query("SELECT NAMA_VENDOR, ID_PIC, NAMA_PIC from vendor");
     return $data;
