@@ -82,6 +82,14 @@
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
+                                      <tfoot>
+                                            <tr>
+                                              <?php foreach ($content->field_data() as $field): ?>
+                                                      <th><?php echo $field->name ?> </th>
+                                                      <!-- <th> Keterangan </th> -->
+                                              <?php endforeach ?>
+                                            </tr>
+                                    </tfoot>
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
@@ -102,7 +110,7 @@
         </div><!-- .content -->
 
 <!-- EDIT FORM -->
-        <form id="Medit">
+        <form id="  ">
                     <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">

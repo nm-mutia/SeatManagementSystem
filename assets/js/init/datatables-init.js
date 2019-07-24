@@ -11,36 +11,60 @@
     //          'csv', 'print'
     //     ]
     // });
+    // 
+    // var table = $('#bootstrap-data-table').DataTable({
+    //     // "processing": true,
+    //     // select: true,
+    //     // lengthChange: false,
+    //     // columnDefs: [ {
+    //     //      orderable: false,
+    //     //      className: 'select-checkbox',
+    //     //      targets:   0
+    //     //  } ],
+    //     lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    //     dom: 'lfrt<"clear">Bip',
+    //     buttons : true,
+    //     destroy: true,
+    //     select: {
+    //             style:    'os',
+    //             selector: 'td:first-child'
+    //     },
+    //     // select: {
+    //     //       style:    'os',
+    //     //       selector: 'td:first-child'
+    //     //   },
+    //     buttons: [
+    //                     'copy',
+    //                     'excel',
+    //                     'csv',
+    //                     'print'
+    //     ]
+    //
+    // });
 
-    var table = $('#bootstrap-data-table').DataTable({
-        // "processing": true,
-        // select: true,
-        // lengthChange: false,
-        // columnDefs: [ {
-        //      orderable: false,
-        //      className: 'select-checkbox',
-        //      targets:   0
-        //  } ],
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        dom: 'lfrt<"clear">Bip',
-        buttons : true,
-        destroy: true,
-        select: {
-                style:    'os',
-                selector: 'td:first-child'
-        },
-        // select: {
-        //       style:    'os',
-        //       selector: 'td:first-child'
-        //   },
-        buttons: [
-                        'copy',
-                        'excel',
-                        'csv',
-                        'print'
-        ]
+    $('#bootstrap-data-table').DataTable( {
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
 
-    });
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+
 
     $('#bootstrap-data-table').on( 'click', 'tbody td:not(:first-child)', function (e) {
     // $('#bootstrap-data-table').inline( this );
