@@ -103,5 +103,26 @@ class History extends CI_Controller {
 		$this->load->view('addFormPage', $data);
 	}
 
+	public function oneList($nama, $sn){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$sn = base64_decode($sn);
+		$sn = $this->encryption->decrypt($sn);
+		$get  = $this->historyModel->getOneList($nama, $sn)->result_array();
+		// echo $sn.$nama;
+
+		foreach($get as $row){
+			$result['ID_HISTORY'] = $row['ID_HISTORY'];
+			$result['NIK'] = $row['NIK'];
+			$result['TGL_PINJAM'] = $row['TGL_PINJAM'];
+			$result['SN'] = $row['SN'];
+			$result['TGL_TENGGAT'] = $row['TGL_TENGGAT'];
+			$result['TGL_KEMBALI'] = $row['TGL_KEMBALI'];
+			$result['KETERANGAN'] = $row['KETERANGAN'];
+		}
+
+		echo json_encode($result);
+
+	}
 
 }

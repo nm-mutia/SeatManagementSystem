@@ -83,5 +83,20 @@ class Porder extends CI_Controller {
 		$this->load->view('addFormPage', $data);
 	}
 
+	public function oneList($nama){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$get  = $this->Po_model->getOneList($nama)->result_array();
 
+
+		foreach($get as $row){
+			$result['NO SPK'] = $row['NO SPK'];
+			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
+			$result['NAMA PIC'] = $row['NAMA PIC'];
+			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
+			$result['FILE SPK'] = $row['FILE SPK'];
+		}
+		echo json_encode($result);
+
+	}
 }
