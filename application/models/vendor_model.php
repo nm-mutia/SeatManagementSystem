@@ -40,8 +40,19 @@ class vendor_model extends CI_Model {
     return $data;
   }
 
+  function getAll(){
+    $data = $this->db->query("SELECT * from vendor");
+    return $data;
+  }
+
+
   function setVendor($data, $table){
     $this->db->insert($table, $data);
+  }
+
+  function upVendor($data, $table, $id){
+    $this->db->where('ID_VENDOR', $id);
+    $this->db->update($table, $data);
   }
 
   public function deleteVendor($data){

@@ -53,6 +53,7 @@ class Vendor extends CI_Controller {
 
 					}
 					echo json_encode($result);
+					// return $result;
 		// while ($row = $content->fetch_assoc()) {
 		// 						# code...
 		// 						$jsonArrayObject = (array('ID' => $row["ID"], 'NAMA VENDOR' => $row["NAMA VENDOR"], 'NAMA PIC' => $row["NAMA PIC"]));

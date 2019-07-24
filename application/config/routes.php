@@ -84,6 +84,9 @@ $route['crud/Purchase_Order'] = 'crud/po';
 $route['crud/po/(:any)'] = 'crud/insDetPO/$1';
 $route['crud/vendor_list/(:any)'] = 'crud/vendor_list/$1';
 
+//update to database
+$route['crud/update/vendor'] = 'crud/upVendor';
+
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 
