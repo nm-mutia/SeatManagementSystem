@@ -65,11 +65,39 @@
 //      $('[name="price_edit"]').val(price);
 //  });
 
-//delete record to database
+//get Update
+$('#Medit #btn_update').on('click',function(){
+  // var href = $(this).attr("name");
+  // var id = $(".col-md-10 input").attr("id");
+   // var id = $('#bootstrap-data-table').data('ID');
+   // var href = $("#bootstrap-data-table #btn_update").attr("name");
+    // var base_url = window.location +"/getData/" + href;
+   alert();
+   $.ajax({
+       type : "GET",
+       url  : base_url,
+       dataType : "JSON",
+       success: function(data){
+         // $('#Modal_Edit').modal('show');
+         // $.each(data, function(key, value){
+         //     document.getElementById(key).value = value;
+         // });
+
+         $('#bootstrap-data-table').DataTable().ajax.reload();
+         // document.getElementById("form_barang").reset();
+
+       },
+       error: function(data) {
+           alert('kenapa fail');
+        }
+   });
+   // return false;
+
+});
+//get data update
   $('#bootstrap-data-table #btn_update').on('click',function(){
     var href = $(this).attr("name");
     // var id = $(".col-md-10 input").attr("id");
-
      // var id = $('#bootstrap-data-table').data('ID');
      // var href = $("#bootstrap-data-table #btn_update").attr("name");
       var base_url = window.location +"/getData/" + href;
@@ -78,7 +106,6 @@
          type : "GET",
          url  : base_url,
          dataType : "JSON",
-         // data : $response,
          success: function(data){
            $('#Modal_Edit').modal('show');
            $.each(data, function(key, value){

@@ -82,6 +82,7 @@ $route['crud/aset/(:any)'] = 'crud/aset/$1';
 $route['crud/history/(:any)'] = 'crud/history/$1';
 $route['crud/Purchase_Order'] = 'crud/po';
 $route['crud/po/(:any)'] = 'crud/insDetPO/$1';
+$route['crud/vendor_list/(:any)'] = 'crud/vendor_list/$1';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';

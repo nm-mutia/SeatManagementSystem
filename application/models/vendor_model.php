@@ -30,11 +30,7 @@ class vendor_model extends CI_Model {
 
   public function getOneList($nama){
     $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor where ID_VENDOR = ?', array($nama));
-    // $data = array();
-    // while ( $row = mysql_fetch_row($fields) )
-    // {
-    //   $data[] = $row;
-    // }
+
     return $fields;
 
   }
