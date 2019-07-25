@@ -98,7 +98,7 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
             ));
     $count = $query->num_rows();
     if($count){
-      echo "ADA WOY";
+      // echo "ADA WOY";
       // echo "<script>alert('ERROR! Serial Number already exist!')</script>";
       // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
       return $count;

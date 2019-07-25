@@ -150,7 +150,12 @@ class Porder extends CI_Controller {
 			// 'NAMA_PIC' => $namap
 		);
 		if($spk != null && $idv != null){
-			$this->Po_model->setPO($data, 'po', $spk);
+			$try = $this->Po_model->setPO($data, 'po', $spk);
+			if ($try > 0) {
+		      echo "<script>alert('ERROR! Serial Number already exist!')</script>";
+		      // echo anchor('Purchase_Order');
+		      redirect('Purchase_Order', 'refresh');
+			}
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
@@ -202,7 +207,6 @@ class Porder extends CI_Controller {
 			      // echo anchor('Purchase_Order');
 			      redirect('Purchase_Order', 'refresh');
 				}
-				redirect('Purchase_Order', 'refresh');
 				
 			}
 		}

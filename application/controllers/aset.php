@@ -136,10 +136,9 @@ class Aset extends CI_Controller {
 			      // echo anchor('Purchase_Order');
 			      redirect('Purchase_Order', 'refresh');
 				}
-				redirect('Purchase_Order', 'refresh');
+				// redirect('Purchase_Order', 'refresh');
 			}
-			// echo $idda.$sn.$checksum.$series;
 		}
-		// redirect('Purchase_Order');
+		redirect('Purchase_Order', 'refresh');
 	}
 }
