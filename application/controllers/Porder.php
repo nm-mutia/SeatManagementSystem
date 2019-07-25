@@ -97,6 +97,35 @@ class Porder extends CI_Controller {
 			$result['FILE SPK'] = $row['FILE SPK'];
 		}
 		echo json_encode($result);
+	}
+	public function deletePorder($nama){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori(1);
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$data['content'] = $this->Po_model->deletePorder($nama);
+// $data['content'] = 1;
+		// $message = "tes";
+		// echo "<script type='text/javascript'>alert('$message');</script>";
+		if($data['content'])
+        {
+					$response = array(
+						// keys
+						"success" => "true"
+					);
 
+          echo json_encode($response);
+					// redirect('refresh');
+					redirect('vendor_list');
+        }
+     else
+        {
+					$response = array(
+						// keys
+						"success" => "false"
+					);
+
+          echo json_encode($response);
+        }
 	}
 }

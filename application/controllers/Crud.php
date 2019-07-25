@@ -63,7 +63,7 @@ class Crud extends CI_Controller {
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
-		redirect('Purchase_Order/'.$s);
+		redirect('Purchase_Order/det/'.$s);
 	}
 
 	public function insDetPO($count){

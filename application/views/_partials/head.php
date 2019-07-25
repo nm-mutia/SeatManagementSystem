@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/jquery.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/select.dataTables.min.css">
-
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/fixedHeader.dataTables.min.css">
 
 <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/dataTables.bootstrap.min.css"> -->
 <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
