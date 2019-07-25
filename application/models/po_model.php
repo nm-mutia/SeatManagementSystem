@@ -73,9 +73,10 @@ class Po_model extends CI_Model {
     $count = $query->num_rows();
     var_dump($query->row());
     if($count){
-      echo "ADA WOY";
+      // echo "ADA WOY";
       // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
       // redirect('Purchase_Order');
+      return $count;
     }
     $this->db->insert($table, $data);
   }
