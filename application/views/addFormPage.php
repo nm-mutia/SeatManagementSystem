@@ -7,9 +7,6 @@
         label{
             font-weight: bold;
         }
-        /*#subktg1, #subktg2{
-            display: none;
-        }*/
     </style>
 </head>
 <body>
@@ -72,7 +69,19 @@
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php if($kategori == "Purchase Order"){?>
+                                                                <?php if($field->name == "ID_VENDOR"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                                                    <option>Pilih...</option>
+                                                                    <?php foreach ($idven->result_array() as $sel){ ?>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['NAMA_VENDOR'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            <?php  }else{ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php }}else{ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php }?>
                                                         </div>
                                                     <?php endforeach ?>
                                                 </div>
@@ -85,6 +94,13 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist + 1; ?>" readonly>
+                                                            <?php } else if($field->name == "ID_VENDOR"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                                                    <option>Pilih...</option>
+                                                                    <?php foreach ($idven->result_array() as $sel){ ?>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['NAMA_VENDOR'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
                                                             <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
                                                             <?php  } ?>

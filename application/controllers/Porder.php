@@ -8,6 +8,7 @@ class Porder extends CI_Controller {
 		 parent::__construct();
 		 $this->load->model('Po_model');
 		 $this->load->model('Aset_model');
+		 $this->load->model('vendor_model');
 	}
 
 	public function setTitle(){
@@ -78,11 +79,24 @@ class Porder extends CI_Controller {
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori(1);
 		$data['content'] = $this->Po_model->getAllForm();
-		// $data['contentdet'] = $this->Po_model->setDetail();
-		// $data['contentaset'] = $this->Aset_model->getAsetAll();
-		// $data['idda'] = $this->Po_model->getLastId()->row()->id_da;
+		$data['idven'] =  $this->vendor_model->getAll();
 		$this->load->view('addFormPage', $data);
 	}
 
+	public function oneList($nama){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$get  = $this->Po_model->getOneList($nama)->result_array();
 
+
+		foreach($get as $row){
+			$result['NO SPK'] = $row['NO SPK'];
+			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
+			$result['NAMA PIC'] = $row['NAMA PIC'];
+			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
+			$result['FILE SPK'] = $row['FILE SPK'];
+		}
+		echo json_encode($result);
+
+	}
 }

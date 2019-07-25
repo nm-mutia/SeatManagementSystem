@@ -45,6 +45,19 @@ class Po_model extends CI_Model {
     return $data;
   }
 
+  public function getOneList($nama){
+    $fields = $this->db->query("SELECT po.NO_SPK AS 'NO SPK', vendor.NAMA_VENDOR AS 'NAMA VENDOR', vendor.NAMA_PIC AS 'NAMA PIC',po.TAHUN_PENGADAAN AS 'TAHUN PENGADAAN', po.FILE_SPK AS 'FILE SPK'
+                      FROM po
+                      JOIN vendor ON po.ID_VENDOR = vendor.ID_VENDOR
+                      WHERE po.NO_SPK = ? ", array($nama));
+    return $fields;
+  }
+
+  function upPO($data, $table, $id){
+    $this->db->where('NO_SPK', $id);
+    $this->db->update($table, $data);
+  }
+
   function setPO($data, $table){
     $this->db->insert($table, $data);
   }

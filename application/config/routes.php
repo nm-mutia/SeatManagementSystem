@@ -68,6 +68,7 @@ $route['Purchase_Order'] = 'porder';
 $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/det/(:any)'] = 'porder/detail/$1';
 $route['Purchase_Order/det/(:any)/(:any)'] = 'porder/detAsetSPK/$1/$2';
+$route['Purchase_Order/getData/(:any)'] = 'porder/oneList/$1';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 
 
@@ -84,6 +85,11 @@ $route['crud/Purchase_Order'] = 'crud/po';
 $route['crud/po/(:any)'] = 'crud/insDetPO/$1';
 $route['crud/vendor_list/(:any)'] = 'crud/vendor_list/$1';
 
+//update to database
+$route['crud/update/vendor_list'] = 'crud/upVendor';
+$route['crud/update/Purchase_Order'] = 'crud/upPO';
+$route['crud/update/history'] = 'crud/upHistory';
+
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 
@@ -91,6 +97,7 @@ $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 //menu Histori
 $route['history'] = 'history/getAll';
 $route['history/det/(:any)'] = 'history/detail/$1';
+$route['history/getData/(:any)/(:any)'] = 'history/oneList/$1/$2';
 // $route['history/History/addDetail'] = 'history/setDetailHistory';
 $route['history/(:any)'] = 'history/setDetail';
 

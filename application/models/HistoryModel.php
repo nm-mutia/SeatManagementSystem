@@ -98,6 +98,26 @@ class HistoryModel extends CI_Model {
     return $data;
   }
 
+  public function getOneList($nama, $sn){
+    $fields = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM, dh.sn AS SN, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.keterangan AS KETERANGAN
+            from history_aset as ha
+            join detail_history as dh on ha.id_history = dh.id_history
+            WHERE ha.id_history = ? 
+            and dh.sn = ?", array($nama, $sn));
+    return $fields;
+  }
+
+  function upHistory($data, $table, $id){
+    $this->db->where('ID_HISTORY', $id);
+    $this->db->update($table, $data);
+  }
+
+  function upHistoryDet($data, $table, $id, $sn){
+    $this->db->where('ID_HISTORY', $id);
+    $this->db->where('SN', $sn);
+    $this->db->update($table, $data);
+  }
+
   function setHistory($data, $table){
     $this->db->insert($table, $data);
   }
