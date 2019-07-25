@@ -136,8 +136,7 @@ class Porder extends CI_Controller {
 
           echo json_encode($response);
         }
-	    }
-	}
+    }
 
 	//insert po
 	public function insPo(){
