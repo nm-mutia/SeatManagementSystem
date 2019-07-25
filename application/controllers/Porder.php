@@ -116,7 +116,7 @@ class Porder extends CI_Controller {
 
           echo json_encode($response);
 					// redirect('refresh');
-					redirect('vendor_list');
+					// redirect('vendor_list');
         }
      else
         {
