@@ -1680,8 +1680,9 @@ header .form-inline {
   overflow: hidden; }
 
 .icon-container {
-  width: 100px;
-  padding: .7em 0;
+  margin: 0 0 1em;
+  width: 70px;
+  padding: .8em 0;
   float: left;
   position: relative;
   text-align: left; }
@@ -1696,7 +1697,7 @@ header .form-inline {
 
 .icon-container:hover [class^="ti-"],
 .icon-container:hover [class*=" ti-"] {
-  font-size: 2.2em;
+  font-size: 3.2em;
   margin-top: -5px; }
 
 .icon-container:hover .icon-name {

@@ -173,6 +173,7 @@ class Porder extends CI_Controller {
 		);
 		if($spk != null){
 			$this->Po_model->setDetPO($datadet, 'detail_po');
+
 		}
 
 		$idda = $this->input->post('ID_DA');

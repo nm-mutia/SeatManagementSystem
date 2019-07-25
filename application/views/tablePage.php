@@ -75,20 +75,26 @@
                                             <?php endforeach ?>
                                             <td>
 
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                  <div class="icon-container">
+                                                    <span class="ti-eye"></span>
+                                                  </div>
+                                                </a>
+
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                  <div class="icon-container">
+                                                    <span class="ti-pencil-alt"></span>
+                                                  </div>
+                                                </a>
 
                                                 <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
-                                                    <span class="ti-close"></span><span class="icon-name">Hapus</span>
+                                                    <span class="ti-trash"></span>
                                                   </div>
                                                 </a>
                                                 <!-- <br> -->
 
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                  <div class="icon-container">
-                                                    <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
-                                                  </div>
-                                                </a>
+
 
 
                                             </td>
@@ -106,7 +112,7 @@
                                               <?php endforeach ?>
                                               <th> KETERANGAN  </th>
 
-                                            </tr> 
+                                            </tr>
                                     </tfoot>
                                 </table>
                                 <?php

@@ -80,7 +80,11 @@
                                                 if ($kategori == 'Aset Keseluruhan'){
                                             ?>
                                             <td>
-                                              <a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Details</button></a>
+                                              <a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                <div class="icon-container">
+                                                  <span class="ti-pencil-alt"></span>
+                                                </div>
+                                              </a>
 
                                             </td>
 
@@ -91,10 +95,19 @@
                                                if ($kategori == 'Purchase Order'){
                                             ?>
                                             <td>
-                                              <a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Details</button></a>
+                                              <a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                <div class="icon-container">
+                                                  <span class="ti-eye"></span>
+                                                </div>
+                                              </a>
+
 
                                                 <!-- <a href="<?php echo base_url($this->uri->segment(1))?>/<?php echo "det/";?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a> -->
-                                                <a href="<?php echo base_url()?>aset/<?php echo "addAset/";?><?php $u = $this->encryption->encrypt($idspk); echo base64_encode($u); ?>/<?php $us = $this->encryption->encrypt(current($key)); echo base64_encode($us); ?>"><button type="button" class="btn btn-success">Tambah Aset</button></a>
+                                                <a href="<?php echo base_url()?>aset/<?php echo "addAset/";?><?php $u = $this->encryption->encrypt($idspk); echo base64_encode($u); ?>/<?php $us = $this->encryption->encrypt(current($key)); echo base64_encode($us); ?>">
+                                                    <div class="icon-container">
+                                                      <span class="ti-plus"></span><br><span class="icon-name">Aset</span>
+                                                    </div>
+                                                </a>
 
 
                                             </td>
