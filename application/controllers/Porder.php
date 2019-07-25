@@ -99,8 +99,8 @@ class Porder extends CI_Controller {
 		echo json_encode($result);
 	}
 	public function deletePorder($nama){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = $this->setKategori(1);
+		// $data['page_title'] = $this->setTitle();
+		// $data['kategori'] = $this->setKategori(1);
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->Po_model->deletePorder($nama);
@@ -128,4 +128,5 @@ class Porder extends CI_Controller {
           echo json_encode($response);
         }
 	}
+
 }

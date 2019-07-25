@@ -112,7 +112,8 @@ $('#Medit ').submit(function(){
                     //     .draw();
                }else{
                  // alert(data.success);
-                 alert('Maaf, Data tidak bisa dihapus karena data masih digunakan')
+                   alert('Maaf, Data tidak bisa dihapus karena data masih digunakan');
+
                }
 
              },

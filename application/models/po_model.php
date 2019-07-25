@@ -74,8 +74,6 @@ class Po_model extends CI_Model {
         $this->db->delete('po');
         return 1;
       }
-
-      // return;
   }
 
 }
