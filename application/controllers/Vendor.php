@@ -91,7 +91,7 @@ class Vendor extends CI_Controller {
         {
 					$response = array(
 						// keys
-						"success" => "false"
+						"success" => "vendor false"
 					);
 
           echo json_encode($response);

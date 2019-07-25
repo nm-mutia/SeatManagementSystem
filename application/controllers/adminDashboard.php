@@ -14,7 +14,7 @@ class AdminDashboard extends CI_Controller {
 	{
 		// $data['content'] = $this->db->get('karyawan');
 	  	$data['content'] = $this->historyModel->getTenggattable();
-		$this->load->view('index', $data);
+			$this->load->view('index', $data);
 	}
 
 	public function detail($id, $sn)

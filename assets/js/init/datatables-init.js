@@ -1,5 +1,7 @@
 (function ($) {
     //    "use strict";
+    var lokasinow = window.location.href ;
+
 
 
     /*  Data Table
@@ -12,156 +14,45 @@
     //     ]
     // });
     //
-    var table = $('#bootstrap-data-table').DataTable({
-        "processing": true,
-        select: true,
-        // lengthChange: false,
-        // columnDefs: [ {
-        //      orderable: false,
-        //      className: 'select-checkbox',
-        //      targets:   0
-        //  } ],
-        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        dom: 'lfrt<"clear">Bip',
-        buttons : true,
-        destroy: true,
-        select: {
-                style:    'os',
-                selector: 'td:first-child'
-        },
-        // select: {
-        //       style:    'os',
-        //       selector: 'td:first-child'
-        //   },
-        buttons: [
-                        'copy',
-                        'excel',
-                        'csv',
-                        'print'
-        ],
-        initComplete: function () {
-            this.api().columns().every( function () {
-                var column = this;
-                var select = $('<select><option value=""></option></select>')
-                    .appendTo( $(column.footer()).empty() )
-                    .on( 'change', function () {
-                        var val = $.fn.dataTable.util.escapeRegex(
-                            $(this).val()
-                        );
+    $('#bootstrap-data-table thead tr').clone(true).appendTo( '#bootstrap-data-table thead' );
+    $('#bootstrap-data-table thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
 
-                        column
-                            .search( val ? '^'+val+'$' : '', true, false )
-                            .draw();
-                    } );
-
-                column.data().unique().sort().each( function ( d, j ) {
-                    select.append( '<option value="'+d+'">'+d+'</option>' )
-                } );
-            } );
-        }
-    });
-
-    // $('#bootstrap-data-table').DataTable( {
-    //     initComplete: function () {
-    //         this.api().columns().every( function () {
-    //             var column = this;
-    //             var select = $('<select><option value=""></option></select>')
-    //                 .appendTo( $(column.footer()).empty() )
-    //                 .on( 'change', function () {
-    //                     var val = $.fn.dataTable.util.escapeRegex(
-    //                         $(this).val()
-    //                     );
-    //
-    //                     column
-    //                         .search( val ? '^'+val+'$' : '', true, false )
-    //                         .draw();
-    //                 } );
-    //
-    //             column.data().unique().sort().each( function ( d, j ) {
-    //                 select.append( '<option value="'+d+'">'+d+'</option>' )
-    //             } );
-    //         } );
-    //     }
-    // } );
-
-
-    $('#bootstrap-data-table').on( 'click', 'tbody tr', function (e) {
-    // $('#bootstrap-data-table').inline( this );
-      // select: true; :not(:first-child)
-          // alert( "Kok masih jalan." );
-           // $('#bootstrap-data-table').parents('td').addClass("active");
-           // table.row(  $('#bootstrap-data-table').parents('tr')).addClass("selected");
-           // table.inline();
-           if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
             }
-            else {
-                table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
+        } );
+    } );
 
-    } )
-    ;
 
-// btn_update
-// $('#show_data').on('click','.item_edit',function(){
-//      var product_code = $(this).data('product_code');
-//      var product_name = $(this).data('product_name');
-//      var price        = $(this).data('price');
-//
-//      $('#Modal_Edit').modal('show');
-//      $('[name="product_code_edit"]').val(product_code);
-//      $('[name="product_name_edit"]').val(product_name);
-//      $('[name="price_edit"]').val(price);
-//  });
+
 
 //get Update
 $('#Medit ').submit(function(){
-  // var href = $(this).attr("name");
-  // var id = $(".col-md-10 input").attr("id");
-   // var id = $('#bootstrap-data-table').data('ID');
-   // var href = $("#bootstrap-data-table #btn_update").attr("name");
-    // var base_urls = window.location + $(this).attr("action");
-   
-    // var url= window.location;
-    // var segments = url.split('/');
-
-   // alert(segments[0]);
    $.ajax({
        type : $(this).attr('method'),
        url  : $(this).attr('action'),
 
 
        success: function(data){
-         // $('#Modal_Edit').modal('show');
-         // $.each(data, function(key, value){
-         //     document.getElementById(key).value = value;
-         // });
-        // alert(url);
+
          alert('Update Success');
-         // alert(data.success);
-
-         // $('#bootstrap-data-table').DataTable().ajax.reload();
-         // document.getElementById("form_barang").reset();
-
+         // table.fnPageChange("first",1);
        },
        error: function(data) {
           alert('fail');
-          // alert(data.success);
-
-           // alert('Update Fail');
         }
    });
-   // return false;
 
 });
 //get data update
   $('#bootstrap-data-table #btn_updateedit').on('click',function(){
     var href = $(this).attr("name");
-
-    // var id = $(".col-md-10 input").attr("id");
-     // var id = $('#bootstrap-data-table').data('ID');
-     // var href = $("#bootstrap-data-table #btn_update").attr("name");
       var base_url = window.location +"/getData/" + href;
       console.log(base_url);
      // alert();
@@ -172,40 +63,23 @@ $('#Medit ').submit(function(){
          success: function(data){
            $('#Modal_Edit').modal('show');
            $.each(data, function(key, value){
-             // var huruf = "#"+key;
-               // $('#'+key).val(value);
                document.getElementById(key).value = value;
-               // document.getElementById(key).name = name;
                // alert(value);
            });
-                  // document.getElementById("harga").value = data.harga;
-
-          // $('[name="product_code_edit"]').val(product_code);
-          // $('[name="product_name_edit"]').val(product_name);
-          // $('[name="price_edit"]').val(price);
-           // alert(data.content);
-          // $('#Modal_Edit').modal('toggle');
-          // $('#Modal_Edit').modal('show');
-          // $('#Modal_Edit').modal('hide');
-           // $('input[name=<?php echo $field->name ?>]').val('data.<?php echo $field->name ?>');
-           // alert(data.ID);
-
          },
          error: function(data) {
              alert('kenapa fail');
-
-          //sad error
-          // $("#error-message-selector").html('').append(data.responseJSON.error_msg);
-          }
+        }
      });
      // return false;
 
  });
 
     //delete record to database
-      $('#bootstrap-data-table #btn_delete').on('click',function(){
+      $('#bootstrap-data-table #btn_delete').on('click',function(event){
         var href = $(this).attr("href");
         // alert("Apakah");
+        // alert(href);
          // var product_code = $('#product_code_delete').val();
          $.ajax({
              type : "POST",
@@ -216,34 +90,42 @@ $('#Medit ').submit(function(){
                // alert(data.success);
                if(data.success == "true"){
                  // alert(data);
-                 alert('Terhapus')
+                    alert('Terhapus');
+                    // var lokasinow = window.location.href ;
+                    // alert(window.location.href);
 
-                  // alert($(this));
-                  // table
-                  //    .row($('#bootstrap-data-table').parents('tr') )
-                  //    .remove()
-                  //    .draw(false);
-                    // $(this).parent().parent().remove();
-                    // $(this).closest('tr').remove().draw();
-                          // table.ajax.reload();
-                  table.row(  $('#bootstrap-data-table #btn_delete').parents('tr')).remove().draw(false);
+                     // window.location='thank-you.html
+                     // location.href = "http://www.example.com/ThankYou.html";
+                    // window.location.reload(true);
+                    document.location.reload(false);
+                    // table.fnDraw();
+                    // table.fnPageChange("first",1);
+                    // state.loaded();
+                    // table.reload();
+                    // $('#bootstrap-data-table #btn_delete').DataTable().ajax.reload();
+                  // table.row( $('#bootstrap-data-table #btn_delete').parents('tr')).remove().draw(false);
+                  // redirect(refresh);
+                  // table.ajax.reload( null, false ); // user paging is not reset on reload
+                    // table
+                    //     .rows($('#bootstrap-data-table #btn_delete'.parents('tr'))
+                    //     .invalidate()
+                    //     .draw();
                }else{
                  // alert(data.success);
-                 alert('Maaf, Data tidak bisa dihapus karena data masih digunakan')
+                   alert('Maaf, Data tidak bisa dihapus karena data masih digunakan');
+
                }
-               // alert(href);
-               // table.remove().draw();
-                 // $('[name="product_code_delete"]').val("");
-                 // $('#Modal_Delete').modal('hide');
-                 // show_product();
+
              },
              error: function(data) {
               //sad error
               $("#error-message-selector").html('').append(data.responseJSON.error_msg);
-    }
+            }
          });
          // alert("GAGAL?");
-         return false;
+         // return false;
+         event.preventDefault();
+         // event.isDefaultPrevented();
 
      });
 
@@ -301,6 +183,98 @@ $('#Medit ').submit(function(){
 
   // Draw once all updates are done
   // table.draw();
+  // $('#bootstrap-data-table').DataTable( {
+  //     initComplete: function () {
+  //         this.api().columns().every( function () {
+  //             var column = this;
+  //             var select = $('<select><option value=""></option></select>')
+  //                 .appendTo( $(column.footer()).empty() )
+  //                 .on( 'change', function () {
+  //                     var val = $.fn.dataTable.util.escapeRegex(
+  //                         $(this).val()
+  //                     );
+  //
+  //                     column
+  //                         .search( val ? '^'+val+'$' : '', true, false )
+  //                         .draw();
+  //                 } );
+  //
+  //             column.data().unique().sort().each( function ( d, j ) {
+  //                 select.append( '<option value="'+d+'">'+d+'</option>' )
+  //             } );
+  //         } );
+  //     }
+  // } );
+
+
+  // $('#bootstrap-data-table').on( 'click', 'tbody tr', function (e) {
+  //        if ( $(this).hasClass('selected') ) {
+  //             $(this).removeClass('selected');
+  //         }
+  //         else {
+  //             table.$('tr.selected').removeClass('selected');
+  //             $(this).addClass('selected');
+  //         }
+  //
+  // } );
+  var table = $('#bootstrap-data-table').DataTable({
+      "processing": true,
+      select: true,
+      orderCellsTop: true,
+      // fixedHeader: true,
+      // columnDefs: [ {
+      //      orderable: false,
+      //      className: 'select-checkbox',
+      //      targets:   0
+      //  } ],
+      // "processing": true,
+      // "serverSide": true,
+      // "ajax": {
+      //       "url": lokasinow,
+      //       "type": "POST"
+      //   },
+      // "ajax": {
+      //   "url": "data.json",
+      //   "type": "POST"
+      // },
+      lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
+      // lenghtChange : false,
+      dom: 'lfrt<"clear">Bip',
+      buttons : true,
+      destroy: true,
+
+      select: {
+              style:    'os',
+              selector: 'td:first-child'
+      },
+      buttons: [
+                      'copy',
+                      'excel',
+                      'csv',
+                      'print'
+      ],
+      // initComplete: function () {
+      //     this.api().columns().every( function () {
+      //         var column = this;
+      //         var select = $('<select><option value=""></option></select>')
+      //             .appendTo( $(column.footer()).empty() )
+      //             .on( 'change', function () {
+      //                 var val = $.fn.dataTable.util.escapeRegex(
+      //                     $(this).val()
+      //                 );
+      //
+      //                 column
+      //                     .search( val ? '^'+val+'$' : '', true, false )
+      //                     .draw();
+      //             } );
+      //
+      //         column.data().unique().sort().each( function ( d, j ) {
+      //             select.append( '<option value="'+d+'">'+d+'</option>' )
+      //         } );
+      //     } );
+      // }
+  });
+
 
 
 
