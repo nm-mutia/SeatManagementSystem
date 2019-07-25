@@ -130,10 +130,16 @@ class Aset extends CI_Controller {
 			);
 
 			if($idda != null && $sn != null){
-				$this->Aset_model->setAset($datax, 'aset');
+				$try = $this->Aset_model->setAset($datax, 'aset', $sn);
+				if ($try > 0) {
+			      echo "<script>alert('ERROR! Serial Number already exist!')</script>";
+			      // echo anchor('Purchase_Order');
+			      redirect('Purchase_Order', 'refresh');
+				}
+				redirect('Purchase_Order', 'refresh');
 			}
 			// echo $idda.$sn.$checksum.$series;
 		}
-		redirect('Purchase_Order');
+		// redirect('Purchase_Order');
 	}
 }

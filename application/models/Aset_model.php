@@ -92,11 +92,20 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
     return $data;
   }
 
-  
-
-  function setAset($data, $table){
+  function setAset($data, $table, $sn){
+    $query = $this->db->get_where($table, array(
+            'SN' => $sn
+            ));
+    $count = $query->num_rows();
+    if($count){
+      // echo "ADA WOY";
+      // echo "<script>alert('ERROR! Serial Number already exist!')</script>";
+      // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
+      return $count;
+    }
+    else{
       $this->db->insert($table, $data);
-      
+    }
   }
 
 }

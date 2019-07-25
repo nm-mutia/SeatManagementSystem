@@ -142,7 +142,7 @@ class Porder extends CI_Controller {
 			// 'NAMA_PIC' => $namap
 		);
 		if($spk != null && $idv != null){
-			$this->po_model->setPO($data, 'po');
+			$this->Po_model->setPO($data, 'po');
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
@@ -164,7 +164,7 @@ class Porder extends CI_Controller {
 			'SUB_KATEGORI' => $sub
 		);
 		if($spk != null){
-			$this->po_model->setPO($datadet, 'detail_po');
+			$this->po_model->setPO($datadet, 'detail_po', $spk);
 		}
 
 		$idda = $this->input->post('ID_DA');
@@ -186,7 +186,7 @@ class Porder extends CI_Controller {
 			);
 			echo $idda. " ".$sn." yoy  ";
 			if($idda != null && $sn != null){
-				$this->Aset_model->setAset($dataaset, 'aset');
+				$this->Aset_model->setAset($dataaset, 'aset', $sn);
 			}
 		}
 		$u = $this->encryption->encrypt($idda);
@@ -205,7 +205,7 @@ class Porder extends CI_Controller {
 			'TAHUN_PENGADAAN' => $th
 			// 'FILE_SPK' => $file
 		);
-		$this->po_model->upPO($data, 'po', $spk);
+		$this->Po_model->upPO($data, 'po', $spk);
 		redirect('Purchase_Order');
 	}
 
