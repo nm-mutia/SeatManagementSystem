@@ -69,14 +69,16 @@ $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/det/(:any)'] = 'porder/detail/$1';
 $route['Purchase_Order/det/(:any)/(:any)'] = 'porder/detAsetSPK/$1/$2';
 $route['Purchase_Order/getData/(:any)'] = 'porder/oneList/$1';
+$route['Purchase_Order/delete/(:any)'] = 'porder/deletePorder/$1';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 
-
+//aset keseluruhan
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
 $route['aset/addAset/(:any)/(:any)'] = 'aset/setAset/$1/$2'; //nambah aset dari PO (form)
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
+// $route['aset/delete/(:any)'] = 'vendor/deleteAset/$1';
 
 //insert to database (action)
 $route['crud/aset/(:any)'] = 'aset/insAset/$1';
@@ -93,7 +95,6 @@ $route['crud/update/history'] = 'history/upHistory';
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
-
 
 //menu Histori
 $route['history'] = 'history/getAll';

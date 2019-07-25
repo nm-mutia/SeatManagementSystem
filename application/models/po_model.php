@@ -31,7 +31,7 @@ class Po_model extends CI_Model {
   function getAllForm(){
     $data = $this->db->query("SELECT * from po");
     return $data;
-  }  
+  }
 
   function setDetail(){
     $data = $this->db->query("SELECT ID_DA, NO_SPK, QTY, MASA, KATEGORI, SUB_KATEGORI from detail_po");
@@ -65,6 +65,20 @@ class Po_model extends CI_Model {
 
   function setPO($data, $table){
     $this->db->insert($table, $data);
+  }
+
+  public function deletePorder($data){
+      $cekrows = $this->db->query('      SELECT * FROM po, detail_po dp WHERE dp.`NO_SPK`=po.`NO_SPK` AND po.NO_SPK = ? ;' , $data);
+
+      if ($cekrows->num_rows() != 0){
+        // echo "<script type='text/javascript'>alert('$message');</script>";
+        // $message = "tes";
+        return 0;
+      }else{
+        $this->db->where(' NO_SPK', $data);
+        $this->db->delete('po');
+        return 1;
+      }
   }
 
 }

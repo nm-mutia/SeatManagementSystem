@@ -78,9 +78,10 @@
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>"><button type="button" class="btn btn-success">Detail</button></a>
 
                                                 <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                <div class="icon-container">
-                                                  <span class="ti-close"></span><span class="icon-name">Hapus</span></a>
-                                                </div>
+                                                  <div class="icon-container">
+                                                    <span class="ti-close"></span><span class="icon-name">Hapus</span>
+                                                  </div>
+                                                </a>
                                                 <!-- <br> -->
 
                                                 <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
@@ -88,7 +89,7 @@
                                                     <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
                                                   </div>
                                                 </a>
-                                                <!-- <button id = 'btn_delete'>delete</button> -->
+
 
                                             </td>
 
@@ -96,14 +97,16 @@
                                     <?php endforeach ?>
                                     </tbody>
                                       <tfoot>
-                                            <tr>
+                                            <!-- <tr>
                                               <!-- <th>  </th> -->
                                               <?php foreach ($content->field_data() as $field): ?>
 
                                                       <th><?php echo $field->name ?> </th>
                                                       <!-- <th> Keterangan </th> -->
                                               <?php endforeach ?>
-                                            </tr>
+                                              <th> KETERANGAN  </th>
+
+                                            </tr> 
                                     </tfoot>
                                 </table>
                                 <?php
@@ -143,7 +146,7 @@
                           <div class="form-group row">
                             <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
                             <?php if($kategori == "Purchase Order"){ ?>
-                                
+
                                 <?php if($field->name == "NO SPK" || $field->name == "NAMA PIC" || $field->name == "NAMA VENDOR"){?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
