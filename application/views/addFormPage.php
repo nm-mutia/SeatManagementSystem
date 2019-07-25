@@ -98,7 +98,7 @@
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['NAMA_VENDOR'] ?></option>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' '.$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  } else{ ?>
@@ -139,14 +139,14 @@
                                                                     <option value="Hardware" class="hard">Hardware</option>
                                                                     <option value="Software" class="soft">Software</option>
                                                                 </select>
-                                                            <?php } else if($field->name == "SUB_KATEGORI"){ ?>
+                                                            <!-- <?php } else if($field->name == "SUB_KATEGORI"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                                     <option>Pilih...</option>
                                                                     <?php $v = 1; ?>
                                                                     <?php foreach ($subktg->result_array() as $sel){ ?>
                                                                         <option value="<?php echo $sel['SUB_KATEGORI'] ?>" class="<?php echo 'sub'.$v; $v++;?>"><?php echo $sel['SUB_KATEGORI'] ?></option>
                                                                     <?php } ?>
-                                                                </select>
+                                                                </select> -->
                                                             <?php } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
@@ -227,7 +227,7 @@
     <!-- Right Panel -->
 
     <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script>
-    <script>
+    <!-- <script>
         $(function(){
             $("select.ktg").change(function(){
                 var sub = $('select.ktg').val();
@@ -248,7 +248,7 @@
                 }
             });
         });    
-    </script>
+    </script> -->
 
     <script type='text/javascript'>
         var counter = 0;

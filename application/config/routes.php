@@ -79,16 +79,17 @@ $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 
 //insert to database (action)
-$route['crud/aset/(:any)'] = 'crud/aset/$1';
-$route['crud/history/(:any)'] = 'crud/history/$1';
-$route['crud/Purchase_Order'] = 'crud/po';
-$route['crud/po/(:any)'] = 'crud/insDetPO/$1';
-$route['crud/vendor_list/(:any)'] = 'crud/vendor_list/$1';
+$route['crud/aset/(:any)'] = 'aset/insAset/$1';
+$route['crud/history/(:any)'] = 'history/insHistory/$1';
+$route['crud/Purchase_Order'] = 'porder/insPo';
+$route['crud/po/(:any)'] = 'porder/insDetPO/$1';
+$route['crud/vendor_list/(:any)'] = 'vendor/insVendor/$1';
 
 //update to database
-$route['crud/update/vendor_list'] = 'crud/upVendor';
-$route['crud/update/Purchase_Order'] = 'crud/upPO';
-$route['crud/update/history'] = 'crud/upHistory';
+$route['crud/update/vendor_list'] = 'vendor/upVendor';
+$route['crud/update/Purchase_Order'] = 'porder/upPO';
+$route['crud/update/history'] = 'history/upHistory';
+
 
 $route['Aset_tersedia'] = 'aset';
 $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
