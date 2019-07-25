@@ -129,6 +129,7 @@ class Porder extends CI_Controller {
 
           echo json_encode($response);
         }
+			}
 
 	//insert po
 	public function insPo(){
@@ -142,7 +143,7 @@ class Porder extends CI_Controller {
 			// 'NAMA_PIC' => $namap
 		);
 		if($spk != null && $idv != null){
-			$this->po_model->setPO($data, 'po');
+			$this->Po_model->setPO($data, 'po');
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
@@ -164,7 +165,7 @@ class Porder extends CI_Controller {
 			'SUB_KATEGORI' => $sub
 		);
 		if($spk != null){
-			$this->po_model->setPO($datadet, 'detail_po');
+			$this->Po_model->setPO($datadet, 'detail_po');
 		}
 
 		$idda = $this->input->post('ID_DA');
