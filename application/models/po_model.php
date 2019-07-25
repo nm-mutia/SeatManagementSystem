@@ -43,7 +43,8 @@ class Po_model extends CI_Model {
           FROM detail_po AS po
           ORDER BY id_da DESC LIMIT 1");
     if($data->num_rows() == 0){
-      return $data = 1;
+      $this->db->query("ALTER TABLE detail_po AUTO_INCREMENT = 1");
+      return $data = false;
     }
     return $data;
   }
@@ -67,14 +68,19 @@ class Po_model extends CI_Model {
   }
 
   function setPO($data, $table, $spk){
-    $query = $this->db->get_where($table, array(
-            'NO_SPK' => $spk
-            ));
+    $query = $this->db->get_where($table, array('NO_SPK' => $spk));
+
     $count = $query->num_rows();
+    var_dump($query->row());
     if($count){
-      $this->session->set_flashdata('error', 'Such User exists. Please try again!');
-      redirect('Purchase_Order');
+      echo "ADA WOY";
+      // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
+      // redirect('Purchase_Order');
     }
+    $this->db->insert($table, $data);
+  }
+
+  function setDetPO($data, $table){
     $this->db->insert($table, $data);
   }
 
