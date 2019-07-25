@@ -15,7 +15,7 @@
     var table = $('#bootstrap-data-table').DataTable({
         "processing": true,
         select: true,
-        lengthChange: false,
+        // lengthChange: false,
         // columnDefs: [ {
         //      orderable: false,
         //      className: 'select-checkbox',
