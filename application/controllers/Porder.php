@@ -172,7 +172,9 @@ class Porder extends CI_Controller {
 			'SUB_KATEGORI' => $sub
 		);
 		if($spk != null){
+
 			$this->Po_model->setDetPO($datadet, 'detail_po');
+
 		}
 
 		$idda = $this->input->post('ID_DA');
