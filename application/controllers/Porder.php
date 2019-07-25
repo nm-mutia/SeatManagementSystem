@@ -69,14 +69,14 @@ class Porder extends CI_Controller {
 		$data['spk'] = $sid;
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
-		$data['idda'] = $this->Po_model->getLastId();
-		if($data['idda'] == 1){
+		$x = $this->Po_model->getLastId();
+		if(!$x){
 			$data['idda'] = 1;
 		}else{
-			$data['idda']  = $data['idda']->row()->id_da;
+			$data['idda']  = $x->row()->id_da;
 			$data['idda'] = $data['idda'] + 1 ;
 		}
-
+		// echo $data['idda'];
 		$data['subktg'] = $this->Po_model->getSubktg();
     	$this->load->view('addFormPage', $data);
 	}
@@ -172,10 +172,11 @@ class Porder extends CI_Controller {
 			'SUB_KATEGORI' => $sub
 		);
 		if($spk != null){
-			$this->po_model->setPO($datadet, 'detail_po', $spk);
+			$this->Po_model->setDetPO($datadet, 'detail_po');
 		}
 
 		$idda = $this->input->post('ID_DA');
+		echo $count;
 		for ($i=1; $i <= $count; $i++) {
 			$sn = $this->input->post('SN'.$i);
 			$checksum = $this->input->post('CHECKSUM'.$i);
@@ -192,9 +193,16 @@ class Porder extends CI_Controller {
 				'SERIES' => $series,
 				'IMAGE' => $img
 			);
-			echo $idda. " ".$sn." yoy  ";
+			// echo $idda. " ".$sn." yoy  ";
 			if($idda != null && $sn != null){
-				$this->Aset_model->setAset($dataaset, 'aset', $sn);
+				$try = $this->Aset_model->setAset($dataaset, 'aset', $sn);
+				if ($try > 0) {
+			      echo "<script>alert('ERROR! Serial Number already exist!')</script>";
+			      // echo anchor('Purchase_Order');
+			      redirect('Purchase_Order', 'refresh');
+				}
+				redirect('Purchase_Order', 'refresh');
+				
 			}
 		}
 		$u = $this->encryption->encrypt($idda);

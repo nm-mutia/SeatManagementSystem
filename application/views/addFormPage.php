@@ -119,7 +119,7 @@
                                                         <?php } else if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else{ ?>
-                                                            <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required>
+                                                            <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                         <?php } ?><br>
                                                     <?php endforeach ?>
                                                 </div>
@@ -159,7 +159,7 @@
                                                             <?php if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda ?>" readonly>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda; ?>" readonly>
                                                             <?php }else{?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
