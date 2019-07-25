@@ -82,7 +82,7 @@
                                             <td>
                                               <a href="<?php echo base_url($this->uri->segment(1))?>/<?php  echo "det/"; echo $this->uri->segment(3); ?>/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                 <div class="icon-container">
-                                                  <span class="ti-pencil-alt"></span>
+                                                  <span class="ti-eye"></span>
                                                 </div>
                                               </a>
 
