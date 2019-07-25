@@ -122,7 +122,61 @@ class History extends CI_Controller {
 		}
 
 		echo json_encode($result);
-
 	}
 
+	public function insHistory($count){
+		$idv = $this->input->post('ID_VENDOR');
+		$nik = $this->input->post('NIK');
+		$tpin = $this->input->post('TGL_PINJAM');
+		$data = array(
+			'ID_VENDOR' => $idv,
+			'NIK' => $nik,
+			'TGL_PINJAM' => $tpin
+		);
+		if($idv != null && $nik != null){
+			$this->historyModel->setHistory($data, 'history_aset');
+		}
+
+		for ($i=1; $i <= $count; $i++) {
+			$idh = $this->input->post('ID_HISTORY');
+			$sn = $this->input->post('SN'.$i);
+			$tteng = $this->input->post('TGL_TENGGAT'.$i);
+			$tkem = $this->input->post('TGL_KEMBALI'.$i);
+			$ket = $this->input->post('KETERANGAN'.$i);
+			$datadet = array(
+				'ID_HISTORY' => $idh,
+				'SN' => $sn,
+				'TGL_TENGGAT' => $tteng,
+				'TGL_KEMBALI' => $tkem,
+				'KETERANGAN' => $ket
+			);
+			if($idh != null && $sn != null){
+				$this->historyModel->setHistory($datadet, 'detail_history');
+			}
+		}
+		redirect('history');
+	}
+
+	//update history
+	public function upHistory(){
+		$id = $this->input->post('ID_HISTORY');
+		$sn = $this->input->post('SN');
+		$tpin = $this->input->post('TGL_PINJAM');
+		$tteng = $this->input->post('TGL_TENGGAT');
+		$tkem = $this->input->post('TGL_KEMBALI');
+		$ket = $this->input->post('KETERANGAN');
+
+		$data = array(
+			'TGL_PINJAM' => $tpin
+		);
+		$datax = array(
+			'TGL_TENGGAT' => $tteng,
+			'TGL_KEMBALI' => $tkem,
+			'KETERANGAN' => $ket,
+		);
+
+		$this->historyModel->upHistory($data,'history_aset',$id);
+		$this->historyModel->upHistoryDet($datax,'detail_history',$id,$sn);
+		redirect('history');
+	}
 }

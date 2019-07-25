@@ -7,6 +7,7 @@ class Aset_model extends CI_Model {
       parent::__construct();
   }
 
+
   function getAsetTersedia(){
     $q = $this->db->query('SELECT KATEGORI
             FROM detail_po
@@ -75,23 +76,27 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
   }
 
   function getAsetAll(){
-    $query = "SELECT a.sn as SN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
+    $query = "SELECT a.sn as SN, a.id_da as ID_DA, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
       FROM aset AS a";
     $data = $this->db->query($query);
     return $data;
   }
 
   function detAsetSPK($id){
-    $query = "SELECT a.sn as 'SN', a.checksum as 'CHECKSUM', a.tipe AS 'TIPE', a.merk AS 'MERK', a.series AS 'SERIES'
+    $query = "SELECT a.sn as 'SN', a.checksum as 'CHECKSUM', a.tipe AS 'TIPE', a.merk AS 'MERK', a.series AS 'SERIES', a.image as 'IMAGE'
             FROM detail_po AS dpo 
             JOIN aset AS a ON a.id_da = dpo.id_da
             WHERE dpo.id_da = ?";
+    // header("Content-type: image/jpeg");
     $data = $this->db->query($query, array($id));
     return $data;
   }
 
+  
+
   function setAset($data, $table){
-    $this->db->insert($table, $data);
+      $this->db->insert($table, $data);
+      
   }
 
 }
