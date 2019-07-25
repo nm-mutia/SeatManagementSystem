@@ -130,7 +130,7 @@
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_DA"){ ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda + 1;?>" readonly>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda;?>" readonly>
                                                             <?php } else if($field->name == "NO_SPK"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
                                                             <?php } else if($field->name == "KATEGORI"){ ?>
@@ -232,7 +232,7 @@
             $("select.ktg").change(function(){
                 var sub = $('select.ktg').val();
                 if(sub == "Hardware"){
-                    for (var i = 1; i <= 6; i++) {  //$v = 4 hardware, $v 5-6 soft            
+                    for (var i = 1; i <= 6; i++) {  //$v = 4 hardware, $v 5-6 soft
                         if(i < 5)
                             $('.sub'+i).show();
                         else
@@ -247,7 +247,7 @@
                     }
                 }
             });
-        });    
+        });
     </script> -->
 
     <script type='text/javascript'>
@@ -295,14 +295,14 @@
         function test(){
             document.getElementById('act').action = '<?php echo base_url()?>crud/<?php echo $this->uri->segment(1);?><?php if($this->uri->segment(1) == "aset"){?>/' + count + '<?php } else if($this->uri->segment(1) == "history" || $this->uri->segment(1) == "po"){?>/' + counter + '<?php } ?>';
         }
-        
-        <?php if($kategori == "Aset PO"){ ?> 
+
+        <?php if($kategori == "Aset PO"){ ?>
             window.onload = moreFields0;
         <?php } else if($kategori != "Vendor"){ ?>
             window.onload = moreFields;
         <?php } ?>
 
-        
+
 
     </script>
 
