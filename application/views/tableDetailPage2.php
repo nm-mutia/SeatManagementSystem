@@ -62,7 +62,7 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-
+                                            <th> KETERANGAN </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,7 +71,16 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
+                                            <td>
+                                              <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/deleteAset/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                <div class="icon-container">
+                                                  <span class="ti-close"></span><span class="icon-name">Hapus</span>
+                                                </div>
+                                              </a>
+                                            </td>
                                         </tr>
+
+
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
