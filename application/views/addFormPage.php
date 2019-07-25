@@ -34,7 +34,7 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#"><?php echo $kategori ?></a></li>
+                                    <li><a href="<?php echo site_url($this->uri->segment(1))?>"> <?php echo $kategori ?> </a></li>
                                     <li class="active">Tambah Data</li>
                                 </ol>
                             </div>
