@@ -150,7 +150,7 @@ class Porder extends CI_Controller {
 			// 'NAMA_PIC' => $namap
 		);
 		if($spk != null && $idv != null){
-			$this->Po_model->setPO($data, 'po');
+			$this->Po_model->setPO($data, 'po', $spk);
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
