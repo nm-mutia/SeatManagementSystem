@@ -83,7 +83,8 @@ $route['crud/aset/(:any)'] = 'aset/insAset/$1';
 $route['crud/history/(:any)'] = 'history/insHistory/$1';
 $route['crud/Purchase_Order'] = 'porder/insPo';
 $route['crud/po/(:any)'] = 'porder/insDetPO/$1';
-$route['crud/vendor_list/(:any)'] = 'vendor/insVendor/$1';
+// $route['crud/vendor_list/(:any)'] = 'vendor/insVendor/$1';
+$route['crud/vendor_list'] = 'vendor/insVendor';
 
 //update to database
 $route['crud/update/vendor_list'] = 'vendor/upVendor';
