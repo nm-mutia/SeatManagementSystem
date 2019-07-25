@@ -25,6 +25,10 @@ class HistoryModel extends CI_Model {
     $data = $this->db->query("SELECT ha.id_history as id_history
           FROM history_aset AS ha
           ORDER BY id_history DESC LIMIT 1");
+    if($data->num_rows() == 0){
+      $this->db->query("ALTER TABLE history_aset AUTO_INCREMENT = 1");
+      return $data = false;
+    }
     return $data;
   }
 
