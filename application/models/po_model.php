@@ -53,6 +53,11 @@ class Po_model extends CI_Model {
     return $fields;
   }
 
+  function getSubktg(){
+    $data = $this->db->query("SELECT DISTINCT SUB_KATEGORI FROM detail_po ORDER BY kategori");
+    return $data;
+  }
+
   function upPO($data, $table, $id){
     $this->db->where('NO_SPK', $id);
     $this->db->update($table, $data);

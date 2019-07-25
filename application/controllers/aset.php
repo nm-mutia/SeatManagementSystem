@@ -106,4 +106,34 @@ class Aset extends CI_Controller {
 		$data['da'] = $idda;
 		$this->load->view('addFormPage', $data);
 	}
+
+	public function insAset($count){
+		for ($i=1; $i <= $count; $i++) {
+
+			$sn = $this->input->post('SN'.$i);
+			$idda = $this->input->post('ID_DA'.$i);
+			$checksum = $this->input->post('CHECKSUM'.$i);
+			$tipe = $this->input->post('TIPE'.$i);
+			$merk = $this->input->post('MERK'.$i);
+			$series = $this->input->post('SERIES'.$i);
+			// $img = $this->input->post('IMAGE');
+	       	// $this->load->library('upload', $config)
+	       	
+			$datax = array(
+				'SN' => $sn,
+				'ID_DA' => $idda,
+				'CHECKSUM' => $checksum,
+				'TIPE' => $tipe,
+				'MERK' => $merk,
+				'SERIES' => $series,
+				// 'IMAGE' => $img
+			);
+
+			if($idda != null && $sn != null){
+				$this->Aset_model->setAset($datax, 'aset');
+			}
+			// echo $idda.$sn.$checksum.$series;
+		}
+		redirect('Purchase_Order');
+	}
 }
