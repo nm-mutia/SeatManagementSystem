@@ -71,16 +71,16 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($kategori == "Purchase Order"){?>
                                                                 <?php if($field->name == "ID_VENDOR"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR']." ".$sel['NAMA_VENDOR'] ?></option>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>"><?php echo $sel['ID_VENDOR']." ".$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  }else{ ?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php }}else{ ?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php }?>
                                                         </div>
                                                     <?php endforeach ?>
@@ -95,14 +95,14 @@
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist + 1; ?>" readonly>
                                                             <?php } else if($field->name == "ID_VENDOR"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
                                                                         <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' '.$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  } else{ ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
                                                             <?php  } ?>
                                                         </div>
                                                     <?php endforeach ?>
@@ -119,7 +119,7 @@
                                                         <?php } else if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else{ ?>
-                                                            <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
+                                                            <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required>
                                                         <?php } ?><br>
                                                     <?php endforeach ?>
                                                 </div>
@@ -134,7 +134,7 @@
                                                             <?php } else if($field->name == "NO_SPK"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
                                                             <?php } else if($field->name == "KATEGORI"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control ktg" aria-required="true" aria-invalid="false" >
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control ktg" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <option value="Hardware" class="hard">Hardware</option>
                                                                     <option value="Software" class="soft">Software</option>
@@ -148,7 +148,7 @@
                                                                     <?php } ?>
                                                                 </select> -->
                                                             <?php } else{ ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required >
                                                             <?php } ?>
                                                         </div>
                                                     <?php endforeach ?>
@@ -167,7 +167,7 @@
                                                             <?php if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php }else{?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
                                                             <br>
                                                         <?php endforeach ?>

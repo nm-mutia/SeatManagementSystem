@@ -63,7 +63,15 @@ class Po_model extends CI_Model {
     $this->db->update($table, $data);
   }
 
-  function setPO($data, $table){
+  function setPO($data, $table, $spk){
+    $query = $this->db->get_where($table, array(
+            'NO_SPK' => $spk
+            ));
+    $count = $query->num_rows();
+    if($count){
+      $this->session->set_flashdata('error', 'Such User exists. Please try again!');
+      redirect('Purchase_Order');
+    }
     $this->db->insert($table, $data);
   }
 
