@@ -16,9 +16,9 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetKeseluruhan(){
-    $q = $this->db->query('SELECT KATEGORI
-            FROM detail_po
-            GROUP BY KATEGORI; ');
+    $q = $this->db->query('SELECT KATEGORI ,COUNT(KATEGORI) AS JUMLAH
+      FROM detail_po po JOIN aset a ON po.`ID_DA` = a.`ID_DA`
+      GROUP BY KATEGORI;');
     return $q;
   }
 
@@ -27,9 +27,9 @@ class Aset_model extends CI_Model {
     //   aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
     //     FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
     //     WHERE detail_po.KATEGORI = ?' , array($id));
-    $q = $this->db->query('SELECT SUB_KATEGORI, SUM(QTY) AS "JUMLAH"
-    FROM detail_po
-    where kategori = ?
+    $q = $this->db->query('SELECT SUB_KATEGORI, COUNT(SUB_KATEGORI) AS JUMLAH
+    FROM detail_po po JOIN aset a ON po.`ID_DA` = a.`ID_DA`
+    WHERE KATEGORI = ?
     GROUP BY SUB_KATEGORI;' , array($id));
 
     // $query = "SELECT SUB_KATEGORI, SUM(QTY) AS 'JUMLAH'
