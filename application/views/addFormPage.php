@@ -139,14 +139,6 @@
                                                                     <option value="Hardware" class="hard">Hardware</option>
                                                                     <option value="Software" class="soft">Software</option>
                                                                 </select>
-                                                            <!-- <?php } else if($field->name == "SUB_KATEGORI"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
-                                                                    <option>Pilih...</option>
-                                                                    <?php $v = 1; ?>
-                                                                    <?php foreach ($subktg->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['SUB_KATEGORI'] ?>" class="<?php echo 'sub'.$v; $v++;?>"><?php echo $sel['SUB_KATEGORI'] ?></option>
-                                                                    <?php } ?>
-                                                                </select> -->
                                                             <?php } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required >
                                                             <?php } ?>
@@ -166,6 +158,8 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                            <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda ?>" readonly>
                                                             <?php }else{?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
