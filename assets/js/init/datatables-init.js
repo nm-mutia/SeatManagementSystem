@@ -255,7 +255,6 @@ $('#Medit ').submit(function(){
                        extend: 'colvis',
                        columns: ':not(.noVis)'
                        }
-
       ],
        // fixedColumns: true
   });
