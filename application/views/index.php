@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">23569</span></div>
+                                            <div class="stat-text"><span class="count"><?php echo $soft->row()->jml; ?></span></div>
                                             <div class="stat-heading">Software</div>
                                         </div>
                                     </div>
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count"><?php echo $hard->row()->jml; ?></span></div>
                                             <div class="stat-heading">Hardware</div>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count"><?php echo $pjm->row()->jml; ?></span></div>
                                             <div class="stat-heading">Peminjam</div>
                                         </div>
                                     </div>
@@ -87,14 +87,14 @@
                                 </div>
                                 <div class="card-body--">
                                     <div class="table-stats order-table ov-h">
-                                        <table class="table ">
+                                        <table id='bootstrap-data-table' class="table ">
                                             <thead>
                                                 <tr>
                                                     <th class="serial">#</th>
                                                     <th class="avatar">Avatar</th>
-                                                    <th>ID</th>
-                                                    <th>NIK</th>
                                                     <th>Nama</th>
+                                                    <th>NIK</th>
+                                                    <th>ID</th>
                                                     <th>SN</th>
                                                     <th>Tanggal Tenggat</th>
                                                     <th>Action</th>
@@ -110,9 +110,9 @@
                                                             <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
                                                         </div>
                                                     </td>
-                                                    <td> <?php echo $key['ID'] ?> </td>
+                                                    <td> <?php echo $key['NAMA'] ?> </td>
                                                     <td><span class="name"><?php echo $key['NIK'] ?></span> </td>
-                                                    <td><span class="product"><?php echo $key['NAMA'] ?></span> </td>
+                                                    <td><span class="product"><?php echo $key['ID'] ?></span> </td>
                                                     <td><span ><?php echo $key['SN'] ?></span></td>
                                                     <td><span ><?php echo $key['TANGGAL TENGGAT'] ?></span></td>
                                                     <td>

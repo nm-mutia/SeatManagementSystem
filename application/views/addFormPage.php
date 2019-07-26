@@ -93,7 +93,7 @@
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist + 1; ?>" readonly>
+                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
                                                             <?php } else if($field->name == "ID_VENDOR"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>

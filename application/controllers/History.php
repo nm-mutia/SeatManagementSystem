@@ -98,8 +98,14 @@ class History extends CI_Controller {
 		$data['kategori'] = $this->setKategori(3);
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
-		$data['idhist'] = $this->historyModel->getLastId()->row()->id_history;
 		$data['idven'] =  $this->vendor_model->getAll();
+		$x = $this->historyModel->getLastId();
+		if(!$x){
+			$data['idhist'] = 1;
+		}else{
+			$data['idhist']  = $x->row()->id_history;
+			$data['idhist'] = $data['idhist'] + 1 ;
+		}
 		$this->load->view('addFormPage', $data);
 	}
 
