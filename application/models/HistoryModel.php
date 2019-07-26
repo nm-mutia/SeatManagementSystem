@@ -8,6 +8,13 @@ class HistoryModel extends CI_Model {
       parent::__construct();
   }
 
+  function countPeminjam(){
+    $data = $this->db->query("SELECT COUNT(*) as jml
+            FROM detail_history AS dh
+            WHERE dh.tgl_kembali = NULL OR dh.tgl_kembali = '0000-00-00' OR dh.tgl_kembali = ''");
+    return $data;
+  }
+  
   function getAll(){
     $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM, dh.sn AS SN, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.keterangan AS KETERANGAN
             from history_aset as ha
@@ -44,26 +51,11 @@ class HistoryModel extends CI_Model {
   }
 
   function getTenggattable(){
-    // $data = $this->db->query("SELECT dh.id_history as id, ha.nik as nik, k.nama as nama, dh.sn as sn, a.tipe as tipe, a.merk as merk, a.series as seri, dh.tgl_tenggat as tgl
-            // FROM detail_history AS dh
-            // JOIN history_aset AS ha ON dh.id_history = ha.id_history
-            // JOIN karyawan AS k ON ha.nik = k.nik
-            // JOIN aset AS a ON a.sn = dh.sn
-            // WHERE dh.tgl_tenggat <= CURDATE()
-            // ORDER BY dh.tgl_tenggat ASC ");
     $data = $this->db->query("SELECT * FROM terlambat");
     return $data;
   }
 
   function getTenggatdetail($id , $sn){
-    // $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT
-    //   FROM detail_history AS dh
-    //   JOIN history_aset AS ha ON dh.id_history = ha.id_history
-    //   JOIN karyawan AS k ON ha.nik = k.nik
-    //   JOIN aset AS a ON a.sn = dh.sn
-    //   WHERE dh.tgl_tenggat <= CURDATE()
-    //   AND dh.id_history = ?
-    //   AND dh.sn = ? ";
     $query = "SELECT * FROM terlambat
               WHERE id = ? AND sn = ?" ;
     $data = $this->db->query($query, array($id, $sn));
@@ -87,14 +79,6 @@ class HistoryModel extends CI_Model {
   }
 
   function getHistoryAset($sn){
-    // $query = "SELECT dh.id_history as ID, ha.nik as NIK, k.nama as NAMA, dh.sn as SN, a.tipe as TIPE, a.merk as MERK, a.series as SERIES, dh.tgl_tenggat as TANGGAL_TENGGAT
-    //   FROM detail_history AS dh
-    //   JOIN history_aset AS ha ON dh.id_history = ha.id_history
-    //   JOIN karyawan AS k ON ha.nik = k.nik
-    //   JOIN aset AS a ON a.sn = dh.sn
-    //   where a.sn = ? ";
-
-    //query pakai view
      $query = "SELECT *
               FROM get_history_by
               WHERE sn = ?";
@@ -125,5 +109,6 @@ class HistoryModel extends CI_Model {
   function setHistory($data, $table){
     $this->db->insert($table, $data);
   }
+
 
 }
