@@ -104,7 +104,7 @@
                                     </tbody>
                                       <tfoot>
                                             <!-- <tr>
-                                              <!-- <th>  </th> -->
+                                              <th>  </th> -->
                                               <?php foreach ($content->field_data() as $field): ?>
 
                                                       <th><?php echo $field->name ?> </th>
