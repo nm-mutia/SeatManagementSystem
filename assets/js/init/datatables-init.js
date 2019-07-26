@@ -251,7 +251,11 @@ $('#Medit ').submit(function(){
                       'copy',
                       'excel',
                       'csv',
-                      'print'
+                      'print',
+                      {   extend: "colvis", columns: ':not(.hiddenCols)' },
+
+                      // {extend: 'colvis',
+                      // collectionLayout: 'fixed two-column'}
       ],
       // initComplete: function () {
       //     this.api().columns().every( function () {
