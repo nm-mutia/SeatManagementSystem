@@ -217,66 +217,47 @@ $('#Medit ').submit(function(){
   //         }
   //
   // } );
-  var table = $('#bootstrap-data-table').DataTable({
+  var table = $('#bootstrap-data-table').removeAttr('width').DataTable({
       "processing": true,
       select: true,
       orderCellsTop: true,
-      // fixedHeader: true,
-      // columnDefs: [ {
-      //      orderable: false,
-      //      className: 'select-checkbox',
-      //      targets:   0
-      //  } ],
-      // "processing": true,
-      // "serverSide": true,
-      // "ajax": {
-      //       "url": lokasinow,
-      //       "type": "POST"
-      //   },
-      // "ajax": {
-      //   "url": "data.json",
-      //   "type": "POST"
-      // },
       lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
       // lenghtChange : false,
       dom: 'lfrt<"clear">Bip',
       buttons : true,
       destroy: true,
+      // scrollX:  true,
+      // scrollY:  true,
+      // scrollCollapse: true,
+   //    // paging:         false,
+   //      columnDefs: [
+   //     { width: 1, targets: 1 }
+   // ],
+   columnDefs: [
+      {
+          targets: 1,
+          className: 'noVis'
+      }
+  ],
 
       select: {
               style:    'os',
               selector: 'td:first-child'
       },
+
       buttons: [
                       'copy',
                       'excel',
                       'csv',
                       'print',
-                      {   extend: "colvis", columns: ':not(.hiddenCols)' },
 
-                      // {extend: 'colvis',
-                      // collectionLayout: 'fixed two-column'}
+                      {
+                       extend: 'colvis',
+                       columns: ':not(.noVis)'
+                       }
+
       ],
-      // initComplete: function () {
-      //     this.api().columns().every( function () {
-      //         var column = this;
-      //         var select = $('<select><option value=""></option></select>')
-      //             .appendTo( $(column.footer()).empty() )
-      //             .on( 'change', function () {
-      //                 var val = $.fn.dataTable.util.escapeRegex(
-      //                     $(this).val()
-      //                 );
-      //
-      //                 column
-      //                     .search( val ? '^'+val+'$' : '', true, false )
-      //                     .draw();
-      //             } );
-      //
-      //         column.data().unique().sort().each( function ( d, j ) {
-      //             select.append( '<option value="'+d+'">'+d+'</option>' )
-      //         } );
-      //     } );
-      // }
+       // fixedColumns: true
   });
 
 

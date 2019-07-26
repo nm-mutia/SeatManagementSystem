@@ -8,6 +8,7 @@ class Aset extends CI_Controller {
 	public function __construct(){
 		 parent::__construct();
 		 $this->load->model('Aset_model');
+		 $this->load->helper(array('form', 'url'));
 	}
 
 	public function setTitle(){
@@ -116,9 +117,9 @@ class Aset extends CI_Controller {
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
-			// $img = $this->input->post('IMAGE');
+			// $img = $this->_uploadImage();
 	       	// $this->load->library('upload', $config)
-	       	
+
 			$datax = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
@@ -141,4 +142,5 @@ class Aset extends CI_Controller {
 		}
 		redirect('Purchase_Order', 'refresh');
 	}
+
 }
