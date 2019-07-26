@@ -14,12 +14,12 @@
     <?php $this->load->view("_partials/sidebar.php") ?>
     <!-- Left Panel -->
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel ">
         <!-- Header-->
               <?php $this->load->view("_partials/navbar.php") ?>
         <!-- Header-->
 
-        <div class="breadcrumbs">
+        <div class="breadcrumbs ">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header ">
                                 <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
                             <div class="card-body">

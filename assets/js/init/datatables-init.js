@@ -250,6 +250,7 @@ $('#Medit ').submit(function(){
                       'excel',
                       'csv',
                       'print',
+
                       {
                        extend: 'colvis',
                        columns: ':not(.noVis)'

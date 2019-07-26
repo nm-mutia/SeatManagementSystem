@@ -29,7 +29,7 @@ Googel Fonts  */
         width: 80%;
     }
 
-#events {
+/*#events {
         margin-bottom: 1em;
         padding: 1em;
         background-color: #f6f6f6;
@@ -37,7 +37,7 @@ Googel Fonts  */
         border-radius: 3px;
         height: 100px;
         overflow: auto;
-    }
+    }*/
 
 .selected {
   margin-bottom: 1em;
@@ -612,7 +612,7 @@ aside.left-panel {
   margin-left: 83px; }
 
 .navbar {
-  background: #fff;
+  background: ;
   border-radius: 0;
   border: none;
   display: inline-block;
@@ -852,7 +852,7 @@ aside.left-panel {
 
 /* Right panel */
 .right-panel {
-  background: #f1f2f7;
+  background: #bbb;
   margin-left: 280px;
   margin-top: 55px; }
   .right-panel .top-left {
