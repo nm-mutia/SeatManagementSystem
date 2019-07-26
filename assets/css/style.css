@@ -19,6 +19,15 @@ Googel Fonts  */
 /* Googel Fonts End
 
 */
+/* Ensure that the demo table scrolls */
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+
+    div.container {
+        width: 80%;
+    }
 
 #events {
         margin-bottom: 1em;

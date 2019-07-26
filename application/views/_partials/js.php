@@ -33,7 +33,7 @@
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/datatables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.buttons.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+<!-- <script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.bootstrap.min.js"></script> -->
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/jszip.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/vfs_fonts.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.html5.min.js"></script>
@@ -46,6 +46,7 @@
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.select.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.fixedHeader.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.fixedColumns.min.js"></script>
 
 
 
