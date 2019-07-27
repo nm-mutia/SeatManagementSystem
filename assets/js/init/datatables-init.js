@@ -37,13 +37,11 @@ $('#Medit ').submit(function(){
    $.ajax({
        type : $(this).attr('method'),
        url  : $(this).attr('action'),
-
-
        success: function(data){
-
          alert('Update Success');
          // table.fnPageChange("first",1);
-       },
+       }
+       ,
        error: function(data) {
           alert('fail');
         }
@@ -246,21 +244,21 @@ $('#Medit ').submit(function(){
       },
 
       buttons: [
-                      {extend: 'copy', 
-                       className: 'yeah',                       
+                      {extend: 'copy',
+                       className: 'yeah',
                     },
-                    {extend: 'excel', 
-                       className: 'yeah',                       
+                    {extend: 'excel',
+                       className: 'yeah',
                     },
-                    {extend: 'csv', 
-                       className: 'yeah',                       
+                    {extend: 'csv',
+                       className: 'yeah',
                     },
-                    {extend: 'print', 
-                       className: 'yeah',                       
+                    {extend: 'print',
+                       className: 'yeah',
                     },
                       {
                        extend: 'colvis',
-                       className: 'yeah',                       
+                       className: 'yeah',
                        columns: ':not(.noVis)',
                        text: 'Columns'
                        }

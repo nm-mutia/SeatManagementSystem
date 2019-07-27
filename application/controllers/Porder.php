@@ -95,8 +95,6 @@ class Porder extends CI_Controller {
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$get  = $this->Po_model->getOneList($nama)->result_array();
-
-
 		foreach($get as $row){
 			$result['NO SPK'] = $row['NO SPK'];
 			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
@@ -207,7 +205,7 @@ class Porder extends CI_Controller {
 			      // echo anchor('Purchase_Order');
 			      redirect('Purchase_Order', 'refresh');
 				}
-				
+
 			}
 		}
 		$u = $this->encryption->encrypt($idda);
