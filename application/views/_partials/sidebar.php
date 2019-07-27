@@ -11,14 +11,14 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Aset
-                      <i class="menu-icon fa fa-cogs"></i>
+                      <i class="menu-icon fa fa-save"></i>
 
                     </a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="fa fa-puzzle-piece"></i><a href=<?php echo site_url('Purchase_Order');?>>Purchase Order</a></li>
                         <li><i class="fa fa-users"></i><a href=<?php echo site_url('aset');?>>Aset Keseluruhan</a></li>
                         <li><i class="fa fa-id-badge"></i><a href=<?php echo site_url('Aset_tersedia');?>>Aset Tersedia</a></li>
-                        <!-- <li><i class="fa fa-bars"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li> -->
+                        <!-- <li><i class="fa fa-map-marker"></i><a href=<?php echo site_url('aset_lokasi');?>>Aset Lokasi</a></li> -->
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -33,11 +33,25 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Peminjaman</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-clock-o"></i><a href="">Tenggat</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-upload"></i>Vendor</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-upload"></i><a href=<?php echo site_url('vendor_list');?>>Vendor</a></li>
                     </ul>
                 </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-folder-open"></i>Log Aset</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-cogs"></i><a href="">Servis</a></li>
+                        <li><i class="menu-icon fa fa-refresh"></i><a href="">Mutasi</a></li>
+                    </ul>
+                </li>
+                
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

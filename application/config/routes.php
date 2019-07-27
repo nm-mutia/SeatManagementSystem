@@ -80,6 +80,9 @@ $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 // $route['aset/delete/(:any)'] = 'vendor/deleteAset/$1';
 
+
+$route['aset_lokasi'] = 'aset'; 
+
 //insert to database (action)
 $route['crud/aset/(:any)'] = 'aset/insAset/$1';
 $route['crud/history/(:any)'] = 'history/insHistory/$1';
