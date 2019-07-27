@@ -47,11 +47,11 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-folder-open"></i>Log Aset</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-cogs"></i><a href="">Servis</a></li>
-                        <li><i class="menu-icon fa fa-refresh"></i><a href="">Mutasi</a></li>
+                        <li><i class="menu-icon fa fa-cogs"></i><a href=<?php echo site_url('log/mutasi');?>>Servis</a></li>
+                        <li><i class="menu-icon fa fa-refresh"></i><a href=<?php echo site_url('log/service');?>>Mutasi</a></li>
                     </ul>
                 </li>
-                
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

@@ -11,8 +11,12 @@ class Aset extends CI_Controller {
 		 $this->load->helper(array('form', 'url'));
 	}
 
-	public function setTitle(){
-		$title = "Aset";
+	public function setTitle(int $nomer){
+		if ($nomer == 1){
+			$title = "Aset";
+		}else if ($nomer == 2){
+			$title = "Log";
+		}
 		return $title;
 	}
 
@@ -20,10 +24,15 @@ class Aset extends CI_Controller {
 		if ($nomer == 1){
 				$kategori = "Aset Keseluruhan";
 		}else if ($nomer == 2){
-				$kategori = "Aset yang tersedia";
+				$kategori = "Aset Tersedia";
 		}
 		else if ($nomer == 3){
 				$kategori = "Aset PO";
+		}else if ($nomer == 4){
+				$kategori = "Log Mutasi";
+		}
+		else if ($nomer == 5){
+				$kategori = "Log Service";
 		}
 		return $kategori;
 	}
@@ -35,14 +44,14 @@ class Aset extends CI_Controller {
 
 	//untuk aset tersedia
 	public function index(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(2);
 		$data['content'] = $this->Aset_model->getAsetTersedia();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function detail($id){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(2);
 		$data['subkategori'] =  $this->setSubKategori();;//masih ngarang
 		$sid = base64_decode($id);
@@ -54,7 +63,7 @@ class Aset extends CI_Controller {
 
 //untuk aset keseluruhan
 	public function getAll(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(1);
 		$data['content'] = $this->Aset_model->getAsetKeseluruhan();
 		// $data['content'] = $this->Aset_model->getAset();
@@ -62,7 +71,7 @@ class Aset extends CI_Controller {
 	}
 
 	public function kesAsetDetail($id){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
@@ -72,7 +81,7 @@ class Aset extends CI_Controller {
 	}
 
 	public function kesAsetDetails($id , $skat){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(1);
 		$sid = base64_decode($id);
 		$sid = $this->encryption->decrypt($sid);
@@ -86,7 +95,7 @@ class Aset extends CI_Controller {
 
 
 	public function setAll(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(1);
 		$data['controller'] = $this;
 		$data['content'] = $this->Aset_model->getAsetAll();
@@ -95,7 +104,7 @@ class Aset extends CI_Controller {
 
 	//nambah aset dari detail po
 	public function setAset($idspk, $idd){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(3);
 		$sid = base64_decode($idspk);
 		$sid = $this->encryption->decrypt($sid);
@@ -141,6 +150,21 @@ class Aset extends CI_Controller {
 			}
 		}
 		redirect('Purchase_Order', 'refresh');
+	}
+
+
+	public function getLogMutasi(){
+		$data['page_title'] = $this->setTitle(2);
+		$data['kategori'] = $this->setKategori(4);
+		$data['content'] = $this->Aset_model->getlogMutasi();
+		$this->load->view('tablePage', $data);
+	}
+
+	public function getLogService(){
+		$data['page_title'] = $this->setTitle(2);
+		$data['kategori'] = $this->setKategori(5);
+		$data['content'] = $this->Aset_model->getlogService();
+		$this->load->view('tablePage', $data);
 	}
 
 }

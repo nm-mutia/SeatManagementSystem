@@ -19,10 +19,7 @@ class Po_model extends CI_Model {
   }
 
   public function getPoDetail($id){
-    $query = 'SELECT detail_po.ID_DA, detail_po.KATEGORI as "KATEGORI",detail_po.SUB_KATEGORI as "SUB KATEGORI", detail_po.MASA
-    FROM po
-    right join detail_po on detail_po.NO_SPK = po.NO_SPK
-    where po.NO_SPK = ?';
+    $query = 'CALL getPoDetail(?);';
 
     $fields = $this->db->query($query, array($id));
     return $fields;
@@ -50,17 +47,14 @@ class Po_model extends CI_Model {
   }
 
   public function getOneList($nama){
-    $fields = $this->db->query("SELECT po.NO_SPK AS 'NO SPK', vendor.NAMA_VENDOR AS 'NAMA VENDOR', vendor.NAMA_PIC AS 'NAMA PIC',po.TAHUN_PENGADAAN AS 'TAHUN PENGADAAN', po.FILE_SPK AS 'FILE SPK'
-                      FROM po
-                      JOIN vendor ON po.ID_VENDOR = vendor.ID_VENDOR
-                      WHERE po.NO_SPK = ? ", array($nama));
+    $fields = $this->db->query("CALL getOneListPo(?); ", array($nama));
     return $fields;
   }
 
-  function getSubktg(){
-    $data = $this->db->query("SELECT DISTINCT SUB_KATEGORI FROM detail_po ORDER BY kategori");
-    return $data;
-  }
+  // function getSubktg(){
+  //   $data = $this->db->query("SELECT DISTINCT SUB_KATEGORI FROM detail_po ORDER BY kategori");
+  //   return $data;
+  // }
 
   function upPO($data, $table, $id){
     $this->db->where('NO_SPK', $id);

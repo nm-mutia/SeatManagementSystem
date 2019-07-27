@@ -118,7 +118,10 @@ $route['vendor_list/(:any)'] = 'vendor/list/$1';
 $route['vendor_list/getData/(:any)'] = 'vendor/oneList/$1';
 $route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';
 
-
 //peminjaman
 $route['pinjam_tenggat'] = 'history/tenggat';
 $route['pinjam_tenggat/det/(:any)/(:any)'] = 'history/tenggat_detail/$1/$1';
+
+$route['log/mutasi'] = 'aset/getLogMutasi';
+$route['log/service'] = 'aset/getLogService';
+
