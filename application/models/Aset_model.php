@@ -77,4 +77,17 @@ class Aset_model extends CI_Model {
     return $data;
   }
 
+  //log
+  function getlogMutasi(){
+    $query = "SELECT * FROM LOG_MUTASI";
+    $data = $this->db->query($query);
+    return $data;
+  }
+
+  function getlogService(){
+    $query = "SELECT * FROM LOG_SERVICE";
+    $data = $this->db->query($query);
+    return $data;
+  }
+
 }

@@ -81,7 +81,7 @@ $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 // $route['aset/delete/(:any)'] = 'vendor/deleteAset/$1';
 
 
-$route['aset_lokasi'] = 'aset'; 
+$route['aset_lokasi'] = 'aset';
 
 //insert to database (action)
 $route['crud/aset/(:any)'] = 'aset/insAset/$1';
@@ -119,3 +119,8 @@ $route['vendor_list/add/(:any)'] = 'vendor/setAll';
 $route['vendor_list/(:any)'] = 'vendor/list/$1';
 $route['vendor_list/getData/(:any)'] = 'vendor/oneList/$1';
 $route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';
+
+$route['log/mutasi'] = 'aset/getLogMutasi';
+$route['log/service'] = 'aset/getLogService';
+
+//php_logo_guid
