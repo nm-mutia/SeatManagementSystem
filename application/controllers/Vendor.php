@@ -113,7 +113,7 @@ class Vendor extends CI_Controller {
 
 		$data = array(
 			'NAMA_VENDOR' => $namav,
-			'ID_PIC' => $idp,
+			// 'ID_PIC' => $idp,
 			'NAMA_PIC' => $namap
 		);
 

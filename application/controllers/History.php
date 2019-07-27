@@ -42,13 +42,13 @@ class History extends CI_Controller {
 		$this->load->view('tablePage', $data);
 	}
 
-	public function detKaryawan($nik){
+	public function detKaryawan($nip){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] =  $this->setKategori(2);
 		$data['subkategori'] = $this->setSubKategori();;
 		$nik = base64_decode($nik);
 		$nik = $this->encryption->decrypt($nik);
-		$data['content'] = $this->historyModel->getHistoryKaryawan($nik);
+		$data['content'] = $this->historyModel->getHistoryKaryawan($nip);
     	$this->load->view('tableDetailPage', $data);
 	}
 

@@ -220,29 +220,7 @@
     </div><!-- /#right-panel -->
     <!-- Right Panel -->
 
-    <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script>
-    <!-- <script>
-        $(function(){
-            $("select.ktg").change(function(){
-                var sub = $('select.ktg').val();
-                if(sub == "Hardware"){
-                    for (var i = 1; i <= 6; i++) {  //$v = 4 hardware, $v 5-6 soft
-                        if(i < 5)
-                            $('.sub'+i).show();
-                        else
-                            $('.sub'+i).hide();
-                    }
-                }else if(sub == "Software"){
-                    for (var i = 1; i <= 6; i++) {
-                        if(i < 5)
-                            $('.sub'+i).hide();
-                        else
-                            $('.sub'+i).show();
-                    }
-                }
-            });
-        });
-    </script> -->
+    <!-- <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script> -->
 
     <script type='text/javascript'>
         var counter = 0;
