@@ -9,9 +9,7 @@ class Aset_model extends CI_Model {
 
 
   function getAsetTersedia(){
-    $q = $this->db->query('SELECT KATEGORI
-            FROM detail_po
-            GROUP BY KATEGORI; ');
+    $q = $this->db->query('SELECT KATEGORI FROM detail_po GROUP BY KATEGORI; ');
     return $q;
   }
 
@@ -23,53 +21,17 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetKeseluruhanDet($id){
-    // $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
-    //   aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
-    //     FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
-    //     WHERE detail_po.KATEGORI = ?' , array($id));
-    $q = $this->db->query('SELECT SUB_KATEGORI, COUNT(SUB_KATEGORI) AS JUMLAH
-    FROM detail_po po JOIN aset a ON po.`ID_DA` = a.`ID_DA`
-    WHERE KATEGORI = ?
-    GROUP BY SUB_KATEGORI;' , array($id));
-
-    // $query = "SELECT SUB_KATEGORI, SUM(QTY) AS 'JUMLAH'
-    // FROM detail_po
-    // where kategori = ?
-    // GROUP BY SUB_KATEGORI;"
-    // $q = $this->db->query($query , array($id));
-
+    $q = $this->db->query('CALL get_asetkeseluruhandet(?)' , array($id));
     return $q;
   }
 
   function getAsetKeseluruhanDets($id , $skat){
-    // $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
-    //   aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
-    //     FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
-    //     WHERE detail_po.KATEGORI = ?' , array($id));
-    $q = $this->db->query('SELECT po.`SUB_KATEGORI` AS "SUB KATEGORI", po.`MASA` , a.`SERIES` , a.`CHECKSUM` , a.`TIPE` , a.`MERK` , a.series , a.image
-FROM detail_po po JOIN aset a ON po.`ID_DA` = a.`ID_DA`
-WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
-
-    // $query = "SELECT SUB_KATEGORI, SUM(QTY) AS 'JUMLAH'
-    // FROM detail_po
-    // where kategori = ?
-    // GROUP BY SUB_KATEGORI;"
-    // $q = $this->db->query($query , array($id));
-
+    $q = $this->db->query('CALL get_asetkeseluruhandet(?, ?)' , array($id,$skat));
     return $q;
   }
 
-
   function getAsetTersediaDetail($id){
-    $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
-      aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
-        FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
-        WHERE detail_po.KATEGORI = ? AND aset.sn IN
-            (SELECT DISTINCT a.sn
-            FROM aset AS a
-            LEFT JOIN detail_history AS dh ON a.sn = dh.sn
-            WHERE (dh.tgl_kembali IS NULL AND dh.tgl_tenggat IS NULL) OR dh.tgl_kembali <> NULL OR dh.tgl_kembali <> "0000-00-00")'
-        , array($id));
+    $q = $this->db->query('CALL get_asettersediadetail(?)' , array($id));
     return $q;
   }
 
@@ -88,11 +50,7 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
   }
 
   function detAsetSPK($id){
-    $query = "SELECT a.sn as 'SN', a.checksum as 'CHECKSUM', a.tipe AS 'TIPE', a.merk AS 'MERK', a.series AS 'SERIES', a.image as 'IMAGE'
-            FROM detail_po AS dpo
-            JOIN aset AS a ON a.id_da = dpo.id_da
-            WHERE dpo.id_da = ?";
-    // header("Content-type: image/jpeg");
+    $query = "CALL detasetspk(?)";
     $data = $this->db->query($query, array($id));
     return $data;
   }
@@ -105,7 +63,6 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
     if($count){
       // echo "ADA WOY";
       // echo "<script>alert('ERROR! Serial Number already exist!')</script>";
-      // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
       return $count;
     }
     else{
@@ -114,12 +71,10 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
   }
 
   function countKtg($ktg){
-      $query = "SELECT COUNT(*) AS jml
-            FROM detail_po AS dp
-            JOIN aset AS a ON a.id_da = dp.id_da
-            WHERE dp.kategori = ? ";
-      $data = $this->db->query($query, array($ktg));
-      return $data;
+    $query = "CALL countktg(?)";
+    $data = $this->db->query($query, array($ktg));
+    mysqli_next_result( $this->db->conn_id );
+    return $data;
   }
 
 }

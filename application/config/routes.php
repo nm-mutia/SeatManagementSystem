@@ -103,8 +103,8 @@ $route['history/getData/(:any)/(:any)'] = 'history/oneList/$1/$2';
 // $route['history/History/addDetail'] = 'history/setDetailHistory';
 $route['history/(:any)'] = 'history/setDetail';
 
-$route['historyKaryawan/(:any)'] = 'history/detKaryawan/$1';
-$route['historyKaryawan'] = 'history/karyawan';
+$route['historyPegawai/(:any)'] = 'history/detPegawai/$1';
+$route['historyPegawai'] = 'history/pegawai';
 
 $route['historyAset/(:any)'] = 'history/detAset/$1';
 $route['historyAset'] = 'history/aset';

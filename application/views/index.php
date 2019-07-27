@@ -82,21 +82,21 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card">
-                                <div class="card-body">
-                                    <h4 class="box-title">Peminjaman Lebih dari Tenggat</h4>
+                                <div class="card-header">
+                                    <strong class="card-title">Peminjaman Lebih dari Tenggat</strong>
                                 </div>
-                                <div class="card-body--">
+                                <div class="card-body">
                                     <div class="table-stats order-table ov-h">
                                         <table id='bootstrap-data-table' class="table ">
                                             <thead>
                                                 <tr>
                                                     <th class="serial">#</th>
                                                     <!-- <th class="avatar">Avatar</th> -->
-                                                    <th>Nama</th>
-                                                    <th>NIK</th>
+                                                    <th>NAMA</th>
+                                                    <th>NIP</th>
                                                     <th>ID</th>
                                                     <th>SN</th>
-                                                    <th>Tanggal Tenggat</th>
+                                                    <th>TANGGAL TENGGAT</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -111,7 +111,7 @@
                                                         </div>
                                                     </td> -->
                                                     <td> <?php echo $key['NAMA'] ?> </td>
-                                                    <td><span class="name"><?php echo $key['NIK'] ?></span> </td>
+                                                    <td><span class="name"><?php echo $key['NIP'] ?></span> </td>
                                                     <td><span class="product"><?php echo $key['ID'] ?></span> </td>
                                                     <td><span ><?php echo $key['SN'] ?></span></td>
                                                     <td><span ><?php echo $key['TANGGAL TENGGAT'] ?></span></td>

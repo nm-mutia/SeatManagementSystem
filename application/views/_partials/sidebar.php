@@ -27,8 +27,8 @@
                       History
                     </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('history');?>>History</a></li>
-                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('historyKaryawan');?>>Karyawan</a></li>
+                        <li><i class="fa fa-archive"></i><a href=<?php echo site_url('history');?>>History</a></li>
+                        <li><i class="fa fa-users"></i><a href=<?php echo site_url('historyPegawai');?>>Pegawai</a></li>
                         <li><i class="fa fa-tasks"></i><a href=<?php echo site_url('historyAset');?>>Aset</a></li>
                     </ul>
                 </li>

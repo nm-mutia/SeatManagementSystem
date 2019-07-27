@@ -42,9 +42,9 @@ $('#Medit ').submit(function(){
          // table.fnPageChange("first",1);
        }
        ,
-       error: function(data) {
-          alert('fail');
-        }
+       // error: function(data) {
+       //    alert('fail');
+       //  }
    });
 
 });
