@@ -64,11 +64,11 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
     $q = $this->db->query('SELECT detail_po.SUB_KATEGORI, detail_po.MASA,
       aset.SN, aset.CHECKSUM,ASET.TIPE, ASET.MERK, ASET.SERIES, ASET.IMAGE
         FROM detail_po JOIN aset ON detail_po.ID_DA = aset.ID_DA
-        WHERE detail_po.KATEGORI = ? AND aset.sn IN 
+        WHERE detail_po.KATEGORI = ? AND aset.sn IN
             (SELECT DISTINCT a.sn
-            FROM aset AS a 
-            LEFT JOIN detail_history AS dh ON a.sn = dh.sn 
-            WHERE (dh.tgl_kembali IS NULL AND dh.tgl_tenggat IS NULL) OR dh.tgl_kembali <> NULL OR dh.tgl_kembali <> "0000-00-00")' 
+            FROM aset AS a
+            LEFT JOIN detail_history AS dh ON a.sn = dh.sn
+            WHERE (dh.tgl_kembali IS NULL AND dh.tgl_tenggat IS NULL) OR dh.tgl_kembali <> NULL OR dh.tgl_kembali <> "0000-00-00")'
         , array($id));
     return $q;
   }
@@ -119,7 +119,7 @@ WHERE kategori = ? AND SUB_KATEGORI = ?' , array($id,$skat));
             JOIN aset AS a ON a.id_da = dp.id_da
             WHERE dp.kategori = ? ";
       $data = $this->db->query($query, array($ktg));
-      return $data; 
+      return $data;
   }
 
 }

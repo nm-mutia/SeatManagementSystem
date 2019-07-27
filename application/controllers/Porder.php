@@ -95,6 +95,8 @@ class Porder extends CI_Controller {
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$get  = $this->Po_model->getOneList($nama)->result_array();
+
+
 		foreach($get as $row){
 			$result['NO SPK'] = $row['NO SPK'];
 			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
@@ -106,32 +108,24 @@ class Porder extends CI_Controller {
 	}
 
 	public function deletePorder($nama){
-		// $data['page_title'] = $this->setTitle();
-		// $data['kategori'] = $this->setKategori(1);
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->Po_model->deletePorder($nama);
-// $data['content'] = 1;
 		// $message = "tes";
 		// echo "<script type='text/javascript'>alert('$message');</script>";
 		if($data['content'])
         {
 					$response = array(
-						// keys
 						"success" => "true"
 					);
 
           echo json_encode($response);
-					// redirect('refresh');
-					// redirect('vendor_list');
         }
      else
         {
 					$response = array(
-						// keys
 						"success" => "false"
 					);
-
           echo json_encode($response);
         }
     }
@@ -145,13 +139,11 @@ class Porder extends CI_Controller {
 			'NO_SPK' => $spk,
 			'ID_VENDOR' => $idv,
 			'TAHUN_PENGADAAN' => $thada
-			// 'NAMA_PIC' => $namap
 		);
 		if($spk != null && $idv != null){
 			$try = $this->Po_model->setPO($data, 'po', $spk);
 			if ($try > 0) {
 		      echo "<script>alert('ERROR! Serial Number already exist!')</script>";
-		      // echo anchor('Purchase_Order');
 		      redirect('Purchase_Order', 'refresh');
 			}
 		}
