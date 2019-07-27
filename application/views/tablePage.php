@@ -59,9 +59,22 @@
                                           <!-- <th></th> -->
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
-                                            <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> ACTION </th>
+
+                                            <?php
+                                                if ($page_title !="Log"){
+                                            ?>
+                                            <!-- <th> apa </th> -->
+                                                <th> Action </th>
+
+                                            <?php
+                                            }else {
+                                            ?>
+                                              <?php
+                                            }
+                                               ?>
+
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,52 +90,61 @@
                                                 ?>
                                             <?php endforeach ?>
                                             <td>
+                                                <?php
+                                                    if ($kategori == "History Pegawai" || $kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset" || $kategori == "History Pegawai" ){
+                                                ?>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                  <div class="icon-container">
+                                                    <span class="ti-eye"></span>
+                                                  </div>
+                                                </a>
 
-                                                <?php if($kategori == "History Pegawai" || $kategori == "History Aset"){ ?>
-                                                    <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                      <div class="icon-container">
-                                                        <span class="ti-eye"></span>
-                                                      </div>
-                                                    </a>
-                                                <?php } else{ ?>
-                                                     <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history" || $this->uri->segment(1)=="pinjam_tenggat"){ echo "det/";} 
-                                                        if($this->uri->segment(1)=="history"){$u = $this->encryption->encrypt($save2);}
-                                                        else{$u = $this->encryption->encrypt(current($key));} 
-                                                        echo base64_encode($u); 
-                                                        if( $this->uri->segment(1)=="pinjam_tenggat"){$t = $this->encryption->encrypt($save); echo "/".base64_encode($t);} ?>">
-                                                      <div class="icon-container">
-                                                        <span class="ti-eye"></span>
-                                                      </div>
-                                                    </a>
-                                                    <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                      <div class="icon-container">
-                                                        <span class="ti-pencil-alt"></span>
-                                                      </div>
-                                                    </a>
-                                                    <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                      <div class="icon-container">
-                                                        <span class="ti-trash"></span>
-                                                      </div>
-                                                    </a>
-                                                <?php } ?>
+                                                <?php
+                                              }else if($page_title == "log") {?>
+
+
+
+                                                <?php
+                                              }else { ?>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                  <div class="icon-container">
+                                                    <span class="ti-eye"></span>
+                                                  </div>
+                                                </a>
+
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                  <div class="icon-container">
+                                                    <span class="ti-pencil-alt"></span>
+                                                  </div>
+                                                </a>
+
+                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                  <div class="icon-container">
+                                                    <span class="ti-trash"></span>
+                                                  </div>
+                                                </a>
+                                              <?php
+                                              }
+                                                 ?>
+
                                                 <!-- <br> -->
                                             </td>
 
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
-                                      <tfoot>
+                                      <!-- <tfoot> -->
                                             <!-- <tr>
                                               <th>  </th> -->
-                                              <?php foreach ($content->field_data() as $field): ?>
-
-                                                      <th><?php echo $field->name ?> </th>
+                                              <!-- <?php foreach ($content->field_data() as $field): ?> -->
+<!--  -->
+                                                      <!-- <th><?php echo $field->name ?> </th> -->
                                                       <!-- <th> Keterangan </th> -->
-                                              <?php endforeach ?>
-                                              <th> Action  </th>
+                                              <!-- <?php endforeach ?> -->
+                                              <!-- <th> Action  </th> -->
 
-                                            </tr>
-                                    </tfoot>
+                                            <!-- </tr> -->
+                                    <!-- </tfoot> -->
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){

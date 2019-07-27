@@ -33,10 +33,10 @@ class vendor_model extends CI_Model {
     return $data;
   }
 
-  // function getAll(){
-  //   $data = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" from vendor');
-  //   return $data;
-  // }
+  function getAll(){
+    $data = $this->db->query('SELECT * from vendor');
+    return $data;
+  }
 
 
   function setVendor($data, $table){

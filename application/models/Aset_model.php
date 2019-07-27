@@ -74,7 +74,20 @@ class Aset_model extends CI_Model {
     $query = "CALL countktg(?)";
     $data = $this->db->query($query, array($ktg));
     mysqli_next_result( $this->db->conn_id );
-    return $data; 
+    return $data;
+  }
+
+  //log
+  function getlogMutasi(){
+    $query = "SELECT * FROM LOG_MUTASI";
+    $data = $this->db->query($query);
+    return $data;
+  }
+
+  function getlogService(){
+    $query = "SELECT * FROM LOG_SERVICE";
+    $data = $this->db->query($query);
+    return $data;
   }
 
 }
