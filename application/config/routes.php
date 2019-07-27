@@ -59,8 +59,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //menu fitur
 $route['tabeldet/(:any)'] = '$1/';
-$route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 $route['admin'] = 'adminDashboard';
+$route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
@@ -80,8 +80,6 @@ $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 // $route['aset/delete/(:any)'] = 'vendor/deleteAset/$1';
 
-
-$route['aset_lokasi'] = 'aset'; 
 
 //insert to database (action)
 $route['crud/aset/(:any)'] = 'aset/insAset/$1';
@@ -119,3 +117,8 @@ $route['vendor_list/add/(:any)'] = 'vendor/setAll';
 $route['vendor_list/(:any)'] = 'vendor/list/$1';
 $route['vendor_list/getData/(:any)'] = 'vendor/oneList/$1';
 $route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';
+
+
+//peminjaman
+$route['pinjam_tenggat'] = 'history/tenggat';
+$route['pinjam_tenggat/det/(:any)/(:any)'] = 'history/tenggat_detail/$1/$1';

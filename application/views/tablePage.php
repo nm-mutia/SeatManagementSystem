@@ -61,7 +61,7 @@
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> Action </th>
+                                            <th> ACTION </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -71,32 +71,41 @@
                                             <?php $var = 1; ?>
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
-                                            <?php if($kategori == "History" && $var == 5){$save = $key1;} ?>
+                                            <?php if($kategori == "History" && $var == 5){$save = $key1;}
+                                                else if($kategori == "History" && $var == 3){$save2 = $key1;}
+                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;} 
+                                                ?>
                                             <?php endforeach ?>
                                             <td>
 
-                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                  <div class="icon-container">
-                                                    <span class="ti-eye"></span>
-                                                  </div>
-                                                </a>
-
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                  <div class="icon-container">
-                                                    <span class="ti-pencil-alt"></span>
-                                                  </div>
-                                                </a>
-
-                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                  <div class="icon-container">
-                                                    <span class="ti-trash"></span>
-                                                  </div>
-                                                </a>
+                                                <?php if($kategori == "History Pegawai" || $kategori == "History Aset"){ ?>
+                                                    <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                      <div class="icon-container">
+                                                        <span class="ti-eye"></span>
+                                                      </div>
+                                                    </a>
+                                                <?php } else{ ?>
+                                                     <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history" || $this->uri->segment(1)=="pinjam_tenggat"){ echo "det/";} 
+                                                        if($this->uri->segment(1)=="history"){$u = $this->encryption->encrypt($save2);}
+                                                        else{$u = $this->encryption->encrypt(current($key));} 
+                                                        echo base64_encode($u); 
+                                                        if( $this->uri->segment(1)=="pinjam_tenggat"){$t = $this->encryption->encrypt($save); echo "/".base64_encode($t);} ?>">
+                                                      <div class="icon-container">
+                                                        <span class="ti-eye"></span>
+                                                      </div>
+                                                    </a>
+                                                    <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                      <div class="icon-container">
+                                                        <span class="ti-pencil-alt"></span>
+                                                      </div>
+                                                    </a>
+                                                    <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                      <div class="icon-container">
+                                                        <span class="ti-trash"></span>
+                                                      </div>
+                                                    </a>
+                                                <?php } ?>
                                                 <!-- <br> -->
-
-
-
-
                                             </td>
 
                                         </tr>
