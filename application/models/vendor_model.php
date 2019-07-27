@@ -13,36 +13,30 @@ class vendor_model extends CI_Model {
   }
 
   public function getVendor(){
-    $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor');
+    $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" FROM vendor');
     return $fields;
   }
 
   public function getList($nama){
-  	$query = "SELECT po.no_spk AS 'NO SPK', po.tahun_pengadaan AS PENGADAAN, a.sn AS SN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, dp.kategori AS KATEGORI, dp.masa AS MASA_ASET
-		FROM vendor AS v
-		JOIN po ON v.id_vendor = po.id_vendor
-		JOIN detail_po AS dp ON dp.no_spk = po.no_spk
-		JOIN aset AS a ON a.id_da = dp.id_da
-		WHERE v.id_vendor = ?";
+  	$query = "CALL getList(?);";
     $data = $this->db->query($query, array($nama));
     return $data;
   }
 
   public function getOneList($nama){
-    $fields = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR",NAMA_PIC AS "NAMA PIC" FROM vendor where ID_VENDOR = ?', array($nama));
+    $fields = $this->db->query('CALL getOneList(?)', array($nama));
     return $fields;
-
   }
 
   function getAllForm(){
-    $data = $this->db->query("SELECT NAMA_VENDOR as 'NAMA VENDOR', NAMA_PIC as 'NAMA PIC' from vendor");
+    $data = $this->db->query('SELECT NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" from vendor');
     return $data;
   }
 
-  function getAll(){
-    $data = $this->db->query("SELECT * from vendor");
-    return $data;
-  }
+  // function getAll(){
+  //   $data = $this->db->query('SELECT ID_VENDOR AS "ID",  NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" from vendor');
+  //   return $data;
+  // }
 
 
   function setVendor($data, $table){
@@ -68,7 +62,6 @@ class vendor_model extends CI_Model {
         $this->db->delete('vendor');
         return 1;
       }
-
       // return;
   }
 }

@@ -37,20 +37,15 @@ class Vendor extends CI_Controller {
 	}
 
 	public function oneList($nama){
-		// $data['page_title'] = $this->setTitle();
-		// $data['kategori'] = $this->setKategori();
-		// $data['subkategori'] = "detail";
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$get  = $this->vendor_model->getOneList($nama)->result_array();
-
-		// $get = $this->Model->Getbarang(array('id_barang'=>$id_barang))->result_array();
-
 					foreach($get as $row){
 					$result['ID'] = $row['ID'];
 					$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
 					$result['NAMA PIC'] = $row['NAMA PIC'];
-
+					$result['EMAIL'] = $row['EMAIL'];
+					$result['NO HP'] = $row['NO HP'];
 					}
 					echo json_encode($result);
 					// return $result;
@@ -75,25 +70,18 @@ class Vendor extends CI_Controller {
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->vendor_model->deleteVendor($nama);
-// $data['content'] = 1;
 		if($data['content'])
         {
 					$response = array(
-						// keys
 						"success" => "true"
 					);
-
           echo json_encode($response);
-					// redirect(refresh);
-					// redirect('vendor_list');
         }
      else
         {
 					$response = array(
-						// keys
 						"success" => "vendor false"
 					);
-
           echo json_encode($response);
         }
 	}
@@ -108,15 +96,17 @@ class Vendor extends CI_Controller {
 	//insert vendor
 	public function insVendor(){
 		$namav = $this->input->post('NAMA_VENDOR');
-		$idp = $this->input->post('ID_PIC');
 		$namap = $this->input->post('NAMA_PIC');
+		$namae = $this->input->post('EMAIL');
+		$namahp = $this->input->post('NO_HP');
 
 		$data = array(
 			'NAMA_VENDOR' => $namav,
-			// 'ID_PIC' => $idp,
-			'NAMA_PIC' => $namap
+			'NAMA_PIC' => $namap,
+			'EMAIL' => $namae,
+			'NO_HP' => $namahp
+			// 'NAMA_PIC' => $namap
 		);
-
 		$this->vendor_model->setVendor($data, 'vendor');
 		redirect('vendor_list');
 	}
@@ -124,13 +114,14 @@ class Vendor extends CI_Controller {
 	public function upVendor(){
 		$idv = $this->input->post('ID');
 		$namav = $this->input->post('NAMA_VENDOR');
-		// $idp = $this->input->post('ID_PIC');
 		$namap = $this->input->post('NAMA_PIC');
-
+		$namae = $this->input->post('EMAIL');
+		$namahp = $this->input->post('NO_HP');
 		$data = array(
 			'NAMA_VENDOR' => $namav,
-			// 'ID_PIC' => $idp,
-			'NAMA_PIC' => $namap
+			'NAMA_PIC' => $namap,
+			'EMAIL' => $namae,
+			'NO_HP' => $namahp
 		);
 		$this->vendor_model->upVendor($data, 'vendor', $idv);
 		redirect('vendor_list');
