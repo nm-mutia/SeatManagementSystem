@@ -59,9 +59,20 @@
                                           <!-- <th></th> -->
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
-                                            <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> Action </th>
+                                            <?php
+                                                if ($page_title !="Log"){
+                                            ?>
+                                            <!-- <th> apa </th> -->
+                                                <th> Action </th>
+
+                                            <?php
+                                            }else {
+                                            ?>
+                                              <?php
+                                            }
+                                               ?>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,7 +85,21 @@
                                             <?php if($kategori == "History" && $var == 5){$save = $key1;} ?>
                                             <?php endforeach ?>
                                             <td>
+                                                <?php
+                                                    if ($kategori == "History Pegawai" || $kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset" || $kategori == "History Pegawai" ){
+                                                ?>
+                                                <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
+                                                  <div class="icon-container">
+                                                    <span class="ti-eye"></span>
+                                                  </div>
+                                                </a>
 
+                                                <?php
+                                              }else if($page_title == "log") {?>
+
+
+                                                <?php
+                                              }else { ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
                                                     <span class="ti-eye"></span>
@@ -92,6 +117,9 @@
                                                     <span class="ti-trash"></span>
                                                   </div>
                                                 </a>
+                                              <?php
+                                              }
+                                                 ?>
                                                 <!-- <br> -->
 
 
@@ -102,18 +130,18 @@
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
-                                      <tfoot>
+                                      <!-- <tfoot> -->
                                             <!-- <tr>
                                               <th>  </th> -->
-                                              <?php foreach ($content->field_data() as $field): ?>
-
-                                                      <th><?php echo $field->name ?> </th>
+                                              <!-- <?php foreach ($content->field_data() as $field): ?> -->
+<!--  -->
+                                                      <!-- <th><?php echo $field->name ?> </th> -->
                                                       <!-- <th> Keterangan </th> -->
-                                              <?php endforeach ?>
-                                              <th> Action  </th>
+                                              <!-- <?php endforeach ?> -->
+                                              <!-- <th> Action  </th> -->
 
-                                            </tr>
-                                    </tfoot>
+                                            <!-- </tr> -->
+                                    <!-- </tfoot> -->
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
