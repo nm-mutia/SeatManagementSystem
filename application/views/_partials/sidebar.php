@@ -35,7 +35,7 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Peminjaman</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-clock-o"></i><a href="">Tenggat</a></li>
+                        <li><i class="menu-icon fa fa-clock-o"></i><a href=<?php echo site_url('pinjam_tenggat');?>>Tenggat</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">

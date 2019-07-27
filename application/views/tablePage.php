@@ -60,6 +60,7 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
+
                                             <?php
                                                 if ($page_title !="Log"){
                                             ?>
@@ -73,6 +74,7 @@
                                             }
                                                ?>
 
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,7 +84,10 @@
                                             <?php $var = 1; ?>
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
-                                            <?php if($kategori == "History" && $var == 5){$save = $key1;} ?>
+                                            <?php if($kategori == "History" && $var == 5){$save = $key1;}
+                                                else if($kategori == "History" && $var == 3){$save2 = $key1;}
+                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;} 
+                                                ?>
                                             <?php endforeach ?>
                                             <td>
                                                 <?php
@@ -96,6 +101,7 @@
 
                                                 <?php
                                               }else if($page_title == "log") {?>
+
 
 
                                                 <?php
@@ -120,11 +126,8 @@
                                               <?php
                                               }
                                                  ?>
+
                                                 <!-- <br> -->
-
-
-
-
                                             </td>
 
                                         </tr>
