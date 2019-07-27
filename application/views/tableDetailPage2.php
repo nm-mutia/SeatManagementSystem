@@ -62,7 +62,7 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-                                            <th> KETERANGAN </th>
+                                            <th> Action </th>
                                         </tr>
                                     </thead>
                                     <tbody>
