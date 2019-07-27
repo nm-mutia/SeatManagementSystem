@@ -42,11 +42,13 @@
 <script src="<?php echo base_url(); ?>assets/js/init/datatables-init.js"></script>
 
 <!-- <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.editor.min.js"></script> -->
+<script src="<?php echo base_url(); ?>assets/js/lib/data-table/buttons.colVis.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/jquery-3.3.1.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.select.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.fixedHeader.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/lib/data-table/dataTables.fixedColumns.min.js"></script>
+
 
 
 

@@ -223,8 +223,8 @@ $('#Medit ').submit(function(){
       orderCellsTop: true,
       lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
       // lenghtChange : false,
-      dom: 'lfrt<"clear">Bip',
-      buttons : true,
+      dom: 'lfrtBip',
+      // buttons : true,
       destroy: true,
       // scrollX:  true,
       // scrollY:  true,
@@ -246,17 +246,28 @@ $('#Medit ').submit(function(){
       },
 
       buttons: [
-                      'copy',
-                      'excel',
-                      'csv',
-                      'print',
+                      {extend: 'copy', 
+                       className: 'yeah',                       
+                    },
+                    {extend: 'excel', 
+                       className: 'yeah',                       
+                    },
+                    {extend: 'csv', 
+                       className: 'yeah',                       
+                    },
+                    {extend: 'print', 
+                       className: 'yeah',                       
+                    },
                       {
                        extend: 'colvis',
-                       columns: ':not(.noVis)'
+                       className: 'yeah',                       
+                       columns: ':not(.noVis)',
+                       text: 'Columns'
                        }
       ],
        // fixedColumns: true
   });
+  // $('.dt-button').attr("class","btn btn-success")
 
 
 

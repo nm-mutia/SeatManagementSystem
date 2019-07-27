@@ -11,7 +11,7 @@ class HistoryModel extends CI_Model {
   function countPeminjam(){
     $data = $this->db->query("SELECT COUNT(*) as jml
             FROM detail_history AS dh
-            WHERE dh.tgl_kembali = NULL OR dh.tgl_kembali = '0000-00-00' OR dh.tgl_kembali = ''");
+            WHERE dh.tgl_kembali IS NULL OR dh.tgl_kembali = '0000-00-00' OR dh.tgl_kembali = ''");
     return $data;
   }
   

@@ -8,7 +8,7 @@
     <?php $this->load->view("_partials/sidebar.php") ?>
     <!-- /#left-panel -->
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel ">
         <!-- Header-->
         <?php $this->load->view("_partials/navbar.php") ?>
 
@@ -91,7 +91,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="serial">#</th>
-                                                    <th class="avatar">Avatar</th>
+                                                    <!-- <th class="avatar">Avatar</th> -->
                                                     <th>Nama</th>
                                                     <th>NIK</th>
                                                     <th>ID</th>
@@ -105,11 +105,11 @@
                                                 <?php foreach ($content->result_array() as $key): ?>
                                                 <tr>
                                                     <td class="serial"><?php echo $x++; ?>.</td>
-                                                    <td class="avatar">
+                                                    <!-- <td class="avatar">
                                                         <div class="round-img">
                                                             <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
                                                         </div>
-                                                    </td>
+                                                    </td> -->
                                                     <td> <?php echo $key['NAMA'] ?> </td>
                                                     <td><span class="name"><?php echo $key['NIK'] ?></span> </td>
                                                     <td><span class="product"><?php echo $key['ID'] ?></span> </td>

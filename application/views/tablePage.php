@@ -14,12 +14,12 @@
     <?php $this->load->view("_partials/sidebar.php") ?>
     <!-- Left Panel -->
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel ">
         <!-- Header-->
               <?php $this->load->view("_partials/navbar.php") ?>
         <!-- Header-->
 
-        <div class="breadcrumbs">
+        <div class="breadcrumbs ">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
@@ -48,11 +48,11 @@
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card ">
                             <div class="card-header">
                                 <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-stats order-table">
                                 <table id="bootstrap-data-table" class="table table-condensed table-bordered hover">
                                     <thead>
                                         <tr>
@@ -61,7 +61,7 @@
                                             <th><?php echo $field->name ?> </th>
                                             <!-- <th> Keterangan </th> -->
                                     <?php endforeach ?>
-                                            <th> KETERANGAN </th>
+                                            <th> Action </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -110,7 +110,7 @@
                                                       <th><?php echo $field->name ?> </th>
                                                       <!-- <th> Keterangan </th> -->
                                               <?php endforeach ?>
-                                              <th> KETERANGAN  </th>
+                                              <th> Action  </th>
 
                                             </tr>
                                     </tfoot>
@@ -118,7 +118,7 @@
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
                                 ?>      <div>
-                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>"><button type="button" class="btn btn-success">Tambah</button></a>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>"><button type="button" class="btn bg-nice"><b>Tambah</b></button></a>
                                         </div>
                                 <?php
                                     }

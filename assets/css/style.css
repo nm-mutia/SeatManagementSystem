@@ -20,7 +20,7 @@ Googel Fonts  */
 
 */
 
-#events {
+/*#events {
         margin-bottom: 1em;
         padding: 1em;
         background-color: #f6f6f6;
@@ -28,7 +28,7 @@ Googel Fonts  */
         border-radius: 3px;
         height: 100px;
         overflow: auto;
-    }
+    }*/
 
 .selected {
   margin-bottom: 1em;
@@ -41,6 +41,32 @@ Googel Fonts  */
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+.bg-nice{
+  background: #E07E5B;
+  color: #000;
+}
+
+/*.btn {
+  background: yellow;
+  color: #fff;
+}*/
+
+
+.dt-button.yeah{
+   background: #a83e32; /* Green */
+  border: none;
+  color: white;
+  /*padding: 15px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  /*display: inline-block;*/
+  font-size: 12px;
+}
+.dt-button.yeah:hover{
+  background-color: #000; 
+  color: #000;
+}
+
 .bg-flat-color-1 {
   background: #00c292; }
 
@@ -481,13 +507,14 @@ canvas {
     top: 0px;
     height: 37px;
     width: 10px;
-    background: #e8e9ef; }
+    background: #fff; }
   .order-table:after {
     right: -1px; }
   .order-table:before {
     left: -1px; }
   .order-table tr th {
-    background: #e8e9ef; }
+    background: #247B84; }
+
   .order-table tr td:last-child, .order-table tr th:last-child {
     text-align: right; }
   .order-table tr:last-child td {
@@ -581,7 +608,8 @@ canvas {
 /* Global Styles */
 /* Main Styles */
 aside.left-panel {
-  background: #fff;
+  background:   #2D2D2D; 
+  /*WOY*/
   height: 100vh;
   padding: 0;
   vertical-align: top;
@@ -603,7 +631,7 @@ aside.left-panel {
   margin-left: 83px; }
 
 .navbar {
-  background: #fff;
+  background:   #2D2D2D;
   border-radius: 0;
   border: none;
   display: inline-block;
@@ -615,7 +643,7 @@ aside.left-panel {
     padding: 0;
     padding-bottom: 50px; }
   .navbar .menu-title {
-    color: #41434d;
+    color: #fff;
     clear: both;
     display: block;
     font-family: 'Open Sans';
@@ -843,7 +871,7 @@ aside.left-panel {
 
 /* Right panel */
 .right-panel {
-  background: #f1f2f7;
+  background:  #BFBEBC;
   margin-left: 280px;
   margin-top: 55px; }
   .right-panel .top-left {
@@ -857,27 +885,32 @@ aside.left-panel {
     padding: 0 1.875em;
     width: 100%; }
     .right-panel .breadcrumbs .breadcrumbs-inner {
-      background-color: #fff; }
+      background-color: #2D2D2E; }
     .right-panel .breadcrumbs .col-lg-8 .page-header {
       float: left; }
   .right-panel .page-header {
     min-height: 50px;
     margin: 0px;
     padding: 0px 15px;
-    background: #ffffff;
+    background: #2D2D2E;
     border-bottom: 0px; }
     .right-panel .page-header h1 {
       font-size: 18px;
+      color: #fff;
       padding: 15px 0; }
     .right-panel .page-header .breadcrumb {
       margin: 0px;
       padding: 13.5px 0;
-      background: #fff;
+      background: #2D2D2E;
       text-transform: capitalize; }
     .right-panel .page-header .breadcrumb > li + li:before {
       padding: 0 5px;
-      color: #ccc;
+      color: #fff;
       content: "/\00a0"; }
+    .right-panel .page-header .breadcrumb .active, 
+    .right-panel .page-header .breadcrumb li a:hover{
+      color: #247B84;
+    }
 
 .right-panel header.header {
   background: #fff;
@@ -1366,6 +1399,9 @@ header .form-inline {
     border: 5px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     -webkit-border-radius: 50%; }
+  .card .card-header{
+    background: #E07E5B; 
+    }
   .card .card-header .card-actions button {
     display: block;
     float: left;
@@ -1469,7 +1505,7 @@ header .form-inline {
   .table-stats table td {
     border: none;
     border-bottom: 1px solid #e8e9ef;
-    color: #868e96;
+    color: #000;
     font-size: 12px;
     font-weight: normal;
     padding: .75em 1.25em;
@@ -2527,3 +2563,4 @@ footer.site-footer {
     right: 20px !important; }
 
 /*# sourceMappingURL=style.css.map */
+/*body {overflow-x: hidden;}*/

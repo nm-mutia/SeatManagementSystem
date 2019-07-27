@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/dataTables.bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.bootstrap.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/jquery.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/select.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/fixedHeader.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.dataTables.min.css">
