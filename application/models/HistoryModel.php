@@ -16,7 +16,7 @@ class HistoryModel extends CI_Model {
   }
   
   function getAll(){
-    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nik as NIK, ha.tgl_pinjam as TGL_PINJAM, dh.sn AS SN, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.keterangan AS KETERANGAN
+    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI, dh.status as STATUS
             from history_aset as ha
             join detail_history as dh on ha.id_history = dh.id_history");
     return $data;
@@ -60,7 +60,7 @@ class HistoryModel extends CI_Model {
     return $data;
   }
 
-  function getHistoryKaryawan($nip){
+  function getHistoryPegawai($nip){
     $query = "SELECT * FROM get_history_by WHERE nip = ?";
     $data = $this->db->query($query, array($nip));
     return $data;

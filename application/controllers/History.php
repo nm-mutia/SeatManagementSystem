@@ -7,7 +7,7 @@ class History extends CI_Controller {
 		 parent::__construct();
 		 // Load model
 		 $this->load->model('historyModel');
-		 $this->load->model('karyawanModel');
+		 $this->load->model('pegawaiModel');
 		 $this->load->model('Aset_model');
 		 $this->load->model('vendor_model');
 	}
@@ -21,7 +21,7 @@ class History extends CI_Controller {
 		if ($nomer == 1){
 				$kategori = "History Aset";
 		}else if ($nomer == 2){
-				$kategori = "History Karyawan";
+				$kategori = "History Pegawai";
 		}else if($nomer == 3){
 				$kategori = "History";
 		}
@@ -34,21 +34,21 @@ class History extends CI_Controller {
 	}
 
 
-//karyawan
-	public function karyawan(){
+//pegawai
+	public function pegawai(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori(2);
-		$data['content'] = $this->karyawanModel->getKaryawan();
+		$data['content'] = $this->pegawaiModel->getPegawai();
 		$this->load->view('tablePage', $data);
 	}
 
-	public function detKaryawan($nip){
+	public function detPegawai($nip){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] =  $this->setKategori(2);
 		$data['subkategori'] = $this->setSubKategori();;
-		$nik = base64_decode($nik);
-		$nik = $this->encryption->decrypt($nik);
-		$data['content'] = $this->historyModel->getHistoryKaryawan($nip);
+		$nip = base64_decode($nip);
+		$nip = $this->encryption->decrypt($nip);
+		$data['content'] = $this->historyModel->getHistoryPegawai($nip);
     	$this->load->view('tableDetailPage', $data);
 	}
 
@@ -87,7 +87,7 @@ class History extends CI_Controller {
 		$sn = base64_decode($sn);
 		$sn = $this->encryption->decrypt($sn);
 		$data['content'] = $this->historyModel->getHistoryAset($sn);
-    $this->load->view('tableDetailPage', $data);
+	    $this->load->view('tableDetailPage', $data);
 	}
 
 
@@ -119,7 +119,7 @@ class History extends CI_Controller {
 
 		foreach($get as $row){
 			$result['ID_HISTORY'] = $row['ID_HISTORY'];
-			$result['NIK'] = $row['NIK'];
+			$result['NIP'] = $row['NIP'];
 			$result['TGL_PINJAM'] = $row['TGL_PINJAM'];
 			$result['SN'] = $row['SN'];
 			$result['TGL_TENGGAT'] = $row['TGL_TENGGAT'];
@@ -132,14 +132,14 @@ class History extends CI_Controller {
 
 	public function insHistory($count){
 		$idv = $this->input->post('ID_VENDOR');
-		$nik = $this->input->post('NIK');
+		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
 		$data = array(
 			'ID_VENDOR' => $idv,
-			'NIK' => $nik,
+			'NIP' => $nip,
 			'TGL_PINJAM' => $tpin
 		);
-		if($idv != null && $nik != null){
+		if($idv != null && $nip != null){
 			$this->historyModel->setHistory($data, 'history_aset');
 		}
 
