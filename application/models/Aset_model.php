@@ -26,7 +26,7 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetKeseluruhanDets($id , $skat){
-    $q = $this->db->query('CALL get_asetkeseluruhandet(?, ?)' , array($id,$skat));
+    $q = $this->db->query('CALL get_asetkeseluruhandets(?, ?)' , array($id,$skat));
     return $q;
   }
 
@@ -36,7 +36,7 @@ class Aset_model extends CI_Model {
   }
 
   function getAset(){
-    $query = "SELECT a.sn AS sn, a.tipe, a.merk, a.series
+    $query = "SELECT a.sn AS SN, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES
       FROM aset AS a";
     $data = $this->db->query($query);
     return $data;
