@@ -65,7 +65,7 @@
                                                 if ($page_title !="Log"){
                                             ?>
                                             <!-- <th> apa </th> -->
-                                                <th> Action </th>
+                                                <th> ACTION </th>
 
                                             <?php
                                             }else {

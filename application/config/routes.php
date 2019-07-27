@@ -80,7 +80,6 @@ $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 // $route['aset/delete/(:any)'] = 'vendor/deleteAset/$1';
 
-
 //insert to database (action)
 $route['crud/aset/(:any)'] = 'aset/insAset/$1';
 $route['crud/history/(:any)'] = 'history/insHistory/$1';
@@ -124,4 +123,3 @@ $route['pinjam_tenggat/det/(:any)/(:any)'] = 'history/tenggat_detail/$1/$1';
 
 $route['log/mutasi'] = 'aset/getLogMutasi';
 $route['log/service'] = 'aset/getLogService';
-
