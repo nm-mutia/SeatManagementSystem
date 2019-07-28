@@ -18,7 +18,7 @@
                         <li><i class="fa fa-puzzle-piece"></i><a href=<?php echo site_url('Purchase_Order');?>>Purchase Order</a></li>
                         <li><i class="fa fa-users"></i><a href=<?php echo site_url('aset');?>>Aset Keseluruhan</a></li>
                         <li><i class="fa fa-id-badge"></i><a href=<?php echo site_url('Aset_tersedia');?>>Aset Tersedia</a></li>
-                        <!-- <li><i class="fa fa-map-marker"></i><a href=<?php echo site_url('aset_lokasi');?>>Aset Lokasi</a></li> -->
+                        
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
@@ -53,7 +53,7 @@
                 </li>
 
             </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
     </nav>
 </aside>
 <style type="text/css">
