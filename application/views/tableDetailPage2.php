@@ -62,6 +62,7 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
+                                            <th> image </th>
                                             <th> Action </th>
                                         </tr>
                                     </thead>
@@ -73,16 +74,13 @@
                                             <?php endforeach ?>
 
                                             <td>
-                                              <!-- <a name= "<?php echo base_url($this->uri->segment(1))?>/getData/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                <div class="icon-container">
-                                                  <span class="ti-pencil-alt"></span>
-                                                </div>
-                                              </a> -->
-                                              <!-- <a name= "www.google.co.id" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                <div class="icon-container">
-                                                  <span class="ti-pencil-alt"></span>
-                                                </div>
-                                              </a> -->
+                                              <!-- <img src="<?=base_url().'images/admin.jpg';?>" width="100">  -->
+                                              <img style="height: 200px; margin: auto;"
+                      		        								src="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" />
+                                            </td>
+
+                                            <td>
+
                                               <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
                                                 <div class="icon-container">
                                                   <span class="ti-pencil-alt"></span>

@@ -117,7 +117,7 @@
                                                         <?php if($field->name == "ID_DA"){ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
                                                         <?php } else if($field->name == "IMAGE"){?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                                <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                         <?php } ?><br>

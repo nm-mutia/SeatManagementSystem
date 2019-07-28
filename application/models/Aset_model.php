@@ -1,6 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Aset_model extends CI_Model {
+
+  public $image;
+  private $table = "aset";
+
+  public function flush()
+	{
+		$this->title = '';
+		$this->image = '';
+	}
+
   function __construct()
   {
       // Call the Model constructor
@@ -50,12 +60,24 @@ class Aset_model extends CI_Model {
   }
 
   function detAsetSPK($id){
+
     $query = "CALL detasetspk(?)";
     $data = $this->db->query($query, array($id));
     return $data;
   }
 
+  function getImage($id){
+
+    $q = $this->db->get_where("aset", ['SN' => $id]);
+
+    // console.log($q->num_rows());
+
+		return $q->num_rows() > 0 ? $q->row()->IMAGE : '';
+
+  }
+
   function setAset($data, $table, $sn){
+
     $query = $this->db->get_where($table, array(
             'SN' => $sn
             ));

@@ -7,6 +7,8 @@ class Aset extends CI_Controller {
 
 	public function __construct(){
 		 parent::__construct();
+		 $this->load->library('session');
+
 		 $this->load->model('Aset_model');
 		 $this->load->helper(array('form', 'url'));
 	}
@@ -89,7 +91,11 @@ class Aset extends CI_Controller {
 		$skat = $this->encryption->decrypt($skat);
 		$data['subkategori'] =  $sid;
 		$data['subsubkategori'] =  $skat;
+		// header("Content-type: image/jpeg");
+		// header('Content-type : image/jpeg');
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
+		// imagejpeg($data['content'] , null, 95);
+		// readfile($data['content']);
 		$this->load->view('tableDetailPage2', $data);
 	}
 
@@ -118,6 +124,7 @@ class Aset extends CI_Controller {
 	}
 
 	public function insAset($count){
+		// $this->model->title = $_FILES['userfile']['name'];
 		for ($i=1; $i <= $count; $i++) {
 
 			$sn = $this->input->post('SN'.$i);
@@ -127,7 +134,10 @@ class Aset extends CI_Controller {
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
 			// $img = $this->_uploadImage();
+			// $this->model->image = file_get_contents($_FILES['userfile']['tmp_name'].$i);
 	       	// $this->load->library('upload', $config)
+					// $this->model->title = $_FILES['userfile']['name'];
+			$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
 
 			$datax = array(
 				'SN' => $sn,
@@ -137,9 +147,15 @@ class Aset extends CI_Controller {
 				'MERK' => $merk,
 				'SERIES' => $series,
 				'STATUS_ASET' => 1,
-				// 'IMAGE' => $img
+				'IMAGE' => $img
 			);
 
+			// if ($this->model->store() === TRUE) {
+			// 	$notification = '<div class="alert alert-success">Success uploading <strong>'. $_FILES['userfile']['name'] . '</strong> to DB.</div>';
+			// } else {
+			// 	$notification = '<div class="alert alert-danger">Failed uploading image.</div>';
+			// }
+			//
 			if($idda != null && $sn != null){
 				$try = $this->Aset_model->setAset($datax, 'aset', $sn);
 				if ($try > 0) {
@@ -208,6 +224,21 @@ class Aset extends CI_Controller {
 					$result['NAMA_PERUSAHAAN'] = $row['ID_LOKASI'];
 					}
 					echo json_encode($result);
+	}
+
+	public function getImage($id){
+		// $data['page_title'] = $this->setTitle(2);
+		// $data['kategori'] = $this->setKategori(5);
+		// $data['content'] = $this->Aset_model->getlogService();
+		// $this->load->view('tablePage', $data);
+		// $message = "Msuk sini";
+		// echo "<script type='text/javascript'>alert('$message');</script>";
+		$id = base64_decode($id);
+		$id = $this->encryption->decrypt($id);
+		header('Content-type : image/jpeg');
+		echo $this->Aset_model->getImage($id);
+		// echo "$this->Aset_model->getImage($id)";
+
 	}
 
 }
