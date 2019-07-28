@@ -136,6 +136,7 @@ class Aset extends CI_Controller {
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
+				'STATUS_ASET' => 1,
 				// 'IMAGE' => $img
 			);
 
@@ -188,6 +189,25 @@ class Aset extends CI_Controller {
 					);
 					echo json_encode($response);
 				}
+	}
+
+	public function oneList($nama){
+		// alert(hayolo);
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		  // echo "<script type='text/javascript'>alert('$nama');</script>";
+		$get  = $this->Aset_model->getOneList($nama)->result_array();
+					foreach($get as $row){
+					$result['SN'] = $row['SN'];
+					$result['MASA'] = $row['MASA'];
+					$result['CHECKSUM'] = $row['CHECKSUM'];
+					$result['TIPE'] = $row['TIPE'];
+					$result['MERK'] = $row['MERK'];
+					$result['SERIES'] = $row['SERIES'];
+					$result['STATUS_ASET'] = $row['STATUS_ASET'];
+					$result['NAMA_PERUSAHAAN'] = $row['ID_LOKASI'];
+					}
+					echo json_encode($result);
 	}
 
 }

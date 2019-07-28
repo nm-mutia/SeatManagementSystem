@@ -107,4 +107,9 @@ class Aset_model extends CI_Model {
       // return;
   }
 
+  public function getOneList($nama){
+    $fields = $this->db->query('CALL getOneListAset(?)', array($nama));
+    return $fields;
+  }
+
 }

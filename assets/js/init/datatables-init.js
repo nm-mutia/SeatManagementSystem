@@ -50,13 +50,22 @@ $('#Medit ').submit(function(){
 });
 //get data update
   $('#bootstrap-data-table #btn_updateedit').on('click',function(){
+    var base_url = window.location.origin;
+
+    // var host = window.location.host;
+
+    var pathArray = window.location.pathname.split( '/' );
+
     var href = $(this).attr("name");
-      var base_url = window.location +"/getData/" + href;
-      console.log(base_url);
-     // alert();
+      // var base_url = window.location +"/getData/" + href;
+      // console.log(base_url);
+      var urll = base_url+"/"+pathArray[1]+"/"+pathArray[2]+"/getData/"+href;
+     // alert(urll);
+     // alert(host);
+     // alert(pathArray[1]);
      $.ajax({
          type : "GET",
-         url  : base_url,
+         url  : urll,
          dataType : "JSON",
          success: function(data){
            $('#Modal_Edit').modal('show');
