@@ -9,7 +9,6 @@ class AdminDashboard extends CI_Controller {
 	    // Load model
 	    $this->load->model('historyModel');
 	    $this->load->model('Aset_model');
-	    $this->load->model('HistoryModel');
   	}
 
 	public function index()
@@ -18,7 +17,7 @@ class AdminDashboard extends CI_Controller {
 	  	$data['content'] = $this->historyModel->getTenggattable();
 	  	$data['hard'] = $this->Aset_model->countKtg("Hardware");
 	  	$data['soft'] = $this->Aset_model->countKtg("Software");
-	  	$data['pjm'] = $this->HistoryModel->countPeminjam();
+	  	$data['pjm'] = $this->historyModel->countPeminjam();
 			$this->load->view('index', $data);
 	}
 

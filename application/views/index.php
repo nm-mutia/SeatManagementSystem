@@ -77,58 +77,41 @@
                 <!-- /Widgets -->
 
                 <div class="clearfix"></div>
-                <!-- Orders -->
-                <div class="orders">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <strong class="card-title">Peminjaman Lebih dari Tenggat</strong>
+                
+                <!-- card lokasi -->
+                <div class="row">
+                <?php foreach ($content->result_array() as $key): ?>
+                    <div class="col-md-4">
+                        <aside class="profile-nav alt">
+                            <section class="card">
+                                <div class="card-header user-header alt bg-dark">
+                                    <div class="media">
+                                        <a href="#">
+                                            <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <h2 class="text-light display-6"><th><?php echo $key['nama_perusahaan'] ?> </th></h2>
+                                            <p><?php echo $key['alamat_lokasi'].', '.$key['kota'] ?></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="table-stats order-table ov-h">
-                                        <table id='bootstrap-data-table' class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th class="serial">#</th>
-                                                    <!-- <th class="avatar">Avatar</th> -->
-                                                    <th>NAMA</th>
-                                                    <th>NIP</th>
-                                                    <th>ID</th>
-                                                    <th>SN</th>
-                                                    <th>TANGGAL TENGGAT</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $x = 1; ?>
-                                                <?php foreach ($content->result_array() as $key): ?>
-                                                <tr>
-                                                    <td class="serial"><?php echo $x++; ?>.</td>
-                                                    <!-- <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
-                                                        </div>
-                                                    </td> -->
-                                                    <td> <?php echo $key['NAMA'] ?> </td>
-                                                    <td><span class="name"><?php echo $key['NIP'] ?></span> </td>
-                                                    <td><span class="product"><?php echo $key['ID'] ?></span> </td>
-                                                    <td><span ><?php echo $key['SN'] ?></span></td>
-                                                    <td><span ><?php echo $key['TANGGAL TENGGAT'] ?></span></td>
-                                                    <td>
-                                                        <a href="<?php echo base_url()?>details/<?php echo $key['ID']?>/<?php echo $key['SN']?>"><span class="badge badge-complete">Detail</span></a>
-                                                    </td>
-                                                </tr>
-                                                <?php endforeach ?>
-                                            </tbody>
-                                        </table>
-                                    </div> <!-- /.table-stats -->
-                                </div>
-                            </div> <!-- /.card -->
-                        </div>  <!-- /.col-lg-8 -->
+
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <i class="fa fa-desktop"></i> Hardware <span class="badge badge-primary pull-right"><?php $count = $acc->countKtgLokHardware($key['id_lokasi']); echo $count->row()->jml; ?></span>
+                                    </li>
+                                    <?php $countKtg = $acc->countSubktgLokH($key['id_lokasi']); foreach ($countKtg->result_array() as $cs): ?>
+                                    <li class="list-group-item">
+                                        <i class="fa fa-tag"></i> <?php echo $cs['sub_kategori'] ?> <span class="badge badge-warning pull-right r-activity"><?php echo $cs['jml'] ?></span>
+                                    </li>
+                                    <?php endforeach ?>
+                                </ul>
+                            </section>
+                        </aside>
                     </div>
+                <?php endforeach ?>
                 </div>
-                <!-- /.orders -->
+
             </div>
             <!-- .animated -->
         </div>
