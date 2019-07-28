@@ -90,4 +90,21 @@ class Aset_model extends CI_Model {
     return $data;
   }
 
+  public function deleteAset($data){
+      // $this->db->insert($table, $data);
+      // $tables = array('table1', 'table2', 'table3');
+      $cekrows = $this->db->query('SELECT * FROM detail_history WHERE sn = ?' , $data);
+
+      if ($cekrows->num_rows() != 0){
+        // $message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
+        // echo "<script type='text/javascript'>alert('$message');</script>";
+        return 0;
+      }else{
+        $this->db->where('sn', $data);
+        $this->db->delete('aset');
+        return 1;
+      }
+      // return;
+  }
+
 }

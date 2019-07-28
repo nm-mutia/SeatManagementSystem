@@ -25,7 +25,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1><?php echo $kategori ?></h1>
+                                <h1><?php echo $page_title ?></h1>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                                             <td> <?php $var++; echo $key1 ; ?></td>
                                             <?php if($kategori == "History" && $var == 5){$save = $key1;}
                                                 else if($kategori == "History" && $var == 3){$save2 = $key1;}
-                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;} 
+                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;}
                                                 ?>
                                             <?php endforeach ?>
                                             <td>
@@ -98,12 +98,8 @@
                                                     <span class="ti-eye"></span>
                                                   </div>
                                                 </a>
-
                                                 <?php
                                               }else if($page_title == "log") {?>
-
-
-
                                                 <?php
                                               }else { ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">

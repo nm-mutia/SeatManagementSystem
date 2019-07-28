@@ -53,7 +53,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><?php echo $page_title ?></strong>
+                                <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
                             <div class="card-body table-stats order-table">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">

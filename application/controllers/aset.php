@@ -167,4 +167,27 @@ class Aset extends CI_Controller {
 		$this->load->view('tablePage', $data);
 	}
 
+	public function deleteAset($nama){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$data['content'] = $this->Aset_model->deleteAset($nama);
+		// $message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
+		// echo "<script type='text/javascript'>alert('$message');</script>";
+		if($data['content'])
+				{
+					$response = array(
+						"success" => "true"
+					);
+
+					echo json_encode($response);
+				}
+		 else
+				{
+					$response = array(
+						"success" => "false"
+					);
+					echo json_encode($response);
+				}
+	}
+
 }

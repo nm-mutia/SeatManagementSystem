@@ -108,8 +108,9 @@ $('#Medit ').submit(function(){
                     //     .rows($('#bootstrap-data-table #btn_delete'.parents('tr'))
                     //     .invalidate()
                     //     .draw();
-               }else{
+               }else if (data.success == "false"){
                  // alert(data.success);
+
                    alert('Maaf, Data tidak bisa dihapus karena data masih digunakan');
 
                }
@@ -117,7 +118,9 @@ $('#Medit ').submit(function(){
              },
              error: function(data) {
               //sad error
-              $("#error-message-selector").html('').append(data.responseJSON.error_msg);
+              // alert('hayolo');
+
+              // $("#error-message-selector").html('').append(data.responseJSON.error_msg);
             }
          });
          // alert("GAGAL?");
