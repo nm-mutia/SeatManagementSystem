@@ -59,12 +59,12 @@ $route['translate_uri_dashes'] = FALSE;
 
 //menu fitur
 $route['tabeldet/(:any)'] = '$1/';
-$route['admin'] = 'adminDashboard';
-$route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
+$route['admin'] = 'lokasi/dashboard';
+// $route['admin'] = 'adminDashboard';
+// $route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 
 // menu aset
 $route['Purchase_Order'] = 'porder';
-// $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/det/(:any)'] = 'porder/detail/$1';
 $route['Purchase_Order/det/(:any)/(:any)'] = 'porder/detAsetSPK/$1/$2';
@@ -72,8 +72,10 @@ $route['Purchase_Order/getData/(:any)'] = 'porder/oneList/$1';
 $route['Purchase_Order/delete/(:any)'] = 'porder/deletePorder/$1';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 $route['Purchase_Order/deleteAset/(:any)'] = 'aset/deleteAset/$1';
-
+// $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 // $route['Purchase_Order/getData/(:any)'] = 'aset/oneList/$1';1
+
+
 //aset keseluruhan
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
@@ -96,7 +98,6 @@ $route['crud/update/vendor_list'] = 'vendor/upVendor';
 $route['crud/update/Purchase_Order'] = 'porder/upPO';
 $route['crud/update/history'] = 'history/upHistory';
 // $route['crud/update/aset'] = 'history/upHistory';
-
 
 
 $route['Aset_tersedia'] = 'aset';
@@ -125,7 +126,7 @@ $route['vendor_list/delete/(:any)'] = 'vendor/deleteVendor/$1';
 
 //peminjaman
 $route['pinjam_tenggat'] = 'history/tenggat';
-$route['pinjam_tenggat/det/(:any)/(:any)'] = 'history/tenggat_detail/$1/$1';
+// $route['pinjam_tenggat/det/(:any)/(:any)'] = 'history/tenggat_detail/$1/$1';
 
 $route['log/mutasi'] = 'aset/getLogMutasi';
 $route['log/service'] = 'aset/getLogService';

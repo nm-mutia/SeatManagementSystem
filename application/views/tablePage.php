@@ -60,33 +60,28 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-
-                                            <?php
-                                                if ($page_title !="Log"){
+                                            
+                                            <?php if ($page_title =="Log" || $kategori == "Tenggat"){
                                             ?>
-                                            <!-- <th> apa </th> -->
-                                                <th> Action </th>
-
+                                            <th style="display:none"></th>
                                             <?php
-                                            }else {
+                                            }else{
                                             ?>
+                                                <th> ACTION </th>
                                               <?php
                                             }
                                                ?>
-
 
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                          <!-- <td></td> -->
                                             <?php $var = 1; ?>
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
                                             <?php if($kategori == "History" && $var == 5){$save = $key1;}
                                                 else if($kategori == "History" && $var == 3){$save2 = $key1;}
-                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;}
                                                 ?>
                                             <?php endforeach ?>
                                             <td>
@@ -99,9 +94,9 @@
                                                   </div>
                                                 </a>
                                                 <?php
-                                              }else if($page_title == "log") {?>
-                                                <?php
-                                              }else { ?>
+                                              }else if($page_title == "log" || $kategori == "Tenggat") {?>
+                                            <?php
+                                              } else { ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
                                                     <span class="ti-eye"></span>
@@ -129,18 +124,7 @@
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
-                                      <!-- <tfoot> -->
-                                            <!-- <tr>
-                                              <th>  </th> -->
-                                              <!-- <?php foreach ($content->field_data() as $field): ?> -->
-<!--  -->
-                                                      <!-- <th><?php echo $field->name ?> </th> -->
-                                                      <!-- <th> Keterangan </th> -->
-                                              <!-- <?php endforeach ?> -->
-                                              <!-- <th> Action  </th> -->
-
-                                            <!-- </tr> -->
-                                    <!-- </tfoot> -->
+                                      
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
@@ -242,15 +226,7 @@
 
     <!-- Scripts -->
 
-    <script type="text/javascript">
-
-      //   $(document).ready(function() {
-      //     // $('#bootstrap-data-table-export').DataTable();
-      //
-      // } );
-
-
-  </script>
+    <script type="text/javascript"></script>
 
 
       <?php $this->load->view("_partials/js.php") ?>

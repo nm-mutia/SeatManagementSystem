@@ -9,6 +9,7 @@ class Porder extends CI_Controller {
 		 $this->load->model('Po_model');
 		 $this->load->model('Aset_model');
 		 $this->load->model('vendor_model');
+		 $this->load->model('lokasiModel');
 	}
 
 	public function setTitle(){
@@ -67,6 +68,7 @@ class Porder extends CI_Controller {
 		$sid = $this->encryption->decrypt($sid);
 		$data['subkategori'] = "detail";
 		$data['spk'] = $sid;
+		$data['lokasi'] = $this->lokasiModel->getLokasi();
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
 		$x = $this->Po_model->getLastId();
@@ -155,13 +157,14 @@ class Porder extends CI_Controller {
 	//insert detail po
 	public function insDetPO($count){
 		$spk = $this->input->post('NO_SPK');
-		$qty = $this->input->post('QTY');
+		$qty = $this->input->post('KUANTITAS');
 		$masa = $this->input->post('MASA');
 		$ktg = $this->input->post('KATEGORI');
 		$sub = $this->input->post('SUB_KATEGORI');
 		$datadet = array(
 			'NO_SPK' => $spk,
-			'QTY' => $qty,
+			'QTY_ALL' => $qty,
+			'QTY_TERSEDIA' => $qty,
 			'MASA' => $masa,
 			'KATEGORI' => $ktg,
 			'SUB_KATEGORI' => $sub
@@ -176,6 +179,7 @@ class Porder extends CI_Controller {
 		for ($i=1; $i <= $count; $i++) {
 			$sn = $this->input->post('SN'.$i);
 			$checksum = $this->input->post('CHECKSUM'.$i);
+			$lok = $this->input->post('ID_LOKASI'.$i);
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
@@ -183,6 +187,7 @@ class Porder extends CI_Controller {
 			$dataaset = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
+				'ID_LOKASI' => $lok,
 				'CHECKSUM' => $checksum,
 				'TIPE' => $tipe,
 				'MERK' => $merk,
