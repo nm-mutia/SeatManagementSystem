@@ -64,9 +64,9 @@ class Vendor extends CI_Controller {
 	}
 
 	public function deleteVendor($nama){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = $this->setKategori();
-		$data['subkategori'] = "detail";
+		// $data['page_title'] = $this->setTitle();
+		// $data['kategori'] = $this->setKategori();
+		// $data['subkategori'] = "detail";
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->vendor_model->deleteVendor($nama);

@@ -136,6 +136,7 @@ class Aset extends CI_Controller {
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
+				'STATUS_ASET' => 1,
 				// 'IMAGE' => $img
 			);
 
@@ -165,6 +166,48 @@ class Aset extends CI_Controller {
 		$data['kategori'] = $this->setKategori(5);
 		$data['content'] = $this->Aset_model->getlogService();
 		$this->load->view('tablePage', $data);
+	}
+
+	public function deleteAset($nama){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$data['content'] = $this->Aset_model->deleteAset($nama);
+		// $message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
+		// echo "<script type='text/javascript'>alert('$message');</script>";
+		if($data['content'])
+				{
+					$response = array(
+						"success" => "true"
+					);
+
+					echo json_encode($response);
+				}
+		 else
+				{
+					$response = array(
+						"success" => "false"
+					);
+					echo json_encode($response);
+				}
+	}
+
+	public function oneList($nama){
+		// alert(hayolo);
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		  // echo "<script type='text/javascript'>alert('$nama');</script>";
+		$get  = $this->Aset_model->getOneList($nama)->result_array();
+					foreach($get as $row){
+					$result['SN'] = $row['SN'];
+					$result['MASA'] = $row['MASA'];
+					$result['CHECKSUM'] = $row['CHECKSUM'];
+					$result['TIPE'] = $row['TIPE'];
+					$result['MERK'] = $row['MERK'];
+					$result['SERIES'] = $row['SERIES'];
+					$result['STATUS_ASET'] = $row['STATUS_ASET'];
+					$result['NAMA_PERUSAHAAN'] = $row['ID_LOKASI'];
+					}
+					echo json_encode($result);
 	}
 
 }
