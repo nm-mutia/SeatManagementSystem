@@ -12,8 +12,13 @@ class History extends CI_Controller {
 		 $this->load->model('vendor_model');
 	}
 
-	public function setTitle(){
-		$title = "History";
+	public function setTitle(int $nomer){
+		if ($nomer == 1){
+				$title = "History";
+		}else if ($nomer == 2){
+				$title = "Peminjaman";
+		}
+		
 		return $title;
 	}
 
@@ -24,6 +29,8 @@ class History extends CI_Controller {
 				$kategori = "History Pegawai";
 		}else if($nomer == 3){
 				$kategori = "History";
+		}else if($nomer == 4){
+				$kategori = "Tenggat";
 		}
 		return $kategori;
 	}
@@ -36,14 +43,14 @@ class History extends CI_Controller {
 
 //pegawai
 	public function pegawai(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(2);
 		$data['content'] = $this->pegawaiModel->getPegawai();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function detPegawai($nip){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] =  $this->setKategori(2);
 		$data['subkategori'] = $this->setSubKategori();;
 		$nip = base64_decode($nip);
@@ -54,14 +61,14 @@ class History extends CI_Controller {
 
 //aset
 	public function aset(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] =  $this->setKategori(1);
 		$data['content'] = $this->Aset_model->getAset();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function detAset($sn){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] =  $this->setKategori(1);
 		$data['subkategori'] = $this->setSubKategori();
 		$sn = base64_decode($sn);
@@ -74,14 +81,14 @@ class History extends CI_Controller {
 //menu history
 
 	public function getAll(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] =  $this->setKategori(3);
 		$data['content'] = $this->historyModel->getAll();
 		$this->load->view('tablePage', $data);
 	}
 
 	public function detail($sn){ //masih ngarang
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(3);
 		$data['subkategori'] = $this->setSubKategori();
 		$sn = base64_decode($sn);
@@ -90,11 +97,29 @@ class History extends CI_Controller {
 	    $this->load->view('tableDetailPage', $data);
 	}
 
+//tenggat
+	public function tenggat(){
+		$data['page_title'] = $this->setTitle(2);
+		$data['kategori'] = $this->setKategori(4);
+	  	$data['content'] = $this->historyModel->getTenggattable();
+		$this->load->view('tablePage', $data);
+	}
+	public function tenggat_detail($id, $sn){
+		$data['page_title'] = $this->setTitle(2);
+		$data['kategori'] = $this->setKategori(4);
+		$data['subkategori'] = $this->setSubKategori();
+	  	$data['content'] = $this->historyModel->getTenggatdetail($id, $sn);
+	  	$id = base64_decode($id);
+		$id = $this->encryption->decrypt($id);
+		$sn = base64_decode($sn);
+		$sn = $this->encryption->decrypt($sn);
+		$this->load->view('tableDetailPage', $data);
+	}
 
 //form
 
 	public function setDetail(){
-		$data['page_title'] = $this->setTitle();
+		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(3);
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
@@ -130,6 +155,7 @@ class History extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	//insert
 	public function insHistory($count){
 		$idv = $this->input->post('ID_VENDOR');
 		$nip = $this->input->post('NIP');

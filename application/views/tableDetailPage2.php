@@ -74,7 +74,7 @@
                                             <td>
                                               <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/deleteAset/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                 <div class="icon-container">
-                                                  <span class="ti-close"></span>
+                                                  <span class="ti-trash"></span><span class="icon-name"></span>
                                                 </div>
                                               </a>
                                             </td>
