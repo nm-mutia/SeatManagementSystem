@@ -25,7 +25,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1><?php echo $kategori ?></h1>
+                                <h1><?php echo $page_title ?></h1>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                                             <td> <?php $var++; echo $key1 ; ?></td>
                                             <?php if($kategori == "History" && $var == 5){$save = $key1;}
                                                 else if($kategori == "History" && $var == 3){$save2 = $key1;}
-                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;} 
+                                                else if($kategori == "Tenggat" && $var == 4){$save = $key1;}
                                                 ?>
                                             <?php endforeach ?>
                                             <td>
@@ -98,12 +98,8 @@
                                                     <span class="ti-eye"></span>
                                                   </div>
                                                 </a>
-
                                                 <?php
                                               }else if($page_title == "log") {?>
-
-
-
                                                 <?php
                                               }else { ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
@@ -149,7 +145,11 @@
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
                                 ?>      <div>
-                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>"><button type="button" class="btn bg-nice"><b>Tambah</b></button></a>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>">
+                                              <button type="button" class="btn bg-nice">
+                                                <b>Tambah</b>
+                                              </button>
+                                            </a>
                                         </div>
                                 <?php
                                     }
@@ -220,13 +220,6 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-<!--
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Product Code</label>
-                            <div class="col-md-10">
-                              <input type="text" name="product_code_edit" id="product_code_edit" class="form-control" placeholder="Product Code" readonly>
-                            </div>
-                        </div> -->
 
                   </div>
                   <div class="modal-footer">

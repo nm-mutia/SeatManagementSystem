@@ -77,7 +77,7 @@ class Porder extends CI_Controller {
 			$data['idda'] = $data['idda'] + 1 ;
 		}
 		// echo $data['idda'];
-		$data['subktg'] = $this->Po_model->getSubktg();
+		// $data['subktg'] = $this->Po_model->getSubktg();
     	$this->load->view('addFormPage', $data);
 	}
 

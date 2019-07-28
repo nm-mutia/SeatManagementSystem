@@ -53,7 +53,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"><?php echo $page_title ?></strong>
+                                <strong class="card-title"><?php echo $kategori ?></strong>
                             </div>
                             <div class="card-body table-stats order-table">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -71,13 +71,32 @@
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php echo $key1 ; ?></td>
                                             <?php endforeach ?>
+
                                             <td>
+                                              <!-- <a name= "<?php echo base_url($this->uri->segment(1))?>/getData/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                <div class="icon-container">
+                                                  <span class="ti-pencil-alt"></span>
+                                                </div>
+                                              </a> -->
+                                              <!-- <a name= "www.google.co.id" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                <div class="icon-container">
+                                                  <span class="ti-pencil-alt"></span>
+                                                </div>
+                                              </a> -->
+                                              <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                <div class="icon-container">
+                                                  <span class="ti-pencil-alt"></span>
+                                                </div>
+                                              </a>
+
                                               <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/deleteAset/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                 <div class="icon-container">
                                                   <span class="ti-trash"></span><span class="icon-name"></span>
                                                 </div>
                                               </a>
+
                                             </td>
+
                                         </tr>
 
 
@@ -103,6 +122,46 @@
 
     <!-- Right Panel -->
 
+            <form id="Medit" action="<?php echo base_url()?>crud/update/<?php echo $this->uri->segment(1);?>" method="POST">
+                <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit <?php echo $kategori ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+
+                        <div>
+                            <?php foreach ($content->field_data() as $field): ?>
+                              <div class="form-group row">
+                                <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
+
+                                <?php if($field->name == "SN" || $field->name == "MASA" ){?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                    </div>
+                                <?php }else { ?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
+                                    </div>
+                                <?php } ?>
+
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="submit" type="submit" id="btn_update2" class="btn btn-primary">Update</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
     <!-- Scripts -->
 
     <!-- <script type="text/javascript">
