@@ -59,7 +59,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 //menu fitur
 $route['tabeldet/(:any)'] = '$1/';
-$route['admin'] = 'adminDashboard';
+// $route['admin'] = 'adminDashboard';
+$route['admin'] = 'lokasi/dashboard';
 $route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 
 // menu aset

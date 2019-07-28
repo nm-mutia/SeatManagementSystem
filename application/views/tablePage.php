@@ -65,7 +65,7 @@
                                                 if ($page_title !="Log"){
                                             ?>
                                             <!-- <th> apa </th> -->
-                                                <th> Action </th>
+                                                <th> ACTION </th>
 
                                             <?php
                                             }else {
@@ -73,7 +73,6 @@
                                               <?php
                                             }
                                                ?>
-
 
                                         </tr>
                                     </thead>
@@ -129,18 +128,7 @@
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
-                                      <!-- <tfoot> -->
-                                            <!-- <tr>
-                                              <th>  </th> -->
-                                              <!-- <?php foreach ($content->field_data() as $field): ?> -->
-<!--  -->
-                                                      <!-- <th><?php echo $field->name ?> </th> -->
-                                                      <!-- <th> Keterangan </th> -->
-                                              <!-- <?php endforeach ?> -->
-                                              <!-- <th> Action  </th> -->
-
-                                            <!-- </tr> -->
-                                    <!-- </tfoot> -->
+                                      
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
@@ -242,15 +230,7 @@
 
     <!-- Scripts -->
 
-    <script type="text/javascript">
-
-      //   $(document).ready(function() {
-      //     // $('#bootstrap-data-table-export').DataTable();
-      //
-      // } );
-
-
-  </script>
+    <script type="text/javascript"></script>
 
 
       <?php $this->load->view("_partials/js.php") ?>
