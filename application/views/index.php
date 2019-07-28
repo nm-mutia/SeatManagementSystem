@@ -90,19 +90,19 @@
                                             <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
                                         </a>
                                         <div class="media-body">
-                                            <h2 class="text-light display-6"><th><?php echo $key['nama_perusahaan'] ?> </th></h2>
-                                            <p><?php echo $key['alamat_lokasi'].', '.$key['kota'] ?></p>
+                                            <h2 class="text-light display-6"><th><?php echo $key['NAMA_PERUSAHAAN'] ?> </th></h2>
+                                            <p><?php echo $key['ALAMAT_LOKASI'].', '.$key['KOTA'] ?></p>
                                         </div>
                                     </div>
                                 </div>
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <i class="fa fa-desktop"></i> Hardware <span class="badge badge-primary pull-right"><?php $count = $acc->countKtgLokHardware($key['id_lokasi']); echo $count->row()->jml; ?></span>
+                                        <i class="fa fa-desktop"></i> Hardware <span class="badge badge-primary pull-right"><?php $count = $acc->countKtgLokHardware($key['ID_LOKASI']); echo $count->row()->jml; ?></span>
                                     </li>
-                                    <?php $countKtg = $acc->countSubktgLokH($key['id_lokasi']); foreach ($countKtg->result_array() as $cs): ?>
+                                    <?php $countKtg = $acc->countSubktgLokH($key['ID_LOKASI']); foreach ($countKtg->result_array() as $cs): ?>
                                     <li class="list-group-item">
-                                        <i class="fa fa-tag"></i> <?php echo $cs['sub_kategori'] ?> <span class="badge badge-warning pull-right r-activity"><?php echo $cs['jml'] ?></span>
+                                        <i class="fa fa-tag"></i> <?php echo $cs['SUB_KATEGORI'] ?> <span class="badge badge-warning pull-right r-activity"><?php echo $cs['jml'] ?></span>
                                     </li>
                                     <?php endforeach ?>
                                 </ul>
