@@ -146,7 +146,11 @@
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
                                 ?>      <div>
-                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>"><button type="button" class="btn bg-nice"><b>Tambah</b></button></a>
+                                            <a href="<?php echo site_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="vendor_list"){ echo "add/";}?><?php echo urlencode($kategori)?>">
+                                              <button type="button" class="btn bg-nice">
+                                                <b>Tambah</b>
+                                              </button>
+                                            </a>
                                         </div>
                                 <?php
                                     }
@@ -217,13 +221,6 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-<!--
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Product Code</label>
-                            <div class="col-md-10">
-                              <input type="text" name="product_code_edit" id="product_code_edit" class="form-control" placeholder="Product Code" readonly>
-                            </div>
-                        </div> -->
 
                   </div>
                   <div class="modal-footer">
