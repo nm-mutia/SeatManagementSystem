@@ -94,7 +94,7 @@
                                               <!-- <img src="<?=base_url().'images/admin.jpg';?>" width="100">  -->
                                               <!-- <img style="height: 200px; margin: auto;"
                       		        								src="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" /> -->
-                                                  <a href="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">gambar</a>
+                                                  <!-- <a href="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">gambar</a> -->
                                             <!-- </td> -->
 
                                             <td>

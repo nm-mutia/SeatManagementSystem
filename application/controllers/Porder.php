@@ -151,7 +151,7 @@ class Porder extends CI_Controller {
 		}
 		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
-		redirect('Purchase_Order/det/'.$s);
+		redirect('Purchase_Order/det/'.$s, 'refresh');
 	}
 
 	//insert detail po
@@ -205,7 +205,7 @@ class Porder extends CI_Controller {
 
 			}
 		}
-		$u = $this->encryption->encrypt($idda);
+		$u = $this->encryption->encrypt($spk);
 		$s = base64_encode($u);
 		redirect('Purchase_Order/det/'.$s);
 	}

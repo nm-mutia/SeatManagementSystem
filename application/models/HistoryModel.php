@@ -39,7 +39,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getAllFormDetail(){
-    $data = $this->db->query("SELECT SN, TGL_TENGGAT, TGL_KEMBALI, KONDISI
+    $data = $this->db->query("SELECT SN, TGL_TENGGAT, KONDISI, STATUS
             from detail_history ");
     return $data;
   }  

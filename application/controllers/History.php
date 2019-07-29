@@ -140,18 +140,22 @@ class History extends CI_Controller {
 		$sn = base64_decode($sn);
 		$sn = $this->encryption->decrypt($sn);
 		$get  = $this->historyModel->getOneList($nama, $sn)->result_array();
-		// echo $sn.$nama;
+		// // echo $sn.$nama;
+		// echo $nama." ".$sn;
+		// $message = "helo";
+  //       echo "<script type='text/javascript'>alert('$message');</script>";
 
 		foreach($get as $row){
 			$result['ID_HISTORY'] = $row['ID_HISTORY'];
 			$result['NIP'] = $row['NIP'];
-			$result['TGL_PINJAM'] = $row['TGL_PINJAM'];
 			$result['SN'] = $row['SN'];
+			$result['TGL_PINJAM'] = $row['TGL_PINJAM'];
 			$result['TGL_TENGGAT'] = $row['TGL_TENGGAT'];
 			$result['TGL_KEMBALI'] = $row['TGL_KEMBALI'];
-			$result['KETERANGAN'] = $row['KETERANGAN'];
+			$result['KONDISI'] = $row['KONDISI'];
+			$result['STATUS'] = $row['STATUS'];
 		}
-
+		// var_dump($get);
 		echo json_encode($result);
 	}
 
@@ -160,10 +164,12 @@ class History extends CI_Controller {
 		$idv = $this->input->post('ID_VENDOR');
 		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
+		// $bukti = $this->input->post('BUKTI_PEMINJAMAN');
 		$data = array(
 			'ID_VENDOR' => $idv,
 			'NIP' => $nip,
 			'TGL_PINJAM' => $tpin
+			// 'BUKTI_PEMINJAMAN' => $bukti
 		);
 		if($idv != null && $nip != null){
 			$this->historyModel->setHistory($data, 'history_aset');
@@ -173,14 +179,16 @@ class History extends CI_Controller {
 			$idh = $this->input->post('ID_HISTORY');
 			$sn = $this->input->post('SN'.$i);
 			$tteng = $this->input->post('TGL_TENGGAT'.$i);
-			$tkem = $this->input->post('TGL_KEMBALI'.$i);
-			$ket = $this->input->post('KETERANGAN'.$i);
+			// $tkem = $this->input->post('TGL_KEMBALI'.$i);
+			$ket = $this->input->post('KONDISI'.$i);
+			$st = $this->input->post('STATUS'.$i);
 			$datadet = array(
 				'ID_HISTORY' => $idh,
 				'SN' => $sn,
 				'TGL_TENGGAT' => $tteng,
-				'TGL_KEMBALI' => $tkem,
-				'KETERANGAN' => $ket
+				// 'TGL_KEMBALI' => $tkem,
+				'KONDISI' => $ket,
+				'STATUS' => $st
 			);
 			if($idh != null && $sn != null){
 				$this->historyModel->setHistory($datadet, 'detail_history');
