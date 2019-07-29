@@ -92,6 +92,7 @@ class Aset extends CI_Controller {
 		$skat = $this->encryption->decrypt($skat);
 		$data['subkategori'] =  $sid;
 		$data['subsubkategori'] =  $skat;
+		$data['lokasi'] = $this->lokasiModel->getLokasi(); 
 		// header("Content-type: image/jpeg");
 		// header('Content-type : image/jpeg');
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
