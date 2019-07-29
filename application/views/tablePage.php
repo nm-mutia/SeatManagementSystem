@@ -85,7 +85,7 @@
                                             <?php if(($page_title != "Log") && ($kategori != "Tenggat")) {?>
                                             <td>
                                                 <?php
-                                                    if ($kategori == "History Pegawai" || $kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset" || $kategori == "History Pegawai" ){
+                                                    if ($kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset"){
                                                 ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
