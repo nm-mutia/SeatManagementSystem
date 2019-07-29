@@ -79,7 +79,7 @@ $route['Purchase_Order/deleteAset/(:any)'] = 'aset/deleteAset/$1';
 //aset keseluruhan
 $route['aset'] = 'aset/getAll';
 $route['aset/(:any)'] = 'aset/setAll';
-$route['aset/addAset/(:any)/(:any)'] = 'aset/setAset/$1/$2'; //nambah aset dari PO (form)
+$route['aset/addAset/(:any)'] = 'aset/setAset/$1'; //nambah aset dari detPO (form)
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 $route['aset/getData/(:any)'] = 'aset/oneList/$1';
@@ -97,7 +97,7 @@ $route['crud/vendor_list'] = 'vendor/insVendor';
 $route['crud/update/vendor_list'] = 'vendor/upVendor';
 $route['crud/update/Purchase_Order'] = 'porder/upPO';
 $route['crud/update/history'] = 'history/upHistory';
-// $route['crud/update/aset'] = 'history/upHistory';
+$route['crud/update/aset'] = 'aset/upAset';
 
 
 $route['Aset_tersedia'] = 'aset';

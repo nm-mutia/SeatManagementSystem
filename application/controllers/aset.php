@@ -7,8 +7,9 @@ class Aset extends CI_Controller {
 
 	public function __construct(){
 		 parent::__construct();
-		 $this->load->library('session');
 
+		 $this->load->library('session');
+		 $this->load->model('lokasiModel');
 		 $this->load->model('Aset_model');
 		 $this->load->helper(array('form', 'url'));
 	}
@@ -109,17 +110,14 @@ class Aset extends CI_Controller {
 	}
 
 	//nambah aset dari detail po
-	public function setAset($idspk, $idd){
+	public function setAset($idd){
 		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(3);
-		$sid = base64_decode($idspk);
-		$sid = $this->encryption->decrypt($sid);
 		$idda = base64_decode($idd);
 		$idda = $this->encryption->decrypt($idda);
-		$data['subkategori'] =  $sid;
 		$data['content'] = $this->Aset_model->getAsetAll();
-		$data['spk'] = $sid;
 		$data['da'] = $idda;
+		$data['lokasi'] = $this->lokasiModel->getLokasi();
 		$this->load->view('addFormPage', $data);
 	}
 
@@ -130,6 +128,7 @@ class Aset extends CI_Controller {
 			$sn = $this->input->post('SN'.$i);
 			$idda = $this->input->post('ID_DA'.$i);
 			$checksum = $this->input->post('CHECKSUM'.$i);
+			$lok = $this->input->post('ID_LOKASI'.$i);
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
@@ -143,6 +142,7 @@ class Aset extends CI_Controller {
 				'SN' => $sn,
 				'ID_DA' => $idda,
 				'CHECKSUM' => $checksum,
+				'ID_LOKASI' => $lok,
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
@@ -169,6 +169,27 @@ class Aset extends CI_Controller {
 		redirect('Purchase_Order', 'refresh');
 	}
 
+	public function upAset(){
+		$sn = $this->input->post('SN');
+		$cek = $this->input->post('CHECKSUM');
+		$merk = $this->input->post('MERK');
+		$tipe = $this->input->post('TIPE');
+		$seri = $this->input->post('SERIES');
+		$stat = $this->input->post('STATUS_ASET');
+		$id = $this->input->post('ID_LOKASI');
+
+		$data = array(
+			'CHECKSUM' => $cek,
+			'MERK' => $merk,
+			'TIPE' => $tipe,
+			'SERIES' => $seri,
+			'STATUS_ASET' => $stat,
+			'ID_LOKASI' => $id
+		);
+
+		$this->Aset_model->upAset($data,'aset',$sn);
+		redirect('aset');
+	}
 
 	public function getLogMutasi(){
 		$data['page_title'] = $this->setTitle(2);
@@ -216,6 +237,7 @@ class Aset extends CI_Controller {
 					foreach($get as $row){
 					$result['SN'] = $row['SN'];
 					$result['MASA'] = $row['MASA'];
+					$result['ID_LOKASI'] = $row['ID_LOKASI'];
 					$result['CHECKSUM'] = $row['CHECKSUM'];
 					$result['TIPE'] = $row['TIPE'];
 					$result['MERK'] = $row['MERK'];

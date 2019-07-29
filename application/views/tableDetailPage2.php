@@ -62,8 +62,10 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
+
                                             <th> image </th>
                                             <th> Action </th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,6 +103,13 @@
                                     <?php endforeach ?>
                                     </tbody>
                                 </table>
+                                <?php
+                                   if ($kategori == 'Purchase Order'){
+                                ?>
+                                    <a href="<?php echo base_url()?>aset/<?php echo "addAset/".$this->uri->segment(4);?>"><button type="button" class="btn btn-success">Tambah Aset</button></a>
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
