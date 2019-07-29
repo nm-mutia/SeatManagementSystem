@@ -74,9 +74,11 @@
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>"><?php echo $sel['ID_VENDOR']." ".$sel['NAMA_VENDOR'] ?></option>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>"><?php echo $sel['ID_VENDOR']." - ".$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
+                                                            <?php  }else if($field->name == "TAHUN_PENGADAAN"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php  }else{ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php }}else{ ?>
@@ -94,11 +96,13 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
+                                                            <?php  }else if($field->name == "TGL_PINJAM"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php } else if($field->name == "ID_VENDOR"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' '.$sel['NAMA_VENDOR'] ?></option>
+                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' - '.$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  } else{ ?>
@@ -123,7 +127,7 @@
                                                             <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih...</option>
                                                                 <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                    <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['ID_LOKASI'].' '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                                                    <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['ID_LOKASI'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         <?php } else{ ?>
@@ -141,6 +145,8 @@
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda;?>" readonly>
                                                             <?php } else if($field->name == "NO_SPK"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $spk ?>" readonly>
+                                                            <?php  }else if($field->name == "MASA"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php } else if($field->name == "KATEGORI"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control ktg" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
@@ -168,6 +174,20 @@
                                                                 <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda; ?>" readonly>
+                                                            <?php  }else if($kategori == "History" && $field->name == "TGL_TENGGAT"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" >
+                                                            <?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih...</option>
+                                                                    <?php foreach ($lokasi->result_array() as $lok){ ?>
+                                                                        <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['ID_LOKASI'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            <?php  }else if($field->name == "STATUS"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option value="0">Pinjam</option>
+                                                                    <option value="2">Servis</option>
+                                                                </select>
                                                             <?php }else{?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } ?>
@@ -247,7 +267,7 @@
                 if (theName){
                     newField[i].name = theName + count;
                 }
-                console.log(newField[i].name);
+                // console.log(newField[i].name);
             }
             console.log(newField.length);
             var insertHere = document.getElementById('writeroot');
@@ -266,7 +286,7 @@
                 if (theName){
                     newField[i].name = theName + counter;
                 }
-                console.log(newField[i].name);
+                // console.log(newField[i].name);
             }
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);

@@ -60,7 +60,7 @@ $('#Medit ').submit(function(){
       // var base_url = window.location +"/getData/" + href;
       // console.log(base_url);
       var urll = base_url+"/"+pathArray[1]+"/"+pathArray[2]+"/getData/"+href;
-     // alert(urll);
+     console.log(urll);
      // alert(host);
      // alert(pathArray[1]);
      $.ajax({

@@ -77,8 +77,8 @@
                                             <?php $var = 1; ?>
                                             <?php foreach ($key as $key1): ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
-                                            <?php if($kategori == "History" && $var == 5){$save = $key1;}
-                                                else if($kategori == "History" && $var == 3){$save2 = $key1;}
+                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}
+                                                // else if($kategori == "History" && $var == 3){$save2 = $key1;}    
                                                 ?>
                                             <?php endforeach ?>
                                             
@@ -169,6 +169,8 @@
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
                                     </div>
+                                <?php }else if( $field->name == "TAHUN_PENGADAAN"){ ?>
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                 <?php }else { ?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
@@ -187,9 +189,13 @@
                                 <?php } ?>
 
                             <?php } else if($kategori == "History"){?>
-                                <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK"){?>
+                                <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK" || $field->name == "STATUS"){?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                    </div>
+                                <?php }else if( $field->name == "TGL_PINJAM" || $field->name == "TGL_TENGGAT" || $field->name == "TGL_KEMBALI"){ ?>
+                                    <div class="col-md-10">
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                     </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">
