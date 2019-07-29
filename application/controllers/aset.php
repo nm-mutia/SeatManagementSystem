@@ -95,8 +95,7 @@ class Aset extends CI_Controller {
 		// header("Content-type: image/jpeg");
 		// header('Content-type : image/jpeg');
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
-		// imagejpeg($data['content'] , null, 95);
-		// readfile($data['content']);
+
 		$this->load->view('tableDetailPage2', $data);
 	}
 
@@ -257,8 +256,11 @@ class Aset extends CI_Controller {
 		// echo "<script type='text/javascript'>alert('$message');</script>";
 		$id = base64_decode($id);
 		$id = $this->encryption->decrypt($id);
-		header('Content-type : image/jpeg');
-		echo $this->Aset_model->getImage($id);
+		// header('Content-type : image/jpeg');
+		// $img = $this->Aset_model->getImage($id);
+		$img = base64_encode($this->Aset_model->getImage($id));
+		// echo base64_encode($this->model->get($id));
+		echo '<img src="data:image/jpeg;base64,'.$img.'"/>';
 		// echo "$this->Aset_model->getImage($id)";
 
 	}

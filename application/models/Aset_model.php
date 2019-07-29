@@ -71,7 +71,6 @@ class Aset_model extends CI_Model {
     $q = $this->db->get_where("aset", ['SN' => $id]);
 
     // console.log($q->num_rows());
-
 		return $q->num_rows() > 0 ? $q->row()->IMAGE : '';
 
   }

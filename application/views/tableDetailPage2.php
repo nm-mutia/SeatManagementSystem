@@ -63,7 +63,7 @@
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
 
-                                            <th> image </th>
+                                            <!-- <th> image </th> -->
                                             <th> Action </th>
 
                                         </tr>
@@ -71,15 +71,31 @@
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
-                                            <?php foreach ($key as $key1): ?>
-                                            <td> <?php echo $key1 ; ?></td>
+
+
+                                            <?php foreach ($key as $idnya => $key1): ?>
+                                              <?php if($idnya == "IMAGE") {
+                                                $key1 = base64_encode($key1)
+                                                ?>
+                                                <!-- <?php echo $key1 ?> -->
+
+                                                <td> <img src="data:image/jpeg;base64,<?php echo $key1 ?>"/> </td>
+                                                <td> hallo</td>
+
+
+                                              <?php
+                                            }else{?>
+                                              <td> <?php echo $key1 ; ?></td>
+
+                                            <?php } ?>
                                             <?php endforeach ?>
 
-                                            <td>
+                                            <!-- <td> -->
                                               <!-- <img src="<?=base_url().'images/admin.jpg';?>" width="100">  -->
-                                              <img style="height: 200px; margin: auto;"
-                      		        								src="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" />
-                                            </td>
+                                              <!-- <img style="height: 200px; margin: auto;"
+                      		        								src="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" /> -->
+                                                  <a href="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">gambar</a>
+                                            <!-- </td> -->
 
                                             <td>
 
