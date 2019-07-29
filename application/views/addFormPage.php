@@ -117,8 +117,8 @@
                                                         <?php if($field->name == "ID_DA"){ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
                                                         <?php } else if($field->name == "IMAGE"){?>
-                                                            <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
-                                                        ?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                            <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                        <?php } else if($field->name == "ID_LOKASI"){ ?>
                                                             <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih...</option>
                                                                 <?php foreach ($lokasi->result_array() as $lok){ ?>
@@ -164,7 +164,7 @@
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "IMAGE"){?>
-                                                                <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                                <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda; ?>" readonly>
                                                             <?php } else if($field->name == "ID_LOKASI"){ ?>
