@@ -61,12 +61,9 @@
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
                                             
-                                            <?php if ($page_title =="Log" || $kategori == "Tenggat"){
+                                            <?php if (($page_title !="Log") && ($kategori != "Tenggat")){
                                             ?>
-                                            <th style="display:none"></th>
-                                            <?php
-                                            }else{
-                                            ?>
+                                            
                                                 <th> ACTION </th>
                                               <?php
                                             }
@@ -84,9 +81,11 @@
                                                 else if($kategori == "History" && $var == 3){$save2 = $key1;}
                                                 ?>
                                             <?php endforeach ?>
+                                            
+                                            <?php if(($page_title != "Log") && ($kategori != "Tenggat")) {?>
                                             <td>
                                                 <?php
-                                                    if ($kategori == "History Pegawai" || $kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset" || $kategori == "History Pegawai" ){
+                                                    if ($kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset"){
                                                 ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
@@ -94,9 +93,8 @@
                                                   </div>
                                                 </a>
                                                 <?php
-                                              }else if($page_title == "log" || $kategori == "Tenggat") {?>
-                                            <?php
-                                              } else { ?>
+                                              }else {?>
+                                            
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
                                                     <span class="ti-eye"></span>
@@ -117,9 +115,8 @@
                                               <?php
                                               }
                                                  ?>
-
-                                                <!-- <br> -->
                                             </td>
+                                        <?php }?>
 
                                         </tr>
                                     <?php endforeach ?>

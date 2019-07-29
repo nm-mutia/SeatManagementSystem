@@ -166,6 +166,14 @@
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
                                     </div>
+                                <?php } else if($field->name == "ID_LOKASI"){?>
+                                    <div class="col-md-10">
+                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                            <?php foreach ($lokasi->result_array() as $lok): ?>
+                                                <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['ID_LOKASI'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
