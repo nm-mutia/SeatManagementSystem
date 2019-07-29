@@ -112,4 +112,9 @@ class Aset_model extends CI_Model {
     return $fields;
   }
 
+  function upAset($data, $table, $sn){
+    $this->db->where('SN', $sn);
+    $this->db->update($table, $data);
+  }
+
 }
