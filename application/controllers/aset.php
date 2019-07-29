@@ -46,7 +46,7 @@ class Aset extends CI_Controller {
 	}
 
 	//untuk aset tersedia
-	public function index(){
+	public function dex(){
 		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(2);
 		$data['content'] = $this->Aset_model->getAsetTersedia();
@@ -92,7 +92,7 @@ class Aset extends CI_Controller {
 		$skat = $this->encryption->decrypt($skat);
 		$data['subkategori'] =  $sid;
 		$data['subsubkategori'] =  $skat;
-		$data['lokasi'] = $this->lokasiModel->getLokasi(); 
+		$data['lokasi'] = $this->lokasiModel->getLokasi();
 		// header("Content-type: image/jpeg");
 		// header('Content-type : image/jpeg');
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
@@ -136,7 +136,12 @@ class Aset extends CI_Controller {
 			// $this->model->image = file_get_contents($_FILES['userfile']['tmp_name'].$i);
 	       	// $this->load->library('upload', $config)
 					// $this->model->title = $_FILES['userfile']['name'];
-			$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
+			if($_FILES['userfile'.$i]['tmp_name']){
+				$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
+			}else{
+				$img = NULL;
+
+			}
 
 			$datax = array(
 				'SN' => $sn,
