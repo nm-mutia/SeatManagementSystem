@@ -83,6 +83,7 @@ $route['aset/addAset/(:any)'] = 'aset/setAset/$1'; //nambah aset dari detPO (for
 $route['aset/det/(:any)'] = 'aset/kesAsetDetail/$1';
 $route['aset/det/(:any)/(:any)'] = 'aset/kesAsetDetails/$1/$2';
 $route['aset/getData/(:any)'] = 'aset/oneList/$1';
+$route['getImage/(:any)'] = 'aset/getImage/$1';
 
 
 //insert to database (action)
