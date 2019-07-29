@@ -80,7 +80,7 @@
                                                 <!-- <?php echo $key1 ?> -->
 
                                                 <td> <img src="data:image/jpeg;base64,<?php echo $key1 ?>"/> </td>
-                                                <td> hallo</td>
+                                                <!-- <td> hallo</td> -->
 
 
                                               <?php
