@@ -118,7 +118,7 @@
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $da ?>" readonly>
                                                         <?php } else if($field->name == "IMAGE"){?>
 
-                                                            <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
+                                                            <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg,.pdf"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else if($field->name == "ID_LOKASI"){ ?>
                                                             <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih...</option>
