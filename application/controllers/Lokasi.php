@@ -1,7 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Lokasi extends CI_Controller {
+class Lokasi extends MY_MainController {
+
+	protected $access = "Admin";
+
 
 	public function __construct(){
 		parent::__construct();

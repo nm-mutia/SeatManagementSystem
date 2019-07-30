@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class History extends CI_Controller {
+class History extends MY_MainController {
+	protected $access = "Admin";
 
 	public function __construct(){
 		 parent::__construct();
@@ -18,7 +19,7 @@ class History extends CI_Controller {
 		}else if ($nomer == 2){
 				$title = "Peminjaman";
 		}
-		
+
 		return $title;
 	}
 

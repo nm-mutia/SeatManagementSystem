@@ -1,12 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends MY_MainController {
 
   public function logged_in_check()
 	{
 		if ($this->session->userdata("logged_in")) {
-			redirect("admin");
+			// redirect("admin");
+      if($this->session->userdata("JOB_LEVEL") == "Admin"){
+        redirect("admin");
+      }else {
+        redirect("pegawai");
+      }
 		}
 	}
 
@@ -36,7 +41,11 @@ class Auth extends CI_Controller {
 				$this->session->set_userdata($this->auth->get_data());
 				$this->session->set_userdata("logged_in", true);
 				// redirect to dashboard
-				redirect("admin");
+        if($this->session->userdata("JOB_LEVEL") == "Admin"){
+        	redirect("admin");
+        }else {
+          redirect("pegawai");
+        }
 			}
 		}
 

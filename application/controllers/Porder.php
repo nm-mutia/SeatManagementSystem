@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Porder extends CI_Controller {
+class Porder extends MY_MainController {
+	protected $access = "Admin";
 
 	// private $title;
 	public function __construct(){
