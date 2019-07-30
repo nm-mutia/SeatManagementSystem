@@ -71,6 +71,7 @@ class Aset extends MY_MainController {
 		$data['kategori'] = $this->setKategori(1);
 		$data['content'] = $this->Aset_model->getAsetKeseluruhan();
 		// $data['content'] = $this->Aset_model->getAset();
+		// echo $data['content'];
 		$this->load->view('tablePage', $data);
 	}
 
