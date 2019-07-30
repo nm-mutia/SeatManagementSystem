@@ -73,6 +73,8 @@ $route['Purchase_Order/add/(:any)'] = 'porder/setAll';
 $route['Purchase_Order/det/(:any)'] = 'porder/detail/$1';
 $route['Purchase_Order/det/(:any)/(:any)'] = 'porder/detAsetSPK/$1/$2';
 $route['Purchase_Order/getData/(:any)'] = 'porder/oneList/$1';
+$route['Purchase_Order/getData/po/(:any)'] = 'porder/oneListAsetPo/$1';
+
 $route['Purchase_Order/delete/(:any)'] = 'porder/deletePorder/$1';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 $route['Purchase_Order/deleteAset/(:any)'] = 'aset/deleteAset/$1';

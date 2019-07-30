@@ -92,4 +92,11 @@ class Po_model extends CI_Model {
       }
   }
 
+
+    public function getOneListAsetPo($nama){
+      $fields = $this->db->query('CALL getOneListAsetPo(?)', array($nama));
+      return $fields;
+    }
+
+
 }
