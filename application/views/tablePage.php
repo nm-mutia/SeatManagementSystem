@@ -59,11 +59,12 @@
                                           <!-- <th></th> -->
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
+
                                     <?php endforeach ?>
-                                            
+
                                             <?php if (($page_title !="Log") && ($kategori != "Tenggat")){
                                             ?>
-                                            
+
                                                 <th> ACTION </th>
                                               <?php
                                             }
@@ -75,13 +76,26 @@
                                     <?php foreach ($content->result_array() as $key): ?>
                                         <tr>
                                             <?php $var = 1; ?>
-                                            <?php foreach ($key as $key1): ?>
+                                            <?php foreach ($key as $idnya => $key1): ?>
+
+                                            <!-- <object data="data:application/pdf;base64,<?php echo base64_encode($content) ?>" type="application/pdf" style="height:200px;width:60%"></object> -->
+                                            <?php if(($kategori == "Purchase Order")) {?>
+                                              <?php if($idnya == "FILE SPK") {?>
+                                            <td>
+
+                                                <a href="data:application/pdf;base64,<?php $key1 = base64_encode($key1); echo $key1; ?>" target="_blank">link</a>
+
+                                            </td>
+                                          <?php }else{ ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
-                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}
-                                                // else if($kategori == "History" && $var == 3){$save2 = $key1;}    
-                                                ?>
+                                            <!-- <td> hai</td> -->
+                                          <?php }}else{ ?>
+                                        <?php  } ?>
+
+                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}?>
                                             <?php endforeach ?>
-                                            
+
+
                                             <?php if(($page_title != "Log") && ($kategori != "Tenggat")) {?>
                                             <td>
                                                 <?php
@@ -94,7 +108,7 @@
                                                 </a>
                                                 <?php
                                               }else {?>
-                                            
+
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
                                                     <span class="ti-eye"></span>
@@ -121,7 +135,7 @@
                                         </tr>
                                     <?php endforeach ?>
                                     </tbody>
-                                      
+
                                 </table>
                                 <?php
                                     if ($kategori == "Purchase Order" || $kategori == "Aset" || $kategori == "Vendor" || $kategori == "History"){
@@ -164,7 +178,6 @@
                           <div class="form-group row">
                             <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
                             <?php if($kategori == "Purchase Order"){ ?>
-
                                 <?php if($field->name == "NO SPK" || $field->name == "NAMA PIC" || $field->name == "NAMA VENDOR"){?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
@@ -176,7 +189,6 @@
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                     </div>
                                 <?php } ?>
-
                             <?php } else if($kategori == "Vendor"){?>
                                 <?php if($field->name == "ID"){?>
                                     <div class="col-md-10">
@@ -187,7 +199,6 @@
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
                                     </div>
                                 <?php } ?>
-
                             <?php } else if($kategori == "History"){?>
                                 <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK" || $field->name == "STATUS"){?>
                                     <div class="col-md-10">
