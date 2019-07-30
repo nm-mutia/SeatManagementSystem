@@ -141,7 +141,6 @@ class Aset extends MY_MainController {
 				$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
 			}else{
 				$img = NULL;
-
 			}
 
 			$datax = array(

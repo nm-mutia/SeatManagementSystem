@@ -79,6 +79,8 @@
                                                                 </select>
                                                             <?php  }else if($field->name == "TAHUN_PENGADAAN"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                            <?php  }else if($field->name == "FILE_SPK"){ ?>
+                                                                <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".pdf"class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php  }else{ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php }}else{ ?>
