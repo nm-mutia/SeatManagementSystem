@@ -7,13 +7,23 @@ class Pegawai extends MY_MainController {
 
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('lokasiModel');
-		$this->load->model('historyModel');
-	    $this->load->model('Aset_model');
+	    $this->load->model('pegawaiModel');
 	}
 
-  public function index(){
-		$this->load->view('welcome_message');
+  	public function index(){
+		$this->load->view('pegawaiPage');
+	}
+
+	public function dashboard($nip){
+      	$nip = base64_decode($nip);
+		$nip = $this->encryption->decrypt($nip);
+  		$data['hard'] = $this->pegawaiModel->countKtg($nip, 'Hardware');
+  		$data['soft'] = $this->pegawaiModel->countKtg($nip, 'Software');
+  		$data['pgw'] = $this->pegawaiModel->getPegawaiById($nip)->row();
+  		$data['tenggat'] = $this->pegawaiModel->getTenggatPegawai($nip);
+  		$data['aset'] = $this->pegawaiModel->getAsetPegawai($nip);
+  		$data['history'] = $this->pegawaiModel->getHistoryPegawai($nip);
+		$this->load->view('pegawaiPage', $data);
 	}
 
 }
