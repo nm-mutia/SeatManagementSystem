@@ -47,7 +47,7 @@ class Aset extends MY_MainController {
 	}
 
 	//untuk aset tersedia
-	public function dex(){
+	public function index(){
 		$data['page_title'] = $this->setTitle(1);
 		$data['kategori'] = $this->setKategori(2);
 		$data['content'] = $this->Aset_model->getAsetTersedia();
