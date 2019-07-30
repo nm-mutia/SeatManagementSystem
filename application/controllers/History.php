@@ -166,11 +166,13 @@ class History extends MY_MainController {
 		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
 		// $bukti = $this->input->post('BUKTI_PEMINJAMAN');
+		$file = file_get_contents($_FILES['userfile']['tmp_name']);
+
 		$data = array(
 			'ID_VENDOR' => $idv,
 			'NIP' => $nip,
-			'TGL_PINJAM' => $tpin
-			// 'BUKTI_PEMINJAMAN' => $bukti
+			'TGL_PINJAM' => $tpin,
+			'BUKTI_PEMINJAMAN' => $file
 		);
 		if($idv != null && $nip != null){
 			$this->historyModel->setHistory($data, 'history_aset');

@@ -90,6 +90,9 @@
                                             <td> <?php $var++; echo $key1 ; ?></td>
                                             <!-- <td> hai</td> -->
                                           <?php }}else{ ?>
+                                            <td> <?php $var++; echo $key1 ; ?></td>
+
+
                                         <?php  } ?>
 
                                             <?php if($kategori == "History" && $var == 4){$save = $key1;}?>
