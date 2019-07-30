@@ -100,6 +100,9 @@
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
                                                             <?php  }else if($field->name == "TGL_PINJAM"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                              <?php  }else if($field->name == "BUKTI_PEMINJAMAN"){ ?>
+                                                                  <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".pdf"class="form-control" aria-required="true" aria-invalid="false" required>
+
                                                             <?php } else if($field->name == "ID_VENDOR"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
@@ -129,7 +132,7 @@
                                                             <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih...</option>
                                                                 <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                    <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['ID_PERUSAHAAN'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                                                    <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         <?php } else{ ?>
@@ -182,7 +185,7 @@
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                        <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['ID_PERUSAHAAN'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                                                        <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  }else if($field->name == "STATUS"){ ?>
