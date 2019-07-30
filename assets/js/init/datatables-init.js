@@ -90,8 +90,8 @@ $('#Medit ').submit(function(){
       // var base_url = window.location +"/getData/" + href;
       // console.log(base_url);
       var urll = base_url+"/"+pathArray[1]+"/"+pathArray[2]+"/getData/"+href;
-     console.log(urll);
-     // alert(host);
+     // console.log(urll);
+     // alert(urll);
      // alert(pathArray[1]);
      $.ajax({
          type : "GET",

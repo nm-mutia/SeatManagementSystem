@@ -230,4 +230,61 @@ class Porder extends MY_MainController {
 		redirect('Purchase_Order');
 	}
 
+	public function oneListAsetPo($nama){
+		$nama = base64_decode($nama);
+		$nama = $this->encryption->decrypt($nama);
+		$get  = $this->Po_model->getOneListAsetPo($nama)->result_array();
+					foreach($get as $row){
+					$result['SN'] = $row['SN'];
+					$result['CHECKSUM'] = $row['CHECKSUM'];
+					$result['SERIES'] = $row['SERIES'];
+					$result['MERK'] = $row['MERK'];
+					$result['TIPE'] = $row['SERIES'];
+					$result['NAMA PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
+					$result['KOTA'] = $row['KOTA'];
+					// $result['NAMA PERUSAHAAN'] = $row['NAMA PERUSAHAAN'];
+
+					}
+					echo json_encode($result);
+					// return $result;
+		// while ($row = $content->fetch_assoc()) {
+		// 						# code...
+		// 						$jsonArrayObject = (array('ID' => $row["ID"], 'NAMA VENDOR' => $row["NAMA VENDOR"], 'NAMA PIC' => $row["NAMA PIC"]));
+		// 						$arr[$inc] = $jsonArrayObject;
+		// 						$inc++;
+		// 				}
+		//
+		// $json_array = json_encode($arr);
+
+		// echo json_encode($data);
+		// echo json_encode(	$data);
+
+	}
+
+	public function upAsetPo(){
+		$sn = $this->input->post('SN');
+		$cek = $this->input->post('CHECKSUM');
+		$merk = $this->input->post('MERK');
+		$tipe = $this->input->post('TIPE');
+		$seri = $this->input->post('SERIES');
+		$stat = $this->input->post('STATUS_ASET');
+		$id = $this->input->post('ID_PERUSAHAAN');
+
+		$data = array(
+			'CHECKSUM' => $cek,
+			'MERK' => $merk,
+			'TIPE' => $tipe,
+			'SERIES' => $seri,
+			'STATUS_ASET' => $stat,
+			'ID_PERUSAHAAN' => $id
+		);
+
+		$this->Po_model->upAset($data,'aset',$sn);
+		// redirect('po');
+		redirect('Purchase_Order');
+
+	}
+
+
+
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class HistoryModel extends CI_Model {
@@ -14,13 +14,14 @@ class HistoryModel extends CI_Model {
             WHERE dh.tgl_kembali IS NULL OR dh.tgl_kembali = '0000-00-00' OR dh.tgl_kembali = ''");
     return $data;
   }
-  
+
   function getAll(){
-    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI, dh.status as STATUS
+    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI
+      , ha.BUKTI_PEMINJAMAN AS 'BUKTI PEMINJAMAN' , CASE `dh`.`STATUS` WHEN '0' THEN 'Pinjam' WHEN '1' THEN 'Kembali' WHEN '2' THEN 'Service' END AS `STATUS`
             from history_aset as ha
             join detail_history as dh on ha.id_history = dh.id_history");
     return $data;
-  }  
+  }
 
   function getAllForm(){
     $data = $this->db->query("SELECT * from history_aset");
@@ -42,7 +43,7 @@ class HistoryModel extends CI_Model {
     $data = $this->db->query("SELECT SN, TGL_TENGGAT, KONDISI, STATUS
             from detail_history ");
     return $data;
-  }  
+  }
 
   function setDetail(){
     $data = $this->db->query("SELECT * from detail_history");

@@ -90,20 +90,21 @@
 
                                             <?php } ?>
                                             <?php endforeach ?>
-                                            <!-- <td> -->
-                                              <!-- <img src="<?=base_url().'images/admin.jpg';?>" width="100">  -->
-                                              <!-- <img style="height: 200px; margin: auto;"
-                      		        								src="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>" /> -->
-                                                  <!-- <a href="<?php echo site_url('getImage/'); $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">gambar</a> -->
-                                            <!-- </td> -->
                                             <td>
+                                              <?php if($kategori == "Purchase Order"){ ?>
+                                                <a name= "po/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                  <div class="icon-container">
+                                                    <span class="ti-pencil-alt"></span>
+                                                  </div>
+                                                </a>
+                                          <?php    }else{ ?>
+                                            <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                              <div class="icon-container">
+                                                <span class="ti-pencil-alt"></span>
+                                              </div>
+                                            </a>
 
-                                              <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
-                                                <div class="icon-container">
-                                                  <span class="ti-pencil-alt"></span>
-                                                </div>
-                                              </a>
-
+                                          <?php    } ?>
                                               <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/deleteAset/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                 <div class="icon-container">
                                                   <span class="ti-trash"></span><span class="icon-name"></span>
