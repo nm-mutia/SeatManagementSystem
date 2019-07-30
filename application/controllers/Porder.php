@@ -138,10 +138,14 @@ class Porder extends MY_MainController {
 		$spk = $this->input->post('NO_SPK');
 		$idv = $this->input->post('ID_VENDOR');
 		$thada = $this->input->post('TAHUN_PENGADAAN');
+		$file = file_get_contents($_FILES['userfile']['tmp_name']);
+
 		$data = array(
 			'NO_SPK' => $spk,
 			'ID_VENDOR' => $idv,
-			'TAHUN_PENGADAAN' => $thada
+			'TAHUN_PENGADAAN' => $thada,
+			'FILE_SPK' => $file
+
 		);
 		if($spk != null && $idv != null){
 			$try = $this->Po_model->setPO($data, 'po', $spk);
