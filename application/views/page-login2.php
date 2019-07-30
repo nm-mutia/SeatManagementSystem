@@ -18,11 +18,6 @@
                     <!-- </a> -->
                 </div>
                 <div class="login-form">
-                  <?php $error = $this->session->flashdata("error"); ?>
-                  <div class="alert alert-<?php echo $error ? 'warning' : 'info' ?> alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <?php echo $error ? $error : 'Enter your NIP and password' ?>
-                  </div>
 
                     <form action="<?php echo site_url('Auth');?>" method="post" >
                       <?php $error = form_error("username", "<p class='text-danger'>", '</p>'); ?>

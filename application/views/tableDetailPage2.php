@@ -74,10 +74,15 @@
 
 
                                             <?php foreach ($key as $idnya => $key1): ?>
-                                              <?php if($idnya == "IMAGE") {
-                                                $key1 = base64_encode($key1)
-                                                ?>
-                                                <td> <img src="data:image/jpeg;base64,<?php echo $key1 ?>"/> </td>
+                                              <?php if($idnya == "IMAGE") {?>
+                                                <?php if($key1 == null) {?>
+                                                  <td> <img src="<?php echo base_url();?>images/noimage.png"/> </td>
+                                              <?php }else { ?>
+
+                                                <td> <img src="data:image/jpeg;base64,<?php $key1 = base64_encode($key1); echo $key1; ?>"/> </td>
+
+                                              <?php } ?>
+
                                                 <!-- <td> hallo</td> -->
                                               <?php
                                             }else{?>

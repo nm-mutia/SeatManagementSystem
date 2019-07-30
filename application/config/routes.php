@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //menu utama
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'auth';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -60,6 +60,8 @@ $route['translate_uri_dashes'] = FALSE;
 //menu fitur
 $route['tabeldet/(:any)'] = '$1/';
 $route['admin'] = 'lokasi/dashboard';
+$route['pegawai'] = 'pegawai';
+
 // $route['admin'] = 'adminDashboard';
 // $route['details/(:any)/(:any)'] = 'adminDashboard/detail/$1/$2';
 
