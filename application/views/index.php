@@ -98,9 +98,9 @@
 
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <i class="fa fa-desktop"></i> Hardware <span class="badge badge-primary pull-right"><?php $count = $acc->countKtgLokHardware($key['ID_LOKASI']); echo $count->row()->jml; ?></span>
+                                        <i class="fa fa-desktop"></i> Hardware <span class="badge badge-primary pull-right"><?php $count = $acc->countKtgLokHardware($key['ID_PERUSAHAAN']); echo $count->row()->jml; ?></span>
                                     </li>
-                                    <?php $countKtg = $acc->countSubktgLokH($key['ID_LOKASI']); foreach ($countKtg->result_array() as $cs): ?>
+                                    <?php $countKtg = $acc->countSubktgLokH($key['ID_PERUSAHAAN']); foreach ($countKtg->result_array() as $cs): ?>
                                     <li class="list-group-item">
                                         <i class="fa fa-tag"></i> <?php echo $cs['SUB_KATEGORI'] ?> <span class="badge badge-warning pull-right r-activity"><?php echo $cs['jml'] ?></span>
                                     </li>

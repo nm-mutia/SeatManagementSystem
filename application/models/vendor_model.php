@@ -29,7 +29,7 @@ class vendor_model extends CI_Model {
   }
 
   function getAllForm(){
-    $data = $this->db->query('SELECT NAMA_VENDOR AS "NAMA VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" from vendor');
+    $data = $this->db->query('SELECT NAMA_VENDOR AS "NAMA VENDOR", alamat_vendor as "ALAMAT VENDOR", NAMA_PIC AS "NAMA PIC" , EMAIL , NO_HP AS "NO HP" from vendor');
     return $data;
   }
 

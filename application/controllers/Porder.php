@@ -145,7 +145,7 @@ class Porder extends CI_Controller {
 		if($spk != null && $idv != null){
 			$try = $this->Po_model->setPO($data, 'po', $spk);
 			if ($try > 0) {
-		      echo "<script>alert('ERROR! Serial Number already exist!')</script>";
+		      echo "<script>alert('ERROR! SPK Number already exist!')</script>";
 		      redirect('Purchase_Order', 'refresh');
 			}
 		}
@@ -175,11 +175,11 @@ class Porder extends CI_Controller {
 		}
 
 		$idda = $this->input->post('ID_DA');
-		echo $count;
+		// echo $count;
 		for ($i=1; $i <= $count; $i++) {
 			$sn = $this->input->post('SN'.$i);
 			$checksum = $this->input->post('CHECKSUM'.$i);
-			$lok = $this->input->post('ID_LOKASI'.$i);
+			$lok = $this->input->post('ID_PERUSAHAAN'.$i);
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
@@ -187,7 +187,7 @@ class Porder extends CI_Controller {
 			$dataaset = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
-				'ID_LOKASI' => $lok,
+				'ID_PERUSAHAAN' => $lok,
 				'CHECKSUM' => $checksum,
 				'TIPE' => $tipe,
 				'MERK' => $merk,

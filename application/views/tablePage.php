@@ -195,7 +195,7 @@
                                     </div>
                                 <?php }else if( $field->name == "TGL_PINJAM" || $field->name == "TGL_TENGGAT" || $field->name == "TGL_KEMBALI"){ ?>
                                     <div class="col-md-10">
-                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false">
                                     </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">

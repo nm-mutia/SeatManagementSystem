@@ -204,15 +204,18 @@ class History extends CI_Controller {
 		$tpin = $this->input->post('TGL_PINJAM');
 		$tteng = $this->input->post('TGL_TENGGAT');
 		$tkem = $this->input->post('TGL_KEMBALI');
-		$ket = $this->input->post('KETERANGAN');
+		$ket = $this->input->post('KONDISI');
 
+		if($tkem == ''){
+			$tkem = null;
+		}
 		$data = array(
 			'TGL_PINJAM' => $tpin
 		);
 		$datax = array(
 			'TGL_TENGGAT' => $tteng,
 			'TGL_KEMBALI' => $tkem,
-			'KETERANGAN' => $ket,
+			'KONDISI' => $ket
 		);
 
 		$this->historyModel->upHistory($data,'history_aset',$id);
