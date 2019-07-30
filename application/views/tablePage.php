@@ -201,9 +201,17 @@
                                     </div>
                                 <?php } ?>
                             <?php } else if($kategori == "History"){?>
-                                <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK" || $field->name == "STATUS"){?>
+                                <?php if($field->name == "ID_HISTORY" || $field->name == "SN" || $field->name == "NIK"){?>
                                     <div class="col-md-10">
-                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
+                                        <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly>
+                                    </div>
+                                <?php }else if($field->name == "STATUS"){ ?>
+                                    <div class="col-md-10">
+                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                            <option value="0">Pinjam</option>
+                                            <option value="2">Servis</option>
+                                            <option value="1">Kembali</option>
+                                        </select>
                                     </div>
                                 <?php }else if( $field->name == "TGL_PINJAM" || $field->name == "TGL_TENGGAT" || $field->name == "TGL_KEMBALI"){ ?>
                                     <div class="col-md-10">

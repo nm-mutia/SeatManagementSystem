@@ -93,5 +93,16 @@ class HistoryModel extends CI_Model {
     $this->db->insert($table, $data);
   }
 
+  function setHistoryDet($data, $table, $sn){
+    $que = $this->db->query("SELECT status_aset FROM aset where sn = ?",array($sn));
+    $que = $que->row()->status_aset;
+    if($que == '0'){
+      
+      return $que;
+    }else{
+      $this->db->insert($table, $data);
+    }
+  }
+
 
 }

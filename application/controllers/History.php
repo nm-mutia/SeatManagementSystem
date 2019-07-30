@@ -162,19 +162,19 @@ class History extends MY_MainController {
 
 	//insert
 	public function insHistory($count){
-		$idv = $this->input->post('ID_VENDOR');
+		// $idv = $this->input->post('ID_VENDOR');
 		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
 		// $bukti = $this->input->post('BUKTI_PEMINJAMAN');
 		$file = file_get_contents($_FILES['userfile']['tmp_name']);
 
 		$data = array(
-			'ID_VENDOR' => $idv,
+			// 'ID_VENDOR' => $idv,
 			'NIP' => $nip,
 			'TGL_PINJAM' => $tpin,
 			'BUKTI_PEMINJAMAN' => $file
 		);
-		if($idv != null && $nip != null){
+		if($nip != null){
 			$this->historyModel->setHistory($data, 'history_aset');
 		}
 
@@ -194,7 +194,12 @@ class History extends MY_MainController {
 				'STATUS' => $st
 			);
 			if($idh != null && $sn != null){
-				$this->historyModel->setHistory($datadet, 'detail_history');
+				$try = $this->historyModel->setHistoryDet($datadet, 'detail_history', $sn);
+				if ($try = 0) {
+			      echo '<script>alert("Aset tidak tersedia")</script>';
+			      // echo anchor('Purchase_Order');
+			      redirect('history', 'refresh');
+				}
 			}
 		}
 		redirect('history');
