@@ -79,12 +79,10 @@
                                             <?php foreach ($key as $idnya => $key1): ?>
 
                                             <!-- <object data="data:application/pdf;base64,<?php echo base64_encode($content) ?>" type="application/pdf" style="height:200px;width:60%"></object> -->
-                                            <?php if(($kategori == "Purchase Order")) {?>
-                                              <?php if($idnya == "FILE SPK") {?>
+                                            <?php if(($kategori == "Purchase Order" || $kategori = "History")) {?>
+                                              <?php if($idnya == "FILE SPK" || $idnya == "BUKTI PEMINJAMAN") {?>
                                             <td>
-
                                                 <a href="data:application/pdf;base64,<?php $key1 = base64_encode($key1); echo $key1; ?>" target="_blank">link</a>
-
                                             </td>
                                           <?php }else{ ?>
                                             <td> <?php $var++; echo $key1 ; ?></td>
