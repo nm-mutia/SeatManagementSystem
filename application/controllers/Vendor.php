@@ -100,9 +100,11 @@ class Vendor extends MY_MainController {
 		$namap = $this->input->post('NAMA_PIC');
 		$namae = $this->input->post('EMAIL');
 		$namahp = $this->input->post('NO_HP');
+		$al =  $this->input->post('ALAMAT_VENDOR');
 
 		$data = array(
 			'NAMA_VENDOR' => $namav,
+			'ALAMAT_VENDOR' => $al,
 			'NAMA_PIC' => $namap,
 			'EMAIL' => $namae,
 			'NO_HP' => $namahp

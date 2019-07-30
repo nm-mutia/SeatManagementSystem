@@ -8,7 +8,7 @@ class LokasiModel extends CI_Model{
 	}
 
 	function getLokasi(){
-		$query = "SELECT ID_LOKASI, NAMA_PERUSAHAAN, ALAMAT_LOKASI, KOTA FROM lokasi";
+		$query = "SELECT ID_PERUSAHAAN, NAMA_PERUSAHAAN, ALAMAT_LOKASI, KOTA FROM perusahaan";
         $data = $this->db->query($query);
         return $data;
 	}
@@ -17,7 +17,7 @@ class LokasiModel extends CI_Model{
 		$query = "SELECT COUNT(*) as jml
 				FROM detail_po AS dp
 				JOIN aset AS a ON a.id_da = dp.id_da
-				WHERE a.id_lokasi = ? AND dp.kategori = 'Hardware'";
+				WHERE a.id_perusahaan = ? AND dp.kategori = 'Hardware'";
         $data = $this->db->query($query, array($id));
         return $data;
 	}
@@ -27,7 +27,7 @@ class LokasiModel extends CI_Model{
 		$query = "SELECT dp.SUB_KATEGORI, COUNT(*) AS jml
 				FROM detail_po AS dp
 				JOIN aset AS a ON a.id_da = dp.id_da
-				WHERE a.id_lokasi = ? AND dp.kategori = 'Hardware'
+				WHERE a.id_perusahaan = ? AND dp.kategori = 'Hardware'
 				GROUP BY dp.sub_kategori";
         $data = $this->db->query($query, array($id));
         return $data;

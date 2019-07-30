@@ -65,7 +65,6 @@ class Po_model extends CI_Model {
     $query = $this->db->get_where($table, array('NO_SPK' => $spk));
 
     $count = $query->num_rows();
-    var_dump($query->row());
     if($count){
       // echo "ADA WOY";
       // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
