@@ -29,6 +29,36 @@
         } );
     } );
 
+    $('#bootstrap-data-table2 thead tr').clone(true).appendTo( '#bootstrap-data-table2 thead' );
+    $('#bootstrap-data-table2 thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    $('#bootstrap-data-table3 thead tr').clone(true).appendTo( '#bootstrap-data-table3 thead' );
+    $('#bootstrap-data-table3 thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
 
 
 
@@ -228,6 +258,108 @@ $('#Medit ').submit(function(){
   //
   // } );
   var table = $('#bootstrap-data-table').removeAttr('width').DataTable({
+      "processing": true,
+      select: true,
+      orderCellsTop: true,
+      lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
+      // lenghtChange : false,
+      dom: 'lfrtBip',
+      // buttons : true,
+      destroy: true,
+      // scrollX:  true,
+      // scrollY:  true,
+      // scrollCollapse: true,
+   //    // paging:         false,
+   //      columnDefs: [
+   //     { width: 1, targets: 1 }
+   // ],
+   columnDefs: [
+      {
+          targets: 1,
+          className: 'noVis'
+      }
+  ],
+
+      select: {
+              style:    'os',
+              selector: 'td:first-child'
+      },
+
+      buttons: [
+                      {extend: 'copy',
+                       className: 'yeah',
+                    },
+                    {extend: 'excel',
+                       className: 'yeah',
+                    },
+                    {extend: 'csv',
+                       className: 'yeah',
+                    },
+                    {extend: 'print',
+                       className: 'yeah',
+                    },
+                      {
+                       extend: 'colvis',
+                       className: 'yeah',
+                       columns: ':not(.noVis)',
+                       text: 'Columns'
+                       }
+      ],
+       // fixedColumns: true
+  });
+
+   var table2 = $('#bootstrap-data-table2').removeAttr('width').DataTable({
+      "processing": true,
+      select: true,
+      orderCellsTop: true,
+      lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
+      // lenghtChange : false,
+      dom: 'lfrtBip',
+      // buttons : true,
+      destroy: true,
+      // scrollX:  true,
+      // scrollY:  true,
+      // scrollCollapse: true,
+   //    // paging:         false,
+   //      columnDefs: [
+   //     { width: 1, targets: 1 }
+   // ],
+   columnDefs: [
+      {
+          targets: 1,
+          className: 'noVis'
+      }
+  ],
+
+      select: {
+              style:    'os',
+              selector: 'td:first-child'
+      },
+
+      buttons: [
+                      {extend: 'copy',
+                       className: 'yeah',
+                    },
+                    {extend: 'excel',
+                       className: 'yeah',
+                    },
+                    {extend: 'csv',
+                       className: 'yeah',
+                    },
+                    {extend: 'print',
+                       className: 'yeah',
+                    },
+                      {
+                       extend: 'colvis',
+                       className: 'yeah',
+                       columns: ':not(.noVis)',
+                       text: 'Columns'
+                       }
+      ],
+       // fixedColumns: true
+  });
+
+    var table3 = $('#bootstrap-data-table3').removeAttr('width').DataTable({
       "processing": true,
       select: true,
       orderCellsTop: true,

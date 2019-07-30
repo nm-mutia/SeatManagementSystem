@@ -10,7 +10,9 @@ class Auth extends MY_MainController {
       if($this->session->userdata("JOB_LEVEL") == "Admin"){
         redirect("admin");
       }else {
-        redirect("pegawai");
+		$nip = $this->encryption->encrypt($this->session->userdata("NIP"));
+      	$nip = base64_encode($nip);
+        redirect("pegawai/".$nip);
       }
 		}
 	}
@@ -41,11 +43,13 @@ class Auth extends MY_MainController {
 				$this->session->set_userdata($this->auth->get_data());
 				$this->session->set_userdata("logged_in", true);
 				// redirect to dashboard
-        if($this->session->userdata("JOB_LEVEL") == "Admin"){
-        	redirect("admin");
-        }else {
-          redirect("pegawai");
-        }
+		        if($this->session->userdata("JOB_LEVEL") == "Admin"){
+		        	redirect("admin");
+		        }else {
+		        	$nip = $this->encryption->encrypt($this->session->userdata("NIP"));
+			      	$nip = base64_encode($nip);
+		          	redirect("pegawai/".$nip);
+		        }
 			}
 		}
 
