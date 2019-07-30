@@ -53,7 +53,7 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetAll(){
-    $query = "SELECT a.sn as SN, a.id_da as ID_DA, a.ID_LOKASI, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
+    $query = "SELECT a.sn as SN, a.id_da as ID_DA, a.ID_PERUSAHAAN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
       FROM aset AS a";
     $data = $this->db->query($query);
     return $data;

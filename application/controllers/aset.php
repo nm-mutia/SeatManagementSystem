@@ -128,7 +128,7 @@ class Aset extends CI_Controller {
 			$sn = $this->input->post('SN'.$i);
 			$idda = $this->input->post('ID_DA'.$i);
 			$checksum = $this->input->post('CHECKSUM'.$i);
-			$lok = $this->input->post('ID_LOKASI'.$i);
+			$lok = $this->input->post('ID_PERUSAHAAN'.$i);
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
@@ -147,7 +147,7 @@ class Aset extends CI_Controller {
 				'SN' => $sn,
 				'ID_DA' => $idda,
 				'CHECKSUM' => $checksum,
-				'ID_LOKASI' => $lok,
+				'ID_PERUSAHAAN' => $lok,
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
@@ -181,7 +181,7 @@ class Aset extends CI_Controller {
 		$tipe = $this->input->post('TIPE');
 		$seri = $this->input->post('SERIES');
 		$stat = $this->input->post('STATUS_ASET');
-		$id = $this->input->post('ID_LOKASI');
+		$id = $this->input->post('ID_PERUSAHAAN');
 
 		$data = array(
 			'CHECKSUM' => $cek,
@@ -189,7 +189,7 @@ class Aset extends CI_Controller {
 			'TIPE' => $tipe,
 			'SERIES' => $seri,
 			'STATUS_ASET' => $stat,
-			'ID_LOKASI' => $id
+			'ID_PERUSAHAAN' => $id
 		);
 
 		$this->Aset_model->upAset($data,'aset',$sn);
@@ -242,13 +242,13 @@ class Aset extends CI_Controller {
 					foreach($get as $row){
 					$result['SN'] = $row['SN'];
 					$result['MASA'] = $row['MASA'];
-					$result['ID_LOKASI'] = $row['ID_LOKASI'];
+					$result['ID_PERUSAHAAN'] = $row['ID_PERUSAHAAN'];
 					$result['CHECKSUM'] = $row['CHECKSUM'];
 					$result['TIPE'] = $row['TIPE'];
 					$result['MERK'] = $row['MERK'];
 					$result['SERIES'] = $row['SERIES'];
 					$result['STATUS_ASET'] = $row['STATUS_ASET'];
-					$result['NAMA_PERUSAHAAN'] = $row['ID_LOKASI'];
+					$result['NAMA_PERUSAHAAN'] = $row['ID_PERUSAHAAN'];
 					}
 					echo json_encode($result);
 	}
