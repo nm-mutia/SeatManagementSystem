@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminDashboard extends CI_Controller {
+class AdminDashboard extends MY_MainController {
+
+	// protected $access = "Admin";
 
 	public function __construct(){
 	    parent::__construct();
