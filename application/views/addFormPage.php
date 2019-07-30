@@ -103,13 +103,13 @@
                                                               <?php  }else if($field->name == "BUKTI_PEMINJAMAN"){ ?>
                                                                   <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".pdf"class="form-control" aria-required="true" aria-invalid="false" required>
 
-                                                            <?php } else if($field->name == "ID_VENDOR"){ ?>
+                                                            <!-- <?php } else if($field->name == "ID_VENDOR"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($idven->result_array() as $sel){ ?>
                                                                         <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' - '.$sel['NAMA_VENDOR'] ?></option>
                                                                     <?php } ?>
-                                                                </select>
+                                                                </select> -->
                                                             <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
                                                             <?php  } ?>
