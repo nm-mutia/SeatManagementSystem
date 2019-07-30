@@ -92,8 +92,8 @@
 
 
                                         <?php  } ?>
+                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}else{ $save = 0;}?>
 
-                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}?>
                                             <?php endforeach ?>
 
 
