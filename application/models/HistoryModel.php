@@ -93,6 +93,17 @@ class HistoryModel extends CI_Model {
     $this->db->insert($table, $data);
   }
 
+  function cekExist($id){
+    $que = $this->db->query("SELECT id_history FROM detail_history where id_history = ?",array($id));
+    $que = $que->num_rows();
+    return $que;
+  }
+
+  function deleteHistoryAset($id){
+    $this->db->where('ID_HISTORY', $id);
+    $this->db->delete('history_aset');
+  }
+
   function setHistoryDet($data, $table, $sn){
     $que = $this->db->query("SELECT status_aset FROM aset where sn = ?",array($sn));
     $que = $que->row()->status_aset;

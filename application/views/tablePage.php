@@ -114,13 +114,7 @@
                                                     <span class="ti-pencil-alt"></span>
                                                   </div>
                                                 </a>
-
-                                                <a  id = 'btn_delete' href="<?php echo base_url($this->uri->segment(1))?>/delete/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
-                                                  <div class="icon-container">
-                                                    <span class="ti-trash"></span>
-                                                  </div>
-                                                </a>
-                                                <?php }else {?>
+                                            <?php }else {?>
 
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">

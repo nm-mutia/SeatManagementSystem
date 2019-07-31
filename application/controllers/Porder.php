@@ -189,7 +189,13 @@ class Porder extends MY_MainController {
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
-			$img = $this->input->post('IMAGE'.$i);
+			// $img = $this->input->post('IMAGE'.$i);
+			if($_FILES['userfile'.$i]['tmp_name']){
+				$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
+			}else{
+				$img = NULL;
+			}
+
 			$dataaset = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
@@ -198,6 +204,7 @@ class Porder extends MY_MainController {
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
+				'STATUS_ASET' => 1,
 				'IMAGE' => $img
 			);
 			// echo $idda. " ".$sn." yoy  ";

@@ -263,7 +263,9 @@ $('#Medit ').submit(function(){
       orderCellsTop: true,
       lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
       // lenghtChange : false,
-      dom: 'lfrtBip',
+      dom:  "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" +
+          "<'row'<'col-sm-12'tr>>" +
+          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
       // buttons : true,
       destroy: true,
       // scrollX:  true,
@@ -314,7 +316,9 @@ $('#Medit ').submit(function(){
       orderCellsTop: true,
       lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
       // lenghtChange : false,
-      dom: 'lfrtBip',
+      dom: "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" +
+          "<'row'<'col-sm-12'tr>>" +
+          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
       // buttons : true,
       destroy: true,
       // scrollX:  true,
@@ -365,7 +369,9 @@ $('#Medit ').submit(function(){
       orderCellsTop: true,
       lengthMenu: [[5, 25, 50, -1], [5, 25, 50, "All"]],
       // lenghtChange : false,
-      dom: 'lfrtBip',
+      dom: "<'row'<'col-sm-4'l><'col-sm-4'B><'col-sm-4'f>>" +
+          "<'row'<'col-sm-12'tr>>" +
+          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
       // buttons : true,
       destroy: true,
       // scrollX:  true,
