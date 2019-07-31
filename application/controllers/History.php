@@ -145,6 +145,8 @@ class History extends MY_MainController {
 		// echo $nama." ".$sn;
 		// $message = "helo";
   //       echo "<script type='text/javascript'>alert('$message');</script>";
+		// var_dump($get);
+		// echo $nama.'h e'.$sn;
 
 		foreach($get as $row){
 			$result['ID_HISTORY'] = $row['ID_HISTORY'];
@@ -155,8 +157,8 @@ class History extends MY_MainController {
 			$result['TGL_KEMBALI'] = $row['TGL_KEMBALI'];
 			$result['KONDISI'] = $row['KONDISI'];
 			$result['STATUS'] = $row['STATUS'];
+			// $result['BUKTI_PEMINJAMAN'] = $row['BUKTI_PEMINJAMAN'];
 		}
-		// var_dump($get);
 		echo json_encode($result);
 	}
 
@@ -213,6 +215,7 @@ class History extends MY_MainController {
 		$tteng = $this->input->post('TGL_TENGGAT');
 		$tkem = $this->input->post('TGL_KEMBALI');
 		$ket = $this->input->post('KONDISI');
+		$st = $this->input->post('STATUS');
 
 		if($tkem == ''){
 			$tkem = null;
@@ -223,7 +226,8 @@ class History extends MY_MainController {
 		$datax = array(
 			'TGL_TENGGAT' => $tteng,
 			'TGL_KEMBALI' => $tkem,
-			'KONDISI' => $ket
+			'KONDISI' => $ket,
+			'STATUS' => $st
 		);
 
 		$this->historyModel->upHistory($data,'history_aset',$id);

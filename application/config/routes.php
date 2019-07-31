@@ -104,6 +104,7 @@ $route['crud/update/vendor_list'] = 'vendor/upVendor';
 $route['crud/update/Purchase_Order'] = 'porder/upPO';
 $route['crud/update/history'] = 'history/upHistory';
 $route['crud/update/aset'] = 'aset/upAset';
+$route['crud/update/asetpo'] = 'aset/upAsetDet';
 
 
 $route['Aset_tersedia'] = 'aset';

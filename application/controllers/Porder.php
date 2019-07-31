@@ -56,6 +56,7 @@ class Porder extends MY_MainController {
 		$sid = $this->encryption->decrypt($sid);
 		$skat = base64_decode($skat);
 		$skat = $this->encryption->decrypt($skat);
+		$data['lokasi'] = $this->lokasiModel->getLokasi();
 		$data['subkategori'] = "detail ". $sid ;
 		$data['subsubkategori'] ="detail ". $skat;
 		$data['content'] = $this->Aset_model->detAsetSPK($skat);
