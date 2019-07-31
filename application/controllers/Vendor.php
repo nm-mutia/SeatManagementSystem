@@ -38,8 +38,7 @@ class Vendor extends MY_MainController {
 	}
 
 	public function oneList($nama){
-		$data['page_title'] = $this->setTitle();
-		$data['kategori'] = $this->setKategori();
+		// $data['kategori'] = "Vendor";
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$get  = $this->vendor_model->getOneList($nama)->result_array();

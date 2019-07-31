@@ -62,10 +62,11 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-
+                                          <?php if ($kategori != "Aset Keseluruhan"){
+                                            ?>
                                             <!-- <th> image </th> -->
                                             <th> Action </th>
-
+                                          <?php }?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,6 +91,7 @@
 
                                             <?php } ?>
                                             <?php endforeach ?>
+                                      <?php if ($kategori != "Aset Keseluruhan"){?>
                                             <td>
                                               <?php if($kategori == "Purchase Order"){ ?>
                                                 <a name= "po/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
@@ -112,6 +114,7 @@
                                               </a>
 
                                             </td>
+                                      <?php }?>
 
                                         </tr>
 
@@ -145,7 +148,7 @@
 
     <!-- Right Panel -->
 
-            <form id="Medit" action="<?php echo base_url()?>crud/update/<?php echo $this->uri->segment(1);?>" method="POST">
+            <form id="Medit" action="<?php echo base_url()?>crud/update/<?php if($this->uri->segment(1) == "Purchase_Order"){ echo 'asetpo';}else{echo $this->uri->segment(1);}?>" method="POST">
                 <div class="modal fade" id="Modal_Edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -160,19 +163,24 @@
                         <div>
                             <?php foreach ($content->field_data() as $field): ?>
                               <div class="form-group row">
-                                <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
+                                <?php if($field->name != "IMAGE"){ ?> 
+                                  <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
 
-                                <?php if($field->name == "SN" || $field->name == "MASA" ){?>
+                                <?php }if($field->name == "SN" || $field->name == "MASA" ){?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
                                     </div>
-                                <?php } else if($field->name == "ID_LOKASI"){?>
+                                <?php } else if($field->name == "NAMA_PERUSAHAAN" || $field->name == "ID_PERUSAHAAN"){?>
                                     <div class="col-md-10">
-                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
                                             <?php foreach ($lokasi->result_array() as $lok): ?>
-                                                <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['ID_LOKASI'].' - '.$lok['NAMA_PERUSAHAAN'] ?></option>
+                                                <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>"> <?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
                                             <?php endforeach ?>
                                         </select>
+                                    </div>
+                                <?php }else if($field->name == "IMAGE"){ ?>
+                                    <div class="col-md-10" style="display: none;">
+                                        <!-- <input type="hidden"> -->
                                     </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">

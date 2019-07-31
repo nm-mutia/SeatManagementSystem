@@ -74,12 +74,13 @@
                                     </thead>
                                     <tbody>
                                     <?php foreach ($content->result_array() as $key): ?>
+
                                         <tr>
                                             <?php $var = 1; ?>
                                             <?php foreach ($key as $idnya => $key1): ?>
 
                                             <!-- <object data="data:application/pdf;base64,<?php echo base64_encode($content) ?>" type="application/pdf" style="height:200px;width:60%"></object> -->
-                                            <?php if(($kategori == "Purchase Order" || $kategori = "History")) {?>
+                                            <?php if(($kategori == "Purchase Order" || $kategori == "History")) {?>
                                               <?php if($idnya == "FILE SPK" || $idnya == "BUKTI PEMINJAMAN") {?>
                                             <td>
                                                 <a href="data:application/pdf;base64,<?php $key1 = base64_encode($key1); echo $key1; ?>" target="_blank">link</a>
@@ -92,7 +93,7 @@
 
 
                                         <?php  } ?>
-                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}else{ $save = 0;}?>
+                                            <?php if($kategori == "History" && $var == 4){$save = $key1;}?>
 
                                             <?php endforeach ?>
 
@@ -100,15 +101,20 @@
                                             <?php if(($page_title != "Log") && ($kategori != "Tenggat")) {?>
                                             <td>
                                                 <?php
-                                                    if ($kategori == "Aset Keseluruhan"|| $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset"){
+                                                    if ($kategori == "Aset Keseluruhan" || $kategori == "Aset Tersedia" || $kategori == "History Pegawai"|| $kategori == "History Aset"){
                                                 ?>
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
                                                     <span class="ti-eye"></span>
                                                   </div>
                                                 </a>
-                                                <?php
-                                              }else {?>
+                                            <?php } else if($kategori == "History"){?>
+                                                  <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); $us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                  <div class="icon-container">
+                                                    <span class="ti-pencil-alt"></span>
+                                                  </div>
+                                                </a>
+                                            <?php }else {?>
 
                                                 <a href="<?php echo base_url($this->uri->segment(1))?>/<?php if ($this->uri->segment(1)=="Purchase_Order" || $this->uri->segment(1)=="aset" || $this->uri->segment(1)=="history"){ echo "det/";}?><?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); ?>">
                                                   <div class="icon-container">
@@ -116,7 +122,7 @@
                                                   </div>
                                                 </a>
 
-                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u); if($kategori == "History"){$us = $this->encryption->encrypt($save); echo '/'.base64_encode($us);}?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
+                                                <a name= "<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
                                                   <div class="icon-container">
                                                     <span class="ti-pencil-alt"></span>
                                                   </div>
@@ -177,14 +183,22 @@
                     <div>
                         <?php foreach ($content->field_data() as $field): ?>
                           <div class="form-group row">
+                             <?php if($field->name != "BUKTI PEMINJAMAN" && $field->name != "FILE SPK"){ ?>   <!-- nyembunyiin bukti peminjaman di history n image po-->
                             <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
-                            <?php if($kategori == "Purchase Order"){ ?>
+
+                            <?php }if($kategori == "Purchase Order"){ ?>
                                 <?php if($field->name == "NO SPK" || $field->name == "NAMA PIC" || $field->name == "NAMA VENDOR"){?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" readonly >
                                     </div>
-                                <?php }else if( $field->name == "TAHUN_PENGADAAN"){ ?>
+                                <?php }else if( $field->name == "TAHUN PENGADAAN"){ ?>
+                                    <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
+                                    </div>
+                                <?php }else if($field->name == "FILE SPK"){ ?>
+                                    <div class="col-md-10" style="display: none;">
+                                        <!-- <input type="hidden"> -->
+                                    </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">
                                         <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" >
@@ -207,11 +221,15 @@
                                     </div>
                                 <?php }else if($field->name == "STATUS"){ ?>
                                     <div class="col-md-10">
-                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
                                             <option value="0">Pinjam</option>
                                             <option value="2">Servis</option>
                                             <option value="1">Kembali</option>
                                         </select>
+                                    </div>
+                                <?php }else if($field->name == "BUKTI PEMINJAMAN"){ ?>
+                                    <div class="col-md-10" style="display: none;">
+                                        <!-- <input type="hidden"> -->
                                     </div>
                                 <?php }else if( $field->name == "TGL_PINJAM" || $field->name == "TGL_TENGGAT" || $field->name == "TGL_KEMBALI"){ ?>
                                     <div class="col-md-10">

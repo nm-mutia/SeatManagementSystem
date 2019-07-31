@@ -145,6 +145,8 @@ class History extends MY_MainController {
 		// echo $nama." ".$sn;
 		// $message = "helo";
   //       echo "<script type='text/javascript'>alert('$message');</script>";
+		// var_dump($get);
+		// echo $nama.'h e'.$sn;
 
 		foreach($get as $row){
 			$result['ID_HISTORY'] = $row['ID_HISTORY'];
@@ -155,21 +157,21 @@ class History extends MY_MainController {
 			$result['TGL_KEMBALI'] = $row['TGL_KEMBALI'];
 			$result['KONDISI'] = $row['KONDISI'];
 			$result['STATUS'] = $row['STATUS'];
+			// $result['BUKTI_PEMINJAMAN'] = $row['BUKTI_PEMINJAMAN'];
 		}
-		// var_dump($get);
 		echo json_encode($result);
 	}
 
 	//insert
 	public function insHistory($count){
-		// $idv = $this->input->post('ID_VENDOR');
+		$idv = $this->input->post('ID_HISTORY');
 		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
 		// $bukti = $this->input->post('BUKTI_PEMINJAMAN');
 		$file = file_get_contents($_FILES['userfile']['tmp_name']);
 
 		$data = array(
-			// 'ID_VENDOR' => $idv,
+			'ID_HISTORY' => $idv,
 			'NIP' => $nip,
 			'TGL_PINJAM' => $tpin,
 			'BUKTI_PEMINJAMAN' => $file
@@ -195,13 +197,18 @@ class History extends MY_MainController {
 			);
 			if($idh != null && $sn != null){
 				$try = $this->historyModel->setHistoryDet($datadet, 'detail_history', $sn);
-				if ($try = 0) {
-			      echo '<script>alert("Aset tidak tersedia")</script>';
-			      // echo anchor('Purchase_Order');
-			      redirect('history', 'refresh');
+				if ($try == 0) {
+			      
 				}
 			}
 		}
+
+		if($this->historyModel->cekExist($idh) == 0){
+			$this->historyModel->deleteHistoryAset($idh);
+			echo '<script>alert("Aset tidak tersedia")</script>';
+			      redirect('history', 'refresh');
+		}
+
 		redirect('history');
 	}
 
@@ -213,6 +220,7 @@ class History extends MY_MainController {
 		$tteng = $this->input->post('TGL_TENGGAT');
 		$tkem = $this->input->post('TGL_KEMBALI');
 		$ket = $this->input->post('KONDISI');
+		$st = $this->input->post('STATUS');
 
 		if($tkem == ''){
 			$tkem = null;
@@ -223,7 +231,8 @@ class History extends MY_MainController {
 		$datax = array(
 			'TGL_TENGGAT' => $tteng,
 			'TGL_KEMBALI' => $tkem,
-			'KONDISI' => $ket
+			'KONDISI' => $ket,
+			'STATUS' => $st
 		);
 
 		$this->historyModel->upHistory($data,'history_aset',$id);

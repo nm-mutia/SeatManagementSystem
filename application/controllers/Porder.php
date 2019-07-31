@@ -56,6 +56,7 @@ class Porder extends MY_MainController {
 		$sid = $this->encryption->decrypt($sid);
 		$skat = base64_decode($skat);
 		$skat = $this->encryption->decrypt($skat);
+		$data['lokasi'] = $this->lokasiModel->getLokasi();
 		$data['subkategori'] = "detail ". $sid ;
 		$data['subsubkategori'] ="detail ". $skat;
 		$data['content'] = $this->Aset_model->detAsetSPK($skat);
@@ -188,7 +189,13 @@ class Porder extends MY_MainController {
 			$tipe = $this->input->post('TIPE'.$i);
 			$merk = $this->input->post('MERK'.$i);
 			$series = $this->input->post('SERIES'.$i);
-			$img = $this->input->post('IMAGE'.$i);
+			// $img = $this->input->post('IMAGE'.$i);
+			if($_FILES['userfile'.$i]['tmp_name']){
+				$img = file_get_contents($_FILES['userfile'.$i]['tmp_name']);
+			}else{
+				$img = NULL;
+			}
+
 			$dataaset = array(
 				'SN' => $sn,
 				'ID_DA' => $idda,
@@ -197,6 +204,7 @@ class Porder extends MY_MainController {
 				'TIPE' => $tipe,
 				'MERK' => $merk,
 				'SERIES' => $series,
+				'STATUS_ASET' => 1,
 				'IMAGE' => $img
 			);
 			// echo $idda. " ".$sn." yoy  ";
