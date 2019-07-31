@@ -197,6 +197,28 @@ class Aset extends MY_MainController {
 		redirect('aset');
 	}
 
+	public function upAsetDet(){
+		$sn = $this->input->post('SN');
+		$cek = $this->input->post('CHECKSUM');
+		$merk = $this->input->post('MERK');
+		$tipe = $this->input->post('TIPE');
+		$seri = $this->input->post('SERIES');
+		$id = $this->input->post('NAMA_PERUSAHAAN');
+		// $stat = $this->input->post('STATUS_ASET');
+
+		$data = array(
+			'CHECKSUM' => $cek,
+			'MERK' => $merk,
+			'TIPE' => $tipe,
+			'SERIES' => $seri,
+			// 'STATUS_ASET' => $stat,
+			'ID_PERUSAHAAN' => $id
+		);
+
+		$this->Aset_model->upAset($data,'aset',$sn);
+		redirect('Purchase_Order');
+	}
+
 	public function getLogMutasi(){
 		$data['page_title'] = $this->setTitle(2);
 		$data['kategori'] = $this->setKategori(4);
