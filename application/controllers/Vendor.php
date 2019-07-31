@@ -38,15 +38,17 @@ class Vendor extends MY_MainController {
 	}
 
 	public function oneList($nama){
+		$data['page_title'] = $this->setTitle();
+		$data['kategori'] = $this->setKategori();
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$get  = $this->vendor_model->getOneList($nama)->result_array();
 					foreach($get as $row){
 					$result['ID'] = $row['ID'];
-					$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
-					$result['NAMA PIC'] = $row['NAMA PIC'];
+					$result['NAMA VENDOR'] = $row['NAMA_VENDOR'];
+					$result['NAMA PIC'] = $row['NAMA_PIC'];
 					$result['EMAIL'] = $row['EMAIL'];
-					$result['NO HP'] = $row['NO HP'];
+					$result['NO HP'] = $row['NO_HP'];
 					}
 					echo json_encode($result);
 					// return $result;
