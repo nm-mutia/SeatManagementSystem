@@ -51,6 +51,9 @@ Googel Fonts  */
   color: #fff;
 }*/
 
+div.dataTables_length{
+  margin-right: 1em;
+}
 
 .dt-button.yeah{
    background: #a83e32; /* Green */

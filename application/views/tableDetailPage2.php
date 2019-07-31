@@ -62,10 +62,11 @@
                                     <?php foreach ($content->field_data() as $field): ?>
                                             <th><?php echo $field->name ?> </th>
                                     <?php endforeach ?>
-
+                                          <?php if ($kategori != "Aset Keseluruhan"){
+                                            ?>
                                             <!-- <th> image </th> -->
                                             <th> Action </th>
-
+                                          <?php }?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -90,6 +91,7 @@
 
                                             <?php } ?>
                                             <?php endforeach ?>
+                                      <?php if ($kategori != "Aset Keseluruhan"){?>
                                             <td>
                                               <?php if($kategori == "Purchase Order"){ ?>
                                                 <a name= "po/<?php $u = $this->encryption->encrypt(current($key)); echo base64_encode($u);?>" data-toggle="modal" data-target="#Modal_Edit"  id = 'btn_updateedit' href="">
@@ -112,6 +114,7 @@
                                               </a>
 
                                             </td>
+                                      <?php }?>
 
                                         </tr>
 
