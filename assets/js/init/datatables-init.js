@@ -91,7 +91,7 @@ $('#Medit ').submit(function(){
       // console.log(base_url);
       var urll = base_url+"/"+pathArray[1]+"/"+pathArray[2]+"/getData/"+href;
      // console.log(urll);
-     // alert(urll);
+     alert(urll);
      // alert(pathArray[1]);
      $.ajax({
          type : "GET",
