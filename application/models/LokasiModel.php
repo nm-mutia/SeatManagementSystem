@@ -8,7 +8,7 @@ class LokasiModel extends CI_Model{
 	}
 
 	function getLokasi(){
-		$query = "SELECT ID_PERUSAHAAN, NAMA_PERUSAHAAN, ALAMAT_LOKASI, KOTA FROM perusahaan";
+		$query = "SELECT ID_PERUSAHAAN, NAMA_PERUSAHAAN FROM perusahaan";
         $data = $this->db->query($query);
         return $data;
 	}
@@ -37,7 +37,7 @@ class LokasiModel extends CI_Model{
 	// function countKtgLokSoftware($id){
 	// 	$query = "SELECT SUM((CASE WHEN dp.qty_tersedia IS NOT NULL
 	// 			    THEN dp.qty_tersedia
-	// 			    ELSE 0 
+	// 			    ELSE 0
 	// 			END)) AS jml
 	// 			FROM detail_po AS dp
 	// 			LEFT JOIN aset AS a ON a.id_da = dp.id_da
@@ -47,10 +47,10 @@ class LokasiModel extends CI_Model{
 	// }
 
 	// function countSubktgLokS($id){
-	// 	$query = "SELECT dp.sub_kategori, SUM((CASE 
+	// 	$query = "SELECT dp.sub_kategori, SUM((CASE
 	// 			    WHEN dp.qty_tersedia IS NOT NULL
 	// 			    THEN dp.qty_tersedia
-	// 			    ELSE 0 
+	// 			    ELSE 0
 	// 			END)) AS jml
 	// 			FROM detail_po AS dp
 	// 			JOIN aset AS a ON a.id_da = dp.id_da
