@@ -132,7 +132,7 @@
                                                             <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih...</option>
                                                                 <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                    <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
+                                                                    <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN']?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         <?php } else{ ?>
