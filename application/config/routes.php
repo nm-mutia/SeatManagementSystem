@@ -114,6 +114,7 @@ $route['Aset_tersedia/(:any)'] = 'Aset/detail/$1';
 $route['history'] = 'history/getAll';
 $route['history/det/(:any)'] = 'history/detail/$1';
 $route['history/getData/(:any)/(:any)'] = 'history/oneList/$1/$2';
+$route['history/get_sn_mts'] = 'history/get_sn_mts';
 // $route['history/History/addDetail'] = 'history/setDetailHistory';
 $route['history/History'] = 'history/setDetail';
 

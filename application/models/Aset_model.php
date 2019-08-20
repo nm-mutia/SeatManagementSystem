@@ -53,7 +53,7 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetAll(){
-    $query = "SELECT a.sn as SN, a.id_da as ID_DA, a.ID_PERUSAHAAN, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
+    $query = "SELECT a.sn as SN, a.id_da as ID_DA, a.ID_PERUSAHAAN, a.ID_LOKASI, a.checksum AS CHECKSUM, a.tipe AS TIPE, a.merk AS MERK, a.series AS SERIES, a.image AS IMAGE
       FROM aset AS a";
     $data = $this->db->query($query);
     return $data;
@@ -136,6 +136,23 @@ class Aset_model extends CI_Model {
   function upAset($data, $table, $sn){
     $this->db->where('SN', $sn);
     $this->db->update($table, $data);
+  }
+
+  public function getMerk($nip){
+    $fields = $this->db->query('CALL c_merk(?)', array($nip));
+    mysqli_next_result( $this->db->conn_id );
+    return $fields;
+  }
+
+  public function getTipe($nip, $merk){
+    $fields = $this->db->query('CALL c_tipe(?, ?)', array($nip, $merk));
+    mysqli_next_result( $this->db->conn_id );
+    return $fields;
+  }
+
+  public function get_sn_mtsmodel($nip, $merk, $tipe, $seri){
+    $fields = $this->db->query('CALL c_sn(?, ?, ?, ?)', array($nip, $merk, $tipe, $seri));
+    return $fields;
   }
 
 }

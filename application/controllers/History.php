@@ -125,6 +125,7 @@ class History extends MY_MainController {
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
 		$data['idven'] =  $this->vendor_model->getAll();
+		$data['hmod'] = $this->Aset_model;
 		$x = $this->historyModel->getLastId();
 		if(!$x){
 			$data['idhist'] = 1;
@@ -134,6 +135,16 @@ class History extends MY_MainController {
 		}
 		$this->load->view('addFormPage', $data);
 	}
+
+	public function get_sn_mts(){
+		$smerk = $this->input->post('merk_nm');
+		$stipe = $this->input->post('tipe_nm');
+		$sseri = $this->input->post('seri_nm');
+		$data = $this->Aset_model->get_sn_mtsmodel('5115', $smerk, $stipe, $sseri)->result();
+		echo $smerk." hl ";
+        echo json_encode($data);
+	}
+
 
 	public function oneList($nama, $sn){
 		$nama = base64_decode($nama);

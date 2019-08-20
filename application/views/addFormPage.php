@@ -98,24 +98,18 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
+                                                            <?php  }else if($field->name == "NIP"){ ?>
+                                                                <input id="history_nip" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
                                                             <?php  }else if($field->name == "TGL_PINJAM"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                               <?php  }else if($field->name == "BUKTI_PEMINJAMAN"){ ?>
                                                                   <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".pdf"class="form-control" aria-required="true" aria-invalid="false" required>
-
-                                                            <!-- <?php } else if($field->name == "ID_VENDOR"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih...</option>
-                                                                    <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' - '.$sel['NAMA_VENDOR'] ?></option>
-                                                                    <?php } ?>
-                                                                </select> -->
                                                             <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
                                                             <?php  } ?>
                                                         </div>
                                                     <?php endforeach ?>
-                                                </div>
+                                                </div><br>
 
                                             <?php } else if($kategori == "Aset PO"){?>
                                                 <!-- form untuk aset po  -->
@@ -135,6 +129,13 @@
                                                                     <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN']?></option>
                                                                 <?php } ?>
                                                             </select>
+                                                        <?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                            <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option>Pilih...</option>
+                                                                <?php foreach ($kota->result_array() as $lok){ ?>
+                                                                    <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
+                                                                <?php } ?>
+                                                            </select>
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                         <?php } ?><br>
@@ -142,6 +143,7 @@
                                                 </div>
 
                                             <?php } else if($kategori == "Detail PO"){?>
+                                                <!-- form untuk detail po -->
                                                 <div>
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
@@ -173,9 +175,28 @@
                                                 <?php if($kategori != "Aset PO"){ ?>
                                                     <div id="readroot1" style="display: none;" class="form-group">
                                                         <input type="button" class="btn btn-danger" value="Remove detail" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
+                                                        <!-- khusus history -->
+                                                        <?php if($kategori == "History"){?>
+                                                            <label for="cc-payment" class="control-label mb-1"> MERK dan TIPE </label>
+                                                            <select name="merktipe" id="mt-list" onChange="getSn(this.value);" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option value disabled selected>Pilih...</option>
+                                                                <?php $try = $hmod->getMerk('5115')->result_array(); foreach ($try as $merk): ?>
+                                                                <optgroup label="<?php echo $merk['merk']?>">
+                                                                    <?php $tryx = $hmod->getTipe('5115',$merk['merk'])->result_array(); foreach ($tryx as $tipe): ?>
+                                                                    <option value="5115|<?php echo $tipe['merk']?>|<?php echo $tipe['tipe']?>|<?php echo $tipe['series']?>"><?php echo $tipe['merk'].' '.$tipe['tipe'].' '.$tipe['series'] ?></option>
+                                                                    <?php endforeach ?>
+                                                                </optgroup>
+                                                                <?php endforeach ?>
+                                                            </select>
+                                                        <?php }?><br>
+
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <?php if($field->name == "IMAGE"){?>
+                                                            <?php if($kategori == "History" && $field->name == "SN"){?>
+                                                                <select id="mt-list-sn" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option value="">Pilih...</option>
+                                                                </select>
+                                                            <?php } else if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda; ?>" readonly>
@@ -186,6 +207,13 @@
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($lokasi->result_array() as $lok){ ?>
                                                                         <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            <?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih...</option>
+                                                                    <?php foreach ($kota->result_array() as $lok){ ?>
+                                                                        <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  }else if($field->name == "STATUS"){ ?>
@@ -255,6 +283,39 @@
 
     <!-- <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script> -->
 
+    <script>
+        function getSn(val) {
+            var valex = val.split("|");
+            var merk_nm = valex[1];
+            var tipe_nm = valex[2]; 
+            var seri_nm = valex[3];
+            var base_url = window.location.origin;
+            var pathArray = window.location.pathname.split( "/" );
+            var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
+
+            $.ajax({
+                type: "POST",
+                url: urll,
+                data: {merk_nm: merk_nm, tipe_nm: tipe_nm, seri_nm: seri_nm},
+                dataType : "JSON",
+                success: function(data){
+                    alert(data);
+                    var html = "";
+                    var i;
+                    alert(data.length);
+                    for(i=0; i<data.length; i++){
+                        html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
+                        console.log(data[i].sn);
+                    }
+                    $("#mt-list-sn").html(html);
+                },
+                error: function(data) {
+                    alert('kenapa fail');
+                }
+            });
+        }
+    </script>
+
     <script type='text/javascript'>
         var counter = 0;
         var flag = 0;
@@ -312,6 +373,8 @@
     </script>
 
     <?php $this->load->view("_partials/js.php") ?>
+
+    
 
 </body>
 </html>
