@@ -125,7 +125,7 @@ class History extends MY_MainController {
 		$data['content'] = $this->historyModel->getAllForm();
 		$data['contentdet'] = $this->historyModel->getAllFormDetail();
 		$data['idven'] =  $this->vendor_model->getAll();
-		$data['hmod'] = $this->Aset_model;
+		$data['nip'] = $this->pegawaiModel->getPegawai();
 		$x = $this->historyModel->getLastId();
 		if(!$x){
 			$data['idhist'] = 1;
@@ -136,12 +136,25 @@ class History extends MY_MainController {
 		$this->load->view('addFormPage', $data);
 	}
 
+	public function get_merk(){
+		$nip = $this->input->post('nip');
+		$data = $this->Aset_model->getMerk($nip)->result();
+        echo json_encode($data);
+	}
+
+	public function get_tipe(){
+		$nip = $this->input->post('nip');
+		$merk = $this->input->post('merk');
+		$data = $this->Aset_model->getTipe($nip, $merk)->result();
+        echo json_encode($data);
+	}
+
 	public function get_sn_mts(){
+		$snip = $this->input->post('nip');
 		$smerk = $this->input->post('merk_nm');
 		$stipe = $this->input->post('tipe_nm');
 		$sseri = $this->input->post('seri_nm');
-		$data = $this->Aset_model->get_sn_mtsmodel('5115', $smerk, $stipe, $sseri)->result();
-		echo $smerk." hl ";
+		$data = $this->Aset_model->get_sn_mtsmodel($snip, $smerk, $stipe, $sseri)->result();
         echo json_encode($data);
 	}
 

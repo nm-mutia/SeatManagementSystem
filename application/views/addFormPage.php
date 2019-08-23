@@ -99,7 +99,12 @@
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
                                                             <?php  }else if($field->name == "NIP"){ ?>
-                                                                <input id="history_nip" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
+                                                                <select id="history_nip" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <?php foreach ($nip->result_array() as $pgw){ ?>
+                                                                        <option value="<?php echo $pgw['NIP'] ?>" ><?php echo $pgw['NIP'].' - '.$pgw['NAMA']?></option>
+                                                                    <?php } ?>
+                                                                </select>
                                                             <?php  }else if($field->name == "TGL_PINJAM"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                               <?php  }else if($field->name == "BUKTI_PEMINJAMAN"){ ?>
@@ -177,16 +182,16 @@
                                                         <input type="button" class="btn btn-danger" value="Remove detail" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
                                                         <!-- khusus history -->
                                                         <?php if($kategori == "History"){?>
-                                                            <label for="cc-payment" class="control-label mb-1"> MERK dan TIPE </label>
-                                                            <select name="merktipe" id="mt-list" onChange="getSn(this.value);" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option value disabled selected>Pilih...</option>
-                                                                <?php $try = $hmod->getMerk('5115')->result_array(); foreach ($try as $merk): ?>
-                                                                <optgroup label="<?php echo $merk['merk']?>">
-                                                                    <?php $tryx = $hmod->getTipe('5115',$merk['merk'])->result_array(); foreach ($tryx as $tipe): ?>
-                                                                    <option value="5115|<?php echo $tipe['merk']?>|<?php echo $tipe['tipe']?>|<?php echo $tipe['series']?>"><?php echo $tipe['merk'].' '.$tipe['tipe'].' '.$tipe['series'] ?></option>
-                                                                    <?php endforeach ?>
-                                                                </optgroup>
-                                                                <?php endforeach ?>
+                                                            <label for="cc-payment" class="control-label mb-1"> MERK</label>
+                                                            <select id="merk-list" name="merk" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option value="">Pilih</option>
+
+                                                            </select>
+                                                            <br>
+                                                            <label for="cc-payment" class="control-label mb-1"> TIPE </label>
+                                                            <select id="tipe-list" name="tipe" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option value="">Pilih</option>
+
                                                             </select>
                                                         <?php }?><br>
 
@@ -194,7 +199,8 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($kategori == "History" && $field->name == "SN"){?>
                                                                 <select id="mt-list-sn" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option value="">Pilih...</option>
+                                                                    <option value="">Pilih</option>
+
                                                                 </select>
                                                             <?php } else if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
@@ -282,38 +288,110 @@
     <!-- Right Panel -->
 
     <!-- <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
 
     <script>
-        function getSn(val) {
-            var valex = val.split("|");
-            var merk_nm = valex[1];
-            var tipe_nm = valex[2]; 
-            var seri_nm = valex[3];
-            var base_url = window.location.origin;
-            var pathArray = window.location.pathname.split( "/" );
-            var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
+        $("#history_nip").select2( {
+             placeholder: "Pilih",
+             allowClear: true
+        });
+    </script>
 
-            $.ajax({
-                type: "POST",
-                url: urll,
-                data: {merk_nm: merk_nm, tipe_nm: tipe_nm, seri_nm: seri_nm},
-                dataType : "JSON",
-                success: function(data){
-                    alert(data);
-                    var html = "";
-                    var i;
-                    alert(data.length);
-                    for(i=0; i<data.length; i++){
-                        html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
-                        console.log(data[i].sn);
+    <script type='text/javascript'>
+        var base_url = window.location.origin;
+        var pathArray = window.location.pathname.split( "/" );
+
+        $(document).ready(function(){
+            $('#history_nip').change(function(){ 
+        // function getMerk(val){
+                var urlx = base_url+"/"+pathArray[1]+"/history";
+                var val = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    url: urlx+"/get_merk",
+                    data: {nip: val},
+                    async: true,
+                    dataType : "json",
+                    success: function(data){
+                        var i;
+                        var html = "";
+                        for(i=0; i<data.length; i++){
+                            html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
+                        }
+                        $("#merk-list").html(html);
+                    },
+                    error: function(data) {
+                        alert('kenapa fail luar');
                     }
-                    $("#mt-list-sn").html(html);
-                },
-                error: function(data) {
-                    alert('kenapa fail');
-                }
+                });
+                return false;
             });
-        }
+
+            $('#merk-list').change(function(){ 
+        // function getTipe(val){
+                var val = $(this).val();
+                var urlx = base_url+"/"+pathArray[1]+"/history";
+                var valex = val.split("|");
+                var nip = valex[0];
+                var merk = valex[1];
+
+                $.ajax({
+                    type: "POST",
+                    url: urlx+"/get_tipe",
+                    data: {nip: nip, merk: merk},
+                    async: true,
+                    dataType : "json",
+                    success: function(datax){
+                        var x;
+                        var html = "";
+                        for(x=0; x<datax.length; x++){
+                            html += "<option value="+val+"|"+datax[x].merk+"|"+datax[x].tipe+"|"+datax[x].series+">"+datax[x].merk+" "+datax[x].tipe+" "+datax[x].series+"</option>";
+                        }
+                        $("#tipe-list").html(html);
+                        
+                    },
+                    error: function(datax){
+                        alert("fail dalam");
+                    }
+                });
+                return false;
+            });
+
+            $('#tipe-list').change(function(){ 
+        // function getSn(val) {
+                var val = $(this).val();
+                var valex = val.split("|");
+                var nip = valex[0];
+                var merk_nm = valex[1];
+                var tipe_nm = valex[2]; 
+                var seri_nm = valex[3];
+                var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
+
+                $.ajax({
+                    type: "POST",
+                    url: urll,
+                    data: {nip: nip, merk_nm: merk_nm, tipe_nm: tipe_nm, seri_nm: seri_nm},
+                    async: true,
+                    dataType : "JSON",
+                    success: function(data){
+                        alert(data);
+                        var html = "";
+                        var i;
+                        alert(data.length);
+                        for(i=0; i<data.length; i++){
+                            html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
+                            console.log(data[i].sn);
+                        }
+                        $("#mt-list-sn").html(html);
+                    },
+                    error: function(data) {
+                        alert('kenapa fail');
+                    }
+                });
+                return false;
+            });
+        });
     </script>
 
     <script type='text/javascript'>
