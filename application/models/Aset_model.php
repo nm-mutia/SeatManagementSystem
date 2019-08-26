@@ -146,7 +146,7 @@ class Aset_model extends CI_Model {
 
   public function getTipe($nip, $merk){
     $fields = $this->db->query('CALL c_tipe(?, ?)', array($nip, $merk));
-    mysqli_next_result( $this->db->conn_id );
+    // mysqli_next_result( $this->db->conn_id );
     return $fields;
   }
 

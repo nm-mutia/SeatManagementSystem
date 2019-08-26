@@ -183,13 +183,13 @@
                                                         <!-- khusus history -->
                                                         <?php if($kategori == "History"){?>
                                                             <label for="cc-payment" class="control-label mb-1"> MERK</label>
-                                                            <select id="merk-list" name="merk" type="text" class="form-control" required>
+                                                            <select id="merk-list" type="text" class="form-control" required>
                                                                 <option value="">Pilih</option>
 
                                                             </select>
                                                             <br>
                                                             <label for="cc-payment" class="control-label mb-1"> TIPE </label>
-                                                            <select id="tipe-list" name="tipe" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                            <select id="tipe-list" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option value="">Pilih</option>
 
                                                             </select>
@@ -311,29 +311,31 @@
                 
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var val = $(this).val();
-                console.log(urlx+"/get_merk");
+
                 $.ajax({
                     type: "POST",
                     url: urlx+"/get_merk",
                     data: {nip: val},
-                    async: true,
                     dataType : "json",
                     success: function(data){
-                        console.log(data);
+                        console.log("success : " + JSON.stringify(data) );
                         // var i;
                         // var html = "";
                         // for(i=0; i<data.length; i++){
                         //     html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
                         // }
-                        $('#merk-list').find('option').not(':first').remove();
-                        $('#tipe-list').find('option').not(':first').remove();
-                        $('#mt-list-sn').find('option').not(':first').remove();
+                        $("#merk-list").find("option").not(":first").remove();
+                        $("#tipe-list").find("option").not(":first").remove();
+                        $("#mt-list-sn").find("option").not(":first").remove();
 
-                        $.each(data,function(index,datax){
-                            $('#merk-list').append('<option value="'+val+'|'+datax.merk+'">'+datax.merk+'</option>');
+                        $.each(data, function(index,datax){
+                            $("#merk-list").append("<option value='"+val+"|"+datax["merk"]+"'>"+datax["merk"]+"</option>");
                         });
                         // $("#merk-list").html(html);
                         // console.log(html);
+
+                        const duration = performance.now() - startTime;
+                        console.log(`ajaxhistorynip took ${duration}ms`);
                     },
                     error: function(data) {
                         alert('kenapa fail luar');
@@ -341,8 +343,6 @@
                 });
                 // return false;
 
-                const duration = performance.now() - startTime;
-                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
             });
 
             $('#merk-list').change(function(){ 
@@ -359,9 +359,9 @@
                     type: "POST",
                     url: urlx+"/get_tipe",
                     data: {nip: nip, merk: merk},
-                    async: true,
                     dataType : "json",
                     success: function(data){
+                        console.log("success : " + JSON.stringify(data) );
                         // var x;
                         // var html = "";
                         // for(x=0; x<datax.length; x++){
@@ -372,19 +372,18 @@
                         $('#mt-list-sn').find('option').not(':first').remove();
 
                         $.each(data,function(index,datax){
-                            $('#tipe-list').append('<option value="'+val+'|'+datax.merk+'|'+datax.tipe+'|'+datax.series+'">'+datax.merk+' '+datax.tipe+' '+datax.series+'</option>');
+                            $('#tipe-list').append('<option value="'+val+'|'+datax["merk"]+'|'+datax["tipe"]+'|'+datax["series"]+'">'+datax["merk"]+' '+datax["tipe"]+' '+datax["series"]+'</option>');
                         });
 
                         // $("#tipe-list").html(html);
+                        const duration = performance.now() - startTime;
+                        console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
                         
                     },
                     error: function(data){
                         alert("fail dalam");
                     }
                 });
-                const duration = performance.now() - startTime;
-                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
-                return false;
             });
 
             $('#tipe-list').change(function(){ 
@@ -404,6 +403,7 @@
                     async: true,
                     dataType : "JSON",
                     success: function(data){
+                        console.log("success : " + JSON.stringify(data) );
                         // alert(data);
                         // var html = "";
                         // var i;
@@ -416,7 +416,7 @@
                         $('#mt-list-sn').find('option').not(':first').remove();
 
                         $.each(data,function(index,datax){
-                            $('#mt-list-sn').append('<option value="'+datax.sn+'">'+datax.sn+'</option>');
+                            $('#mt-list-sn').append('<option value="'+datax["sn"]+'">'+datax["sn"]+'</option>');
                         });
 
                         // $("#mt-list-sn").html(html);
@@ -425,7 +425,6 @@
                         alert('kenapa fail');
                     }
                 });
-                return false;
             });
         });
     </script>
