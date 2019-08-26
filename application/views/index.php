@@ -91,7 +91,7 @@
                                         </a>
                                         <div class="media-body">
                                             <h2 class="text-light display-6"><th><?php echo $key['NAMA_PERUSAHAAN'] ?> </th></h2>
-                                            <p><?php echo $key['ALAMAT_LOKASI'].', '.$key['KOTA'] ?></p>
+                                            <p><?php echo $key['ALAMAT_PERUSAHAAN'].', '.$key['KOTA'] ?></p>
                                         </div>
                                     </div>
                                 </div>

@@ -98,24 +98,23 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($field->name == "ID_HISTORY"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
+                                                            <?php  }else if($field->name == "NIP"){ ?>
+                                                                <select id="history_nip" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option value="">Pilih</option>
+                                                                    <?php foreach ($nip->result_array() as $pgw){ ?>
+                                                                        <option value="<?php echo $pgw['NIP'] ?>" ><?php echo $pgw['NIP'].' - '.$pgw['NAMA']?></option>
+                                                                    <?php } ?>
+                                                                </select>
                                                             <?php  }else if($field->name == "TGL_PINJAM"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                               <?php  }else if($field->name == "BUKTI_PEMINJAMAN"){ ?>
                                                                   <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".pdf"class="form-control" aria-required="true" aria-invalid="false" required>
-
-                                                            <!-- <?php } else if($field->name == "ID_VENDOR"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih...</option>
-                                                                    <?php foreach ($idven->result_array() as $sel){ ?>
-                                                                        <option value="<?php echo $sel['ID_VENDOR'] ?>" ><?php echo $sel['ID_VENDOR'].' - '.$sel['NAMA_VENDOR'] ?></option>
-                                                                    <?php } ?>
-                                                                </select> -->
                                                             <?php  } else{ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="" required>
                                                             <?php  } ?>
                                                         </div>
                                                     <?php endforeach ?>
-                                                </div>
+                                                </div><br>
 
                                             <?php } else if($kategori == "Aset PO"){?>
                                                 <!-- form untuk aset po  -->
@@ -135,6 +134,13 @@
                                                                     <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN']?></option>
                                                                 <?php } ?>
                                                             </select>
+                                                        <?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                            <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option>Pilih...</option>
+                                                                <?php foreach ($kota->result_array() as $lok){ ?>
+                                                                    <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
+                                                                <?php } ?>
+                                                            </select>
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                         <?php } ?><br>
@@ -142,6 +148,7 @@
                                                 </div>
 
                                             <?php } else if($kategori == "Detail PO"){?>
+                                                <!-- form untuk detail po -->
                                                 <div>
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
@@ -173,9 +180,29 @@
                                                 <?php if($kategori != "Aset PO"){ ?>
                                                     <div id="readroot1" style="display: none;" class="form-group">
                                                         <input type="button" class="btn btn-danger" value="Remove detail" onclick="this.parentNode.parentNode.removeChild(this.parentNode);" /><br /><br />
+                                                        <!-- khusus history -->
+                                                        <?php if($kategori == "History"){?>
+                                                            <label for="cc-payment" class="control-label mb-1"> MERK</label>
+                                                            <select id="merk-list" name="merk" type="text" class="form-control" required>
+                                                                <option value="">Pilih</option>
+
+                                                            </select>
+                                                            <br>
+                                                            <label for="cc-payment" class="control-label mb-1"> TIPE </label>
+                                                            <select id="tipe-list" name="tipe" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option value="">Pilih</option>
+
+                                                            </select>
+                                                        <?php }?><br>
+
                                                         <?php foreach ($contentdet->field_data() as $field): ?>
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <?php if($field->name == "IMAGE"){?>
+                                                            <?php if($kategori == "History" && $field->name == "SN"){?>
+                                                                <select id="mt-list-sn" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih</option>
+
+                                                                </select>
+                                                            <?php } else if($field->name == "IMAGE"){?>
                                                                 <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                             <?php } else if($kategori == "Detail PO" && $field->name == "ID_DA"){?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idda; ?>" readonly>
@@ -186,6 +213,13 @@
                                                                     <option>Pilih...</option>
                                                                     <?php foreach ($lokasi->result_array() as $lok){ ?>
                                                                         <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            <?php } else if($field->name == "ID_LOKASI"){ ?>
+                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih...</option>
+                                                                    <?php foreach ($kota->result_array() as $lok){ ?>
+                                                                        <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php  }else if($field->name == "STATUS"){ ?>
@@ -254,6 +288,147 @@
     <!-- Right Panel -->
 
     <!-- <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script> -->
+    <?php $this->load->view("_partials/js.php") ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
+
+
+    <script>
+        $("#history_nip").select2( {
+             placeholder: "Pilih",
+             allowClear: true
+        });
+    </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            var base_url = window.location.origin;
+            var pathArray = window.location.pathname.split( "/" );
+
+            $('#history_nip').change(function(){ 
+        // function getMerk(val){
+                const startTime = performance.now();
+                
+                var urlx = base_url+"/"+pathArray[1]+"/history";
+                var val = $(this).val();
+                console.log(urlx+"/get_merk");
+                $.ajax({
+                    type: "POST",
+                    url: urlx+"/get_merk",
+                    data: {nip: val},
+                    async: true,
+                    dataType : "json",
+                    success: function(data){
+                        console.log(data);
+                        // var i;
+                        // var html = "";
+                        // for(i=0; i<data.length; i++){
+                        //     html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
+                        // }
+                        $('#merk-list').find('option').not(':first').remove();
+                        $('#tipe-list').find('option').not(':first').remove();
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#merk-list').append('<option value="'+val+'|'+datax.merk+'">'+datax.merk+'</option>');
+                        });
+                        // $("#merk-list").html(html);
+                        // console.log(html);
+                    },
+                    error: function(data) {
+                        alert('kenapa fail luar');
+                    }
+                });
+                // return false;
+
+                const duration = performance.now() - startTime;
+                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
+            });
+
+            $('#merk-list').change(function(){ 
+        // function getTipe(val){
+                const startTime = performance.now();
+
+                var val = $(this).val();
+                var urlx = base_url+"/"+pathArray[1]+"/history";
+                var valex = val.split("|");
+                var nip = valex[0];
+                var merk = valex[1];
+
+                $.ajax({
+                    type: "POST",
+                    url: urlx+"/get_tipe",
+                    data: {nip: nip, merk: merk},
+                    async: true,
+                    dataType : "json",
+                    success: function(data){
+                        // var x;
+                        // var html = "";
+                        // for(x=0; x<datax.length; x++){
+                        //     html += "<option value="+val+"|"+datax[x].merk+"|"+datax[x].tipe+"|"+datax[x].series+">"+datax[x].merk+" "+datax[x].tipe+" "+datax[x].series+"</option>";
+                        // }
+
+                        $('#tipe-list').find('option').not(':first').remove();
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#tipe-list').append('<option value="'+val+'|'+datax.merk+'|'+datax.tipe+'|'+datax.series+'">'+datax.merk+' '+datax.tipe+' '+datax.series+'</option>');
+                        });
+
+                        // $("#tipe-list").html(html);
+                        
+                    },
+                    error: function(data){
+                        alert("fail dalam");
+                    }
+                });
+                const duration = performance.now() - startTime;
+                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
+                return false;
+            });
+
+            $('#tipe-list').change(function(){ 
+        // function getSn(val) {
+                var val = $(this).val();
+                var valex = val.split("|");
+                var nip = valex[0];
+                var merk_nm = valex[1];
+                var tipe_nm = valex[2]; 
+                var seri_nm = valex[3];
+                var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
+
+                $.ajax({
+                    type: "POST",
+                    url: urll,
+                    data: {nip: nip, merk_nm: merk_nm, tipe_nm: tipe_nm, seri_nm: seri_nm},
+                    async: true,
+                    dataType : "JSON",
+                    success: function(data){
+                        // alert(data);
+                        // var html = "";
+                        // var i;
+                        // alert(data.length);
+                        // for(i=0; i<data.length; i++){
+                        //     html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
+                        //     console.log(data[i].sn);
+                        // }
+
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#mt-list-sn').append('<option value="'+datax.sn+'">'+datax.sn+'</option>');
+                        });
+
+                        // $("#mt-list-sn").html(html);
+                    },
+                    error: function(data) {
+                        alert('kenapa fail');
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
 
     <script type='text/javascript'>
         var counter = 0;
@@ -307,11 +482,9 @@
             window.onload = moreFields;
         <?php } ?>
 
-
-
     </script>
 
-    <?php $this->load->view("_partials/js.php") ?>
+    
 
 </body>
 </html>

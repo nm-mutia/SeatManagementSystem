@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/select.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/fixedHeader.dataTables.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/buttons.dataTables.min.css">
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/select2.min.css">
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/lib/datatable/fixedColumns.dataTables.min.css">
 

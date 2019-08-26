@@ -71,6 +71,7 @@ class Porder extends MY_MainController {
 		$data['subkategori'] = "detail";
 		$data['spk'] = $sid;
 		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['kota'] = $this->lokasiModel->getLokasiKota();
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
 		$x = $this->Po_model->getLastId();

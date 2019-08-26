@@ -120,6 +120,7 @@ class Aset extends MY_MainController {
 		$data['content'] = $this->Aset_model->getAsetAll();
 		$data['da'] = $idda;
 		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['kota'] = $this->lokasiModel->getLokasiKota();
 		$this->load->view('addFormPage', $data);
 	}
 

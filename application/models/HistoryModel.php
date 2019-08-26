@@ -16,10 +16,10 @@ class HistoryModel extends CI_Model {
   }
 
   function getAll(){
-    $data = $this->db->query("SELECT ha.id_history as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI
+    $data = $this->db->query("SELECT ha.id as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI
       , ha.BUKTI_PEMINJAMAN AS 'BUKTI PEMINJAMAN' , CASE `dh`.`STATUS` WHEN '0' THEN 'Pinjam' WHEN '1' THEN 'Kembali' WHEN '2' THEN 'Service' END AS `STATUS`
             from history_aset as ha
-            join detail_history as dh on ha.id_history = dh.id_history");
+            join detail_history as dh on ha.id = dh.id");
     return $data;
   }
 
@@ -29,7 +29,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getLastId(){
-    $data = $this->db->query("SELECT ha.id_history as id_history
+    $data = $this->db->query("SELECT ha.id as id_history
           FROM history_aset AS ha
           ORDER BY id_history DESC LIMIT 1");
     if($data->num_rows() == 0){
@@ -94,7 +94,7 @@ class HistoryModel extends CI_Model {
   }
 
   function cekExist($id){
-    $que = $this->db->query("SELECT id_history FROM detail_history where id_history = ?",array($id));
+    $que = $this->db->query("SELECT id FROM detail_history where id = ?",array($id));
     $que = $que->num_rows();
     return $que;
   }
