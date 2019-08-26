@@ -137,23 +137,23 @@ class History extends MY_MainController {
 	}
 
 	public function get_merk(){
-		$nip = $this->input->post('nip');
+		$nip = $this->input->post('nip', TRUE);
 		$data = $this->Aset_model->getMerk($nip)->result();
         echo json_encode($data);
 	}
 
 	public function get_tipe(){
-		$nip = $this->input->post('nip');
-		$merk = $this->input->post('merk');
+		$nip = $this->input->post('nip', TRUE);
+		$merk = $this->input->post('merk', TRUE);
 		$data = $this->Aset_model->getTipe($nip, $merk)->result();
         echo json_encode($data);
 	}
 
 	public function get_sn_mts(){
-		$snip = $this->input->post('nip');
-		$smerk = $this->input->post('merk_nm');
-		$stipe = $this->input->post('tipe_nm');
-		$sseri = $this->input->post('seri_nm');
+		$snip = $this->input->post('nip', TRUE);
+		$smerk = $this->input->post('merk_nm', TRUE);
+		$stipe = $this->input->post('tipe_nm', TRUE);
+		$sseri = $this->input->post('seri_nm', TRUE);
 		$data = $this->Aset_model->get_sn_mtsmodel($snip, $smerk, $stipe, $sseri)->result();
         echo json_encode($data);
 	}

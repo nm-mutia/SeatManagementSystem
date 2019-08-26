@@ -183,7 +183,7 @@
                                                         <!-- khusus history -->
                                                         <?php if($kategori == "History"){?>
                                                             <label for="cc-payment" class="control-label mb-1"> MERK</label>
-                                                            <select id="merk-list" name="merk" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                            <select id="merk-list" name="merk" type="text" class="form-control" required>
                                                                 <option value="">Pilih</option>
 
                                                             </select>
@@ -199,7 +199,7 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($kategori == "History" && $field->name == "SN"){?>
                                                                 <select id="mt-list-sn" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option value="">Pilih</option>
+                                                                    <option>Pilih</option>
 
                                                                 </select>
                                                             <?php } else if($field->name == "IMAGE"){?>
@@ -288,8 +288,10 @@
     <!-- Right Panel -->
 
     <!-- <script src = "http://code.jquery.com/jquery-latest.min.js" type = "text/javascript"></script> -->
+    <?php $this->load->view("_partials/js.php") ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/select2.min.js"></script>
+
 
     <script>
         $("#history_nip").select2( {
@@ -299,14 +301,17 @@
     </script>
 
     <script type='text/javascript'>
-        var base_url = window.location.origin;
-        var pathArray = window.location.pathname.split( "/" );
-
         $(document).ready(function(){
+            var base_url = window.location.origin;
+            var pathArray = window.location.pathname.split( "/" );
+
             $('#history_nip').change(function(){ 
         // function getMerk(val){
+                const startTime = performance.now();
+                
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var val = $(this).val();
+                console.log(urlx+"/get_merk");
                 $.ajax({
                     type: "POST",
                     url: urlx+"/get_merk",
@@ -314,22 +319,36 @@
                     async: true,
                     dataType : "json",
                     success: function(data){
-                        var i;
-                        var html = "";
-                        for(i=0; i<data.length; i++){
-                            html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
-                        }
-                        $("#merk-list").html(html);
+                        console.log(data);
+                        // var i;
+                        // var html = "";
+                        // for(i=0; i<data.length; i++){
+                        //     html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
+                        // }
+                        $('#merk-list').find('option').not(':first').remove();
+                        $('#tipe-list').find('option').not(':first').remove();
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#merk-list').append('<option value="'+val+'|'+datax.merk+'">'+datax.merk+'</option>');
+                        });
+                        // $("#merk-list").html(html);
+                        // console.log(html);
                     },
                     error: function(data) {
                         alert('kenapa fail luar');
                     }
                 });
-                return false;
+                // return false;
+
+                const duration = performance.now() - startTime;
+                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
             });
 
             $('#merk-list').change(function(){ 
         // function getTipe(val){
+                const startTime = performance.now();
+
                 var val = $(this).val();
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var valex = val.split("|");
@@ -342,19 +361,29 @@
                     data: {nip: nip, merk: merk},
                     async: true,
                     dataType : "json",
-                    success: function(datax){
-                        var x;
-                        var html = "";
-                        for(x=0; x<datax.length; x++){
-                            html += "<option value="+val+"|"+datax[x].merk+"|"+datax[x].tipe+"|"+datax[x].series+">"+datax[x].merk+" "+datax[x].tipe+" "+datax[x].series+"</option>";
-                        }
-                        $("#tipe-list").html(html);
+                    success: function(data){
+                        // var x;
+                        // var html = "";
+                        // for(x=0; x<datax.length; x++){
+                        //     html += "<option value="+val+"|"+datax[x].merk+"|"+datax[x].tipe+"|"+datax[x].series+">"+datax[x].merk+" "+datax[x].tipe+" "+datax[x].series+"</option>";
+                        // }
+
+                        $('#tipe-list').find('option').not(':first').remove();
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#tipe-list').append('<option value="'+val+'|'+datax.merk+'|'+datax.tipe+'|'+datax.series+'">'+datax.merk+' '+datax.tipe+' '+datax.series+'</option>');
+                        });
+
+                        // $("#tipe-list").html(html);
                         
                     },
-                    error: function(datax){
+                    error: function(data){
                         alert("fail dalam");
                     }
                 });
+                const duration = performance.now() - startTime;
+                console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
                 return false;
             });
 
@@ -375,15 +404,22 @@
                     async: true,
                     dataType : "JSON",
                     success: function(data){
-                        alert(data);
-                        var html = "";
-                        var i;
-                        alert(data.length);
-                        for(i=0; i<data.length; i++){
-                            html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
-                            console.log(data[i].sn);
-                        }
-                        $("#mt-list-sn").html(html);
+                        // alert(data);
+                        // var html = "";
+                        // var i;
+                        // alert(data.length);
+                        // for(i=0; i<data.length; i++){
+                        //     html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
+                        //     console.log(data[i].sn);
+                        // }
+
+                        $('#mt-list-sn').find('option').not(':first').remove();
+
+                        $.each(data,function(index,datax){
+                            $('#mt-list-sn').append('<option value="'+datax.sn+'">'+datax.sn+'</option>');
+                        });
+
+                        // $("#mt-list-sn").html(html);
                     },
                     error: function(data) {
                         alert('kenapa fail');
@@ -446,11 +482,7 @@
             window.onload = moreFields;
         <?php } ?>
 
-
-
     </script>
-
-    <?php $this->load->view("_partials/js.php") ?>
 
     
 

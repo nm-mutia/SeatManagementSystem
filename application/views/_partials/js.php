@@ -12,7 +12,6 @@
 <!-- <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script> -->
 
 
-
 <!--  Chart js -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script> -->
 
