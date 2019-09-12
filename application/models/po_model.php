@@ -1,12 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Po_model extends CI_Model {
-
-  private $query;
-  private $fields;
-
-  public function __construct()
-  {
+  public function __construct(){
       parent::__construct();
   }
 
@@ -51,11 +46,6 @@ class Po_model extends CI_Model {
     return $fields;
   }
 
-  // function getSubktg(){
-  //   $data = $this->db->query("SELECT DISTINCT SUB_KATEGORI FROM detail_po ORDER BY kategori");
-  //   return $data;
-  // }
-
   function upPO($data, $table, $id){
     $this->db->where('NO_SPK', $id);
     $this->db->update($table, $data);
@@ -63,12 +53,8 @@ class Po_model extends CI_Model {
 
   function setPO($data, $table, $spk){
     $query = $this->db->get_where($table, array('NO_SPK' => $spk));
-
     $count = $query->num_rows();
     if($count){
-      // echo "ADA WOY";
-      // $this->session->set_flashdata('error', 'Such User exists. Please try again!');
-      // redirect('Purchase_Order');
       return $count;
     }
     $this->db->insert($table, $data);
@@ -80,10 +66,7 @@ class Po_model extends CI_Model {
 
   public function deletePorder($data){
       $cekrows = $this->db->query('      SELECT * FROM po, detail_po dp WHERE dp.`NO_SPK`=po.`NO_SPK` AND po.NO_SPK = ? ;' , $data);
-
       if ($cekrows->num_rows() != 0){
-        // echo "<script type='text/javascript'>alert('$message');</script>";
-        // $message = "tes";
         return 0;
       }else{
         $this->db->where(' NO_SPK', $data);
@@ -92,11 +75,8 @@ class Po_model extends CI_Model {
       }
   }
 
-
     public function getOneListAsetPo($nama){
       $fields = $this->db->query('CALL getOneListAsetPo(?)', array($nama));
       return $fields;
     }
-
-
 }
