@@ -99,14 +99,14 @@ class Aset_model extends CI_Model {
   }
 
   public function deleteAset($data){
-      $cekrows = $this->db->query('SELECT * FROM detail_history WHERE sn = ?' , $data);
-      if ($cekrows->num_rows() != 0){
-        return 0;
-      }else{
-        $this->db->where('sn', $data);
-        $this->db->delete('aset');
-        return 1;
-      }
+    $cekrows = $this->db->query('SELECT * FROM detail_history WHERE sn = ?' , $data);
+    if ($cekrows->num_rows() != 0){
+      return 0;
+    }else{
+      $this->db->where('sn', $data);
+      $this->db->delete('aset');
+      return 1;
+    }
   }
 
   public function getOneList($nama){
@@ -134,5 +134,4 @@ class Aset_model extends CI_Model {
     $fields = $this->db->query('CALL c_sn(?, ?, ?, ?)', array($nip, $merk, $tipe, $seri));
     return $fields->result_array();
   }
-
 }
