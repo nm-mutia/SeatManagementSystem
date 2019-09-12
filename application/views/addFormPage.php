@@ -128,18 +128,16 @@
 
                                                             <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else if($field->name == "ID_PERUSAHAAN"){ ?>
-                                                            <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option>Pilih...</option>
+                                                            <select id="pr_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option>Pilih</option>
                                                                 <?php foreach ($lokasi->result_array() as $lok){ ?>
                                                                     <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN']?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         <?php } else if($field->name == "ID_LOKASI"){ ?>
-                                                            <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option>Pilih...</option>
-                                                                <?php foreach ($kota->result_array() as $lok){ ?>
-                                                                    <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
-                                                                <?php } ?>
+                                                            <select id="kt_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option>Pilih</option>
+                                                                
                                                             </select>
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
@@ -183,14 +181,14 @@
                                                         <!-- khusus history -->
                                                         <?php if($kategori == "History"){?>
                                                             <label for="cc-payment" class="control-label mb-1"> MERK</label>
-                                                            <select id="merk-list" type="text" class="form-control" required>
-                                                                <option value="">Pilih</option>
+                                                            <select id="merk-list" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <option>Pilih</option>
 
                                                             </select>
                                                             <br>
                                                             <label for="cc-payment" class="control-label mb-1"> TIPE </label>
                                                             <select id="tipe-list" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option value="">Pilih</option>
+                                                                <option>Pilih</option>
 
                                                             </select>
                                                         <?php }?><br>
@@ -199,7 +197,7 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($kategori == "History" && $field->name == "SN"){?>
                                                                 <select id="mt-list-sn" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih</option>
+                                                                    <option value="">Pilih</option>
 
                                                                 </select>
                                                             <?php } else if($field->name == "IMAGE"){?>
@@ -209,18 +207,16 @@
                                                             <?php  }else if($kategori == "History" && $field->name == "TGL_TENGGAT"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } else if($field->name == "ID_PERUSAHAAN"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih...</option>
+                                                                <select id="perusahaan_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih</option>
                                                                     <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                        <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
+                                                                        <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php } else if($field->name == "ID_LOKASI"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih...</option>
-                                                                    <?php foreach ($kota->result_array() as $lok){ ?>
-                                                                        <option value="<?php echo $lok['ID_LOKASI'] ?>" ><?php echo $lok['KOTA'].' - '.$lok['PROVINSI']?></option>
-                                                                    <?php } ?>
+                                                                <select id="kota_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                    <option>Pilih</option>
+
                                                                 </select>
                                                             <?php  }else if($field->name == "STATUS"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
@@ -305,13 +301,61 @@
             var base_url = window.location.origin;
             var pathArray = window.location.pathname.split( "/" );
 
-            $('#history_nip').change(function(){ 
-        // function getMerk(val){
+            $("#perusahaan_list").change(function(){
+                var val = $(this).val();
+                var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
+                console.log("ehe"+urlx);
+                $.ajax({
+                    type: "POST",
+                    url: urlx,
+                    data: {idp: val},
+                    dataType: "json",
+                    success: function(data){
+                        console.log("success : " + JSON.stringify(data) );
+                        $("#kota_list").find("option").not(":first").remove();
+                        $.each(data,function(index,datax){
+                            $("#kota_list").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
+                        });
+                    },
+                    error: function(data) {
+                        alert('kenapa fail');
+                    }
+                });
+            });
+
+            $("[name=ID_PERUSAHAAN]").change(function(){
+                var val = $(this).val();
+                var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
+                console.log("ehe"+urlx);
+                $.ajax({
+                    type: "POST",
+                    url: urlx,
+                    data: {idp: val},
+                    dataType: "json",
+                    success: function(data){
+                        console.log("success : " + JSON.stringify(data) );
+                        $("[name=ID_LOKASI]").find("option").not(":first").remove();
+                        $.each(data,function(index,datax){
+                            $("[name=LOKASI]").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
+                        });
+                    },
+                    error: function(data) {
+                        alert('kenapa fail');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            var base_url = window.location.origin;
+            var pathArray = window.location.pathname.split( "/" );
+
+            $("#history_nip").change(function(){ 
                 const startTime = performance.now();
-                
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var val = $(this).val();
-
                 $.ajax({
                     type: "POST",
                     url: urlx+"/get_merk",
@@ -319,21 +363,12 @@
                     dataType : "json",
                     success: function(data){
                         console.log("success : " + JSON.stringify(data) );
-                        // var i;
-                        // var html = "";
-                        // for(i=0; i<data.length; i++){
-                        //     html += "<option value="+val+"|"+data[i].merk+">"+data[i].merk+"</option>";
-                        // }
                         $("#merk-list").find("option").not(":first").remove();
                         $("#tipe-list").find("option").not(":first").remove();
                         $("#mt-list-sn").find("option").not(":first").remove();
-
                         $.each(data, function(index,datax){
-                            $("#merk-list").append("<option value='"+val+"|"+datax["merk"]+"'>"+datax["merk"]+"</option>");
+                            $("#merk-list").append("<option value="+val+"|"+datax.merk+">"+datax.merk+"</option>");
                         });
-                        // $("#merk-list").html(html);
-                        // console.log(html);
-
                         const duration = performance.now() - startTime;
                         console.log(`ajaxhistorynip took ${duration}ms`);
                     },
@@ -341,20 +376,15 @@
                         alert('kenapa fail luar');
                     }
                 });
-                // return false;
-
             });
 
-            $('#merk-list').change(function(){ 
-        // function getTipe(val){
+            $("#merk-list").change(function(){ 
                 const startTime = performance.now();
-
                 var val = $(this).val();
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var valex = val.split("|");
                 var nip = valex[0];
                 var merk = valex[1];
-
                 $.ajax({
                     type: "POST",
                     url: urlx+"/get_tipe",
@@ -362,23 +392,13 @@
                     dataType : "json",
                     success: function(data){
                         console.log("success : " + JSON.stringify(data) );
-                        // var x;
-                        // var html = "";
-                        // for(x=0; x<datax.length; x++){
-                        //     html += "<option value="+val+"|"+datax[x].merk+"|"+datax[x].tipe+"|"+datax[x].series+">"+datax[x].merk+" "+datax[x].tipe+" "+datax[x].series+"</option>";
-                        // }
-
                         $('#tipe-list').find('option').not(':first').remove();
                         $('#mt-list-sn').find('option').not(':first').remove();
-
                         $.each(data,function(index,datax){
                             $('#tipe-list').append('<option value="'+val+'|'+datax["merk"]+'|'+datax["tipe"]+'|'+datax["series"]+'">'+datax["merk"]+' '+datax["tipe"]+' '+datax["series"]+'</option>');
                         });
-
-                        // $("#tipe-list").html(html);
                         const duration = performance.now() - startTime;
                         console.log(`someMethodIThinkMightBeSlow took ${duration}ms`);
-                        
                     },
                     error: function(data){
                         alert("fail dalam");
@@ -386,8 +406,7 @@
                 });
             });
 
-            $('#tipe-list').change(function(){ 
-        // function getSn(val) {
+            $("#tipe-list").change(function(){ 
                 var val = $(this).val();
                 var valex = val.split("|");
                 var nip = valex[0];
@@ -395,31 +414,17 @@
                 var tipe_nm = valex[2]; 
                 var seri_nm = valex[3];
                 var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
-
                 $.ajax({
                     type: "POST",
                     url: urll,
                     data: {nip: nip, merk_nm: merk_nm, tipe_nm: tipe_nm, seri_nm: seri_nm},
-                    async: true,
                     dataType : "JSON",
                     success: function(data){
                         console.log("success : " + JSON.stringify(data) );
-                        // alert(data);
-                        // var html = "";
-                        // var i;
-                        // alert(data.length);
-                        // for(i=0; i<data.length; i++){
-                        //     html += "<option value="+data[i].sn+">"+data[i].sn+"</option>";
-                        //     console.log(data[i].sn);
-                        // }
-
                         $('#mt-list-sn').find('option').not(':first').remove();
-
                         $.each(data,function(index,datax){
                             $('#mt-list-sn').append('<option value="'+datax["sn"]+'">'+datax["sn"]+'</option>');
                         });
-
-                        // $("#mt-list-sn").html(html);
                     },
                     error: function(data) {
                         alert('kenapa fail');
@@ -448,7 +453,7 @@
                 }
                 // console.log(newField[i].name);
             }
-            console.log(newField.length);
+            // console.log(newField.length);
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);
         }
@@ -465,7 +470,7 @@
                 if (theName){
                     newField[i].name = theName + counter;
                 }
-                // console.log(newField[i].name);
+                //console.log(newField[i].name);
             }
             var insertHere = document.getElementById('writeroot');
             insertHere.parentNode.insertBefore(newFields,insertHere);

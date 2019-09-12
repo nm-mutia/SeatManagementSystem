@@ -1,22 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Aset_model extends CI_Model {
-
   public $image;
-  private $table = "aset";
 
-  public function flush()
-	{
+  public function flush(){
 		$this->title = '';
 		$this->image = '';
 	}
 
-  function __construct()
-  {
+  function __construct(){
       // Call the Model constructor
       parent::__construct();
   }
-
 
   function getAsetTersedia(){
     $q = $this->db->query('SELECT KATEGORI FROM detail_po GROUP BY KATEGORI; ');
@@ -60,30 +55,22 @@ class Aset_model extends CI_Model {
   }
 
   function detAsetSPK($id){
-
     $query = "CALL detasetspk(?)";
     $data = $this->db->query($query, array($id));
     return $data;
   }
 
   function getImage($id){
-
     $q = $this->db->get_where("aset", ['SN' => $id]);
-
-    // console.log($q->num_rows());
 		return $q->num_rows() > 0 ? $q->row()->IMAGE : '';
-
   }
 
   function setAset($data, $table, $sn){
-
     $query = $this->db->get_where($table, array(
             'SN' => $sn
             ));
     $count = $query->num_rows();
     if($count){
-      // echo "ADA WOY";
-      // echo "<script>alert('ERROR! Serial Number already exist!')</script>";
       return $count;
     }
     else{
@@ -112,20 +99,14 @@ class Aset_model extends CI_Model {
   }
 
   public function deleteAset($data){
-      // $this->db->insert($table, $data);
-      // $tables = array('table1', 'table2', 'table3');
       $cekrows = $this->db->query('SELECT * FROM detail_history WHERE sn = ?' , $data);
-
       if ($cekrows->num_rows() != 0){
-        // $message = "Maaf, Data tidak bisa dihapus karena masih digunakan";
-        // echo "<script type='text/javascript'>alert('$message');</script>";
         return 0;
       }else{
         $this->db->where('sn', $data);
         $this->db->delete('aset');
         return 1;
       }
-      // return;
   }
 
   public function getOneList($nama){
@@ -141,18 +122,17 @@ class Aset_model extends CI_Model {
   public function getMerk($nip){
     $fields = $this->db->query('CALL c_merk(?)', array($nip));
     mysqli_next_result( $this->db->conn_id );
-    return $fields;
+    return $fields->result_array();
   }
 
   public function getTipe($nip, $merk){
     $fields = $this->db->query('CALL c_tipe(?, ?)', array($nip, $merk));
-    // mysqli_next_result( $this->db->conn_id );
-    return $fields;
+    return $fields->result_array();
   }
 
   public function get_sn_mtsmodel($nip, $merk, $tipe, $seri){
     $fields = $this->db->query('CALL c_sn(?, ?, ?, ?)', array($nip, $merk, $tipe, $seri));
-    return $fields;
+    return $fields->result_array();
   }
 
 }

@@ -71,23 +71,25 @@ class Porder extends MY_MainController {
 		$data['subkategori'] = "detail";
 		$data['spk'] = $sid;
 		$data['lokasi'] = $this->lokasiModel->getLokasi();
-		$data['kota'] = $this->lokasiModel->getLokasiKota();
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
 		$x = $this->Po_model->getLastId();
 		if(!$x){
 			$data['idda'] = 1;
 		}else{
-			$data['idda']  = $x->row()->id_da;
+			$data['idda'] = $x->row()->id_da;
 			$data['idda'] = $data['idda'] + 1 ;
 		}
-		// echo $data['idda'];
-		// $data['subktg'] = $this->Po_model->getSubktg();
     	$this->load->view('addFormPage', $data);
 	}
 
+	public function get_kota_list(){
+		$idp = $this->input->post('idp', TRUE);
+		$data = $this->lokasiModel->getLokasiKota($idp);
+		echo json_encode($data);
+	}
 
-//form
+	//form
 	public function setAll(){
 		$data['page_title'] = $this->setTitle();
 		$data['kategori'] = $this->setKategori(1);

@@ -1,12 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Auth_model extends CI_Model {
-
 	private $table = "Pegawai";
 	private $_data = array();
 
-	public function validate()
-	{
+	public function validate(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 
@@ -37,8 +35,7 @@ class Auth_model extends CI_Model {
 		}
 	}
 
-	public function get_data()
-	{
+	public function get_data(){
 		return $this->_data;
 	}
 

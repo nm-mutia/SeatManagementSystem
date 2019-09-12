@@ -2,31 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PegawaiModel extends CI_Model{
-    // private $_table = "karyawan"; //nama tabel
-
-    // private $NIK;
-    // private $NAMA;
-    // private $JOB_LEVEL;
-    // private $PASSWORD;
-    // public $image = "default.jpg";
-
-
-    // public function rules()
-    // {
-    //     return [
-    //         ['field' => 'name',
-    //         'label' => 'Name',
-    //         'rules' => 'required'],
-
-    //         ['field' => 'price',
-    //         'label' => 'Price',
-    //         'rules' => 'numeric'],
-
-    //         ['field' => 'description',
-    //         'label' => 'Description',
-    //         'rules' => 'required']
-    //     ];
-    // }
     public function getPegawai(){
         $query = "SELECT p.nip AS NIP, p.nama AS NAMA, p.job_level as JOB_LEVEL
           FROM pegawai AS p";
@@ -81,5 +56,4 @@ class PegawaiModel extends CI_Model{
         $data = $this->db->query($query, array($nip, $ktg));
         return $data;
     }
-
 }
