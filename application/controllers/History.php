@@ -138,14 +138,14 @@ class History extends MY_MainController {
 
 	public function get_merk(){
 		$nip = $this->input->post('nip', TRUE);
-		$data = $this->Aset_model->getMerk($nip)->result();
+		$data = $this->Aset_model->getMerk($nip);
         echo json_encode($data);
 	}
 
 	public function get_tipe(){
 		$nip = $this->input->post('nip', TRUE);
 		$merk = $this->input->post('merk', TRUE);
-		$data = $this->Aset_model->getTipe($nip, $merk)->result();
+		$data = $this->Aset_model->getTipe($nip, $merk);
         echo json_encode($data);
 	}
 
@@ -154,7 +154,7 @@ class History extends MY_MainController {
 		$smerk = $this->input->post('merk_nm', TRUE);
 		$stipe = $this->input->post('tipe_nm', TRUE);
 		$sseri = $this->input->post('seri_nm', TRUE);
-		$data = $this->Aset_model->get_sn_mtsmodel($snip, $smerk, $stipe, $sseri)->result();
+		$data = $this->Aset_model->get_sn_mtsmodel($snip, $smerk, $stipe, $sseri);
         echo json_encode($data);
 	}
 

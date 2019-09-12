@@ -78,6 +78,7 @@ $route['Purchase_Order/getData/po/(:any)'] = 'porder/oneListAsetPo/$1';
 $route['Purchase_Order/delete/(:any)'] = 'porder/deletePorder/$1';
 $route['po/detailpo/(:any)'] = 'porder/formdetailpo/$1';
 $route['Purchase_Order/deleteAset/(:any)'] = 'aset/deleteAset/$1';
+$route['po/get_kota_list'] = 'porder/get_kota_list';
 // $route['Purchase_Order/add/(:any)/addDetail'] = 'porder/setDetail';
 // $route['Purchase_Order/getData/(:any)'] = 'aset/oneList/$1';1
 
