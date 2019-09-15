@@ -7,16 +7,15 @@ class LokasiModel extends CI_Model{
 	}
 
 	function getLokasi(){
-		$query = "SELECT p.ID_PERUSAHAAN, p.NAMA_PERUSAHAAN, dl.ALAMAT_PERUSAHAAN, l.KOTAATAUKABUPATEN as KOTA
-			from perusahaan p
-			join detail_lokasi dl on p.id_perusahaan = dl.id_perusahaan
-			join lokasi l on dl.id_lokasi = l.id_lokasi";
+		$query = "SELECT p.ID_PERUSAHAAN, p.NAMA_PERUSAHAAN
+						FROM perusahaan p
+					";
         $data = $this->db->query($query);
         return $data;
 	}
 
 	function getLokasiKota($idp){
-		$query = "SELECT l.ID_LOKASI as idlokasi, l.KOTAATAUKABUPATEN AS kota, l.PROVINSI 
+		$query = "SELECT l.ID_LOKASI as idlokasi, l.KOTAATAUKABUPATEN AS kota, l.PROVINSI
 				FROM lokasi l
 				JOIN detail_lokasi dl ON dl.id_lokasi = l.id_lokasi
 				WHERE dl.id_perusahaan = ?";
