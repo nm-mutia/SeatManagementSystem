@@ -128,16 +128,29 @@
 
                                                             <input id="<?php echo $field->name ?>" name="userfile" type="file" accept=".png,.gif,.jpg"class="form-control" aria-required="true" aria-invalid="false">
                                                         <?php } else if($field->name == "ID_PERUSAHAAN"){ ?>
-                                                            <select id="pr_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option>Pilih</option>
-                                                                <?php foreach ($lokasi->result_array() as $lok){ ?>
-                                                                    <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN']?></option>
-                                                                <?php } ?>
-                                                            </select>
+                                                          <select id="perusahaan_list"
+                                                          name="<?php echo $field->name ?>"
+                                                          type="text" class="form-control"
+                                                          aria-required="true"
+                                                          aria-invalid="false"
+                                                          onChange="getCity(this.value);"
+                                                          required>
+                                                              <option>Pilih</option>
+                                                              <?php foreach ($lokasi->result_array() as $lok){ ?>
+                                                                  <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'] ?></option>
+                                                              <?php } ?>
+                                                          </select>
                                                         <?php } else if($field->name == "ID_LOKASI"){ ?>
-                                                            <select id="kt_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                <option>Pilih</option>
-                                                            </select>
+                                                          <select name="<?php echo $field->name ?>"
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  aria-required="true"
+                                                                  aria-invalid="false"
+                                                                  required
+                                                                  id="city-list">
+                                                                  <option value="option1">Pilih</option>
+
+                                                          </select>
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
                                                         <?php } ?><br>
@@ -227,9 +240,7 @@
                                                                         aria-invalid="false"
                                                                         required
                                                                         id="city-list">
-                                                                        <option value="option1">Select</option>
-                                                                        <option value="option2">Select1</option>
-                                                                        <option value="option3">Select2</option>
+                                                                        <option value="option1">Pilih</option>
 
                                                                 </select>
 
@@ -332,7 +343,6 @@
             var data = $.parseJSON(jsonStr);
             $(data).each(function(index, datax) {
               console.log(index + " : " + datax.idlokasi + " "+ datax.kota );
-
                   // $('#city-list').append('<option value="foo" selected="selected">Foo</option>');
                   // $("#city-list option[value='option1']").remove();
                   $('select#city-list').append($("<option></option>").attr("value", datax.idlokasi).text(datax.kota));
