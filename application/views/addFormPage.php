@@ -227,7 +227,10 @@
                                                                         aria-invalid="false"
                                                                         required
                                                                         id="city-list">
-                                                                        <option value="">Select</option>
+                                                                        <option value="option1">Select</option>
+                                                                        <option value="option2">Select1</option>
+                                                                        <option value="option3">Select2</option>
+
                                                                 </select>
 
                                                             <?php  }else if($field->name == "STATUS"){ ?>
@@ -315,17 +318,26 @@
     function getCity(val) {
           // alert("berhasil klik");
           urlx =  base_url+"/"+pathArray[1]+"/po/get_kota_list";
-          alert(urlx);
-          alert(val);
+          // alert(urlx);
+          // alert(val);
           $.ajax({
           type: "POST",
           url: urlx,
           data: {idp: val},
           success: function(data){
-            alert(data);
+            // alert(data);
+            // $('select#city-list').val(null).trigger('change');
+            $("select#city-list").find("option").not(":first").remove();
+            var jsonStr = data;
+            var data = $.parseJSON(jsonStr);
+            $(data).each(function(index, datax) {
+              console.log(index + " : " + datax.idlokasi + " "+ datax.kota );
 
-            // alert("success : " + JSON.stringify(data) );
-
+                  // $('#city-list').append('<option value="foo" selected="selected">Foo</option>');
+                  // $("#city-list option[value='option1']").remove();
+                  $('select#city-list').append($("<option></option>").attr("value", datax.idlokasi).text(datax.kota));
+                  // $("select#city-list").append('<option value="option6">option6</option>');
+            });
           }
           });
         }
