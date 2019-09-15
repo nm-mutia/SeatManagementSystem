@@ -137,7 +137,6 @@
                                                         <?php } else if($field->name == "ID_LOKASI"){ ?>
                                                             <select id="kt_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                 <option>Pilih</option>
-                                                                
                                                             </select>
                                                         <?php } else{ ?>
                                                             <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" >
@@ -207,17 +206,33 @@
                                                             <?php  }else if($kategori == "History" && $field->name == "TGL_TENGGAT"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" >
                                                             <?php } else if($field->name == "ID_PERUSAHAAN"){ ?>
-                                                                <select id="perusahaan_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                                                                <select id="perusahaan_list"
+                                                                name="<?php echo $field->name ?>"
+                                                                type="text" class="form-control"
+                                                                aria-required="true"
+                                                                aria-invalid="false"
+                                                                onChange="getCity(this.value);"
+                                                                required>
                                                                     <option>Pilih</option>
                                                                     <?php foreach ($lokasi->result_array() as $lok){ ?>
                                                                         <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'] ?></option>
                                                                     <?php } ?>
                                                                 </select>
                                                             <?php } else if($field->name == "ID_LOKASI"){ ?>
-                                                                <select id="kota_list" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
-                                                                    <option>Pilih</option>
+
+                                                                <select name="<?php echo $field->name ?>"
+                                                                        type="text"
+                                                                        class="form-control"
+                                                                        aria-required="true"
+                                                                        aria-invalid="false"
+                                                                        required
+                                                                        id="city-list">
+                                                                        <option value="option1">Select</option>
+                                                                        <option value="option2">Select1</option>
+                                                                        <option value="option3">Select2</option>
 
                                                                 </select>
+
                                                             <?php  }else if($field->name == "STATUS"){ ?>
                                                                 <select name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
                                                                     <option value="0">Pinjam</option>
@@ -297,53 +312,85 @@
     </script>
 
     <script type='text/javascript'>
+    var base_url = window.location.origin;
+    var pathArray = window.location.pathname.split( "/" );
+
+    function getCity(val) {
+          // alert("berhasil klik");
+          urlx =  base_url+"/"+pathArray[1]+"/po/get_kota_list";
+          // alert(urlx);
+          // alert(val);
+          $.ajax({
+          type: "POST",
+          url: urlx,
+          data: {idp: val},
+          success: function(data){
+            // alert(data);
+            // $('select#city-list').val(null).trigger('change');
+            $("select#city-list").find("option").not(":first").remove();
+            var jsonStr = data;
+            var data = $.parseJSON(jsonStr);
+            $(data).each(function(index, datax) {
+              console.log(index + " : " + datax.idlokasi + " "+ datax.kota );
+
+                  // $('#city-list').append('<option value="foo" selected="selected">Foo</option>');
+                  // $("#city-list option[value='option1']").remove();
+                  $('select#city-list').append($("<option></option>").attr("value", datax.idlokasi).text(datax.kota));
+                  // $("select#city-list").append('<option value="option6">option6</option>');
+            });
+          }
+          });
+        }
+
         $(document).ready(function(){
             var base_url = window.location.origin;
             var pathArray = window.location.pathname.split( "/" );
 
-            $("#perusahaan_list").change(function(){
-                var val = $(this).val();
-                var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
-                console.log("ehe"+urlx);
-                $.ajax({
-                    type: "POST",
-                    url: urlx,
-                    data: {idp: val},
-                    dataType: "json",
-                    success: function(data){
-                        console.log("success : " + JSON.stringify(data) );
-                        $("#kota_list").find("option").not(":first").remove();
-                        $.each(data,function(index,datax){
-                            $("#kota_list").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
-                        });
-                    },
-                    error: function(data) {
-                        alert('kenapa fail');
-                    }
-                });
-            });
+            // $("#perusahaan_list").change(function(){
+            //     var val = $(this).val();
+            //     var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
+            //     console.log("ehe"+urlx);
+            //     $.ajax({
+            //         type: "POST",
+            //         url: urlx,
+            //         data: {idp: val},
+            //         dataType: "json",
+            //         success: function(data){
+            //             console.log("success : " + JSON.stringify(data) );
+            //             $("#kota_list").find("option").not(":first").remove();
+            //             $.each(data,function(index,datax){
+            //                 $("#kota_list").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
+            //             });
+            //         },
+            //         error: function(data) {
+            //             alert('kenapa fail');
+            //         }
+            //     });
+            // });
 
-            $("[name=ID_PERUSAHAAN]").change(function(){
-                var val = $(this).val();
-                var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
-                console.log("ehe"+urlx);
-                $.ajax({
-                    type: "POST",
-                    url: urlx,
-                    data: {idp: val},
-                    dataType: "json",
-                    success: function(data){
-                        console.log("success : " + JSON.stringify(data) );
-                        $("[name=ID_LOKASI]").find("option").not(":first").remove();
-                        $.each(data,function(index,datax){
-                            $("[name=LOKASI]").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
-                        });
-                    },
-                    error: function(data) {
-                        alert('kenapa fail');
-                    }
-                });
-            });
+
+
+            // $("[name=ID_PERUSAHAAN]").change(function(){
+            //     var val = $(this).val();
+            //     var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
+            //     console.log("ehe"+urlx);
+            //     $.ajax({
+            //         type: "POST",
+            //         url: urlx,
+            //         data: {idp: val},
+            //         dataType: "json",
+            //         success: function(data){
+            //             console.log("success : " + JSON.stringify(data) );
+            //             $("[name=ID_LOKASI]").find("option").not(":first").remove();
+            //             $.each(data,function(index,datax){
+            //                 $("[name=LOKASI]").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
+            //             });
+            //         },
+            //         error: function(data) {
+            //             alert('kenapa fail');
+            //         }
+            //     });
+            // });
         });
     </script>
 
@@ -352,7 +399,7 @@
             var base_url = window.location.origin;
             var pathArray = window.location.pathname.split( "/" );
 
-            $("#history_nip").change(function(){ 
+            $("#history_nip").change(function(){
                 const startTime = performance.now();
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var val = $(this).val();
@@ -378,7 +425,7 @@
                 });
             });
 
-            $("#merk-list").change(function(){ 
+            $("#merk-list").change(function(){
                 const startTime = performance.now();
                 var val = $(this).val();
                 var urlx = base_url+"/"+pathArray[1]+"/history";
@@ -406,12 +453,12 @@
                 });
             });
 
-            $("#tipe-list").change(function(){ 
+            $("#tipe-list").change(function(){
                 var val = $(this).val();
                 var valex = val.split("|");
                 var nip = valex[0];
                 var merk_nm = valex[1];
-                var tipe_nm = valex[2]; 
+                var tipe_nm = valex[2];
                 var seri_nm = valex[3];
                 var urll = base_url+"/"+pathArray[1]+"/history/get_sn_mts";
                 $.ajax({
@@ -488,7 +535,7 @@
 
     </script>
 
-    
+
 
 </body>
 </html>
