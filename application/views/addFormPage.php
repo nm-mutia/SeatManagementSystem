@@ -170,13 +170,30 @@
                                                             <?php  }else if($field->name == "MASA"){ ?>
                                                                 <input id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="date" class="form-control" aria-required="true" aria-invalid="false" required>
                                                             <?php } else if($field->name == "KATEGORI"){ ?>
-                                                                <select name="<?php echo $field->name ?>" type="text" class="form-control ktg" aria-required="true" aria-invalid="false" required>
+                                                                <select name="<?php echo $field->name ?>"
+                                                                  id ="<?php echo $field->name ?>"
+                                                                  type="text" class="form-control ktg"
+                                                                  aria-required="true"
+                                                                  aria-invalid="false"
+                                                                  onchange="getKategori(this.value)"
+                                                                  required>
                                                                     <option>Pilih...</option>
                                                                     <option value="Hardware" class="hard">Hardware</option>
                                                                     <option value="Software" class="soft">Software</option>
                                                                 </select>
+                                                            <?php }else if($field->name == "KUANTITAS"){ ?>
+                                                                  <input name="<?php echo $field->name ?>"
+                                                                  type="text"
+                                                                  class="form-control"
+                                                                  aria-required="true"
+                                                                  aria-invalid="false"
+                                                                  value="0"
+                                                                  id ="<?php echo $field->name ?>"
+                                                                  readonly>
+
                                                             <?php } else{ ?>
-                                                                <input name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required >
+                                                                <input
+                                                                name="<?php echo $field->name ?>" type="text" class="form-control" value="" aria-required="true" aria-invalid="false" required >
                                                             <?php } ?>
                                                         </div>
                                                     <?php endforeach ?>
@@ -455,6 +472,15 @@
                   alert('kenapa fail');
               }
           });
+        }
+
+        function getKategori(val){
+          if (val == 'Software'){
+            // alert("haloo");
+            document.getElementById('KUANTITAS').readOnly = false;
+          }else{
+            document.getElementById('KUANTITAS').readOnly = true;
+          }
         }
 
     </script>

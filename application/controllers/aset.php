@@ -185,8 +185,7 @@ class Aset extends MY_MainController {
 		$seri = $this->input->post('SERIES');
 		$stat = $this->input->post('STATUS_ASET');
 		$id = $this->input->post('ID_PERUSAHAAN');
-		$loka = $this->input->post('ID_LOKASI');
-
+		$loka = $this->input->post('SITE');
 		$data = array(
 			'CHECKSUM' => $cek,
 			'MERK' => $merk,
@@ -195,9 +194,7 @@ class Aset extends MY_MainController {
 			'STATUS_ASET' => $stat,
 			'ID_LOKASI'=> $loka,
 			'ID_PERUSAHAAN' => $id
-
 		);
-
 		$this->Aset_model->upAset($data,'aset',$sn);
 		redirect('aset');
 	}
@@ -209,6 +206,8 @@ class Aset extends MY_MainController {
 		$tipe = $this->input->post('TIPE');
 		$seri = $this->input->post('SERIES');
 		$id = $this->input->post('NAMA_PERUSAHAAN');
+		$loka = $this->input->post('SITE');
+
 		// $stat = $this->input->post('STATUS_ASET');
 
 		$data = array(
@@ -217,6 +216,7 @@ class Aset extends MY_MainController {
 			'TIPE' => $tipe,
 			'SERIES' => $seri,
 			// 'STATUS_ASET' => $stat,
+			'ID_LOKASI'=> $loka,
 			'ID_PERUSAHAAN' => $id
 		);
 

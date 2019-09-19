@@ -56,7 +56,7 @@ class Porder extends MY_MainController {
 		$sid = $this->encryption->decrypt($sid);
 		$skat = base64_decode($skat);
 		$skat = $this->encryption->decrypt($skat);
-		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['lokasi'] = $this->lokasiModel->getLokasi_PO();
 		$data['subkategori'] = "detail ". $sid ;
 		$data['subsubkategori'] ="detail ". $skat;
 		$data['content'] = $this->Aset_model->detAsetSPK($skat);
@@ -108,12 +108,12 @@ class Porder extends MY_MainController {
 			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
 			$result['NAMA PIC'] = $row['NAMA PIC'];
 			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
-			$result['FILE SPK'] = $row['FILE SPK'];
+			// $result['FILE SPK'] = $row['FILE SPK'];
 		}
 		echo json_encode($result);
 	}
 
-	public function deletePorder($nama){
+	public function deletePorder($nama){+
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->Po_model->deletePorder($nama);
@@ -229,7 +229,7 @@ class Porder extends MY_MainController {
 	public function upPO(){
 		$spk = $this->input->post('NO_SPK');
 		$th = $this->input->post('TAHUN_PENGADAAN');
-		$file = $this->input->post('FILE_SPK');
+		// $file = $this->input->post('FILE_SPK');
 
 		$data = array(
 			'NO_SPK' => $spk,
@@ -250,8 +250,8 @@ class Porder extends MY_MainController {
 					$result['SERIES'] = $row['SERIES'];
 					$result['MERK'] = $row['MERK'];
 					$result['TIPE'] = $row['SERIES'];
-					$result['NAMA PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
-					$result['KOTA'] = $row['KOTA'];
+					$result['NAMA_PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
+					$result['SITE'] = $row['SITE'];
 					// $result['NAMA PERUSAHAAN'] = $row['NAMA PERUSAHAAN'];
 
 					}
@@ -279,6 +279,7 @@ class Porder extends MY_MainController {
 		$seri = $this->input->post('SERIES');
 		$stat = $this->input->post('STATUS_ASET');
 		$id = $this->input->post('ID_PERUSAHAAN');
+		$loka = $this->input->post('SITE');
 
 		$data = array(
 			'CHECKSUM' => $cek,
@@ -286,7 +287,8 @@ class Porder extends MY_MainController {
 			'TIPE' => $tipe,
 			'SERIES' => $seri,
 			'STATUS_ASET' => $stat,
-			'ID_PERUSAHAAN' => $id
+			'ID_PERUSAHAAN' => $id,
+			'ID_LOKASI' => $loka
 		);
 
 		$this->Po_model->upAset($data,'aset',$sn);

@@ -16,7 +16,7 @@
                        </a>
 
                        <div class="user-menu dropdown-menu">
-                           <a class="nav-link" href="#"><i class="fa fa-user"></i>My Profile</a>
+                           <!-- <a class="nav-link" href="#"><i class="fa fa-user"></i>My Profile</a> -->
                            <a class="nav-link" href="<?php echo site_url("auth/logout")?>"><i class="fa fa-power-off"></i>Logout</a>
                        </div>
                    </div>
