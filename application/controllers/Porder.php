@@ -100,9 +100,8 @@ class Porder extends MY_MainController {
 
 	public function oneList($nama){
 		$nama = base64_decode($nama);
-		$nama = $this->encryption->decrypt($nama);
-		$get  = $this->Po_model->getOneList($nama)->result_array();
-
+		$namax = $this->encryption->decrypt($nama);
+		$get  = $this->Po_model->getOneList($namax)->result_array();
 
 		foreach($get as $row){
 			$result['NO SPK'] = $row['NO SPK'];
@@ -111,6 +110,7 @@ class Porder extends MY_MainController {
 			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
 			$result['FILE SPK'] = $row['FILE SPK'];
 		}
+		var_dump($get);
 		echo json_encode($result);
 	}
 
