@@ -105,7 +105,7 @@ $('#Medit ').submit(function(){
            });
          },
          error: function(data) {
-             alert('kenapa fail');
+             alert('kenapa failsffff');
         }
      });
      // return false;

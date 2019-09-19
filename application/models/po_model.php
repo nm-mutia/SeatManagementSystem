@@ -42,7 +42,7 @@ class Po_model extends CI_Model {
   }
 
   public function getOneList($nama){
-    $fields = $this->db->query("CALL getOneListPo(?); ", array($nama));
+    $fields = $this->db->query('CALL getOneListPo(?)', array($nama));
     return $fields;
   }
 
