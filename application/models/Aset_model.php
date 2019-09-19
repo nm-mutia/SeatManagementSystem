@@ -55,7 +55,13 @@ class Aset_model extends CI_Model {
   }
 
   function detAsetSPK($id){
-    $query = "CALL detasetspk(?)";
+    $query = "SELECT a.sn AS 'SN', a.checksum AS 'CHECKSUM', a.tipe AS 'TIPE', a.merk AS 'MERK', a.series AS 'SERIES',
+       p.nama_perusahaan AS 'NAMA_PERUSAHAAN', l.`KOTAATAUKABUPATEN` AS 'SITE' ,a.image AS 'IMAGE'
+      FROM detail_po AS dpo
+      JOIN aset AS a ON a.id_da = dpo.id_da
+      JOIN perusahaan AS p ON a.id_perusahaan = p.id_perusahaan
+      JOIN lokasi AS l ON l.ID_lokasi = a.id_lokasi
+      WHERE dpo.id_da = ?;";
     $data = $this->db->query($query, array($id));
     return $data;
   }
