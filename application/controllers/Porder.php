@@ -56,7 +56,7 @@ class Porder extends MY_MainController {
 		$sid = $this->encryption->decrypt($sid);
 		$skat = base64_decode($skat);
 		$skat = $this->encryption->decrypt($skat);
-		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['lokasi'] = $this->lokasiModel->getLokasi_PO();
 		$data['subkategori'] = "detail ". $sid ;
 		$data['subsubkategori'] ="detail ". $skat;
 		$data['content'] = $this->Aset_model->detAsetSPK($skat);
@@ -251,7 +251,7 @@ class Porder extends MY_MainController {
 					$result['SERIES'] = $row['SERIES'];
 					$result['MERK'] = $row['MERK'];
 					$result['TIPE'] = $row['SERIES'];
-					$result['NAMA PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
+					$result['NAMA_PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
 					$result['SITE'] = $row['SITE'];
 					// $result['NAMA PERUSAHAAN'] = $row['NAMA PERUSAHAAN'];
 
@@ -280,6 +280,7 @@ class Porder extends MY_MainController {
 		$seri = $this->input->post('SERIES');
 		$stat = $this->input->post('STATUS_ASET');
 		$id = $this->input->post('ID_PERUSAHAAN');
+		$loka = $this->input->post('SITE');
 
 		$data = array(
 			'CHECKSUM' => $cek,
@@ -287,7 +288,8 @@ class Porder extends MY_MainController {
 			'TIPE' => $tipe,
 			'SERIES' => $seri,
 			'STATUS_ASET' => $stat,
-			'ID_PERUSAHAAN' => $id
+			'ID_PERUSAHAAN' => $id,
+			'ID_LOKASI' => $loka
 		);
 
 		$this->Po_model->upAset($data,'aset',$sn);

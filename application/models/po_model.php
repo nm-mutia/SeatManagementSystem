@@ -65,7 +65,7 @@ class Po_model extends CI_Model {
   }
 
   public function deletePorder($data){
-      $cekrows = $this->db->query('      SELECT * FROM po, detail_po dp WHERE dp.`NO_SPK`=po.`NO_SPK` AND po.NO_SPK = ? ;' , $data);
+      $cekrows = $this->db->query('SELECT * FROM po, detail_po dp WHERE dp.`NO_SPK`=po.`NO_SPK` AND po.NO_SPK = ? ;' , $data);
       if ($cekrows->num_rows() != 0){
         return 0;
       }else{
