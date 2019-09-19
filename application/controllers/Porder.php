@@ -110,7 +110,6 @@ class Porder extends MY_MainController {
 			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
 			$result['FILE SPK'] = $row['FILE SPK'];
 		}
-		var_dump($get);
 		echo json_encode($result);
 	}
 
