@@ -70,7 +70,7 @@ class Porder extends MY_MainController {
 		$sid = $this->encryption->decrypt($sid);
 		$data['subkategori'] = "detail";
 		$data['spk'] = $sid;
-		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['lokasi'] = $this->lokasiModel->getLokasi_PO();
 		$data['content'] = $this->Po_model->setDetail();
 		$data['contentdet'] = $this->Aset_model->getAsetAll();
 		$x = $this->Po_model->getLastId();

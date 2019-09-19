@@ -14,7 +14,10 @@ class Aset_model extends CI_Model {
   }
 
   function getAsetTersedia(){
-    $q = $this->db->query('SELECT KATEGORI FROM detail_po GROUP BY KATEGORI; ');
+    $q = $this->db->query('SELECT KATEGORI ,COUNT(KATEGORI) AS JUMLAH
+      FROM detail_po po JOIN aset a ON po.`ID_DA` = a.`ID_DA`
+      where status_aset = 1
+      GROUP BY KATEGORI;');
     return $q;
   }
 

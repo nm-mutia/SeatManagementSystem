@@ -62,7 +62,7 @@
                                         <hr>
                                         <!-- <form action="<?php echo base_url()?>crud/<?php if($page_title == 'PO Detail' || $page_title == 'History Detail'){echo $this->uri->segment(1).'Detail';}else{echo $this->uri->segment(1);}?><?php if($this->uri->segment(1) == 'aset'){?>/javascript:count<?php }?>" method="post"> -->
 
-                                        <form action="" method="post" id="act" onsubmit="test();" enctype="multipart/form-data">
+                                        <form action="" method="post" id="act" onsubmit="test();" enctype="multipart/form-data" novalidate>
                                             <!-- form awal untuk vendor  -->
                                             <?php if($kategori == "Vendor" || $kategori == "Purchase Order"){?>
                                                 <div>
@@ -211,6 +211,7 @@
                                                         <?php if($kategori == "History"){?>
                                                             <label for="cc-payment" class="control-label mb-1"> MERK</label>
                                                             <select id="merk-list"
+                                                            name="merk" 
                                                             type="text"
                                                             class="form-control"
                                                             aria-required="true"
@@ -222,6 +223,7 @@
                                                             <br>
                                                             <label for="cc-payment" class="control-label mb-1"> TIPE </label>
                                                             <select id="tipe-list"
+                                                            name="tipe" 
                                                             type="text"
                                                             class="form-control"
                                                             aria-required="true"
@@ -237,6 +239,7 @@
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
                                                             <?php if($kategori == "History" && $field->name == "SN"){?>
                                                                 <select id="mt-list-sn"
+                                                                    name="<?php echo $field->name ?>" 
                                                                     type="text"
                                                                     class="form-control"
                                                                     aria-required="true"
