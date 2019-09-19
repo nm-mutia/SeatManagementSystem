@@ -15,7 +15,7 @@ class HistoryModel extends CI_Model {
   }
 
   function getAll(){
-    $data = $this->db->query("SELECT ha.id as ID_HISTORY,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI
+    $data = $this->db->query("SELECT ha.id as ID,ha.nip as NIP, dh.sn AS SN, ha.tgl_pinjam as TGL_PINJAM, dh.tgl_tenggat as TGL_TENGGAT, dh.tgl_kembali AS TGL_KEMBALI, dh.kondisi AS KONDISI
       , ha.BUKTI_PEMINJAMAN AS 'BUKTI PEMINJAMAN' , CASE `dh`.`STATUS` WHEN '0' THEN 'Pinjam' WHEN '1' THEN 'Kembali' WHEN '2' THEN 'Service' END AS `STATUS`
             from history_aset as ha
             join detail_history as dh on ha.id = dh.id");
@@ -28,9 +28,9 @@ class HistoryModel extends CI_Model {
   }
 
   function getLastId(){
-    $data = $this->db->query("SELECT ha.id as id_history
+    $data = $this->db->query("SELECT ha.id as id
           FROM history_aset AS ha
-          ORDER BY id_history DESC LIMIT 1");
+          ORDER BY id DESC LIMIT 1");
     if($data->num_rows() == 0){
       $this->db->query("ALTER TABLE history_aset AUTO_INCREMENT = 1");
       return $data = false;
@@ -78,12 +78,12 @@ class HistoryModel extends CI_Model {
   }
 
   function upHistory($data, $table, $id){
-    $this->db->where('ID_HISTORY', $id);
+    $this->db->where('ID', $id);
     $this->db->update($table, $data);
   }
 
   function upHistoryDet($data, $table, $id, $sn){
-    $this->db->where('ID_HISTORY', $id);
+    $this->db->where('ID', $id);
     $this->db->where('SN', $sn);
     $this->db->update($table, $data);
   }
@@ -92,14 +92,14 @@ class HistoryModel extends CI_Model {
     $this->db->insert($table, $data);
   }
 
-  function cekExist($id){
-    $que = $this->db->query("SELECT id FROM detail_history where id = ?",array($id));
-    $que = $que->num_rows();
-    return $que;
-  }
+  // function cekExist($id){
+  //   $que = $this->db->query("SELECT id FROM detail_history where id = ?",array($id));
+  //   $que = $que->num_rows();
+  //   return $que;
+  // }
 
   function deleteHistoryAset($id){
-    $this->db->where('ID_HISTORY', $id);
+    $this->db->where('ID', $id);
     $this->db->delete('history_aset');
   }
 

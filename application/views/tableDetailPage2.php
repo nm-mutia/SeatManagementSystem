@@ -197,7 +197,7 @@
                                             aria-required="true"
                                             aria-invalid="false"
                                             id="city-list">
-                                            <option value=""><?php echo $field->name ?></option>
+                                            <option value="">Pilih</option>
                                     </select>
                                     </div>
                                 <?php }else { ?>

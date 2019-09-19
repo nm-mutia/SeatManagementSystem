@@ -130,7 +130,7 @@ class History extends MY_MainController {
 		if(!$x){
 			$data['idhist'] = 1;
 		}else{
-			$data['idhist']  = $x->row()->id_history;
+			$data['idhist']  = $x->row()->id;
 			$data['idhist'] = $data['idhist'] + 1 ;
 		}
 		$this->load->view('addFormPage', $data);
@@ -173,7 +173,7 @@ class History extends MY_MainController {
 		// echo $nama.'h e'.$sn;
 
 		foreach($get as $row){
-			$result['ID_HISTORY'] = $row['ID_HISTORY'];
+			$result['ID'] = $row['ID'];
 			$result['NIP'] = $row['NIP'];
 			$result['SN'] = $row['SN'];
 			$result['TGL_PINJAM'] = $row['TGL_PINJAM'];
@@ -188,14 +188,14 @@ class History extends MY_MainController {
 
 	//insert
 	public function insHistory($count){
-		$idv = $this->input->post('ID_HISTORY');
+		$idv = $this->input->post('ID');
 		$nip = $this->input->post('NIP');
 		$tpin = $this->input->post('TGL_PINJAM');
 		// $bukti = $this->input->post('BUKTI_PEMINJAMAN');
 		$file = file_get_contents($_FILES['userfile']['tmp_name']);
 
 		$data = array(
-			'ID_HISTORY' => $idv,
+			'ID' => $idv,
 			'NIP' => $nip,
 			'TGL_PINJAM' => $tpin,
 			'BUKTI_PEMINJAMAN' => $file
@@ -203,16 +203,17 @@ class History extends MY_MainController {
 		if($nip != null){
 			$this->historyModel->setHistory($data, 'history_aset');
 		}
-
+		echo '<script>alert("halo")</script>';
 		for ($i=1; $i <= $count; $i++) {
-			$idh = $this->input->post('ID_HISTORY');
+			$idh = $this->input->post('ID');
 			$sn = $this->input->post('SN'.$i);
 			$tteng = $this->input->post('TGL_TENGGAT'.$i);
 			// $tkem = $this->input->post('TGL_KEMBALI'.$i);
 			$ket = $this->input->post('KONDISI'.$i);
 			$st = $this->input->post('STATUS'.$i);
+			// echo "halolagi ".$idh." ".$sn." ".$tteng." ".$st;
 			$datadet = array(
-				'ID_HISTORY' => $idh,
+				'ID' => $idh,
 				'SN' => $sn,
 				'TGL_TENGGAT' => $tteng,
 				// 'TGL_KEMBALI' => $tkem,
@@ -227,18 +228,18 @@ class History extends MY_MainController {
 			}
 		}
 
-		if($this->historyModel->cekExist($idh) == 0){
-			$this->historyModel->deleteHistoryAset($idh);
-			echo '<script>alert("Aset tidak tersedia")</script>';
-			      redirect('history', 'refresh');
-		}
+		// if($this->historyModel->cekExist($idh) == 0){
+		// 	$this->historyModel->deleteHistoryAset($idh);
+		// 	echo '<script>alert("Aset tidak tersedia")</script>';
+		// 	      redirect('history', 'refresh');
+		// }
 
 		redirect('history');
 	}
 
 	//update history
 	public function upHistory(){
-		$id = $this->input->post('ID_HISTORY');
+		$id = $this->input->post('ID');
 		$sn = $this->input->post('SN');
 		$tpin = $this->input->post('TGL_PINJAM');
 		$tteng = $this->input->post('TGL_TENGGAT');
