@@ -96,7 +96,7 @@
                                                     <?php foreach ($content->field_data() as $field): ?>
                                                         <div class="form-group" >
                                                             <label for="cc-payment" class="control-label mb-1"><?php echo $field->name ?> </label>
-                                                            <?php if($field->name == "ID_HISTORY"){ ?>
+                                                            <?php if($field->name == "ID"){ ?>
                                                                 <input name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" value="<?php echo $idhist; ?>" readonly>
                                                             <?php  }else if($field->name == "NIP"){ ?>
                                                                 <select id="history_nip" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
@@ -399,7 +399,7 @@
             var base_url = window.location.origin;
             var pathArray = window.location.pathname.split( "/" );
 
-            $("#history_nip").change(function(){
+            $("select#history_nip").change(function(){
                 const startTime = performance.now();
                 var urlx = base_url+"/"+pathArray[1]+"/history";
                 var val = $(this).val();
