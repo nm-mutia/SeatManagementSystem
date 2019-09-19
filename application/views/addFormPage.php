@@ -457,56 +457,6 @@
           });
         }
 
-        $(document).ready(function(){
-            var base_url = window.location.origin;
-            var pathArray = window.location.pathname.split( "/" );
-
-            // $("#perusahaan_list").change(function(){
-            //     var val = $(this).val();
-            //     var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
-            //     console.log("ehe"+urlx);
-            //     $.ajax({
-            //         type: "POST",
-            //         url: urlx,
-            //         data: {idp: val},
-            //         dataType: "json",
-            //         success: function(data){
-            //             console.log("success : " + JSON.stringify(data) );
-            //             $("#kota_list").find("option").not(":first").remove();
-            //             $.each(data,function(index,datax){
-            //                 $("#kota_list").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
-            //             });
-            //         },
-            //         error: function(data) {
-            //             alert('kenapa fail');
-            //         }
-            //     });
-            // });
-
-
-
-            // $("[name=ID_PERUSAHAAN]").change(function(){
-            //     var val = $(this).val();
-            //     var urlx = base_url+"/"+pathArray[1]+"/po/get_kota_list";
-            //     console.log("ehe"+urlx);
-            //     $.ajax({
-            //         type: "POST",
-            //         url: urlx,
-            //         data: {idp: val},
-            //         dataType: "json",
-            //         success: function(data){
-            //             console.log("success : " + JSON.stringify(data) );
-            //             $("[name=ID_LOKASI]").find("option").not(":first").remove();
-            //             $.each(data,function(index,datax){
-            //                 $("[name=LOKASI]").append('<option value="'+datax["idlokasi"]+'">'+datax["kota"]+'</option>');
-            //             });
-            //         },
-            //         error: function(data) {
-            //             alert('kenapa fail');
-            //         }
-            //     });
-            // });
-        });
     </script>
 
     <script type='text/javascript'>
