@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminDashboard extends MY_MainController {
+	//INI UDAH GAK DIPAKAI
 
 	// protected $access = "Admin";
 
