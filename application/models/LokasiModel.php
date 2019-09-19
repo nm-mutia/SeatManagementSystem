@@ -7,7 +7,7 @@ class LokasiModel extends CI_Model{
 	}
 
 	function getLokasi(){
-		$query = "SELECT p.ID_PERUSAHAAN, p.NAMA_PERUSAHAAN, dl.ALAMAT_PERUSAHAAN, l.KOTAATAUKABUPATEN as KOTA
+		$query = "SELECT p.ID_PERUSAHAAN, p.NAMA_PERUSAHAAN, dl.ALAMAT_PERUSAHAAN, l.KOTAATAUKABUPATEN as KOTA, l.ID_LOKASI
 			from perusahaan p
 			join detail_lokasi dl on p.id_perusahaan = dl.id_perusahaan
 			join lokasi l on dl.id_lokasi = l.id_lokasi";
@@ -31,23 +31,23 @@ class LokasiModel extends CI_Model{
         return $data->result_array();
 	}
 
-	function countKtgLokHardware($id){
+	function countKtgLokHardware($idp, $idl){
 		$query = "SELECT COUNT(*) as jml
 				FROM detail_po AS dp
 				JOIN aset AS a ON a.id_da = dp.id_da
-				WHERE a.id_perusahaan = ? AND dp.kategori = 'Hardware'";
-        $data = $this->db->query($query, array($id));
+				WHERE a.id_perusahaan = ? AND a.id_lokasi = ? AND dp.kategori = 'Hardware'";
+        $data = $this->db->query($query, array($idp, $idl));
         return $data;
 	}
 
 
-	function countSubktgLokH($id){
+	function countSubktgLokH($idp, $idl){
 		$query = "SELECT dp.SUB_KATEGORI, COUNT(*) AS jml
 				FROM detail_po AS dp
 				JOIN aset AS a ON a.id_da = dp.id_da
-				WHERE a.id_perusahaan = ? AND dp.kategori = 'Hardware'
+				WHERE a.id_perusahaan = ? AND a.id_lokasi = ? AND dp.kategori = 'Hardware'
 				GROUP BY dp.sub_kategori";
-        $data = $this->db->query($query, array($id));
+        $data = $this->db->query($query, array($idp, $idl));
         return $data;
 	}
 }
