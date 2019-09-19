@@ -98,7 +98,6 @@ class Aset extends MY_MainController {
 		// header("Content-type: image/jpeg");
 		// header('Content-type : image/jpeg');
 		$data['content'] = $this->Aset_model->getAsetKeseluruhanDets($sid, $skat);
-
 		$this->load->view('tableDetailPage2', $data);
 	}
 
