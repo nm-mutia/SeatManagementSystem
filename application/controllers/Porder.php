@@ -108,13 +108,13 @@ class Porder extends MY_MainController {
 			$result['NAMA VENDOR'] = $row['NAMA VENDOR'];
 			$result['NAMA PIC'] = $row['NAMA PIC'];
 			$result['TAHUN PENGADAAN'] = $row['TAHUN PENGADAAN'];
-			$result['FILE SPK'] = $row['FILE SPK'];
+			// $result['FILE SPK'] = $row['FILE SPK'];
 		}
-		var_dump($get);
+		// /($get);
 		echo json_encode($result);
 	}
 
-	public function deletePorder($nama){
+	public function deletePorder($nama){+
 		$nama = base64_decode($nama);
 		$nama = $this->encryption->decrypt($nama);
 		$data['content'] = $this->Po_model->deletePorder($nama);
@@ -230,7 +230,7 @@ class Porder extends MY_MainController {
 	public function upPO(){
 		$spk = $this->input->post('NO_SPK');
 		$th = $this->input->post('TAHUN_PENGADAAN');
-		$file = $this->input->post('FILE_SPK');
+		// $file = $this->input->post('FILE_SPK');
 
 		$data = array(
 			'NO_SPK' => $spk,
