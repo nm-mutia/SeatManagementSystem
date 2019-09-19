@@ -252,7 +252,7 @@ class Porder extends MY_MainController {
 					$result['MERK'] = $row['MERK'];
 					$result['TIPE'] = $row['SERIES'];
 					$result['NAMA PERUSAHAAN'] = $row['NAMA_PERUSAHAAN'];
-					$result['KOTA'] = $row['KOTA'];
+					$result['SITE'] = $row['SITE'];
 					// $result['NAMA PERUSAHAAN'] = $row['NAMA PERUSAHAAN'];
 
 					}
