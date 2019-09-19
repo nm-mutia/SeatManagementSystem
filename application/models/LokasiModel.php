@@ -15,6 +15,13 @@ class LokasiModel extends CI_Model{
         return $data;
 	}
 
+	function getLokasi_PO(){
+		$query = "SELECT p.ID_PERUSAHAAN, p.NAMA_PERUSAHAAN
+			from perusahaan p";
+        $data = $this->db->query($query);
+        return $data;
+	}
+
 	function getLokasiKota($idp){
 		$query = "SELECT l.ID_LOKASI as idlokasi, l.KOTAATAUKABUPATEN AS kota, l.PROVINSI
 				FROM lokasi l

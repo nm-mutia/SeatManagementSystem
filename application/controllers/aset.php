@@ -119,7 +119,7 @@ class Aset extends MY_MainController {
 		$idda = $this->encryption->decrypt($idda);
 		$data['content'] = $this->Aset_model->getAsetAll();
 		$data['da'] = $idda;
-		$data['lokasi'] = $this->lokasiModel->getLokasi();
+		$data['lokasi'] = $this->lokasiModel->getLokasi_PO();
 		// $data['kota'] = $this->lokasiModel->getLokasiKota();
 		$this->load->view('addFormPage', $data);
 	}
