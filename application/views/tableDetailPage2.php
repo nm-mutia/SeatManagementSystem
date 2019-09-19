@@ -163,7 +163,7 @@
                         <div>
                             <?php foreach ($content->field_data() as $field): ?>
                               <div class="form-group row">
-                                <?php if($field->name != "IMAGE"){ ?> 
+                                <?php if($field->name != "IMAGE"){ ?>
                                   <label class="col-md-2 col-form-label"><?php echo $field->name ?> </label>
 
                                 <?php }if($field->name == "SN" || $field->name == "MASA" ){?>
@@ -172,15 +172,33 @@
                                     </div>
                                 <?php } else if($field->name == "NAMA_PERUSAHAAN" || $field->name == "ID_PERUSAHAAN"){?>
                                     <div class="col-md-10">
-                                        <select id="<?php echo $field->name ?>" name="<?php echo $field->name ?>" type="text" class="form-control" aria-required="true" aria-invalid="false">
-                                            <?php foreach ($lokasi->result_array() as $lok): ?>
-                                                <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>"> <?php echo $lok['NAMA_PERUSAHAAN'].' - '.$lok['KOTA'] ?></option>
-                                            <?php endforeach ?>
-                                        </select>
+                                      <select id="perusahaan_list"
+                                      name="<?php echo $field->name ?>"
+                                      type="text" class="form-control"
+                                      aria-required="true"
+                                      aria-invalid="false"
+                                      onChange="getCity(this.value);"
+                                      required>
+                                          <option>Pilih</option>
+                                          <?php foreach ($lokasi->result_array() as $lok){ ?>
+                                              <option value="<?php echo $lok['ID_PERUSAHAAN'] ?>" ><?php echo $lok['NAMA_PERUSAHAAN'] ?></option>
+                                          <?php } ?>
+                                      </select>
                                     </div>
                                 <?php }else if($field->name == "IMAGE"){ ?>
                                     <div class="col-md-10" style="display: none;">
                                         <!-- <input type="hidden"> -->
+                                    </div>
+                                  <?php }else if($field->name == "SITE"){ ?>
+                                      <div class="col-md-10">
+                                    <select name="<?php echo $field->name ?>"
+                                            type="text"
+                                            class="form-control"
+                                            aria-required="true"
+                                            aria-invalid="false"
+                                            id="city-list">
+                                            <option value=""><?php echo $field->name ?></option>
+                                    </select>
                                     </div>
                                 <?php }else { ?>
                                     <div class="col-md-10">
@@ -210,5 +228,36 @@
   </script> -->
       <?php $this->load->view("_partials/js.php") ?>
 
+      <script type='text/javascript'>
+      var base_url = window.location.origin;
+      var pathArray = window.location.pathname.split( "/" );
+
+      function getCity(val) {
+            // alert("berhasil klik");
+            urlx =  base_url+"/"+pathArray[1]+"/po/get_kota_list";
+            // alert(urlx);
+            // alert(val);
+            $.ajax({
+            type: "POST",
+            url: urlx,
+            data: {idp: val},
+            success: function(data){
+              // alert(data);
+              // $('select#city-list').val(null).trigger('change');
+              $("select#city-list").find("option:gt(0)").remove();
+              var jsonStr = data;
+              var data = $.parseJSON(jsonStr);
+              $(data).each(function(index, datax) {
+                console.log(index + " : " + datax.idlokasi + " "+ datax.kota );
+                    // $('#city-list').append('<option value="foo" selected="selected">Foo</option>');
+                    // $("#city-list option[value='option1']").remove();
+                    $('select#city-list').append($("<option></option>").attr("value", datax.idlokasi).text(datax.kota));
+                    // $("select#city-list").append('<option value="option6">option6</option>');
+              });
+            }
+            });
+          }
+    </script>
 </body>
+
 </html>
